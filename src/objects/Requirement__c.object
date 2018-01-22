@@ -1,0 +1,1977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Can_Delete__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Can Delete</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipName>Types_of_Requirement</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Remarks__c</fullName>
+        <externalId>false</externalId>
+        <label>Remarks</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Requirement_Type__c</fullName>
+        <description>Requirement for service application evaluation procecss</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Requirement for service application evaluation procecss</inlineHelpText>
+        <label>Requirement Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Proof of Identification</fullName>
+                    <default>false</default>
+                    <label>Proof of Identification</label>
+                </value>
+                <value>
+                    <fullName>Request for Electric Service Documents</fullName>
+                    <default>false</default>
+                    <label>Request for Electric Service Documents</label>
+                </value>
+                <value>
+                    <fullName>Proof of Occupancy</fullName>
+                    <default>false</default>
+                    <label>Proof of Occupancy</label>
+                </value>
+                <value>
+                    <fullName>Disconnection Waiver/Warranty</fullName>
+                    <default>false</default>
+                    <label>Customer’s Service Application Warranty</label>
+                </value>
+                <value>
+                    <fullName>Electric Load Documents</fullName>
+                    <default>false</default>
+                    <label>Electric Load Documents</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Final Electrical Inspection</fullName>
+                    <default>false</default>
+                    <label>Certificate of Final Electrical Inspection</label>
+                </value>
+                <value>
+                    <fullName>Energization Date Agreement Form</fullName>
+                    <default>false</default>
+                    <label>Energization Date Agreement Form</label>
+                </value>
+                <value>
+                    <fullName>Right of Way Grant</fullName>
+                    <default>false</default>
+                    <label>Right of Way Grant</label>
+                </value>
+                <value>
+                    <fullName>Undertaking to Submit Pending Document/s</fullName>
+                    <default>false</default>
+                    <label>Undertaking to Submit Pending Document/s</label>
+                </value>
+                <value>
+                    <fullName>Tax Identification Documents</fullName>
+                    <default>false</default>
+                    <label>Tax Identification Documents</label>
+                </value>
+                <value>
+                    <fullName>Authorization Documents</fullName>
+                    <default>false</default>
+                    <label>Authorization Documents</label>
+                </value>
+                <value>
+                    <fullName>Documents for Correction of Name</fullName>
+                    <default>false</default>
+                    <label>Documents for Correction of Name</label>
+                </value>
+                <value>
+                    <fullName>Documents for Special Discounts and Tax Privileges</fullName>
+                    <default>false</default>
+                    <label>Documents for Special Discounts and Tax Privileges</label>
+                </value>
+                <value>
+                    <fullName>RES Document Requirements</fullName>
+                    <default>false</default>
+                    <label>RES Document Requirements</label>
+                </value>
+                <value>
+                    <fullName>Service Application Requirements</fullName>
+                    <default>false</default>
+                    <label>Service Application Requirements</label>
+                </value>
+                <value>
+                    <fullName>Service Level Requirement</fullName>
+                    <default>false</default>
+                    <label>Service Level Requirement</label>
+                </value>
+                <value>
+                    <fullName>Transaction Level Requirement</fullName>
+                    <default>false</default>
+                    <label>Transaction Level Requirement</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Requirement__c</fullName>
+        <description>Requirement for service application evaluation procecss</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Requirement for service application evaluation procecss</inlineHelpText>
+        <label>Requirement</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Load Requirement</fullName>
+                    <default>false</default>
+                    <label>Load Requirement</label>
+                </value>
+                <value>
+                    <fullName>Proof of Identification</fullName>
+                    <default>false</default>
+                    <label>Proof of Identification</label>
+                </value>
+                <value>
+                    <fullName>Proof of Valid Occupancy</fullName>
+                    <default>false</default>
+                    <label>Proof of Valid Occupancy</label>
+                </value>
+                <value>
+                    <fullName>Energization Requirement</fullName>
+                    <default>false</default>
+                    <label>Energization Requirement</label>
+                </value>
+                <value>
+                    <fullName>Tax Identification Document</fullName>
+                    <default>false</default>
+                    <label>Tax Identification Document</label>
+                </value>
+                <value>
+                    <fullName>Representative Requirements</fullName>
+                    <default>false</default>
+                    <label>Representative Requirements</label>
+                </value>
+                <value>
+                    <fullName>Other Requirements</fullName>
+                    <default>false</default>
+                    <label>Other Requirements</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of supporting document(s)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of supporting document(s)</inlineHelpText>
+        <label>Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pending</fullName>
+                    <default>true</default>
+                    <label>Pending</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
+                </value>
+                <value>
+                    <fullName>Waived</fullName>
+                    <default>false</default>
+                    <label>Waived</label>
+                </value>
+                <value>
+                    <fullName>Existing</fullName>
+                    <default>false</default>
+                    <label>Existing</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Supporting_Document__c</fullName>
+        <description>Specific supporting document required for service application evaluation process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specific supporting document required for service application evaluation process</inlineHelpText>
+        <label>Supporting Document</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Requirement_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>List of Electrical Loads</fullName>
+                    <default>false</default>
+                    <label>List of Electrical Loads</label>
+                </value>
+                <value>
+                    <fullName>Electrical Plan</fullName>
+                    <default>false</default>
+                    <label>Electrical Plan</label>
+                </value>
+                <value>
+                    <fullName>Barangay Certificate</fullName>
+                    <default>false</default>
+                    <label>Barangay Certificate</label>
+                </value>
+                <value>
+                    <fullName>Voter’s ID</fullName>
+                    <default>false</default>
+                    <label>Voter’s ID</label>
+                </value>
+                <value>
+                    <fullName>Driver’s License</fullName>
+                    <default>false</default>
+                    <label>Driver’s License</label>
+                </value>
+                <value>
+                    <fullName>Firearm’s License</fullName>
+                    <default>false</default>
+                    <label>Firearm’s License</label>
+                </value>
+                <value>
+                    <fullName>GSIS ID</fullName>
+                    <default>false</default>
+                    <label>GSIS ID</label>
+                </value>
+                <value>
+                    <fullName>IBP ID</fullName>
+                    <default>false</default>
+                    <label>IBP ID</label>
+                </value>
+                <value>
+                    <fullName>NBI Clearance</fullName>
+                    <default>false</default>
+                    <label>NBI Clearance</label>
+                </value>
+                <value>
+                    <fullName>Philippine Passport</fullName>
+                    <default>false</default>
+                    <label>Philippine Passport</label>
+                </value>
+                <value>
+                    <fullName>PhilHealth ID</fullName>
+                    <default>false</default>
+                    <label>PhilHealth ID</label>
+                </value>
+                <value>
+                    <fullName>POEA Artist Record Book</fullName>
+                    <default>false</default>
+                    <label>POEA Artist Record Book</label>
+                </value>
+                <value>
+                    <fullName>Police Clearance</fullName>
+                    <default>false</default>
+                    <label>Police Clearance</label>
+                </value>
+                <value>
+                    <fullName>Postal ID</fullName>
+                    <default>false</default>
+                    <label>Postal ID</label>
+                </value>
+                <value>
+                    <fullName>PRC ID</fullName>
+                    <default>false</default>
+                    <label>PRC ID</label>
+                </value>
+                <value>
+                    <fullName>Senior Citizen ID</fullName>
+                    <default>false</default>
+                    <label>Senior Citizen ID</label>
+                </value>
+                <value>
+                    <fullName>SSS ID</fullName>
+                    <default>false</default>
+                    <label>SSS ID</label>
+                </value>
+                <value>
+                    <fullName>TIN ID</fullName>
+                    <default>false</default>
+                    <label>TIN ID</label>
+                </value>
+                <value>
+                    <fullName>Unified Multipurpose ID</fullName>
+                    <default>false</default>
+                    <label>Unified Multipurpose ID</label>
+                </value>
+                <value>
+                    <fullName>Other Government-issued ID</fullName>
+                    <default>false</default>
+                    <label>Other Government-issued ID</label>
+                </value>
+                <value>
+                    <fullName>Articles of Partnership &amp; SEC Registration</fullName>
+                    <default>false</default>
+                    <label>Articles of Partnership &amp; SEC Registration</label>
+                </value>
+                <value>
+                    <fullName>GIS &amp; SEC Registration</fullName>
+                    <default>false</default>
+                    <label>GIS &amp; SEC Registration</label>
+                </value>
+                <value>
+                    <fullName>Articles of Cooperation, CDA &amp; GIS</fullName>
+                    <default>false</default>
+                    <label>Articles of Cooperation, CDA &amp; GIS</label>
+                </value>
+                <value>
+                    <fullName>HLURB Certificate &amp; HOA List of Officers</fullName>
+                    <default>false</default>
+                    <label>HLURB Certificate &amp; HOA List of Officers</label>
+                </value>
+                <value>
+                    <fullName>Government-issued Certificate of Award</fullName>
+                    <default>false</default>
+                    <label>Government-issued Certificate of Award</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Sale</fullName>
+                    <default>false</default>
+                    <label>Certificate of Sale</label>
+                </value>
+                <value>
+                    <fullName>Condominium Certificate of Title</fullName>
+                    <default>false</default>
+                    <label>Condominium Certificate of Title</label>
+                </value>
+                <value>
+                    <fullName>Contract to Sell</fullName>
+                    <default>false</default>
+                    <label>Contract to Sell</label>
+                </value>
+                <value>
+                    <fullName>Deed of Conditional Sale</fullName>
+                    <default>false</default>
+                    <label>Deed of Conditional Sale</label>
+                </value>
+                <value>
+                    <fullName>Deed of Donation</fullName>
+                    <default>false</default>
+                    <label>Deed of Donation</label>
+                </value>
+                <value>
+                    <fullName>Deed of Sale</fullName>
+                    <default>false</default>
+                    <label>Deed of Sale</label>
+                </value>
+                <value>
+                    <fullName>Lease Purchase Agreement</fullName>
+                    <default>false</default>
+                    <label>Lease Purchase Agreement</label>
+                </value>
+                <value>
+                    <fullName>NHA Certification</fullName>
+                    <default>false</default>
+                    <label>NHA Certification</label>
+                </value>
+                <value>
+                    <fullName>Tax Declaration</fullName>
+                    <default>false</default>
+                    <label>Tax Declaration</label>
+                </value>
+                <value>
+                    <fullName>TCT</fullName>
+                    <default>false</default>
+                    <label>TCT</label>
+                </value>
+                <value>
+                    <fullName>Authority to Move-in</fullName>
+                    <default>false</default>
+                    <label>Authority to Move-in</label>
+                </value>
+                <value>
+                    <fullName>Undertaking</fullName>
+                    <default>false</default>
+                    <label>Undertaking</label>
+                </value>
+                <value>
+                    <fullName>Disconnection Waiver</fullName>
+                    <default>false</default>
+                    <label>Disconnection Waiver</label>
+                </value>
+                <value>
+                    <fullName>UPAO Certification</fullName>
+                    <default>false</default>
+                    <label>UPAO Certification</label>
+                </value>
+                <value>
+                    <fullName>CFEI</fullName>
+                    <default>false</default>
+                    <label>CFEI</label>
+                </value>
+                <value>
+                    <fullName>BIR Certificate</fullName>
+                    <default>false</default>
+                    <label>BIR Certificate</label>
+                </value>
+                <value>
+                    <fullName>ITR</fullName>
+                    <default>false</default>
+                    <label>ITR</label>
+                </value>
+                <value>
+                    <fullName>Business TIN</fullName>
+                    <default>false</default>
+                    <label>Business TIN</label>
+                </value>
+                <value>
+                    <fullName>Authorization Letter / SPA</fullName>
+                    <default>false</default>
+                    <label>Authorization Letter / SPA</label>
+                </value>
+                <value>
+                    <fullName>Proof of Identification</fullName>
+                    <default>false</default>
+                    <label>Proof of Identification</label>
+                </value>
+                <value>
+                    <fullName>Other (refer to Other Supporting Document)</fullName>
+                    <default>false</default>
+                    <label>Other (refer to Other Supporting Document)</label>
+                </value>
+                <value>
+                    <fullName>Original Notarized and Unexpired Contract of Lease</fullName>
+                    <default>false</default>
+                    <label>Original Notarized and Unexpired Contract of Lease</label>
+                </value>
+                <value>
+                    <fullName>Service Application Form</fullName>
+                    <default>false</default>
+                    <label>Service Application Form</label>
+                </value>
+                <value>
+                    <fullName>Letter requesting for service</fullName>
+                    <default>false</default>
+                    <label>Letter requesting for service</label>
+                </value>
+                <value>
+                    <fullName>Letter of Intent - Contract Termination</fullName>
+                    <default>false</default>
+                    <label>Letter of Intent - Contract Termination</label>
+                </value>
+                <value>
+                    <fullName>Artist Record Book (POEA-issued)</fullName>
+                    <default>false</default>
+                    <label>Artist Record Book (POEA-issued)</label>
+                </value>
+                <value>
+                    <fullName>Barangay Certificate with Picture, Signature and Dry Seal</fullName>
+                    <default>false</default>
+                    <label>Barangay Certificate with Picture, Signature and Dry Seal</label>
+                </value>
+                <value>
+                    <fullName>COMELEC Voter&apos;s ID</fullName>
+                    <default>false</default>
+                    <label>COMELEC Voter&apos;s ID</label>
+                </value>
+                <value>
+                    <fullName>Credit Card with Photo &amp; Signature</fullName>
+                    <default>false</default>
+                    <label>Credit Card with Photo &amp; Signature</label>
+                </value>
+                <value>
+                    <fullName>Driver&apos;s License</fullName>
+                    <default>false</default>
+                    <label>Driver&apos;s License</label>
+                </value>
+                <value>
+                    <fullName>Firearm&apos;s License</fullName>
+                    <default>false</default>
+                    <label>Firearm&apos;s License</label>
+                </value>
+                <value>
+                    <fullName>Pag-ibig ID</fullName>
+                    <default>false</default>
+                    <label>Pag-ibig ID</label>
+                </value>
+                <value>
+                    <fullName>Passport</fullName>
+                    <default>false</default>
+                    <label>Passport</label>
+                </value>
+                <value>
+                    <fullName>PRC License</fullName>
+                    <default>false</default>
+                    <label>PRC License</label>
+                </value>
+                <value>
+                    <fullName>TIN Card</fullName>
+                    <default>false</default>
+                    <label>TIN Card</label>
+                </value>
+                <value>
+                    <fullName>Unified Multi Purpose ID</fullName>
+                    <default>false</default>
+                    <label>Unified Multi Purpose ID</label>
+                </value>
+                <value>
+                    <fullName>Board Resolution</fullName>
+                    <default>false</default>
+                    <label>Board Resolution</label>
+                </value>
+                <value>
+                    <fullName>Secretary&apos;s Certificate</fullName>
+                    <default>false</default>
+                    <label>Secretary&apos;s Certificate</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Registration (SEC - first page only, CDA, NEA, HLURB, BIR, etc.)</fullName>
+                    <default>false</default>
+                    <label>Certificate of Registration (SEC - first page only, CDA, NEA, HLURB, BIR, etc.)</label>
+                </value>
+                <value>
+                    <fullName>Letter of Authority</fullName>
+                    <default>false</default>
+                    <label>Letter of Authority</label>
+                </value>
+                <value>
+                    <fullName>Charter</fullName>
+                    <default>false</default>
+                    <label>Charter</label>
+                </value>
+                <value>
+                    <fullName>Condominium Certificate of Title (CCT)</fullName>
+                    <default>false</default>
+                    <label>Condominium Certificate of Title (CCT)</label>
+                </value>
+                <value>
+                    <fullName>Notice/Order/Certificate of Award issued by National Government Agencies</fullName>
+                    <default>false</default>
+                    <label>Notice/Order/Certificate of Award issued by National Government Agencies</label>
+                </value>
+                <value>
+                    <fullName>Tax Declaration, Tax Receipt &amp; Barangay Certificate</fullName>
+                    <default>false</default>
+                    <label>Tax Declaration, Tax Receipt &amp; Barangay Certificate</label>
+                </value>
+                <value>
+                    <fullName>Transfer Certificate of Title (TCT)</fullName>
+                    <default>false</default>
+                    <label>Transfer Certificate of Title (TCT)</label>
+                </value>
+                <value>
+                    <fullName>Undertaking for Residential and Non-Residential Applicant-Tenants</fullName>
+                    <default>false</default>
+                    <label>Undertaking for Residential and Non-Residential Applicant-Tenants</label>
+                </value>
+                <value>
+                    <fullName>Written Authorization from the Owner</fullName>
+                    <default>false</default>
+                    <label>Written Authorization from the Owner</label>
+                </value>
+                <value>
+                    <fullName>Disconnection Waiver/Warranty</fullName>
+                    <default>false</default>
+                    <label>Customer’s Service Application Warranty</label>
+                </value>
+                <value>
+                    <fullName>Signed and Sealed Electrical Plan (Single line diagram + Load schedule)</fullName>
+                    <default>false</default>
+                    <label>Signed and Sealed Electrical Plan (Single line diagram + Load schedule)</label>
+                </value>
+                <value>
+                    <fullName>Forecast of Ultimate Load</fullName>
+                    <default>false</default>
+                    <label>Forecast of Ultimate Load</label>
+                </value>
+                <value>
+                    <fullName>Schedule of Development</fullName>
+                    <default>false</default>
+                    <label>Schedule of Development</label>
+                </value>
+                <value>
+                    <fullName>Requirements for Master Plan preparation</fullName>
+                    <default>false</default>
+                    <label>Requirements for Master Plan preparation</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Final Electrical Inspection</fullName>
+                    <default>false</default>
+                    <label>Certificate of Final Electrical Inspection</label>
+                </value>
+                <value>
+                    <fullName>Energization Date Agreement Form</fullName>
+                    <default>false</default>
+                    <label>Energization Date Agreement Form</label>
+                </value>
+                <value>
+                    <fullName>Right of Way Grant</fullName>
+                    <default>false</default>
+                    <label>Right of Way Grant</label>
+                </value>
+                <value>
+                    <fullName>Undertaking to Submit Pending Document/s</fullName>
+                    <default>false</default>
+                    <label>Undertaking to Submit Pending Document/s</label>
+                </value>
+                <value>
+                    <fullName>BIR Certificate of Registration</fullName>
+                    <default>false</default>
+                    <label>BIR Certificate of Registration</label>
+                </value>
+                <value>
+                    <fullName>Income Tax Return (ITR)</fullName>
+                    <default>false</default>
+                    <label>Income Tax Return (ITR)</label>
+                </value>
+                <value>
+                    <fullName>Business Tax Identification</fullName>
+                    <default>false</default>
+                    <label>Business Tax Identification</label>
+                </value>
+                <value>
+                    <fullName>Annual Information Form</fullName>
+                    <default>false</default>
+                    <label>Annual Information Form</label>
+                </value>
+                <value>
+                    <fullName>Application for BIR Registration (Forms 1901, 1902, 1903, 1905, 2303, 0605)</fullName>
+                    <default>false</default>
+                    <label>Application for BIR Registration (Forms 1901, 1902, 1903, 1905, 2303, 0605)</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Creditable Tax Withheld at Source (Form 2307)</fullName>
+                    <default>false</default>
+                    <label>Certificate of Creditable Tax Withheld at Source (Form 2307)</label>
+                </value>
+                <value>
+                    <fullName>Monthly Remittance Return of Income Taxes Withheld – Expanded (Form 1601E)</fullName>
+                    <default>false</default>
+                    <label>Monthly Remittance Return of Income Taxes Withheld – Expanded (Form 1601E)</label>
+                </value>
+                <value>
+                    <fullName>Authorization letter</fullName>
+                    <default>false</default>
+                    <label>Authorization letter</label>
+                </value>
+                <value>
+                    <fullName>Notarized Special Power of Attorney</fullName>
+                    <default>false</default>
+                    <label>Notarized Special Power of Attorney</label>
+                </value>
+                <value>
+                    <fullName>Notarized Board Resolution</fullName>
+                    <default>false</default>
+                    <label>Notarized Board Resolution</label>
+                </value>
+                <value>
+                    <fullName>Credit Card</fullName>
+                    <default>false</default>
+                    <label>Credit Card</label>
+                </value>
+                <value>
+                    <fullName>Birth Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</fullName>
+                    <default>false</default>
+                    <label>Birth Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</label>
+                </value>
+                <value>
+                    <fullName>Marriage Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</fullName>
+                    <default>false</default>
+                    <label>Marriage Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Registration (e.g. DTI, SEC, BIR, etc.)</fullName>
+                    <default>false</default>
+                    <label>Certificate of Registration (e.g. DTI, SEC, BIR, etc.)</label>
+                </value>
+                <value>
+                    <fullName>SEC Certificate of Merger</fullName>
+                    <default>false</default>
+                    <label>SEC Certificate of Merger</label>
+                </value>
+                <value>
+                    <fullName>Recent Electric Bill Under the Name of the Customer</fullName>
+                    <default>false</default>
+                    <label>Recent Electric Bill Under the Name of the Customer</label>
+                </value>
+                <value>
+                    <fullName>Barangay Certificate / Notarized Affidavit of 2 Disinterested Persons</fullName>
+                    <default>false</default>
+                    <label>Barangay Certificate / Notarized Affidavit of 2 Disinterested Persons</label>
+                </value>
+                <value>
+                    <fullName>Application Letter for SCID</fullName>
+                    <default>false</default>
+                    <label>Application Letter for SCID</label>
+                </value>
+                <value>
+                    <fullName>Department of Social Welfare and Development (DSWD) Field Office Endorsement Letter for the availment of SCID</fullName>
+                    <default>false</default>
+                    <label>Department of Social Welfare and Development (DSWD) Field Office Endorsement Letter for the availment of SCID</label>
+                </value>
+                <value>
+                    <fullName>DSWD Accreditation Certificate</fullName>
+                    <default>false</default>
+                    <label>DSWD Accreditation Certificate</label>
+                </value>
+                <value>
+                    <fullName>DepEd or CHED Certificate of Recognition/Permit</fullName>
+                    <default>false</default>
+                    <label>DepEd or CHED Certificate of Recognition/Permit</label>
+                </value>
+                <value>
+                    <fullName>License to operate from the Bureau of Health Facilities and Services (BHFS) of the DOH</fullName>
+                    <default>false</default>
+                    <label>License to operate from the Bureau of Health Facilities and Services (BHFS) of the DOH</label>
+                </value>
+                <value>
+                    <fullName>MERALCO Invitation Letter</fullName>
+                    <default>false</default>
+                    <label>MERALCO Invitation Letter</label>
+                </value>
+                <value>
+                    <fullName>DFA Certification of association to embassy</fullName>
+                    <default>false</default>
+                    <label>DFA Certification of association to embassy</label>
+                </value>
+                <value>
+                    <fullName>Contract of Lease</fullName>
+                    <default>false</default>
+                    <label>Contract of Lease</label>
+                </value>
+                <value>
+                    <fullName>Final Withholding VAT Request Letter</fullName>
+                    <default>false</default>
+                    <label>Final Withholding VAT Request Letter</label>
+                </value>
+                <value>
+                    <fullName>BIR Ruling on the exemption being claimed</fullName>
+                    <default>false</default>
+                    <label>BIR Ruling on the exemption being claimed</label>
+                </value>
+                <value>
+                    <fullName>Certified True Copy of Charter</fullName>
+                    <default>false</default>
+                    <label>Certified True Copy of Charter</label>
+                </value>
+                <value>
+                    <fullName>Barangay/Sangguniang Bayan Resolution</fullName>
+                    <default>false</default>
+                    <label>Barangay/Sangguniang Bayan Resolution</label>
+                </value>
+                <value>
+                    <fullName>PEZA Certification</fullName>
+                    <default>false</default>
+                    <label>PEZA Certification</label>
+                </value>
+                <value>
+                    <fullName>BOI Certification</fullName>
+                    <default>false</default>
+                    <label>BOI Certification</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Accreditation issued by the Bureau of Exporter Trade Promotion (BETP)/PHILEXPORT under Republic Act 7844</fullName>
+                    <default>false</default>
+                    <label>Certificate of Accreditation issued by the Bureau of Exporter Trade Promotion (BETP)/PHILEXPORT under Republic Act 7844</label>
+                </value>
+                <value>
+                    <fullName>BIR Certificate of VAT Exemption</fullName>
+                    <default>false</default>
+                    <label>BIR Certificate of VAT Exemption</label>
+                </value>
+                <value>
+                    <fullName>Request letter for Zero-rated VAT</fullName>
+                    <default>false</default>
+                    <label>Request letter for Zero-rated VAT</label>
+                </value>
+                <value>
+                    <fullName>PEZA Certificate of Registration</fullName>
+                    <default>false</default>
+                    <label>PEZA Certificate of Registration</label>
+                </value>
+                <value>
+                    <fullName>VAT Zero-rating PEZA Certificate</fullName>
+                    <default>false</default>
+                    <label>VAT Zero-rating PEZA Certificate</label>
+                </value>
+                <value>
+                    <fullName>RES License (Issued by ERC)</fullName>
+                    <default>false</default>
+                    <label>RES License (Issued by ERC)</label>
+                </value>
+                <value>
+                    <fullName>Amended Articles of Incorporation</fullName>
+                    <default>false</default>
+                    <label>Amended Articles of Incorporation</label>
+                </value>
+                <value>
+                    <fullName>Amended Articles of Partnership, if applicable</fullName>
+                    <default>false</default>
+                    <label>Amended Articles of Partnership, if applicable</label>
+                </value>
+                <value>
+                    <fullName>General Information Sheet</fullName>
+                    <default>false</default>
+                    <label>General Information Sheet</label>
+                </value>
+                <value>
+                    <fullName>SEC Registration</fullName>
+                    <default>false</default>
+                    <label>SEC Registration</label>
+                </value>
+                <value>
+                    <fullName>Secretary Certificate or Board Resolution</fullName>
+                    <default>false</default>
+                    <label>Secretary Certificate or Board Resolution</label>
+                </value>
+                <value>
+                    <fullName>Valid IDs of Applicant</fullName>
+                    <default>false</default>
+                    <label>Valid IDs of Applicant</label>
+                </value>
+                <value>
+                    <fullName>Valid ID of the Representative</fullName>
+                    <default>false</default>
+                    <label>Valid ID of the Representative</label>
+                </value>
+                <value>
+                    <fullName>Authorization letter to transact with MERALCO</fullName>
+                    <default>false</default>
+                    <label>Authorization letter to transact with MERALCO</label>
+                </value>
+                <value>
+                    <fullName>Authorized Withholding Agent (AWA) Notice from BIR</fullName>
+                    <default>false</default>
+                    <label>Authorized Withholding Agent (AWA) Notice from BIR</label>
+                </value>
+                <value>
+                    <fullName>VAT Undertaking and or Zero-rated Certificate</fullName>
+                    <default>false</default>
+                    <label>VAT Undertaking and or Zero-rated Certificate</label>
+                </value>
+                <value>
+                    <fullName>Bill Deposit Notification Letter</fullName>
+                    <default>false</default>
+                    <label>Bill Deposit Notification Letter</label>
+                </value>
+                <value>
+                    <fullName>Bill Deposit Notification Letter Transmittal/Receiving Copy</fullName>
+                    <default>false</default>
+                    <label>Bill Deposit Notification Letter Transmittal/Receiving Copy</label>
+                </value>
+                <value>
+                    <fullName>Distribution Wheeling Services Agreement (DWSA)</fullName>
+                    <default>false</default>
+                    <label>Distribution Wheeling Services Agreement (DWSA)</label>
+                </value>
+                <value>
+                    <fullName>DWSA Annexes</fullName>
+                    <default>false</default>
+                    <label>DWSA Annexes</label>
+                </value>
+                <value>
+                    <fullName>Copy of Official Receipts (for Bill Deposit Payment)</fullName>
+                    <default>false</default>
+                    <label>Copy of Official Receipts (for Bill Deposit Payment)</label>
+                </value>
+                <value>
+                    <fullName>BIR Form 2307</fullName>
+                    <default>false</default>
+                    <label>BIR Form 2307</label>
+                </value>
+                <value>
+                    <fullName>Supplier of Last Resort (SoLR) contract</fullName>
+                    <default>false</default>
+                    <label>Supplier of Last Resort (SoLR) contract</label>
+                </value>
+                <value>
+                    <fullName>Metering Installation Registration Form (MIRF) and other attachments</fullName>
+                    <default>false</default>
+                    <label>Metering Installation Registration Form (MIRF) and other attachments</label>
+                </value>
+                <value>
+                    <fullName>Copy of Cover Memo to CRB of MIRF Submission</fullName>
+                    <default>false</default>
+                    <label>Copy of Cover Memo to CRB of MIRF Submission</label>
+                </value>
+                <value>
+                    <fullName>Interruptible Load Program (ILP) Tripartite Agreement</fullName>
+                    <default>false</default>
+                    <label>Interruptible Load Program (ILP) Tripartite Agreement</label>
+                </value>
+                <value>
+                    <fullName>Signed ILP Compensation Conforme Letter</fullName>
+                    <default>false</default>
+                    <label>Signed ILP Compensation Conforme Letter</label>
+                </value>
+                <value>
+                    <fullName>Copy of Signed ILP Conforme Letter</fullName>
+                    <default>false</default>
+                    <label>Copy of Signed ILP Conforme Letter</label>
+                </value>
+                <value>
+                    <fullName>Correspondences from RES&apos;s, CRB, ERC, and other stakeholders</fullName>
+                    <default>false</default>
+                    <label>Correspondences from RES&apos;s, CRB, ERC, and other stakeholders</label>
+                </value>
+                <value>
+                    <fullName>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders</fullName>
+                    <default>false</default>
+                    <label>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders</label>
+                </value>
+                <value>
+                    <fullName>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders Transmittal/Receiving Copy</fullName>
+                    <default>false</default>
+                    <label>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders Transmittal/Receiving Copy</label>
+                </value>
+                <value>
+                    <fullName>Switch Approval</fullName>
+                    <default>false</default>
+                    <label>Switch Approval</label>
+                </value>
+                <value>
+                    <fullName>Certification Issued to CRB for Regular Switch</fullName>
+                    <default>false</default>
+                    <label>Certification Issued to CRB for Regular Switch</label>
+                </value>
+                <value>
+                    <fullName>Certification Issued to CRB for Termination of Service</fullName>
+                    <default>false</default>
+                    <label>Certification Issued to CRB for Termination of Service</label>
+                </value>
+                <value>
+                    <fullName>Annual Update of Bill Deposit (AUBD) Notification Letter</fullName>
+                    <default>false</default>
+                    <label>Annual Update of Bill Deposit (AUBD) Notification Letter</label>
+                </value>
+                <value>
+                    <fullName>AUBD Annexes</fullName>
+                    <default>false</default>
+                    <label>AUBD Annexes</label>
+                </value>
+                <value>
+                    <fullName>Good Credit Standing (GCS) Notification Letter</fullName>
+                    <default>false</default>
+                    <label>Good Credit Standing (GCS) Notification Letter</label>
+                </value>
+                <value>
+                    <fullName>GCS Annexes</fullName>
+                    <default>false</default>
+                    <label>GCS Annexes</label>
+                </value>
+                <value>
+                    <fullName>RCOA-Related ERC Rules and Resolutions</fullName>
+                    <default>false</default>
+                    <label>RCOA-Related ERC Rules and Resolutions</label>
+                </value>
+                <value>
+                    <fullName>RCOA-Related DOE Circulars</fullName>
+                    <default>false</default>
+                    <label>RCOA-Related DOE Circulars</label>
+                </value>
+                <value>
+                    <fullName>Acknowledgement Receipt for Deposit Credited</fullName>
+                    <default>false</default>
+                    <label>Acknowledgement Receipt for Deposit Credited</label>
+                </value>
+                <value>
+                    <fullName>Retail Counterparty Confirmation Form</fullName>
+                    <default>false</default>
+                    <label>Retail Counterparty Confirmation Form</label>
+                </value>
+                <value>
+                    <fullName>Secretary Certificate</fullName>
+                    <default>false</default>
+                    <label>Secretary Certificate</label>
+                </value>
+                <value>
+                    <fullName>Switch Request Form</fullName>
+                    <default>false</default>
+                    <label>Switch Request Form</label>
+                </value>
+                <value>
+                    <fullName>DTI Registration</fullName>
+                    <default>false</default>
+                    <label>DTI Registration</label>
+                </value>
+                <value>
+                    <fullName>Mayor&apos;s Permit</fullName>
+                    <default>false</default>
+                    <label>Mayor&apos;s Permit</label>
+                </value>
+                <value>
+                    <fullName>MERALCO&apos;s Confirmation of Initial Switch</fullName>
+                    <default>false</default>
+                    <label>MERALCO&apos;s Confirmation of Initial Switch</label>
+                </value>
+                <value>
+                    <fullName>Agreement for Extension of Lines and/or Additional Facilities (CA Agreement)</fullName>
+                    <default>false</default>
+                    <label>Agreement for Extension of Lines and/or Additional Facilities (CA Agreement)</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Compliance</fullName>
+                    <default>false</default>
+                    <label>Certificate of Compliance</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Contestability</fullName>
+                    <default>false</default>
+                    <label>Certificate of Contestability</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Final Electrical Inspection (CFEI)</fullName>
+                    <default>false</default>
+                    <label>Certificate of Final Electrical Inspection (CFEI)</label>
+                </value>
+                <value>
+                    <fullName>Connection Agreement</fullName>
+                    <default>false</default>
+                    <label>Connection Agreement</label>
+                </value>
+                <value>
+                    <fullName>Contract for Electric Service</fullName>
+                    <default>false</default>
+                    <label>Contract for Electric Service</label>
+                </value>
+                <value>
+                    <fullName>Net-metering Agreement</fullName>
+                    <default>false</default>
+                    <label>Net-metering Agreement</label>
+                </value>
+                <value>
+                    <fullName>Notarized Undertaking for Leased Properties</fullName>
+                    <default>false</default>
+                    <label>Notarized Undertaking for Leased Properties</label>
+                </value>
+                <value>
+                    <fullName>Power Accounts Data Sheet</fullName>
+                    <default>false</default>
+                    <label>Power Accounts Data Sheet</label>
+                </value>
+                <value>
+                    <fullName>Ramp-up Agreement</fullName>
+                    <default>false</default>
+                    <label>Ramp-up Agreement</label>
+                </value>
+                <value>
+                    <fullName>Signed and Sealed Electrical Plan (Single line + Load Schedule)</fullName>
+                    <default>false</default>
+                    <label>Signed and Sealed Electrical Plan (Single line + Load Schedule)</label>
+                </value>
+                <value>
+                    <fullName>Supplemental Agreement for Multi Metering per Floor</fullName>
+                    <default>false</default>
+                    <label>Supplemental Agreement for Multi Metering per Floor</label>
+                </value>
+                <value>
+                    <fullName>Copy of Cover Memo to RAO on the MIRF Submission of MERALCO</fullName>
+                    <default>false</default>
+                    <label>Copy of Cover Memo to RAO on the MIRF Submission of MERALCO</label>
+                </value>
+                <value>
+                    <fullName>CRB Switch Approval</fullName>
+                    <default>false</default>
+                    <label>CRB Switch Approval</label>
+                </value>
+                <value>
+                    <fullName>Distribution Asset Study Fees / Receipts*</fullName>
+                    <default>false</default>
+                    <label>Distribution Asset Study Fees / Receipts*</label>
+                </value>
+                <value>
+                    <fullName>Distribution Impact Study Fee / Receipt</fullName>
+                    <default>false</default>
+                    <label>Distribution Impact Study Fee / Receipt</label>
+                </value>
+                <value>
+                    <fullName>Distribution Wheeling Service Agreement (DWSA) for Embedded Generators</fullName>
+                    <default>false</default>
+                    <label>Distribution Wheeling Service Agreement (DWSA) for Embedded Generators</label>
+                </value>
+                <value>
+                    <fullName>Fixed Assest Boundary Document (FABD)</fullName>
+                    <default>false</default>
+                    <label>Fixed Assest Boundary Document (FABD)</label>
+                </value>
+                <value>
+                    <fullName>Inter-Connection Agreement (ICA)</fullName>
+                    <default>false</default>
+                    <label>Inter-Connection Agreement (ICA)</label>
+                </value>
+                <value>
+                    <fullName>Zero Vat Certification</fullName>
+                    <default>false</default>
+                    <label>Zero Vat Certification</label>
+                </value>
+                <value>
+                    <fullName>Copy of Official receipts</fullName>
+                    <default>false</default>
+                    <label>Copy of Official receipts</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Driver’s License</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Firearm’s License</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>GSIS ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>IBP ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>NBI Clearance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>PhilHealth ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Police Clearance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Postal ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Senior Citizen ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>SSS ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>TIN ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Unified Multipurpose ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Artist Record Book (POEA-issued)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Barangay Certificate with Picture, Signature and Dry Seal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>COMELEC Voter&apos;s ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Pag-ibig ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Passport</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>PRC License</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Secretary&apos;s Certificate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <valueName>Authorization letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <valueName>Notarized Special Power of Attorney</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <valueName>Notarized Board Resolution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Authorization Documents</controllingFieldValue>
+                <valueName>Credit Card</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Correction of Name</controllingFieldValue>
+                <valueName>Birth Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Correction of Name</controllingFieldValue>
+                <valueName>Marriage Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Correction of Name</controllingFieldValue>
+                <valueName>Certificate of Registration (e.g. DTI, SEC, BIR, etc.)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Correction of Name</controllingFieldValue>
+                <valueName>SEC Certificate of Merger</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>BIR Certificate of Registration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Recent Electric Bill Under the Name of the Customer</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Barangay Certificate / Notarized Affidavit of 2 Disinterested Persons</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Application Letter for SCID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Department of Social Welfare and Development (DSWD) Field Office Endorsement Letter for the availment of SCID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>DSWD Accreditation Certificate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>DepEd or CHED Certificate of Recognition/Permit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>License to operate from the Bureau of Health Facilities and Services (BHFS) of the DOH</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>MERALCO Invitation Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>DFA Certification of association to embassy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Contract of Lease</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Final Withholding VAT Request Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>BIR Ruling on the exemption being claimed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Certified True Copy of Charter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Barangay/Sangguniang Bayan Resolution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>PEZA Certification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>BOI Certification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Certificate of Accreditation issued by the Bureau of Exporter Trade Promotion (BETP)/PHILEXPORT under Republic Act 7844</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>BIR Certificate of VAT Exemption</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>Request letter for Zero-rated VAT</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>PEZA Certificate of Registration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Documents for Special Discounts and Tax Privileges</controllingFieldValue>
+                <valueName>VAT Zero-rating PEZA Certificate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>RES License (Issued by ERC)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Amended Articles of Incorporation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Amended Articles of Partnership, if applicable</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>General Information Sheet</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>SEC Registration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Secretary Certificate or Board Resolution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Valid IDs of Applicant</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Transaction Level Requirement</controllingFieldValue>
+                <valueName>Valid ID of the Representative</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Transaction Level Requirement</controllingFieldValue>
+                <valueName>Authorization letter to transact with MERALCO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Authorized Withholding Agent (AWA) Notice from BIR</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>VAT Undertaking and or Zero-rated Certificate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Bill Deposit Notification Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Bill Deposit Notification Letter Transmittal/Receiving Copy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Distribution Wheeling Services Agreement (DWSA)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>DWSA Annexes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Copy of Official Receipts (for Bill Deposit Payment)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>BIR Form 2307</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Supplier of Last Resort (SoLR) contract</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Metering Installation Registration Form (MIRF) and other attachments</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Copy of Cover Memo to CRB of MIRF Submission</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Interruptible Load Program (ILP) Tripartite Agreement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Signed ILP Compensation Conforme Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Transaction Level Requirement</controllingFieldValue>
+                <valueName>Copy of Signed ILP Conforme Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Correspondences from RES&apos;s, CRB, ERC, and other stakeholders</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders Transmittal/Receiving Copy</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Switch Approval</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Certification Issued to CRB for Regular Switch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Certification Issued to CRB for Termination of Service</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Annual Update of Bill Deposit (AUBD) Notification Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>AUBD Annexes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>Good Credit Standing (GCS) Notification Letter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>GCS Annexes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>RCOA-Related ERC Rules and Resolutions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RES Document Requirements</controllingFieldValue>
+                <valueName>RCOA-Related DOE Circulars</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Acknowledgement Receipt for Deposit Credited</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Retail Counterparty Confirmation Form</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Secretary Certificate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Switch Request Form</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>DTI Registration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>Mayor&apos;s Permit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Application Requirements</controllingFieldValue>
+                <valueName>MERALCO&apos;s Confirmation of Initial Switch</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Transfer Certificate of Title (TCT)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <controllingFieldValue>Disconnection Waiver/Warranty</controllingFieldValue>
+                <valueName>Disconnection Waiver/Warranty</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Agreement for Extension of Lines and/or Additional Facilities (CA Agreement)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Certificate of Compliance</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Certificate of Contestability</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Certificate of Final Electrical Inspection (CFEI)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Connection Agreement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Contract for Electric Service</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Net-metering Agreement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Notarized Undertaking for Leased Properties</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Power Accounts Data Sheet</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Ramp-up Agreement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Signed and Sealed Electrical Plan (Single line + Load Schedule)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Supplemental Agreement for Multi Metering per Floor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Copy of Cover Memo to RAO on the MIRF Submission of MERALCO</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>CRB Switch Approval</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Distribution Asset Study Fees / Receipts*</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Distribution Impact Study Fee / Receipt</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Distribution Wheeling Service Agreement (DWSA) for Embedded Generators</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Fixed Assest Boundary Document (FABD)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Inter-Connection Agreement (ICA)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Service Level Requirement</controllingFieldValue>
+                <valueName>Zero Vat Certification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Transaction Level Requirement</controllingFieldValue>
+                <valueName>Copy of Official receipts</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Barangay Certificate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Voter’s ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Philippine Passport</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>POEA Artist Record Book</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>PRC ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Other Government-issued ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Articles of Partnership &amp; SEC Registration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>GIS &amp; SEC Registration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Articles of Cooperation, CDA &amp; GIS</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>HLURB Certificate &amp; HOA List of Officers</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Credit Card with Photo &amp; Signature</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>TIN Card</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Unified Multi Purpose ID</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Board Resolution</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Certificate of Registration (SEC - first page only, CDA, NEA, HLURB, BIR, etc.)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Letter of Authority</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Identification</controllingFieldValue>
+                <valueName>Charter</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Request for Electric Service Documents</controllingFieldValue>
+                <valueName>Service Application Form</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Request for Electric Service Documents</controllingFieldValue>
+                <valueName>Letter requesting for service</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Request for Electric Service Documents</controllingFieldValue>
+                <valueName>Letter of Intent - Contract Termination</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Certificate of Sale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Contract to Sell</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Deed of Conditional Sale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Deed of Donation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Deed of Sale</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Lease Purchase Agreement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>NHA Certification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Authority to Move-in</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>UPAO Certification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Condominium Certificate of Title (CCT)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Notice/Order/Certificate of Award issued by National Government Agencies</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Tax Declaration, Tax Receipt &amp; Barangay Certificate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Undertaking for Residential and Non-Residential Applicant-Tenants</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Proof of Occupancy</controllingFieldValue>
+                <valueName>Written Authorization from the Owner</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Electric Load Documents</controllingFieldValue>
+                <valueName>List of Electrical Loads</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Electric Load Documents</controllingFieldValue>
+                <valueName>Signed and Sealed Electrical Plan (Single line diagram + Load schedule)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Electric Load Documents</controllingFieldValue>
+                <valueName>Forecast of Ultimate Load</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Electric Load Documents</controllingFieldValue>
+                <valueName>Schedule of Development</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Electric Load Documents</controllingFieldValue>
+                <valueName>Requirements for Master Plan preparation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Certificate of Final Electrical Inspection</controllingFieldValue>
+                <valueName>Certificate of Final Electrical Inspection</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Energization Date Agreement Form</controllingFieldValue>
+                <valueName>Energization Date Agreement Form</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Right of Way Grant</controllingFieldValue>
+                <valueName>Right of Way Grant</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Undertaking to Submit Pending Document/s</controllingFieldValue>
+                <valueName>Undertaking to Submit Pending Document/s</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>Income Tax Return (ITR)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>Business Tax Identification</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>Annual Information Form</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>Application for BIR Registration (Forms 1901, 1902, 1903, 1905, 2303, 0605)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>Certificate of Creditable Tax Withheld at Source (Form 2307)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tax Identification Documents</controllingFieldValue>
+                <valueName>Monthly Remittance Return of Income Taxes Withheld – Expanded (Form 1601E)</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <label>Requirement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Case__c</columns>
+        <columns>Requirement_Type__c</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>REQ-{0000}</displayFormat>
+        <label>Type of Requirement ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Requirements</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>CXE_Max_Requirement_Count_Validate</fullName>
+        <active>true</active>
+        <description>Validate the maximum count of Requirement per Case</description>
+        <errorConditionFormula>AND(
+ISNEW(), 
+Case__r.Number_Of_Type_Reqs__c = 10
+)</errorConditionFormula>
+        <errorMessage>You can only add 10 Requirements per case</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CXE_Status_Deferred_Validate_User</fullName>
+        <active>true</active>
+        <description>Restrict update of deferred status for G4 and above users only</description>
+        <errorConditionFormula>AND(
+ISCHANGED(Status__c),
+ISPICKVAL(Status__c, &apos;Deferred&apos;),
+NOT(CONTAINS($Profile.Name, &apos;G4&apos;)), 
+NOT(CONTAINS($Profile.Name, &apos;G3&apos;)),
+NOT(CONTAINS($Profile.Name, &apos;G2&apos;)),
+NOT(CONTAINS($Profile.Name, &apos;G1&apos;)),
+NOT(CONTAINS($Profile.Name, &apos;System Administrator&apos;))
+)</errorConditionFormula>
+        <errorMessage>Only G4 to G1 Users can change Status to &quot;Deferred&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Documents_Required</fullName>
+        <active>false</active>
+        <description>Some Requirement Type requires Supporting Document</description>
+        <errorConditionFormula>(ISPICKVAL( Requirement_Type__c , &quot;Proof of Identification&quot;) || ISPICKVAL( Requirement_Type__c , &quot;Proof of Occupancy&quot;) || ISPICKVAL( Requirement_Type__c , &quot;Disconnection Waiver/Warranty&quot;) || ISPICKVAL( Requirement_Type__c , &quot;Certificate of Final Electrical Inspection&quot;) || ISPICKVAL( Requirement_Type__c , &quot;Energization Date Agreement Form&quot;) || ISPICKVAL( Requirement_Type__c , &quot;Right of Way Grant&quot;) || ISPICKVAL( Requirement_Type__c , &quot;Undertaking to Submit Pending Document/s&quot;)) &amp;&amp; ISBLANK(TEXT(Supporting_Document__c))</errorConditionFormula>
+        <errorDisplayField>Supporting_Document__c</errorDisplayField>
+        <errorMessage>Please Select a Supporting Document.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Ensure_Only_10_records_Per_Record</fullName>
+        <active>false</active>
+        <errorConditionFormula>Case__r.Number_Of_Type_Reqs__c = 10</errorConditionFormula>
+        <errorMessage>You can only add 10 type of requirements per case</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Not_allow_to_change_back_to_pending</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(IsCHANGED( Status__c ),
+text(Status__c) = &apos;Pending&apos;,
+ TEXT(PRIORVALUE(Status__c)) &lt;&gt; &apos;Pending&apos;,
+not(isblank(PRIORVALUE(Status__c)))
+)</errorConditionFormula>
+        <errorDisplayField>Status__c</errorDisplayField>
+        <errorMessage>Not allowed to updated status after Pending</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Only_G4_to_G2_Can_Deffer</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+ischanged( Status__c ),
+ispickval (Status__c,&apos;Deferred&apos;),
+not( contains($UserRole.Name,&apos;G4&apos;)), 
+not( contains($UserRole.Name,&apos;G3&apos;)),
+not( contains($UserRole.Name,&apos;G2&apos;)),
+not( $Profile.Name =&apos;System Administrator&apos;)
+
+)</errorConditionFormula>
+        <errorMessage>Only G4 to G2 Users can change to &quot;Deferred&quot;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Remarks_Required_When_Type_is_CFEI</fullName>
+        <active>true</active>
+        <description>If the Requirement Type is CFEI (Certificate of Final Electrical Inspection) and status is &quot;Submitted&quot;, then the remarks should not be empty.</description>
+        <errorConditionFormula>AND(ISPICKVAL(Requirement_Type__c, &quot;Certificate of Final Electrical Inspection&quot;), ISPICKVAL( Status__c , &quot;Submitted&quot;), ISBLANK( Remarks__c ) )</errorConditionFormula>
+        <errorMessage>Indicate the CFEI # on the Remarks field when updating the requirement to Submitted.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,6 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+    <!-- PARAMETERS -->
+    <apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/>
+    <apex:variable var="c" value="{!case}" />
+    Availing of an Accredited Meralco Contractor (AMC)?:&nbsp;<apex:outputText value="Yes" rendered="{!c.AMC_Service_Tag__c}"/> <apex:outputText value="No" rendered="{!NOT(c.AMC_Service_Tag__c)}"/><br/>
+</apex:component>

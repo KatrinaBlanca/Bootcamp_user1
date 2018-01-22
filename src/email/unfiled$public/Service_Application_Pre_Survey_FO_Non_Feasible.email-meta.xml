@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to customer upon Pre-Survey FO Non-Feasible</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Service Application: Pre-Survey FO Non-Feasible</name>
+    <style>none</style>
+    <subject>MERALCO: Issues found with your application (SA Ref.: {!Case.CaseNumber})</subject>
+    <type>text</type>
+</EmailTemplate>

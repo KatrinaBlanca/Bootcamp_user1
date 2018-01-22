@@ -1,0 +1,22 @@
+Dear {!Receiving_User.FirstName}, 
+
+Welcome to the Meralco Customer Community! We have created your digital account with the following username: 
+
+{!Receiving_User.Username} 
+
+To get started in fully maximizing the convenience of our online service application facility, click on the following link to activate your account and set your initial password: 
+
+https://devwcxe-meralco.cs58.force.com/customers/s/setpassword?id={!Receiving_User.Id} 
+
+By logging in to your account, you will find out the status of your service requests, such as your new service application. You may communicate with the Customer Service Representative assigned to handle your requests. You can also update your account information and submit required documents by simply attaching electronic copies to your service requests. In the future, you may also use this facility to avail of other value-added offerings and technical consultations with our Energy Advisors and Service Professionals. 
+
+Please note that your digital account is free. Meralco will not collect from the customer any subscription fee after successful account activation. Meralco also respects and adheres to confidentiality of information for any customer data provided in the Customer Community. 
+
+Please bookmark the link to the Meralco Customer Community to easily access your account in the future: 
+
+https://meralco.force.com/customers 
+
+Thank you for allowing us to be of service to you.
+
+Sincerely, 
+MERALCO

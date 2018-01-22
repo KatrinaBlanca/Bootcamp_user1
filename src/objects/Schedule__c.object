@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Non_Residential_Rate__c</fullName>
+        <description>Non-residential rate for bill deposit of specific pay load level</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Non-residential rate for bill deposit of specific pay load level</inlineHelpText>
+        <label>Non-Residential Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Residential_Rate__c</fullName>
+        <description>Residential rate for bill deposit of specific pay load level</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Residential rate for bill deposit of specific pay load level</inlineHelpText>
+        <label>Residential Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Schedule_Decsription__c</fullName>
+        <description>Description of bill deposit schedule</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of bill deposit schedule</inlineHelpText>
+        <label>Schedule Decsription</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Schedule_Selector__c</fullName>
+        <externalId>false</externalId>
+        <label>Schedule Selector</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>S-1</fullName>
+                    <default>false</default>
+                    <label>S-1</label>
+                </value>
+                <value>
+                    <fullName>S-2</fullName>
+                    <default>false</default>
+                    <label>S-2</label>
+                </value>
+                <value>
+                    <fullName>S-3</fullName>
+                    <default>false</default>
+                    <label>S-3</label>
+                </value>
+                <value>
+                    <fullName>S-4</fullName>
+                    <default>false</default>
+                    <label>S-4</label>
+                </value>
+                <value>
+                    <fullName>S-5</fullName>
+                    <default>false</default>
+                    <label>S-5</label>
+                </value>
+                <value>
+                    <fullName>S-6</fullName>
+                    <default>false</default>
+                    <label>S-6</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Deposit Schedule</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Residential_Rate__c</columns>
+        <columns>Non_Residential_Rate__c</columns>
+        <columns>Schedule_Decsription__c</columns>
+        <columns>Schedule_Selector__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>S-{0000}</displayFormat>
+        <label>Schedule Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Deposit Schedule</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

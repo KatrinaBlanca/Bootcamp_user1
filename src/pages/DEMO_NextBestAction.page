@@ -1,0 +1,103 @@
+<apex:page standardController="Account">
+    
+    <apex:includeScript value="{!URLFOR($Resource.jquery)}"  />
+    
+    <script>
+        $j = jQuery.noConflict();
+    
+        $j(document).ready(function() {
+                $j('#NBA_A').hover(
+                    function() {
+                        $j('#NBA_A_l1').css('color', 'black');    
+                        $j('#NBA_A_l2').css('color', 'black');
+                    }, function() {
+                        $j('#NBA_A_l1').css('color', '#ECECEC');  
+                        $j('#NBA_A_l2').css('color', '#ECECEC');
+                    }                
+                ); 
+            
+                $j('#NBA_B').hover(
+                    function() {
+                        $j('#NBA_B_l1').css('color', 'black');    
+                        $j('#NBA_B_l2').css('color', 'black');
+                    }, function() {
+                        $j('#NBA_B_l1').css('color', '#ECECEC');  
+                        $j('#NBA_B_l2').css('color', '#ECECEC');
+                    }                
+                );
+            
+                $j('#NBA_C').hover(
+                    function() {
+                        $j('#NBA_C_l1').css('color', 'black');    
+                        $j('#NBA_C_l2').css('color', 'black');
+                    }, function() {
+                        $j('#NBA_C_l1').css('color', '#ECECEC');  
+                        $j('#NBA_C_l2').css('color', '#ECECEC');
+                    }                
+                );             
+            
+        });
+
+    </script>
+
+    
+    <table style="width: 100%;">
+        
+        <tr>
+            <td style="background-color:#ECECEC; color:white; padding:5px;" id="NBA_A">
+                
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <b style="color:black; font-size:125%;">Mix E (5 yrs)</b>
+                        </td>
+                        <td style="text-align: right;" >
+                            <a style="cursor:pointer;color:#ECECEC" id="NBA_A_l1">Interested</a><br/>
+                            <a style="cursor:pointer;color:#ECECEC" id="NBA_A_l2">Not interested</a>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+            </td>
+            
+            <td style="width: 5px;">&nbsp;</td>
+            
+            <td style="background-color:#ECECEC; color:white; padding:5px;" id="NBA_B">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <b style="color:black; font-size:125%;">Green E (5 yrs)</b>
+                        </td>
+                        <td style="text-align: right;">
+                            <a style="color:#ECECEC; cursor:pointer;" id="NBA_B_l1">Interested</a><br/>
+                            <a style="color:#ECECEC; cursor:pointer;" id="NBA_B_l2">Not interested</a>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+            
+            <td style="width: 5px;">&nbsp;</td>
+            
+            <td style="background-color:#ECECEC; color:white; padding:5px;" id="NBA_C">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <b style="color:black; font-size:125%;">Green E (2 yrs)</b>
+                        </td>
+                        <td style="text-align: right;">
+                            <a style="color:#ECECEC; cursor:pointer;" id="NBA_C_l1">Interested</a><br/>
+                            <a style="color:#ECECEC; cursor:pointer;" id="NBA_C_l2">Not interested</a>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+    
+</apex:page>

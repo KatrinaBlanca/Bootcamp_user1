@@ -1,0 +1,143 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" docType="html-5.0" showChat="FALSE" applyBodyTag="False" applyHtmlTag="False">
+<head>
+  <title>Service Application</title>
+      <apex:stylesheet value="{!URLFOR($Resource.LDSAssets, 'assets/styles/salesforce-lightning-design-system.min.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.LDSCustom, 'custom/css/ExDesign.css')}"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1"> </meta>
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+ <body>
+    <div class="slds">
+    <div class="slds-grid slds-wrap CXE_mainContainer">
+        <div class="slds-size--1-of-1">
+          <div class="slds-grid slds-wrap">
+            <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+              <h1 class="CXE_color--orange CXE_text--h1"><b>Start an Electric Service</b></h1>
+
+              <div class="CXE_form CXE_serviceApplication--residentialForm slds-m-top--small slds-grid slds-wrap">
+                <p class="CXE_color--gray slds-size--1-of-1"><b>COMPLETE THE FORM BELOW AND WE'LL GET IN TOUCH TO DISCUSS FINDING SOLUTIONS FOR YOUR BUSINESS</b></p>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-6 slds-medium-size--1-of-6 slds-small-size--1-of-6 slds-max-small-size--1-of-1 slds-p-left--small slds-p-left--small">
+                  <div class="CXE_field--neutralizer CXE_field--comboBox slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Salutation</label>
+                    <br />
+                      <select>
+                      <option>Mr</option>
+                      <option>Ms</option>
+                      <option>Mrs</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="slds-large-size--5-of-6 slds-medium-size--5-of-6 slds-small-size--5-of-6 slds-max-small-size--1-of-1"></div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">First Name</label>
+                    <br />
+                    <div class="slds-form-element__control">                      
+                      <input type="text" class="slds-input" placeholder="Ex. Juan" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Middle Name</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <input type="text" class="slds-input" placeholder="Ex. Pedroza" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Last Name</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <input type="text" class="slds-input" placeholder="Ex. Dela Cruz" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Telephone Number</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <input type="text" class="slds-input" placeholder="Ex. (02) 999 9999" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Mobile Number</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <input type="text" class="slds-input" placeholder="Ex. (+63) 999 999 9999" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Email Address</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <input type="text" class="slds-input" placeholder="Ex. juan.p.delacruz@email.com" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--2-of-3 slds-medium-size--2-of-3 slds-small-size--2-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Company Name</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <input type="text" class="slds-input" placeholder="Ex. Meralco" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Designation</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <input type="text" class="slds-input" placeholder="" />
+                    </div>
+                  </div>
+                </div>
+
+                <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1"><b>HOW WOULD YOU LIKE US TO UPDATE YOU ABOUT YOUR APPLICATION?</b></p>
+                <span class="CXE_checkBox slds-checkbox">
+                  <input type="checkbox" name="options" id="CXE_serviceApplicationForm--UpdateViaEmail" checked="" />
+                  <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaEmail">
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label CXE_color--gray">Via Email</span>
+                  </label>
+                </span>
+
+                <span class="CXE_checkBox slds-checkbox">                  
+                  <input type="checkbox" name="options" id="CXE_serviceApplicationForm--UpdateViaSMS" checked="" />
+                  <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaSMS">
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label CXE_color--gray">Via SMS</span>
+                  </label>
+                </span>
+              </div>
+              
+              <div class="slds-m-top--large g-recaptcha" data-sitekey="6Lc6HRgUAAAAADfc3XGIOQcDmwziExux6q74I_nY"></div>
+
+              <div class="slds-text-align--right slds-m-top--large">
+                <button class="CXE_button" onclick="window.location='SAT03b'">SUBMIT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</apex:page>

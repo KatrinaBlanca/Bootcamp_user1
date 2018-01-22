@@ -1,0 +1,14 @@
+<!-- START CSM-14914 JFERNANDEZ 12-21-17 -->
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+    <apex:attribute name="contractRecord" type="Id" description="Contract Id" assignTo="{!contractId}"/>
+    <apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/> <!--//START END CSM-15057 JAN-10-18 JFernandez-->
+    
+    <apex:outputText value="{!IF(contractId != null, ApaAgent.CXE_APA_Agent__c, ApaAgentCase.CXE_APA_Agent__c)}"/> <!--START END CSM-15057 JAN-10-18 JFernandez-->
+    
+    <!-- START CSM-15057 JAN-10-18 JFernandez Commented and use the line of code above-->
+    <!--
+    <apex:outputField value="{!ApaAgent.CXE_APA_Agent__c}"/>
+	END CSM-15057-->
+    
+</apex:component>
+<!-- END CSM-14914 JFERNANDEZ 12-21-17 -->

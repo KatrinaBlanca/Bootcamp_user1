@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>39.0</apiVersion>
+    <available>true</available>
+    <description>SUCCESSFUL PAPERLESS BILLING CANCELLATIONx</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>CXE SUCCESSFUL PAPERLESS BILLING CANCELLATION BIZ CBG</name>
+    <style>none</style>
+    <subject>Successful Cancellation of Paperless Billing for Account No.</subject>
+    <type>visualforce</type>
+</EmailTemplate>

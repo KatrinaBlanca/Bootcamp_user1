@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Office</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Offices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Unit --></label>
+        <name>Business_Unit__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMSv10 Office Code --></label>
+        <name>CMSv10_Office_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- CMSv10 Office Name --></label>
+        <name>CMSv10_Office_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+        <picklistValues>
+            <masterLabel>G2</masterLabel>
+            <translation><!-- G2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>G3</masterLabel>
+            <translation><!-- G3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>G4</masterLabel>
+            <translation><!-- G4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Parent RO --></label>
+        <name>Parent_RO__c</name>
+        <relationshipLabel><!-- Offices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Remarks --></label>
+        <name>Remarks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Responsible Office --></label>
+        <name>Responsible_Office_del__c</name>
+    </fields>
+    <layouts>
+        <layout>Biz Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Geographic Information --></label>
+            <section>Geographic Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CBG Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>HMB Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Biz Partners Group --></label>
+        <name>Biz_Partners_Group</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Corporate Business Group --></label>
+        <name>Corporate_Business_Group</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- HMB Group --></label>
+        <name>HMB</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Web --></label>
+        <name>Web</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

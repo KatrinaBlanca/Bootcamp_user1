@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Deposit Schedule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Deposit Schedule</value>
+    </caseValues>
+    <fields>
+        <help><!-- Non-residential rate for bill deposit of specific pay load level --></help>
+        <label><!-- Non-Residential Rate --></label>
+        <name>Non_Residential_Rate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Residential rate for bill deposit of specific pay load level --></help>
+        <label><!-- Residential Rate --></label>
+        <name>Residential_Rate__c</name>
+    </fields>
+    <fields>
+        <help><!-- Description of bill deposit schedule --></help>
+        <label><!-- Schedule Decsription --></label>
+        <name>Schedule_Decsription__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedule Selector --></label>
+        <name>Schedule_Selector__c</name>
+        <picklistValues>
+            <masterLabel>S-1</masterLabel>
+            <translation><!-- S-1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S-2</masterLabel>
+            <translation><!-- S-2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S-3</masterLabel>
+            <translation><!-- S-3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S-4</masterLabel>
+            <translation><!-- S-4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S-5</masterLabel>
+            <translation><!-- S-5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>S-6</masterLabel>
+            <translation><!-- S-6 --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Schedule Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Deposit Schedule</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

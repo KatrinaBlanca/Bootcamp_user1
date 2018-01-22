@@ -1,0 +1,42 @@
+<apex:page standardController="Notification__c" extensions="PublishNotificationControllerExt">
+
+    <apex:pageMessages />
+ 
+    <!-- <apex:sectionHeader title="{!$Label.PGENOT_PGELBL_Title}" subtitle="{!Notification__c.Name} ({!Notification__c.Short_Message__c})"/> -->
+    
+	<apex:form >
+    
+        <!-- <apex:inputHidden value="{!Notification__c.Status__c}"/>
+        
+        <apex:pageBlock >
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="{!$Label.COMMON_BTNVAL_Cancel}" action="{!cancel}"/>
+            	<apex:commandButton value="{!$Label.COMMON_BTNVAL_Publish}" action="{!publish}"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection title="{!$Label.PUBNOT_PGELBL_Select_group_of_users}" columns="2" collapsible="false">
+                
+            	<apex:selectRadio value="{!groupId}" layout="pageDirection" onchange="rerenderSelectedUsers();">
+                	<apex:selectOptions value="{!groupSelectOptions}"/>
+                </apex:selectRadio>
+                
+                <apex:outputPanel id="selected_users">
+                    <br/>
+                    <h3>
+                        <apex:outputLabel value="{!$Label.PUBNOT_PGELBL_Users_that_will_be_notified}"/>
+                    </h3>
+                	<apex:dataList value="{!selectedUsers}" var="user">
+                        <apex:outputText value="{!user.Name}"/>
+                    </apex:dataList>
+                </apex:outputPanel>
+                
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock> -->
+        
+        <apex:actionFunction name="rerenderSelectedUsers" rerender="selected_users"/>
+        
+    </apex:form>
+
+</apex:page>

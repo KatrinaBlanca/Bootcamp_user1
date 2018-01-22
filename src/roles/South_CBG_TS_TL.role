@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>South CBG TS TL</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>South CBG TS TL - G4</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>CBG_TS_Head</parentRole>
+</Role>

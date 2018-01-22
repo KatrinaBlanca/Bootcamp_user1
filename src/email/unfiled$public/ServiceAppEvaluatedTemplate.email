@@ -1,0 +1,16 @@
+Dear {!Case.Salutation__c} {!Case.First_Name__c} {!Case.Last_Name_Business_Name__c}, 
+
+Your service application with reference number {!Case.CaseNumber} has passed our technical and commercial evaluation. We can move forward with the processing of the application for: 
+
+Customer Name: {!Case.Full_Name__c} 
+Service Type: {!Case.Res_Non_Res_Description__c} 
+Service Address: {!Case.Service_Address_Unit_No__c}, {!Case.Service_Address_Street_No__c} {!Case.Service_Address_Street_Name__c}, {!Case.Service_Address_Subdivision__c}, {!Case.Service_Address_Barangay__c}, {!Case.Service_Address_City_Municiple__c} 
+
+We would also like to remind you of the bill deposit of {!Case.Deposit_Amount__c} that you will have to pay upon signing of the electric service contract. We will be informing you of the complete details once we have completed the inspection of your service entrance.
+
+Should you need further assistance, our {!Case.OwnerTitle} {!Case.OwnerFirstName} {!Case.OwnerLastName} will be happy to assist you. Just log-in to your MERALCO Customer Community account at https://meralco.force.com/customers.  
+
+Thank you for allowing us to be of service to you. 
+
+Sincerely, 
+MERALCO

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCategoryGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <dataCategory>
+        <dataCategory>
+            <label>Bill Presentment</label>
+            <name>Bill_Presentment</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Payments Management and Credits</label>
+            <name>Payments_Management_and_Credits</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Management of Unpaid and Paid Bills</label>
+            <name>Management_of_Unpaid_and_Paid_Bills</name>
+        </dataCategory>
+        <label>All</label>
+        <name>All</name>
+    </dataCategory>
+    <label>Payments Process</label>
+    <objectUsage>
+        <object>KnowledgeArticleVersion</object>
+    </objectUsage>
+</DataCategoryGroup>

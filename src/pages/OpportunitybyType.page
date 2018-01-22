@@ -1,0 +1,10 @@
+<apex:page standardController="Account">
+ <analytics:reportChart cacheResults="false" reportId="00O28000007So79"
+
+        filter="[{column:'ACCOUNT_ID',operator:'equals',value:'{!Account.Id}'}]"
+
+        size="tiny">
+  </analytics:reportChart>
+          
+        
+</apex:page>

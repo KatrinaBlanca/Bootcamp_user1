@@ -1,0 +1,15 @@
+Dear {!Case.Addressing_Customer__c},
+
+We are very pleased to inform you that we have already scheduled the meter installation that will finally provide electric service connection to your premises.
+
+Application Reference Number: {!Case.CaseNumber}
+Customer Name: {!Case.Full_Name__c} 
+Service Type: {!Case.Res_Non_Res_Description__c} 
+Service Address: {!Case.Service_Address_Unit_No__c}, {!Case.Service_Address_Street_No__c} {!Case.Service_Address_Street_Name__c}, {!Case.Service_Address_Subdivision__c}, {!Case.Service_Address_Barangay__c}, {!Case.Service_Address_City_Municiple__c} 
+
+Please expect our MERALCO team to visit your premises within three (3) working days.  We would like to request for you or your representative to be present to ensure the complete and safe electric service connection of your premises.
+
+Should you have any questions, our {!Case.OwnerTitle} {!Case.OwnerFirstName} {!Case.OwnerLastName} will be happy to assist you. Just log-in to your MERALCO Customer Community account at https://meralco.force.com/customers. 
+
+Sincerely, 
+MERALCO

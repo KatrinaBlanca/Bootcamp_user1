@@ -1,0 +1,172 @@
+<apex:page showHeader="false" sidebar="false" applyHtmlTag="false">
+<html>
+	<head>
+		<style>
+			#container{ background-color: silver; text-align:center; padding-bottom: 5px; }
+			canvas{ margin-top: 5px; }
+			body:not(.loading) .spinner{display:none;}
+			body.loading #container{display:none;}
+			body.blank .spinner, body.blank #container, body.error .spinner, body.error #container, body:not(.error) #error{ display: none; }
+		</style>
+		<apex:includeScript value="{!$Resource.mozilla_pdf_js}"/>
+
+		<!-- <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script> -->
+		
+	</head>
+	<body class="loading">
+		<h3 id="error" style="text-align:center;"></h3>
+		<div class="spinner" style="text-align:center;">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+			  <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+			    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+			    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+			  <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+			    C22.32,8.481,24.301,9.057,26.013,10.047z">
+			    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+			    </path>
+		  	</svg>
+	  	</div>
+		<div id="container"></div>
+		<a id="download" style="display:none;"></a>
+
+		<script>
+			(function(){
+				var pdf_url, base64, displaying, cache = {};
+				function download(data){
+					return new Promise(function(resolve, reject){
+						if(!!cache[data.doc_id]) {
+							resolve(cache[data.doc_id]);
+							return;
+						}
+
+						console.log('load', data);
+						var xhr = new XMLHttpRequest(); 
+					    xhr.open('GET', data.pdf, true); 
+					    xhr.responseType = "blob";
+					    xhr.onreadystatechange = function () { 
+					    	// console.log(xhr.readyState, xhr.status, xhr);
+
+					        if (xhr.readyState == 4){
+					        	if(xhr.status == 200) {
+					        		cache[data.doc_id] = xhr.response;
+					        		resolve(xhr.response);
+					        	}
+					        	else reject(xhr);
+					        }
+					    };
+					    xhr.send(null);
+					});
+				}
+
+				function render_page(pdf, i){
+					var SCALE = 1.3
+
+					pdf.getPage(i).then(function(page) {
+						
+					    var viewport = page.getViewport(SCALE);
+
+					    // Prepare canvas using PDF page dimensions
+					    var canvas = document.createElement('CANVAS');
+					    container.appendChild(canvas);
+
+					    var context = canvas.getContext('2d');
+					    canvas.height = viewport.height;
+					    canvas.width = viewport.width;
+
+					    // Render PDF page into canvas context
+					    return page.render({
+					      canvasContext: context,
+					      viewport: viewport
+					    });
+					})
+				}
+
+				function read(bin){
+					var reader = new window.FileReader();
+					
+					return new Promise(function(resolve, reject){
+						reader.onloadend = function() {
+							resolve(reader.result);
+					  	}
+					  	reader.onerror = reject
+					  	reader.readAsDataURL(bin); 	
+					});
+				}
+
+				function render_pdf(base64){
+					document.getElementById('container').innerHTML = '';
+					PDFJS.workerSrc = '{!$Resource.mozilla_pdf_wordker_js}';
+
+					var scale = 1.4, container = document.getElementById('container');
+					PDFJS.getDocument({data: atob(base64)}).promise
+					.then(function(pdf) {
+						for(var i = 1; i <= pdf.numPages; i++){
+							render_page(pdf, i);
+						}
+						document.body.classList.remove('loading');
+					})
+					.catch(function (reason) {
+					  	// PDF loading error
+					  	console.error(reason);
+					});
+				}
+
+				window.addEventListener("message", function(event){
+					var origin = {url: event.origin, source: event.source};
+					console.log("VF", event.data);
+
+					document.body.classList.remove('error');
+					document.body.classList.remove('loading');
+					document.body.classList.remove('blank');
+
+					if(!!event.data.pdf){
+						if(event.data.pdf == 'about:blank'){
+							document.body.classList.add('blank');
+						}
+						else {//if(!displaying && event.data.pdf != displaying){
+							//displaying = event.data.pdf;
+
+							document.body.classList.add('loading');
+							
+							download(event.data).then(function(res){
+								return read(res);
+							})
+							.then(function(base64){
+								// debugger;
+								render_pdf(base64.split(',')[1].trim());
+								// console.log('post', typeof base64, base64.length);
+								window.parent.postMessage(base64, window.parent.location.href);
+							})
+							.catch(function(err){
+								console.error(err);
+								document.body.classList.add('error');
+								var msg = document.getElementById('error');
+								msg.textContent = msg.innerText = err.statusText;
+								document.body.classList.add('error');
+							})
+						}
+					}
+					else if(!!event.data.loading){
+						document.body.classList.add('loading');
+					}
+					else if(!!event.data.print){
+						window.print();
+						// render_pdf(base64.split(',')[1].trim());
+					}
+					else if(!!event.data.download){
+						var a = document.getElementById('download');
+						a.download = event.data.download;
+						a.href = base64;
+						a.click();
+					}
+				}, false);
+
+				setTimeout(function(){
+					console.log('pdf ready');
+					window.parent.postMessage('pdf-ready', window.parent.location.href);
+				}, 250)
+			})();
+		</script>
+	</body>
+</html>
+</apex:page>

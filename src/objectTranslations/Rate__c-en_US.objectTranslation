@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Rate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Rates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Adjustment on Generation Cost --></label>
+        <name>Adjustment_on_Generation_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Base Fixed Metering Charge --></label>
+        <name>Base_Fixed_Metering_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Base Fixed Supply Charge --></label>
+        <name>Base_Fixed_Supply_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cross Subsidy Charge --></label>
+        <name>Cross_Subsidy_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GHMSCI --></label>
+        <name>DC_GHMSCI__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Secondary per kW --></label>
+        <name>DC_GP_Secondary_per_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Secondary per kWh --></label>
+        <name>DC_GP_Secondary_per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type AB per kW --></label>
+        <name>DC_GP_Type_AB_per_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type AB per kWh --></label>
+        <name>DC_GP_Type_AB_per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type C per kW --></label>
+        <name>DC_GP_Type_C_per_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type C per kWh --></label>
+        <name>DC_GP_Type_C_per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type D per kW --></label>
+        <name>DC_GP_Type_D_per_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type D per kWh --></label>
+        <name>DC_GP_Type_D_per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type E per kW --></label>
+        <name>DC_GP_Type_E_per_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: GP Type E per kWh --></label>
+        <name>DC_GP_Type_E_per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: General Service B (Per kW) --></label>
+        <name>DC_General_Service_B_Per_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: General Service B (Per kWh) --></label>
+        <name>DC_General_Service_B_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: Res &amp; Gen Service A (201-300 Per kWh --></label>
+        <name>DC_Res_Gen_Service_A_201_300_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: Res &amp; Gen Service A (301-400 Per kWh --></label>
+        <name>DC_Res_Gen_Service_A_301_400_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: Res &amp; Gen Service A (401 kWh and Up) --></label>
+        <name>DC_Res_Gen_Service_A_401_kWh_and_Up__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC: Res &amp; Gen Service A (Up to 200 Per k --></label>
+        <name>DC_Res_Gen_Service_A_Up_to_200_Per_k__c</name>
+    </fields>
+    <fields>
+        <label><!-- DUs Stranded Contract Cost kWh --></label>
+        <name>DUs_Stranded_Contract_Cost_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Charge --></label>
+        <name>Distribution_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Equalization Taxes and Royalties kWh --></label>
+        <name>Equalization_Taxes_and_Royalties_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fit All --></label>
+        <name>Fit_All__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: GHMSCI --></label>
+        <name>GHMSCI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gen Charge for TOU GCA --></label>
+        <name>Gen_Charge_for_TOU_GCA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gen Charge for TOU Weekday Offpeak (DO) --></label>
+        <name>Gen_Charge_for_TOU_Weekday_Offpeak_DO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gen Charge for TOU Weekday Peak (DP) --></label>
+        <name>Gen_Charge_for_TOU_Weekday_Peak_DP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gen Charge for TOU Weekend Offpeak (EO) --></label>
+        <name>Gen_Charge_for_TOU_Weekend_Offpeak_EO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gen Charge for TOU Weekend Peak (DP) --></label>
+        <name>Gen_Charge_for_TOU_Weekend_Peak_DP__c</name>
+    </fields>
+    <fields>
+        <label><!-- General Service B (Per kW) --></label>
+        <name>General_Service_B_Per_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- General Service B (Per kWh) --></label>
+        <name>General_Service_B_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generation Charge for Non-TOU (P/kWh) --></label>
+        <name>Generation_Charge_for_Non_TOU__c</name>
+    </fields>
+    <fields>
+        <label><!-- Genertion Charge for Non-TOU (P/kWh) --></label>
+        <name>Genertion_Charge_for_Non_TOU__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifeline Discount (0-20) --></label>
+        <name>Lifeline_Discount_0_20__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifeline Discount (21-50) --></label>
+        <name>Lifeline_Discount_21_50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifeline Discount (51-70) --></label>
+        <name>Lifeline_Discount_51_70__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifeline Discount (71-100) --></label>
+        <name>Lifeline_Discount_71_100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifeline Rate Subsidy --></label>
+        <name>Lifeline_Rate_Subsidy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifeline Subsidy --></label>
+        <name>Lifeline_Subsidy__c</name>
+    </fields>
+    <fields>
+        <label><!-- MCPC: Gen Service B (Per Cust/Month) --></label>
+        <name>MCPC_Gen_Service_B_Per_Cust_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MCPC: Residential (Per Cust/Month) --></label>
+        <name>MCPC_Residential_Per_Cust_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MC: GHMSCI (Per Cust/month) --></label>
+        <name>MC_GHMSCI_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MC: GP LARGE (Per Cust/month) --></label>
+        <name>MC_GP_LARGE_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MC: GP MEDIUM (Per Cust/month) --></label>
+        <name>MC_GP_MEDIUM_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MC: GP VERY LARGE (Per Cust/month) --></label>
+        <name>MC_GP_VERY_LARGE_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MC: General Service B (Per Cust/month) --></label>
+        <name>MC_General_Service_B_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MC: Res &amp; Gen Service A (Per Cust/month) --></label>
+        <name>MC_Res_Gen_Service_A_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- MC: Res &amp; Gen Service A (Per kWh) --></label>
+        <name>MC_Res_Gen_Service_A_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metering Charge (Per Customer) --></label>
+        <name>Metering_Charge_Per_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metering Charge --></label>
+        <name>Metering_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Month Code --></label>
+        <name>Month_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Month --></label>
+        <name>Month__c</name>
+        <picklistValues>
+            <masterLabel>April</masterLabel>
+            <translation><!-- April --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>August</masterLabel>
+            <translation><!-- August --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>December</masterLabel>
+            <translation><!-- December --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>February</masterLabel>
+            <translation><!-- February --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>January</masterLabel>
+            <translation><!-- January --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>July</masterLabel>
+            <translation><!-- July --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>June</masterLabel>
+            <translation><!-- June --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>March</masterLabel>
+            <translation><!-- March --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>May</masterLabel>
+            <translation><!-- May --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>November</masterLabel>
+            <translation><!-- November --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>October</masterLabel>
+            <translation><!-- October --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>September</masterLabel>
+            <translation><!-- September --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- NPC Stranded Debts kWh --></label>
+        <name>NPC_Stranded_Debts_kWh__c</name>
+    </fields>
+    <fields>
+        <help><!-- Distribution Charge, Supply Charge, Metering Charge, 
+Lifeline Discount, Other Discounts &amp; Local Franch Tax --></help>
+        <label><!-- Other Charges --></label>
+        <name>Other_Charges__c</name>
+    </fields>
+    <fields>
+        <label><!-- Power Act Reduction (P/kWh) --></label>
+        <name>Power_Act_Reduction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Power Factor Adjustment --></label>
+        <name>Power_Factor_Adjustment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Month&apos;s Adjustment on Gen Cost --></label>
+        <name>Previous_Month_s_Adjustment_on_Generatio__c</name>
+    </fields>
+    <fields>
+        <label><!-- Res &amp; Gen Service A (201-300 kWh) --></label>
+        <name>Res_Gen_Service_A_201_300_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- Res &amp; Gen Service A (301-400 kWh) --></label>
+        <name>Res_Gen_Service_A_301_400_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- Res &amp; Gen Service A (401 kWh and up) --></label>
+        <name>Res_Gen_Service_A_401_kWh_and_up__c</name>
+    </fields>
+    <fields>
+        <label><!-- Res &amp; Gen Service A (Up to 200 kWh) --></label>
+        <name>Res_Gen_Service_A_Up_to_200_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- SCPC: General Service (Per Cust/Month) --></label>
+        <name>SCPC_General_Service_Per_Cust_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SCPC: Residential (Per Cust/Month) --></label>
+        <name>SCPC_Residential_Per_Cust_Month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SC: GHMSCI (Per Cust/month) --></label>
+        <name>SC_GHMSCI_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SC: GP LARGE (Per Cust/month) --></label>
+        <name>SC_GP_LARGE_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SC: GP MEDIUM (Per Cust/month) --></label>
+        <name>SC_GP_MEDIUM_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SC: GP VERY LARGE (Per Cust/month) --></label>
+        <name>SC_GP_VERY_LARGE_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SC: General Service B (Per Cust/month) --></label>
+        <name>SC_General_Service_B_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SC: Res &amp; Gen Service A (Per Cust/month) --></label>
+        <name>SC_Res_Gen_Service_A_Per_Cust_month__c</name>
+    </fields>
+    <fields>
+        <label><!-- SC: Res &amp; Gen Service A (Per kWh) --></label>
+        <name>SC_Res_Gen_Service_A_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: GHMSCI --></label>
+        <name>SLC_GHMSCI__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: GP Secondary --></label>
+        <name>SLC_GP_Secondary__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC GP Type AB --></label>
+        <name>SLC_GP_Type_AB__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: GP Type C --></label>
+        <name>SLC_GP_Type_C__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: GP Type D --></label>
+        <name>SLC_GP_Type_D__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: GP Type E --></label>
+        <name>SLC_GP_Type_E__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: General Service B --></label>
+        <name>SLC_General_Service_B__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLC: Res &amp; Gen Services A (P/kWh) --></label>
+        <name>SLC_Res_Gen_Services_A_P_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPKI: Gen Service B (Per kWh) --></label>
+        <name>SPKI_Gen_Service_B_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- SPKI: Residential (Per kWh) --></label>
+        <name>SPKI_Residential_Per_kWh__c</name>
+    </fields>
+    <fields>
+        <label><!-- Senior Citizen Discount (Household) --></label>
+        <name>Senior_Citizen_Discount_Household__c</name>
+    </fields>
+    <fields>
+        <label><!-- Senior Citizen Discount (Institution) --></label>
+        <name>Senior_Citizen_Discount_Institution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Senior Citizen Subsidy (P/kWh) --></label>
+        <name>Senior_Citizen_Subsidy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Special Discount (≤5 kW) --></label>
+        <name>Special_Discount_5_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- Special Discount (&gt;5 kW) --></label>
+        <name>Special_Discount_M5_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supply Charge (Per Customer) --></label>
+        <name>Supply_Charge_Per_Customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supply Charge --></label>
+        <name>Supply_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supply per kWh Incremental --></label>
+        <name>Supply_per_kWh_Incremental__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Loss Charge --></label>
+        <name>System_Loss_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: GHMS --></label>
+        <name>TC_GHMS__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: GP Secondary --></label>
+        <name>TC_GP_Secondary__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: GP Type AB --></label>
+        <name>TC_GP_Type_AB__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: GP Type C --></label>
+        <name>TC_GP_Type_C__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: GP Type D --></label>
+        <name>TC_GP_Type_D__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: GP Type E --></label>
+        <name>TC_GP_Type_E__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: General Service B --></label>
+        <name>TC_General_Service_B__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: Ratio --></label>
+        <name>TC_Ratio__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: Residential &amp; General Service A --></label>
+        <name>TC_Residential_General_Service_A__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: Transmission Charge VATable --></label>
+        <name>TC_Transmission_Charge_VATable__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC: Transmission Charge non-VAT --></label>
+        <name>TC_Transmission_Charge_non_VAT__c</name>
+    </fields>
+    <fields>
+        <label><!-- TOU Coverage End Date --></label>
+        <name>TOU_Coverage_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- TOU Coverage Start Date --></label>
+        <name>TOU_Coverage_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transmission Charge (VATable) --></label>
+        <name>Transmission_Charge_VATable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transmission Charge --></label>
+        <name>Transmission_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Universal Charge - Environmental Charge --></label>
+        <name>Universal_Charge_Environmental_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Universal Charge - Missionary Electrific --></label>
+        <name>Universal_Charge_Missionary_Electrific__c</name>
+    </fields>
+    <fields>
+        <label><!-- Universal Charge - Stranded Contract Cos --></label>
+        <name>Universal_Charge_Stranded_Contract_Cos__c</name>
+    </fields>
+    <fields>
+        <label><!-- Adjustment on Generation Cost --></label>
+        <name>VAT_Adjustment_on_Generation_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Generation Charge --></label>
+        <name>VAT_Generation_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lifeline Rate Subsidy --></label>
+        <name>VAT_Lifeline_Rate_Subsidy__c</name>
+    </fields>
+    <fields>
+        <help><!-- Distribution Charge, Supply Charge, Metering Charge, 
+Lifeline Discount, Other Discounts &amp; Local Franch Tax --></help>
+        <label><!-- Other Charges --></label>
+        <name>VAT_Other_Charges__c</name>
+    </fields>
+    <fields>
+        <label><!-- Power Act Reduction --></label>
+        <name>VAT_Power_Act_Reduction__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Loss Charge --></label>
+        <name>VAT_System_Loss_Charge__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transmission Charge (VATable) --></label>
+        <name>VAT_Transmission_Charge_VATable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value-Added Tax --></label>
+        <name>Value_Added_Tax__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year --></label>
+        <name>Year__c</name>
+    </fields>
+    <layouts>
+        <layout>CXE Rates</layout>
+        <sections>
+            <label><!-- Cross Subsidy Charge --></label>
+            <section>Cross Subsidy Charge</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Discounts --></label>
+            <section>Discounts</section>
+        </sections>
+        <sections>
+            <label><!-- Distribution Charge --></label>
+            <section>Distribution Charge</section>
+        </sections>
+        <sections>
+            <label><!-- Fit All --></label>
+            <section>Fit All</section>
+        </sections>
+        <sections>
+            <label><!-- Lifeline Subsidy --></label>
+            <section>Lifeline Subsidy</section>
+        </sections>
+        <sections>
+            <label><!-- Metering Charge --></label>
+            <section>Metering Charge</section>
+        </sections>
+        <sections>
+            <label><!-- Monthly Rates --></label>
+            <section>Monthly Rates</section>
+        </sections>
+        <sections>
+            <label><!-- Power Act Reduction --></label>
+            <section>Power Act Reduction</section>
+        </sections>
+        <sections>
+            <label><!-- Senior Citizen Subsidy --></label>
+            <section>Senior Citizen Subsidy</section>
+        </sections>
+        <sections>
+            <label><!-- Supply Charge --></label>
+            <section>Supply Charge</section>
+        </sections>
+        <sections>
+            <label><!-- System Loss Charge --></label>
+            <section>System Loss Charge</section>
+        </sections>
+        <sections>
+            <label><!-- TOU Rates --></label>
+            <section>TOU Rates</section>
+        </sections>
+        <sections>
+            <label><!-- Transmission Charge --></label>
+            <section>Transmission Charge</section>
+        </sections>
+        <sections>
+            <label><!-- Transmission Charge Ratio --></label>
+            <section>Transmission Charge Ratio</section>
+        </sections>
+        <sections>
+            <label><!-- Universal Charge - Environmental Charge --></label>
+            <section>Universal Charge - Environmental Charge</section>
+        </sections>
+        <sections>
+            <label><!-- Universal Charge - Missionary Electrification Charge --></label>
+            <section>Universal Charge - Missionary Electrification Charge</section>
+        </sections>
+        <sections>
+            <label><!-- Universal Charge - Stranded Contract Costs --></label>
+            <section>Universal Charge - Stranded Contract Costs</section>
+        </sections>
+        <sections>
+            <label><!-- Value-Added Tax --></label>
+            <section>Value-Added Tax</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Only System Administrators are allowed to edit this record. --></errorMessage>
+        <name>Allow_MERALCO_Admins_only_to_update</name>
+    </validationRules>
+</CustomObjectTranslation>

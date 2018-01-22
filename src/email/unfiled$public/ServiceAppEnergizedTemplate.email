@@ -1,0 +1,17 @@
+Dear {!Case.Addressing_Customer__c},
+
+A warm and bright welcome from MERALCO!
+
+We have completed your facility's connection to electric service for your service application with the following details:
+
+Application Reference Number: {!Case.CaseNumber} 
+Customer Name: {!Case.Full_Name__c} 
+Service Type: {!Case.Res_Non_Res_Description__c} 
+Service Address: {!Case.Service_Address_Unit_No__c}, {!Case.Service_Address_Street_No__c} {!Case.Service_Address_Street_Name__c}, {!Case.Service_Address_Subdivision__c}, {!Case.Service_Address_Barangay__c}, {!Case.Service_Address_City_Municiple__c} 
+
+We would also like to let you know your MERALCO Customer Community account will remain active. You may continue to use this to apply for new electric service connections or to contact any of customer service representatives for any concerns regarding your service or your account. Simply log-in by visiting https://meralco.force.com/customers.
+
+Thank you very much for allowing us to assist you throughout your application process. Again, welcome to MERALCO, Ang Liwanag ng Bukas. 
+
+Sincerely, 
+MERALCO

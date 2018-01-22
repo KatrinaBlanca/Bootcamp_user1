@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="CBG Customer Enrollment in Meralco Online" recipientType="User" relatedToType="Case">
+    <messaging:htmlEmailBody >
+        
+        <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Hi,  {!relatedTo.CXE_Service__r.Payor__r.Account.Owner.Name}! <br/>
+        <br></br>
+        <br></br>
+        {!relatedTo.Full_Name_Concatenated__c} of {!relatedTo.CXE_Service__r.Account__r.Name} with Service ID Number {!relatedTo.CXE_Service__r.SIN__c} is attempting to register on Meralco Online now. Please validate if this account has already been pre-enrolled and contact the customer to guide him through the process of completing his registration. <br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

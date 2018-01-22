@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CXE_PortalDeactivation_Reason</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CXE_PortalDeactivation_Reasons</value>
+    </caseValues>
+    <fields>
+        <label><!-- Different_Email --></label>
+        <name>Different_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Move_Out_Address --></label>
+        <name>Move_Out_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- No_Active_Sin --></label>
+        <name>No_Active_Sin__c</name>
+    </fields>
+    <fields>
+        <label><!-- No_Longer_Use --></label>
+        <name>No_Longer_Use__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portal_Difficult --></label>
+        <name>Portal_Difficult__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portal_Unuseful --></label>
+        <name>Portal_Unuseful__c</name>
+    </fields>
+    <fields>
+        <label><!-- Privacy_Concerns --></label>
+        <name>Privacy_Concerns__c</name>
+    </fields>
+    <fields>
+        <label><!-- Received_Many_Emails --></label>
+        <name>Received_Many_Emails__c</name>
+    </fields>
+    <fields>
+        <label><!-- RegCustmer_Not_Assctd --></label>
+        <name>RegCustmer_Not_Assctd__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

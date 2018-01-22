@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>DeleteBannerPhotoAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EditUserAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>FreezeUserAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>LinkToSetupUserDetailAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ManagePermSetsAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>PasswordUnlockAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ResetPasswordAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>UpdateBannerPhotoAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>UserActivationAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>By_Pass_Validation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>By Pass Validation</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_1monthfromnow__c</fullName>
+        <externalId>false</externalId>
+        <formula>TODAY()+30</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_1monthfromnow</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_AccountName__c</fullName>
+        <externalId>false</externalId>
+        <formula>Contact.Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_AccountName</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CXE_Auto_Enrolled_Services__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This checkbox indicates if there are related services auto enrolled when the user registers on the portal using a SIN related to other services under one account.</description>
+        <externalId>false</externalId>
+        <label>Auto Enrolled Services</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_CP_isPortalDeactivated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Boolean that will hold the status if the  portal account is set to be deactivated</description>
+        <externalId>false</externalId>
+        <label>isPortalDeactivated</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_ChangePasswordSuccessFlag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>CXE_ChangePasswordSuccessFlag</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_CreatedbyProfileID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Profile.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_CreatedbyProfileID</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CXE_ForgotPasswordFlag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>CXE_ForgotPasswordFlag</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_SelfRegistredUser__c</fullName>
+        <externalId>false</externalId>
+        <formula>$Setup.OrganizationSettings__c.CXE_Meralco_Customer_Community_Profile__c = CreatedBy.Profile.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_SelfRegistredUser</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_TodayDate__c</fullName>
+        <externalId>false</externalId>
+        <formula>TODAY()</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_TodayDate</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_isPersonAccount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Contact.IsPersonAccount</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_isPersonAccount</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Can_Change_Case_Status_Manually__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Can Change Case Status Manually</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Initial_Service_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Initial Service ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_FB_Linked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is FB Linked</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Google_Linked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Google Linked</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ManagerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Hierarchy</type>
+    </fields>
+    <fields>
+        <fullName>Office__c</fullName>
+        <description>Office which Meralco employee is attached to</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Office which Meralco employee is attached to</inlineHelpText>
+        <label>Office</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BIZ - Alabang + Cavite + Taguig Zone</fullName>
+                    <default>false</default>
+                    <label>BIZ - Alabang + Cavite + Taguig Zone</label>
+                </value>
+                <value>
+                    <fullName>BIZ - Bulacan + Camanava Zone</fullName>
+                    <default>false</default>
+                    <label>BIZ - Bulacan + Camanava Zone</label>
+                </value>
+                <value>
+                    <fullName>BIZ - Laguna + Batangas + Quezon Zone</fullName>
+                    <default>false</default>
+                    <label>BIZ - Laguna + Batangas + Quezon Zone</label>
+                </value>
+                <value>
+                    <fullName>BIZ - Makati + Pasig + Rizal Zone</fullName>
+                    <default>false</default>
+                    <label>BIZ - Makati + Pasig + Rizal Zone</label>
+                </value>
+                <value>
+                    <fullName>BIZ - Pasay + Manda + Manila Zone</fullName>
+                    <default>false</default>
+                    <label>BIZ - Pasay + Manda + Manila Zone</label>
+                </value>
+                <value>
+                    <fullName>BIZ - Quezon City Zone</fullName>
+                    <default>false</default>
+                    <label>BIZ - Quezon City Zone</label>
+                </value>
+                <value>
+                    <fullName>Bulacan-Caloocan-Malabon-Navotas-Valenzuela Zone</fullName>
+                    <default>false</default>
+                    <label>Bulacan-Caloocan-Malabon-Navotas-Valenzuela Zone</label>
+                </value>
+                <value>
+                    <fullName>CBG - East TS Team</fullName>
+                    <default>false</default>
+                    <label>CBG - East TS Team</label>
+                </value>
+                <value>
+                    <fullName>CBG - North TS Team</fullName>
+                    <default>false</default>
+                    <label>CBG - North TS Team</label>
+                </value>
+                <value>
+                    <fullName>CBG - South TS Team</fullName>
+                    <default>false</default>
+                    <label>CBG - South TS Team</label>
+                </value>
+                <value>
+                    <fullName>CBG - West TS Team</fullName>
+                    <default>false</default>
+                    <label>CBG - West TS Team</label>
+                </value>
+                <value>
+                    <fullName>East Technical Services Team</fullName>
+                    <default>false</default>
+                    <label>East Technical Services Team</label>
+                </value>
+                <value>
+                    <fullName>HMB - Alabang BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Alabang BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Angono BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Angono BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Bacoor BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Bacoor BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Balagtas BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Balagtas BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Balintawak BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Balintawak BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Baliwag BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Baliwag BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Batangas BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Batangas BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Cainta BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Cainta BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Calamba BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Calamba BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Camarin AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Camarin AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Commonwealth BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Commonwealth BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Dasmariñas BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Dasmariñas BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - España BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - España BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Kalookan AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Kalookan AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Kamuning BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Kamuning BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Las Piñas BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Las Piñas BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Lucena BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Lucena BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Makati BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Makati BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Malabon BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Malabon BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Malate BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Malate BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Malolos BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Malolos BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Mandaluyong BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Mandaluyong BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Marikina BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Marikina BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Masinag AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Masinag AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Novaliches BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Novaliches BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Parañaque AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Parañaque AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Pasay AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Pasay AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Pasig BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Pasig BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Roosevelt BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Roosevelt BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Rosario BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Rosario BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - San Pablo BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - San Pablo BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - San Pedro BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - San Pedro BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Sta. Cruz AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Sta. Cruz AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Sta. Maria BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Sta. Maria BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Tagaytay AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Tagaytay AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Taguig AUX (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Taguig AUX (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Tutuban BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Tutuban BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>HMB - Valenzuela BC (CC)</fullName>
+                    <default>false</default>
+                    <label>HMB - Valenzuela BC (CC)</label>
+                </value>
+                <value>
+                    <fullName>North Technical Services Team</fullName>
+                    <default>false</default>
+                    <label>North Technical Services Team</label>
+                </value>
+                <value>
+                    <fullName>Pasay-San Juan-Mandaluyong-Manila Zone</fullName>
+                    <default>false</default>
+                    <label>Pasay-San Juan-Mandaluyong-Manila Zone</label>
+                </value>
+                <value>
+                    <fullName>Quezon City Zone</fullName>
+                    <default>false</default>
+                    <label>Quezon City Zone</label>
+                </value>
+                <value>
+                    <fullName>South Technical Services Team</fullName>
+                    <default>false</default>
+                    <label>South Technical Services Team</label>
+                </value>
+                <value>
+                    <fullName>West Technical Services Team</fullName>
+                    <default>false</default>
+                    <label>West Technical Services Team</label>
+                </value>
+                <value>
+                    <fullName>HMB - South Area</fullName>
+                    <default>false</default>
+                    <label>HMB - South Area</label>
+                </value>
+                <value>
+                    <fullName>HMB - North Area</fullName>
+                    <default>false</default>
+                    <label>HMB - North Area</label>
+                </value>
+                <value>
+                    <fullName>HMB - Central Area</fullName>
+                    <default>false</default>
+                    <label>HMB - Central Area</label>
+                </value>
+                <value>
+                    <fullName>BIZ North Area</fullName>
+                    <default>false</default>
+                    <label>BIZ North Area</label>
+                </value>
+                <value>
+                    <fullName>BIZ Central Area</fullName>
+                    <default>false</default>
+                    <label>BIZ Central Area</label>
+                </value>
+                <value>
+                    <fullName>BIZ South Area</fullName>
+                    <default>false</default>
+                    <label>BIZ South Area</label>
+                </value>
+                <value>
+                    <fullName>BIZ Partners Group</fullName>
+                    <default>false</default>
+                    <label>BIZ Partners Group</label>
+                </value>
+                <value>
+                    <fullName>CBG TS Team</fullName>
+                    <default>false</default>
+                    <label>CBG TS Team</label>
+                </value>
+                <value>
+                    <fullName>CBG - Corporate Business Group</fullName>
+                    <default>false</default>
+                    <label>CBG - Corporate Business Group</label>
+                </value>
+                <value>
+                    <fullName>HMB - Valenzuela BC</fullName>
+                    <default>false</default>
+                    <label>HMB - Valenzuela BC</label>
+                </value>
+                <value>
+                    <fullName>Mandaluyong BC</fullName>
+                    <default>false</default>
+                    <label>Mandaluyong BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Pasay AUX</fullName>
+                    <default>false</default>
+                    <label>HMB - Pasay AUX</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_RO__c</fullName>
+        <description>Picklist values are just for testing. Data needed to be migrated</description>
+        <externalId>false</externalId>
+        <label>Parent RO</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HMB - South Area</fullName>
+                    <default>false</default>
+                    <label>HMB - South Area</label>
+                </value>
+                <value>
+                    <fullName>HMB - North Area</fullName>
+                    <default>false</default>
+                    <label>HMB - North Area</label>
+                </value>
+                <value>
+                    <fullName>HMB - Central Area</fullName>
+                    <default>false</default>
+                    <label>HMB - Central Area</label>
+                </value>
+                <value>
+                    <fullName>BIZ North Area</fullName>
+                    <default>false</default>
+                    <label>BIZ North Area</label>
+                </value>
+                <value>
+                    <fullName>BIZ Central Area</fullName>
+                    <default>false</default>
+                    <label>BIZ Central Area</label>
+                </value>
+                <value>
+                    <fullName>BIZ South Area</fullName>
+                    <default>false</default>
+                    <label>BIZ South Area</label>
+                </value>
+                <value>
+                    <fullName>CBG TS Team</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CBG TS Team</label>
+                </value>
+                <value>
+                    <fullName>HMB - Alabang BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Alabang BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Angono BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Angono BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Bacoor BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Bacoor BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Balagtas BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Balagtas BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Balintawak BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Balintawak BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Baliwag BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Baliwag BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Batangas BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Batangas BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Cainta BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Cainta BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Calamba BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Calamba BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Camarin AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Camarin AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Commonwealth BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Commonwealth BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Dasmariñas BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Dasmariñas BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - España BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - España BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Kalookan AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Kalookan AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Kamuning BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Kamuning BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Las Piñas BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Las Piñas BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Lucena BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Lucena BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Makati BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Makati BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Malabon BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Malabon BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Malate BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Malate BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Malolos BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Malolos BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Mandaluyong BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Mandaluyong BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Marikina BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Marikina BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Masinag AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Masinag AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Novaliches BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Novaliches BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Paranaque AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Paranaque AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Pasay AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Pasay AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Pasig BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Pasig BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Roosevelt BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Roosevelt BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Rosario BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Rosario BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - San Pablo BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - San Pablo BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - San Pedro BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - San Pedro BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Sta. Cruz AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Sta. Cruz AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Sta. Maria BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Sta. Maria BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Tagaytay AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Tagaytay AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Taguig AUX</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Taguig AUX</label>
+                </value>
+                <value>
+                    <fullName>HMB - Tutuban BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Tutuban BC</label>
+                </value>
+                <value>
+                    <fullName>HMB - Valenzuela BC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>HMB - Valenzuela BC</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reset_Password_Link_Generation__c</fullName>
+        <externalId>false</externalId>
+        <label>Reset Password Link Generation</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Reset_Password_Token__c</fullName>
+        <externalId>false</externalId>
+        <label>Reset Password Token</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UserArticleSelected__c</fullName>
+        <description>certain articles related to the reason should be displayed upon selection of reason</description>
+        <externalId>false</externalId>
+        <label>DeactivationReason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>et4ae5__Default_ET_Page__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Default Marketing Cloud Page</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>et4ae5__Default_MID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>@deprecated</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>et4ae5__ExactTargetForAppExchangeAdmin__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Marketing Cloud for AppExchange Admin</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>et4ae5__ExactTargetForAppExchangeUser__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Marketing Cloud for AppExchange User</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>et4ae5__ExactTargetUsername__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Marketing Cloud Username</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>et4ae5__ExactTarget_OAuth_Token__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>@deprecated</label>
+        <length>175</length>
+        <maskChar>asterisk</maskChar>
+        <maskType>all</maskType>
+        <required>false</required>
+        <type>EncryptedText</type>
+    </fields>
+    <fields>
+        <fullName>et4ae5__ValidExactTargetAdmin__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Valid Marketing Cloud Admin</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>et4ae5__ValidExactTargetUser__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Valid Marketing Cloud User</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>sample__c</fullName>
+        <externalId>false</externalId>
+        <label>Sample</label>
+        <relationshipName>Users</relationshipName>
+        <restrictedAdminField>true</restrictedAdminField>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Hierarchy</type>
+    </fields>
+    <listViews>
+        <fullName>ActiveUsers</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Active Users - ALL</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>ActiveUsersKnowledge</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>KNOWLEDGE_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Active Users Knowledge</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Active_Users_ACN</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>KNOWLEDGE_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.EMAIL</field>
+            <operation>contains</operation>
+            <value>accenture</value>
+        </filters>
+        <label>Active Users ACN</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Active_Users_Accenture</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>KNOWLEDGE_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.USERS.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>CORE.USERS.EMAIL</field>
+            <operation>contains</operation>
+            <value>accenture</value>
+        </filters>
+        <label>Active Users - Accenture</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Active_Users_Portal</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>EMPLOYEE_NUMBER</columns>
+        <columns>IS_FROZEN</columns>
+        <columns>Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>SALES.CONTACT.NAME</field>
+            <operation>notEqual</operation>
+        </filters>
+        <label>Active Users - Portal</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AdminUsers</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CORE.PROFILE.NAME</field>
+            <operation>equals</operation>
+            <value>System Administrator</value>
+        </filters>
+        <label>Admin Users</label>
+    </listViews>
+    <listViews>
+        <fullName>AllUsers</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Users</label>
+    </listViews>
+    <listViews>
+        <fullName>AllUsers_RKO</fullName>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>FULL_NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Office__c</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.USERS.ACTIVE</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Users_RKO</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Custom</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>KNOWLEDGE_USER</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_BY_NAME</field>
+            <operation>contains</operation>
+            <value>lisen</value>
+        </filters>
+        <label>Custom</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>None</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CORE.USERS.USERNAME</columns>
+        <columns>CORE.USERS.LAST_LOGIN</columns>
+        <columns>CORE.USER_ROLE.NAME</columns>
+        <columns>CORE.PROFILE.NAME</columns>
+        <columns>EMPLOYEE_NUMBER</columns>
+        <columns>IS_FROZEN</columns>
+        <columns>Office__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Active Users</label>
+        <language>en_US</language>
+    </listViews>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CORE.USER_ROLE.NAME</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>FULL_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USER_ROLE.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.PHONE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.EXTENSION</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.CELL</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.TITLE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.PHONE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.EMAIL</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Validate_Update_Portal_User</fullName>
+        <active>true</active>
+        <description>Only System Administrator can update Portal User</description>
+        <errorConditionFormula>AND(NOT(ISNEW()),  $User.By_Pass_Validation__c == false, ISPICKVAL( UserType,&quot;CspLitePortal&quot;), $Profile.Name &lt;&gt; &quot;System Administrator&quot;, $Profile.Name &lt;&gt; &quot;Super User 2&quot;)</errorConditionFormula>
+        <errorMessage>Only System Administrator can update Portal User</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validation_Create_Portal_User</fullName>
+        <active>true</active>
+        <description>Validate only RM or System Admin profiles can create External User</description>
+        <errorConditionFormula>AND(ISNEW(), $User.By_Pass_Validation__c == false, $Profile.Name &lt;&gt; &quot;System Administrator&quot;, $Profile.Name &lt;&gt; &quot;Super User 2&quot;, $UserRole.Name &lt;&gt; &quot;Biz Partner Manager&quot;, $UserRole.Name &lt;&gt; &quot;Biz Zone Officer&quot;, $UserRole.Name &lt;&gt; &quot;CBG Relationship Manager&quot;)</errorConditionFormula>
+        <errorMessage>Only System Administrator or RM Roles can create portal users</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Enroll_Services</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Enroll Services</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/a12/e?CF00N0l000000MU8n={!User.Name}&amp;CF00N0l000000MU8n_lkid={!User.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Reset_Password_Portal_User</fullName>
+        <availability>online</availability>
+        <description>Reset Password for Portal User (to tackle limitation on standard Reset Password)</description>
+        <displayType>link</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Reset Password Portal User</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)} 
+
+if(window.confirm(&quot;Reset password for this user?&quot;)){ 
+var query = &quot;select Id, CXE_ForgotPasswordFlag__c from User where Id = &apos;{!User.Id}&apos; limit 1&quot;; 
+
+var result = sforce.connection.query(query); 
+var records = result.getArray(&quot;records&quot;); 
+
+var myObj = records[0]; 
+
+myObj.CXE_ForgotPasswordFlag__c = true; 
+
+var results = sforce.connection.update([myObj]); 
+
+if (results[0].success === &quot;false&quot;){ 
+alert(result[0].errors.message); 
+} 
+else{ 
+alert(&quot;Reset password email sent successfully&quot;); 
+} 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>View_Services</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View Services</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://meralco--devwcxe.cs58.my.salesforce.com/00O0l000000FGeI?pv0={!User.Name}</url>
+    </webLinks>
+</CustomObject>

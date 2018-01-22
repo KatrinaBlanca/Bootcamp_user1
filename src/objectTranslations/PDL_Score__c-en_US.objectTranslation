@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PDL Score</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PDL Score</value>
+    </caseValues>
+    <fields>
+        <label><!-- Equivalent Behaviour --></label>
+        <name>Equivalent_Behaviour__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event --></label>
+        <name>Event__c</name>
+    </fields>
+    <fields>
+        <label><!-- Score --></label>
+        <name>Score__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

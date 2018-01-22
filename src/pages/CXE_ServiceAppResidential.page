@@ -1,0 +1,482 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" docType="html-5.0" showChat="FALSE" applyBodyTag="False" applyHtmlTag="False" controller="CXE_WebToCaseController">
+
+    <head>
+        <title>Service Application</title>
+        <apex:stylesheet value="{!URLFOR($Resource.LDSAssets, 'assets/styles/salesforce-lightning-design-system.min.css')}" />
+        <apex:stylesheet value="{!URLFOR($Resource.LDSCustom, 'custom/css/ExDesign.css')}" />
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <meta name="viewport" content="width=device-width,initial-scale=0.25" />
+
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+    </head>
+
+    <body id="CXE_body">
+        <div class="CXE_ErrorMessage">
+            <apex:pageMessages escape="false"/>
+        </div>
+        <apex:form styleClass="CXE_ServiceAppSubmit" enctype="multipart/form-data">
+            <div class="slds">
+                <div class="slds-grid slds-wrap CXE_mainContainer">
+                    <div class="slds-size--1-of-1">
+                        <div class="slds-grid slds-wrap">
+                            <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+                                <h1 class="CXE_color--orange CXE_text--h1"><b>Start an Electric Service</b></h1>
+                                <div class="CXE_form CXE_serviceApplication--residentialForm slds-m-top--small slds-grid slds-wrap">
+                                              <p class="slds-p-vertical--xx-small CXE_color--orange"><b>* REQUIRED FIELDS</b></p>
+                                    <p class="CXE_color--gray slds-size--1-of-1"><b>TELL US ABOUT YOURSELF</b></p>
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-6 slds-medium-size--1-of-6 slds-small-size--1-of-6 slds-max-small-size--1-of-1 slds-p-left--small slds-p-left--small">
+                                        <div class="CXE_field--neutralizer CXE_field--comboBox slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Salutation</label>
+                                            <br />
+                                            <apex:selectList size="1" multiselect="false" id="salutation" value="{!caseRecord.Salutation__c}">
+                                                <apex:selectOptions value="{!Salutations}"></apex:selectOptions>
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-large-size--5-of-6 slds-medium-size--5-of-6 slds-small-size--5-of-6"></div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">First Name<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!caseRecord.First_Name__c}" id="firstname" html-placeholder="" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Middle Name</label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!caseRecord.Middle_Name__c}" id="middlename" html-placeholder="" styleClass="slds-input slds-size--1-of-1" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Last Name<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!caseRecord.Last_Name__c}" id="lastname" html-placeholder="" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer CXE_field--comboBox slds-form-element slds-grid slds-wrap">
+                                            <label class="slds-form-element__label CXE_color--gray slds-size--1-of-1 CXE_vfFieldStretch ">Birthday<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                        <apex:inputField styleClass="slds-input slds-size--1-of-1 datepicker" value="{!caseRecord.Date_of_Birth__c}" showDatePicker="true" required="true"/>
+                                        <!--apex:inpuField  styleClass="slds-input slds-size--1-of-1" value="{!caseRecord.Date_of_Birth__c}" required="true" id="datepicker" onfocus="DatePicker.pickDate(false, this , false);"/-->
+                                            <!--input type="date" value="{!caseRecord.Date_of_Birth__c}" class="slds-input slds-size--1-of-1" /-->
+                                                <!--div class="slds-input-has-icon slds-input-has-icon--right">
+                                                    <a id="myPickerToday" href="#">
+                                                        <i class="slds-input__icon input-text-default fa fa-calendar"></i>
+                                                    </a>
+                                                    <apex:inputField value="{!caseRecord.Date_of_Birth__c}" styleClass="slds-input" id="myPicker"/>
+                                                </div-->
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Telephone Number</label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!caseRecord.Telephone_No__c}" id="phone" html-placeholder="Ex. +63 2 999 9999" styleClass="slds-input slds-size--1-of-1" onkeypress="return inputLimiter(event,'Numbers');"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Mobile Number<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!caseRecord.Mobile_No__c}" maxlength="13" id="mobile" html-placeholder="Ex. +63 999 999 9999" styleClass="slds-input slds-size--1-of-1" onkeypress="return inputLimiter(event,'Numbers');" required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--2-of-3 slds-medium-size--2-of-3 slds-small-size--2-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Email Address<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!caseRecord.Email_Address__c}" id="email" html-placeholder="Ex. juan.p.delacruz@email.com" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_color--gray slds-m-top--large slds-size--1-of-1 CXE_text--size-14 slds-m-left--small">
+                                        Will someone be applying on your behalf?
+                                        <i class="fa fa-question-circle CXE_toolTipTrigger"></i>
+                                        <div class="CXE_toolTipText slds-p-around--small slds-text-align--center">
+                                            An authorized representative will be someone who will transact in your behalf. You will need to provide him with an authorization letter to ensure smooth processing of your application.
+                                        </div>
+                                    </div>
+
+                                    <!-- <span class="CXE_radioButton">
+                                      <input type="radio" id="CXE_serviceApplicationForm--Yes" name="options" value="yes" />
+                                      <label class="slds-radio__label" for="CXE_serviceApplicationForm--Yes">
+                                        <span class="slds-radio--faux"></span>
+                                        <span class="slds-form-element__label CXE_color--gray">Yes</span>
+                                      </label>
+                                    </span>
+
+                                    <span class="CXE_radioButton slds-m-left--large">
+                                      <input type="radio" id="CXE_serviceApplicationForm--No" name="options" value="no" />
+                                      <label class="slds-radio__label" for="CXE_serviceApplicationForm--No">
+                                        <span class="slds-radio--faux"></span>
+                                        <span class="slds-form-element__label CXE_color--gray">No</span>
+                                      </label>
+                                    </span> -->
+
+                                    <div class="slds-m-top--small slds-large-size--1-of-4 slds-medium-size--1-of-4 slds-small-size--1-of-4 slds-max-small-size--1-of-1">
+                                        <!-- <span class="slds-radio CXE_radioButton slds-m-left--large">
+                                          <input type="radio" id="CXE_serviceApplicationAccredited--Yes" name="accredited" value="yes" />
+                                          <label class="slds-radio__label" for="CXE_serviceApplicationAccredited--Yes">
+                                            <span class="slds-radio--faux"></span>
+                                            <span class="slds-form-element__label CXE_color--gray">Yes</span>
+                                          </label>
+                                        </span>
+
+                                        <span class="slds-radio CXE_radioButton slds-m-left--large">
+                                          <input type="radio" id="CXE_serviceApplicationAccredited--No" name="accredited" value="no" />
+                                          <label class="slds-radio__label" for="CXE_serviceApplicationAccredited--No">
+                                            <span class="slds-radio--faux"></span>
+                                            <span class="slds-form-element__label CXE_color--gray">No</span>
+                                          </label>
+                                        </span> -->
+                                        <span class="CXE_radioButton CXE_onBehalfOf">
+                                            <apex:selectRadio value="{!hasAppliedForSomeone}">
+                                                <apex:selectOptions value="{!AMCOptions}"/>
+                                            </apex:selectRadio>
+                                        </span>
+                                    </div>
+
+                                    <div class="CXE_applyOnBehalf slds-m-top--large slds-size--1-of-1 slds-grid slds-wrap slds-hide">
+                                        <p class="CXE_color--gray slds-size--1-of-1"><b>WHO WILL BE YOUR AUTHORIZED REPRESENTATIVE?</b></p>
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray">First Name<span class="CXE_requiredField">*</span></label>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!caseRecord.Authorized_Representative_First_Name__c}" id="repfirstname" html-placeholder="Ex. Juan" styleClass="slds-input slds-size--1-of-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray">Middle Name</label>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!caseRecord.Authorized_Representative_Middle_Name__c}" id="repmiddlename" html-placeholder="Ex. Pedroza" styleClass="slds-input slds-size--1-of-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray">Last Name<span class="CXE_requiredField">*</span></label>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!caseRecord.Authorized_Representative_Last_Name__c}" id="replastname" html-placeholder="Ex. Dela Cruz" styleClass="slds-input slds-size--1-of-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray">Mobile Number<span class="CXE_requiredField">*</span></label>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!caseRecord.Authorized_Rep_Primary_Contact_Number__c}" maxlength="13" id="repphone" html-placeholder="Ex. +63 999 999 9999" styleClass="slds-input slds-size--1-of-1" onkeypress="return inputLimiter(event,'Numbers');" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--2-of-3 slds-medium-size--2-of-3 slds-small-size--2-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray">Email Address</label>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!caseRecord.Authorized_Representative_Email__c}" id="repemail" html-placeholder="Ex. juan.p.delacruz@email.com" styleClass="slds-input slds-size--1-of-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray CXE_vfFieldStretch">Relationship to Applicant</label>
+                                                <br />
+                                                <apex:selectList size="1" multiselect="false" id="reprelationship" value="{!caseRecord.Relationship__c}">
+                                                    <apex:selectOptions value="{!Relationships}"></apex:selectOptions>
+                                                </apex:selectList>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1"><b>WHERE WILL YOU BE USING THE ELECTRIC SERVICE</b></p>
+                                        <!--p class="CXE_color--gray slds-size--1-of-1"><b>Service Address</b></p-->
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray slds-m-bottom--none">Home Address<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <sup><i>(Home/Unit Number, Building, Street, Subdivision/Village, Barangay)</i></sup>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!caseRecord.address_1__c}" id="address1" html-placeholder="" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Province<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <!-- <apex:inputText value="{!caseRecord.Service_Address_Province__c}" id="province1" html-placeholder="" styleClass="slds-input slds-size--1-of-1" /> -->
+                                                <apex:inputField value="{!caseRecord.Service_Address_Province__c}" id="province1" html-placeholder="" styleClass="slds-input slds-size--1-of-1"  required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">City<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <!-- <apex:inputText value="{!caseRecord.Service_Address_City_Municiple__c}" id="city1" html-placeholder="" styleClass="slds-input slds-size--1-of-1" /> -->
+                                                <apex:inputField value="{!caseRecord.Service_Address_City_Municiple__c}" id="city1" html-placeholder="" styleClass="slds-input slds-size--1-of-1"  required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                        <div class="CXE_field--neutralizer slds-form-element">
+                                            <label class="slds-form-element__label CXE_color--gray">Home Ownership<span class="CXE_requiredField">*</span></label>
+                                            <br />
+                                            <div class="slds-form-element__control">
+                                                <apex:selectList size="1" multiselect="false" id="homeownership" value="{!caseRecord.Home_Ownership__c}" styleClass="slds-small-size--1-of-1">
+                                                    <apex:selectOptions value="{!HomeOwnership}"></apex:selectOptions>
+                                                </apex:selectList>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- {!sameAsServiceAddressSelect} -->
+                                    <div class="slds-m-top--large">
+                                        <span class="CXE_radioButton CXE_sameAsBilling">
+                                            <apex:selectRadio value="{!sameAsServiceAddressSelect}">
+                                                <apex:selectOptions value="{!SameForBilling}"/>
+
+                                            </apex:selectRadio>
+                                        </span>
+                                    </div>
+
+                                    <div class="CXE_sameAsBillingFields slds-m-top--large slds-grid slds-wrap slds-hide slds-size--1-of-1">
+                                        <!--p class="CXE_color--gray slds-size--1-of-1"><b>Address</b></p-->
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray slds-m-bottom--none">Billing Address<span class="CXE_requiredField">*</span></label>
+                                                <br />
+                                                <sup><i>(Home/Unit Number, Building, Street, Subdivision/Village, Barangay)</i></sup>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!caseRecord.Address_2__c}" id="address2" html-placeholder="" styleClass="slds-input slds-size--1-of-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray">Province<span class="CXE_requiredField">*</span></label>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputField value="{!caseRecord.Billing_Address_Province__c}" id="province2" html-placeholder="" styleClass="slds-input slds-size--1-of-1"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                                            <div class="CXE_field--neutralizer slds-form-element">
+                                                <label class="slds-form-element__label CXE_color--gray">City<span class="CXE_requiredField">*</span></label>
+                                                <br />
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputField value="{!caseRecord.Billing_Address_City_Municipal__c}" id="city2" html-placeholder="" styleClass="slds-input slds-size--1-of-1"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1"><b>HOW CAN WE MAKE IT EASIER FOR YOU?</b></p>
+                                    <div class="CXE_color--gray slds-m-top--small slds-large-size--3-of-4 slds-medium-size--3-of-4 slds-small-size--3-of-4 slds-max-small-size--1-of-1">
+                                        Would you like to avail of our Accredited Meralco Contractors?
+                                        <i class="fa fa-question-circle CXE_toolTipTrigger"></i>
+                                        <div class="CXE_toolTipText CXE_toolTipText-AMC slds-p-around--small slds-text-align--center">
+                                            Accredited Meralco Contractors are third-party agents who are experts in electric service application with MERALCO. They can process your application for your from start to finish or just construct the necessary technical requirements. Visit www.amc.org.ph for more information.
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-m-top--small slds-large-size--1-of-4 slds-medium-size--1-of-4 slds-small-size--1-of-4 slds-max-small-size--1-of-1">
+                                        <span class="CXE_radioButton CXE_availAMC">
+                                            <apex:selectRadio value="{!amcSelect}">
+                                                <apex:selectOptions value="{!AMCOptions}"/>
+                                            </apex:selectRadio>
+                                        </span>
+                                    </div>
+
+                                    <p class="CXE_color--gray slds-m-top--small slds-size--1-of-1 CXE_serviceApplicationAccreditedYes slds-hide">
+                                        <b>Thank you for availing of our Accredited Meralco Contractors. Someone will contact you within 3 working days to assist you in the electric service application process.</b>
+                                    </p>
+
+                                    <p class="CXE_color--gray slds-m-top--small slds-size--1-of-1 CXE_serviceApplicationAccreditedNo slds-hide">
+                                        <b>If you change your mind, you can always avail of the AMCs by emailing us at ask@meralco.com.ph or by calling 16211. You may avail of the AMC at any point of your application.</b>
+                                    </p>
+                                    <!--CSM Rhyan Cruz hide this area-->
+                                            <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1" style="display:none"><b>HOW WOULD YOU LIKE TO GET UPDATES ABOUT YOUR APPLICATION?</b> (Select all that apply)</p>
+                                    <!--CSM Rhyan Cruz hide this area-->
+                                    <span class="CXE_checkBox slds-checkbox" style="display:none">
+                                       <apex:inputHidden value="{!emailCb}" id="emailCbId"/>
+                                      <input type="checkbox" name="options" id="CXE_serviceApplicationForm--UpdateViaEmail" onload="trueCheckBox(this.className)" onchange="document.getElementById('{!$Component.emailCbId}').value = this.checked;" />
+                                      <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaEmail">
+
+                                        <span class="slds-checkbox--faux"></span>
+                                        <span class="slds-form-element__label CXE_color--gray">Via Email</span>
+                                      </label>
+                                    </span>
+
+                                    <!--CSM Rhyan Cruz hide this area-->
+                                    <span class="CXE_checkBox slds-checkbox" style="display:none">
+                                      <apex:inputHidden value="{!smsCb}" id="smsCbId"/>
+                                      <input type="checkbox" disabled="true" name="options" id="CXE_serviceApplicationForm--UpdateViaSMS" onchange="document.getElementById('{!$Component.smsCbId}').value = this.checked;" />
+
+                                      <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaSMS">
+                                        <span class="slds-checkbox--faux"></span>
+                                        <span class="slds-form-element__label CXE_color--gray">Via SMS</span>
+                                      </label>
+                                    </span>
+                                </div>
+
+                                <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1"><b>ATTACHMENTS</b></p>
+                                <div class="CXE_file-wrapper">
+                                    <div class="CXE_file-buttons">
+                                        <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" id="filesToUpload" styleClass="filesToUploadCls" onchange="makeFileList();" />
+                                        <button class="CXE_button CXE_file-fakeButton">ATTACH DOCUMENT</button>
+                                    </div>
+                                    <div class="CXE_file-attachedFiles">
+                                        <b>Attached Files:</b>
+                                        <ul id="fileList">
+                                            <li>No Attached Files</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="g-recaptcha slds-m-top--large" data-sitekey="{!sitekey}"></div>
+                                <script src='https://www.google.com/recaptcha/api.js'></script>
+                                <script type="text/javascript">
+                                    function resize() {
+
+                                        var height = document.getElementsByTagName("html")[0].scrollHeight ;
+                                        if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 )
+                                        {
+                                            //alert('1');
+                                             height = document.getElementsByTagName("html")[0].scrollHeight;
+                                        }
+                                        else if(navigator.userAgent.indexOf("Chrome") != -1 )
+                                        {
+                                             //alert('2');
+                                             height = document.getElementsByTagName("html")[0].scrollHeight;
+                                        }
+                                        else if(navigator.userAgent.indexOf("Safari") != -1)
+                                        {
+                                             //alert('3');
+                                             height = document.getElementsByTagName("html")[0].scrollHeight;
+                                        }
+                                        else if(navigator.userAgent.indexOf("Firefox") != -1 )
+                                        {
+                                            // alert('4');
+                                              height = document.getElementById("CXE_body").scrollHeight;
+                                        }
+                                        else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+                                        {
+                                             //alert('5');
+                                             height = document.getElementById("CXE_body").scrollHeight;
+                                        }
+                                        else
+                                        {
+                                            //alert('6');
+                                            height = document.getElementsByTagName("html")[0].scrollHeight;
+                                        }
+
+                                        //var height = document.getElementsByTagName("html")[0].scrollHeight;
+                                        window.parent.postMessage(["setHeight", height], "*");
+                                        //alert(height);
+                                    }
+
+                                    //window.onload = resize;
+
+                                     window.onload = function() {
+                                         //alert('onload');
+                                        resize();
+                                        //alert({!smsCb});
+                                        if({!smsCb}) {
+                                            $('#CXE_serviceApplicationForm--UpdateViaSMS').attr("checked", "checked");
+                                        } else {
+                                            $('#CXE_serviceApplicationForm--UpdateViaSMS').removeAttr("checked");
+                                        }
+
+                                        if({!emailCb}) {
+                                            $('#CXE_serviceApplicationForm--UpdateViaEmail').attr("checked", "checked");
+                                        } else {
+                                            $('#CXE_serviceApplicationForm--UpdateViaEmail').removeAttr("checked");
+                                        }
+
+                                        //alert('hello' + {!hasAppliedForSomeone});
+                                        if('{!hasAppliedForSomeone}' == 'Yes') {
+                                            $('#CXE_applyOnBehalf').removeClass("slds-hide");
+                                            $("[id$=repphone]").prop('required', true);
+                                            $("[id$=replastname]").prop('required', true);
+                                            $("[id$=repfirstname]").prop('required', true);
+
+                                        } else {
+                                            $('#CXE_applyOnBehalf').addClass("slds-hide");
+                                            $("[id$=repphone]").prop('required', false);
+                                            $("[id$=replastname]").prop('required', false);
+                                            $("[id$=repfirstname]").prop('required', false);
+                                        }
+
+                                        //alert();
+                                    };
+                                </script>
+                                <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+                                <div class="CXE_overlay slds-hide">
+                                  <div role="status" class="slds-spinner slds-spinner--large slds-spinner--brand">
+                                      <span class="slds-assistive-text">Loading</span>
+                                      <div class="slds-spinner__dot-a"></div>
+                                      <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+
+                                <div class="slds-text-align--right slds-m-top--large">
+                                    <apex:commandButton styleClass="CXE_button" action="{!submitResidential}" value="SUBMIT" id="submit"  />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </apex:form>
+    </body>
+    <c:CXE_VFTemporaryCSS />
+</apex:page>

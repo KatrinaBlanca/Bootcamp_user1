@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Connection Meter Read</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Connection Meter Reads</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Connection Meter Reads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Connection Meter Reads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Connection Installation Number --></label>
+        <name>Connection_Installation_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Connection --></label>
+        <name>Connection__c</name>
+        <relationshipLabel><!-- Connection Meter Reads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MRID Number --></label>
+        <name>MRID_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meter Read Date --></label>
+        <name>Meter_Read_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meter Read Status --></label>
+        <name>Meter_Read_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meter Read Value --></label>
+        <name>Meter_Read_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meter Reading Reason --></label>
+        <name>Meter_Reading_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Final reading (move-out) </masterLabel>
+            <translation><!-- Final reading (move-out)  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interim reading with billing</masterLabel>
+            <translation><!-- Interim reading with billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interim reading with out billing</masterLabel>
+            <translation><!-- Interim reading with out billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Periodic reading</masterLabel>
+            <translation><!-- Periodic reading --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Meter Reading Status --></label>
+        <name>Meter_Reading_Status__c</name>
+        <picklistValues>
+            <masterLabel>Actual</masterLabel>
+            <translation><!-- Actual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estimated</masterLabel>
+            <translation><!-- Estimated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Meter Reading Type --></label>
+        <name>Meter_Reading_Type__c</name>
+        <picklistValues>
+            <masterLabel>Automatic Estimation</masterLabel>
+            <translation><!-- Automatic Estimation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meter Reading Interpolated</masterLabel>
+            <translation><!-- Meter Reading Interpolated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meter Reading by Customer</masterLabel>
+            <translation><!-- Meter Reading by Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meter Reading by Utility</masterLabel>
+            <translation><!-- Meter Reading by Utility --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Meter Serial Number --></label>
+        <name>Meter_Serial_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity_Connection__c</name>
+        <relationshipLabel><!-- Connection Meter Reads --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plausibility Result --></label>
+        <name>Plausibility_Result__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason For Rejection --></label>
+        <name>Reason_For_Rejection__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason To Release --></label>
+        <name>Reason_To_Release__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Damage</masterLabel>
+            <translation><!-- Other Damage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Water Damage</masterLabel>
+            <translation><!-- Water Damage --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Todays Date --></label>
+        <name>Todays_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Move In</masterLabel>
+            <translation><!-- Move In --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Move Out</masterLabel>
+            <translation><!-- Move Out --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

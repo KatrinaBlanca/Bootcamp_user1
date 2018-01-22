@@ -1,0 +1,7 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+<!-- PARAMETERS -->
+<apex:attribute name="serId" type="Id" description="Service Id" assignTo="{!serviceId}"/>
+<apex:attribute name="recType" type="String" description="Case Record Type" assignTo="{!caseRType}"/>
+<apex:variable var="c" value="{!CaseFromService}" />
+{!c.CXE_Service_Request_s__c}
+</apex:component>

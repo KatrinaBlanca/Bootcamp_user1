@@ -1,0 +1,29 @@
+<messaging:emailTemplate subject="MERALCO – Your service entrance is approved!" recipientType="Contact" relatedToType="Case">
+    <messaging:htmlEmailBody >
+        
+        <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Dear <b>{!IF(relatedTo.Last_Name_Business_Name__c == null, relatedTo.Full_Name_Concatenated__c, relatedTo.Last_Name_Business_Name__c)}</b>, <br/>
+        <br></br>
+        <br></br>
+        Your application for reactivation of service filed by {!relatedTo.CXE_Contractor_Name__c} with reference no.{!relatedTo.CaseNumber} has progressed to “Application Inspected”, which is step 3 of 5 of the service application process, following the approval of the service entrance installation. <br/> 
+        <br></br>
+        Please visit any Meralco business center to complete the following requirements: <br/>
+         <c:CXE_EmailCaseRequirementWithBillDeposit caseRecord="{!relatedTo.Id}"/> <br/>
+         <br></br>
+        Once the above requirements have been completed, you will be asked to sign the electric service contract, and we will schedule the service for energization. <br/> 
+         <br></br>
+        Should you have questions, clarifications, and immediate assistance, please call our 24-hour customer care hotline 16211 or email us at <a href = "#">ask@meralco.com.ph</a>. <br/>
+         <br></br>
+         Thank you and we look forward in serving you. <br/>
+         <br></br>
+         <br></br>
+        <b>MERALCO</b> <br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,67 @@
+<apex:page controller="DiscountProductsConfiguratorController" tabStyle="Opportunity">
+    <!-- Unfortunately dynamic tab styles is not possible. Uing Opportunity as default. -->
+  
+    <!-- <apex:pageMessages /> 
+    
+    <apex:sectionHeader title="{!title}" subtitle="{!subtitle}"/>
+
+    <apex:form >
+    
+        <apex:pageBlock >
+        
+            <apex:pageBlockTable value="{!discounts}" var="discount">
+        
+                <apex:column >
+                    <apex:inputCheckbox value="{!discount.checked }"/>                  
+                </apex:column>   
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:outputField value="{!discount.product.Name}"/>
+                </apex:column>   
+                <apex:column >
+                    <apex:facet name="header">Frequency</apex:facet>
+                    <apex:outputField value="{!discount.product.Frequency__c}"/>
+                </apex:column>                  
+                <apex:column >
+                    <apex:facet name="header">Discount Type</apex:facet>
+                    <apex:outputField value="{!discount.product.Discount_Type__c}"/>
+                </apex:column>     
+                <apex:column >
+                    <apex:facet name="header">Energy Type</apex:facet>
+                    <apex:outputField value="{!discount.product.Energy_Type__c}"/>
+                </apex:column>                    
+                <apex:column >
+                    <apex:facet name="header">Discount Value</apex:facet>
+                    <apex:outputField value="{!discount.product.Discount_Value__c}"/>
+                </apex:column>                    
+                <apex:column >
+                    <apex:facet name="header">Discount Value (Unit)</apex:facet>
+                    <apex:outputField value="{!discount.product.Discount_Value_Unit__c}"/>
+                </apex:column>        
+                <apex:column >
+                    <apex:facet name="header">Description of Item</apex:facet>
+                    <apex:outputField value="{!discount.product.Description_of_item__c}"/>
+                </apex:column>  
+                <apex:column >
+                    <apex:facet name="header">Discount Start Date</apex:facet>
+                    <apex:outputField value="{!discount.product.Discount_Start_Date__c}"/>
+                </apex:column>                    
+                <apex:column >
+                    <apex:facet name="header">Discount End Date</apex:facet>
+                    <apex:outputField value="{!discount.product.Discount_End_Date__c}"/>
+                </apex:column> 
+                <apex:column >
+                    <apex:facet name="header">Score</apex:facet>
+                    <apex:outputField value="{!discount.product.Score__c}"/>
+                </apex:column>                  
+            </apex:pageBlockTable>  
+            
+            
+        </apex:pageBlock>
+           
+        <apex:commandButton value="Save" action="{!save}"/>
+        <apex:commandButton value="Cancel" action="{!Cancel}"/>        
+        
+    </apex:form>    
+     -->
+</apex:page>

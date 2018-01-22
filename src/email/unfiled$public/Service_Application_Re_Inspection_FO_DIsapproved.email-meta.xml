@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to customer upon Re/Inspection FO is disapproved</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Service Application: Re/Inspection FO DIsapproved</name>
+    <style>none</style>
+    <subject>MERALCO: Your service entrance is not ready for service connection (SA Ref.: {!Case.CaseNumber})</subject>
+    <type>text</type>
+</EmailTemplate>

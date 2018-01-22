@@ -1,0 +1,109 @@
+<apex:page >
+<!-- Begin Default Content REMOVE THIS -->
+
+<table id="URLx"> 
+	<tbody> 
+		<tr>
+			<th colspan="2"><h1>Production</h1></th>
+		</tr>
+
+		<tr>
+			<td>Login:</td>
+			<td><apex:outputLink value="https://meralco.my.salesforce.com" id="ProdLogin">https://meralco.my.salesforce.com</apex:outputLink></td>
+		</tr>
+		<tr>
+			<td>Username format</td>
+			<td>xxx@meralco.com.ph</td>
+		</tr>
+		<tr>
+			<td>Customer Community</td>
+			<td><apex:outputLink value="https://meralco.force.com/customers" id="ProdCC">https://meralco.force.com/customers</apex:outputLink></td>
+		</tr>
+		<tr>
+			<td>Web-to-case</td>
+			<td><apex:outputLink value="http://meralco.com.ph/electric-service-application" id="ProdW2C">http://meralco.com.ph/electric-service-application</apex:outputLink></td>
+		</tr>
+		<tr>
+			<td>Web-to-case for Kiosks</td>
+			<td><apex:outputLink value="http://meralco.com.ph/electric-service-application-kiosk" id="ProdW2CK">http://meralco.com.ph/electric-service-application-kiosk</apex:outputLink></td>
+		</tr>
+	</tbody>
+
+	<tbody> 
+		<tr>
+			<th colspan="2"><h1>Sandbox-Devevelopment [CS6]</h1></th>
+		</tr>
+
+		<tr>
+			<td>Login</td>
+			<td><apex:outputLink value="https://cs6.salesforce.com" id="DevLogin">https://cs6.salesforce.com</apex:outputLink></td>
+		</tr>
+		<tr>
+
+			<td>Username format</td>
+			<td>xxx@meralco.com.ph.sameralco</td>
+		</tr>
+		<tr>
+			<td>Customer Community</td>
+			<td><apex:outputLink value="https://sameralco-meralcodev.cs6.force.com/home/home.jsp" id="DevCC">https://sameralco-meralcodev.cs6.force.com/home/home.jsp</apex:outputLink></td>
+		</tr>
+		<tr>
+			<td>Web-to-case</td>
+			<td><apex:outputLink value="http://meralco.com.ph/projectclicksandbox" id="DevW2C">http://meralco.com.ph/projectclicksandbox</apex:outputLink></td>
+		</tr>
+		<tr>
+			<td>Web-to-case for Kiosks</td>
+			<td><apex:outputLink value="http://meralco.com.ph/projectclicksandbox-kiosk" id="DevW2CK">http://meralco.com.ph/projectclicksandbox-kiosk</apex:outputLink></td>
+		</tr>
+	</tbody>
+
+
+	<tbody> 
+
+		<tr>
+			<th colspan="2"><h1>Sandbox-Prodcopy [CS5]</h1></th>
+		</tr>
+
+		<tr>
+			<td>Login</td>
+			<td><apex:outputLink value="https://cs5.salesforce.com" id="ProdCopyLogin">https://cs5.salesforce.com</apex:outputLink></td>
+		</tr>
+
+		<tr>
+
+			<td>Username format</td>
+			<td>xxx@meralco.com.ph.prodcopy</td>
+		</tr>
+
+
+		<tr>
+			<td>Customer Community</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Web-to-case</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Web-to-case for Kiosks</td>
+			<td></td>
+		</tr>
+	</tbody>
+
+
+</table>
+
+<style>
+
+	table#URLx th {
+		background-color: black;
+		color: white;
+	}
+	table#URLx th, td{
+		padding: 5px;
+		text-align: left;
+	}
+</style>
+
+<!-- End Default Content REMOVE THIS -->
+</apex:page>

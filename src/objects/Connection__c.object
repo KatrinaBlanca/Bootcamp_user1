@@ -1,0 +1,1890 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Connection_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>CXE_Connection_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CXE_Connection_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Service__c</fields>
+        <fields>Serial_number__c</fields>
+        <fields>Meter_Status__c</fields>
+        <label>CXE Connection Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fieldSets>
+        <fullName>Connection_Information_Set</fullName>
+        <description>VF Page</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Account__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>EAN__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Utility_type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Connection_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Connection Information Set</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Delivery_Address_Set</fullName>
+        <description>VF Page</description>
+        <displayedFields>
+            <field>Delivery_Street__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Delivery_Postal_Code__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Delivery_City__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Delivery_State__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Delivery_Country__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Delivery Address Set</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Meter_Information</fullName>
+        <description>Vf Page</description>
+        <displayedFields>
+            <field>Serial_number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Reading_Frequency__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Connection_Member_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Next_reading_date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Connection_Direction__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Meter_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Meter Information</label>
+    </fieldSets>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Connections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Applied_Load__c</fullName>
+        <externalId>false</externalId>
+        <label>Applied Load</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Connections</relationshipLabel>
+        <relationshipName>Connections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Code_Meter_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Meter Status</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Reading_Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Reading Frequency</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Connection_Direction__c</fullName>
+        <description>This picklist indicates whether the Connection is used for Consumption or Injection.</description>
+        <externalId>false</externalId>
+        <label>Connection Direction</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Consumption</fullName>
+                    <default>false</default>
+                    <label>Consumption</label>
+                </value>
+                <value>
+                    <fullName>Production</fullName>
+                    <default>false</default>
+                    <label>Production</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Connection_Member_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Connection Member Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>MMR consumption</fullName>
+                    <default>false</default>
+                    <label>MMR consumption</label>
+                </value>
+                <value>
+                    <fullName>AMR calculated  values</fullName>
+                    <default>false</default>
+                    <label>AMR calculated  values</label>
+                </value>
+                <value>
+                    <fullName>AMR daily consumption</fullName>
+                    <default>false</default>
+                    <label>AMR daily consumption</label>
+                </value>
+                <value>
+                    <fullName>AMR consumption monthly</fullName>
+                    <default>false</default>
+                    <label>AMR consumption monthly</label>
+                </value>
+                <value>
+                    <fullName>AMR periodic consumption</fullName>
+                    <default>false</default>
+                    <label>AMR periodic consumption</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Connection_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Connection Status</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contracted_Capacity__c</fullName>
+        <externalId>false</externalId>
+        <label>Contracted Capacity</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery City</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery Country</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery Postal Code</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery State</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_Street__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery Street</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Demand_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Demand Factor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EAN__c</fullName>
+        <externalId>false</externalId>
+        <label>EAN</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_Order__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Field Order</label>
+        <referenceTo>Field_Order__c</referenceTo>
+        <relationshipLabel>Connections</relationshipLabel>
+        <relationshipName>Connections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GSL4__c</fullName>
+        <externalId>false</externalId>
+        <label>GSL4</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Installation_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Installation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Load_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Load Factor</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MRID_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>MRID Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Barangay__c</fullName>
+        <externalId>false</externalId>
+        <label>Barangay</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pinagbuhatan</fullName>
+                    <default>false</default>
+                    <label>Pinagbuhatan</label>
+                </value>
+                <value>
+                    <fullName>Buayang Bato</fullName>
+                    <default>false</default>
+                    <label>Buayang Bato</label>
+                </value>
+                <value>
+                    <fullName>Bagong Ilog</fullName>
+                    <default>false</default>
+                    <label>Bagong Ilog</label>
+                </value>
+                <value>
+                    <fullName>Bagong Katipunan</fullName>
+                    <default>false</default>
+                    <label>Bagong Katipunan</label>
+                </value>
+                <value>
+                    <fullName>Bambang</fullName>
+                    <default>false</default>
+                    <label>Bambang</label>
+                </value>
+                <value>
+                    <fullName>Buting</fullName>
+                    <default>false</default>
+                    <label>Buting</label>
+                </value>
+                <value>
+                    <fullName>Caniogan</fullName>
+                    <default>false</default>
+                    <label>Caniogan</label>
+                </value>
+                <value>
+                    <fullName>Dela Paz</fullName>
+                    <default>false</default>
+                    <label>Dela Paz</label>
+                </value>
+                <value>
+                    <fullName>Kalawaan</fullName>
+                    <default>false</default>
+                    <label>Kalawaan</label>
+                </value>
+                <value>
+                    <fullName>Kapasigan</fullName>
+                    <default>false</default>
+                    <label>Kapasigan</label>
+                </value>
+                <value>
+                    <fullName>Kapitolyo</fullName>
+                    <default>false</default>
+                    <label>Kapitolyo</label>
+                </value>
+                <value>
+                    <fullName>Malinao</fullName>
+                    <default>false</default>
+                    <label>Malinao</label>
+                </value>
+                <value>
+                    <fullName>Manggahan</fullName>
+                    <default>false</default>
+                    <label>Manggahan</label>
+                </value>
+                <value>
+                    <fullName>Maybunga</fullName>
+                    <default>false</default>
+                    <label>Maybunga</label>
+                </value>
+                <value>
+                    <fullName>N Aquino Pilot Com (Napico)</fullName>
+                    <default>false</default>
+                    <label>N Aquino Pilot Com (Napico)</label>
+                </value>
+                <value>
+                    <fullName>Oranbo</fullName>
+                    <default>false</default>
+                    <label>Oranbo</label>
+                </value>
+                <value>
+                    <fullName>Palatiw</fullName>
+                    <default>false</default>
+                    <label>Palatiw</label>
+                </value>
+                <value>
+                    <fullName>Pasig City (Isolated)</fullName>
+                    <default>false</default>
+                    <label>Pasig City (Isolated)</label>
+                </value>
+                <value>
+                    <fullName>Pineda</fullName>
+                    <default>false</default>
+                    <label>Pineda</label>
+                </value>
+                <value>
+                    <fullName>Rosario</fullName>
+                    <default>false</default>
+                    <label>Rosario</label>
+                </value>
+                <value>
+                    <fullName>Sagad</fullName>
+                    <default>false</default>
+                    <label>Sagad</label>
+                </value>
+                <value>
+                    <fullName>San Antonio</fullName>
+                    <default>false</default>
+                    <label>San Antonio</label>
+                </value>
+                <value>
+                    <fullName>San Joaquin</fullName>
+                    <default>false</default>
+                    <label>San Joaquin</label>
+                </value>
+                <value>
+                    <fullName>San Jose</fullName>
+                    <default>false</default>
+                    <label>San Jose</label>
+                </value>
+                <value>
+                    <fullName>San Nicolas</fullName>
+                    <default>false</default>
+                    <label>San Nicolas</label>
+                </value>
+                <value>
+                    <fullName>Santolan</fullName>
+                    <default>false</default>
+                    <label>Santolan</label>
+                </value>
+                <value>
+                    <fullName>San Miguel</fullName>
+                    <default>false</default>
+                    <label>San Miguel</label>
+                </value>
+                <value>
+                    <fullName>Sta. Cruz</fullName>
+                    <default>false</default>
+                    <label>Sta. Cruz</label>
+                </value>
+                <value>
+                    <fullName>Sta. Lucia</fullName>
+                    <default>false</default>
+                    <label>Sta. Lucia</label>
+                </value>
+                <value>
+                    <fullName>Sta. Rosa</fullName>
+                    <default>false</default>
+                    <label>Sta. Rosa</label>
+                </value>
+                <value>
+                    <fullName>Sto. Tomas</fullName>
+                    <default>false</default>
+                    <label>Sto. Tomas</label>
+                </value>
+                <value>
+                    <fullName>Sumilang</fullName>
+                    <default>false</default>
+                    <label>Sumilang</label>
+                </value>
+                <value>
+                    <fullName>Ugong</fullName>
+                    <default>false</default>
+                    <label>Ugong</label>
+                </value>
+                <value>
+                    <fullName>Aguho</fullName>
+                    <default>false</default>
+                    <label>Aguho</label>
+                </value>
+                <value>
+                    <fullName>Magtanggol</fullName>
+                    <default>false</default>
+                    <label>Magtanggol</label>
+                </value>
+                <value>
+                    <fullName>Martires Del 96</fullName>
+                    <default>false</default>
+                    <label>Martires Del 96</label>
+                </value>
+                <value>
+                    <fullName>Poblacion</fullName>
+                    <default>false</default>
+                    <label>Poblacion</label>
+                </value>
+                <value>
+                    <fullName>San Pedro</fullName>
+                    <default>false</default>
+                    <label>San Pedro</label>
+                </value>
+                <value>
+                    <fullName>San Roque</fullName>
+                    <default>false</default>
+                    <label>San Roque</label>
+                </value>
+                <value>
+                    <fullName>Sta. Ana</fullName>
+                    <default>false</default>
+                    <label>Sta. Ana</label>
+                </value>
+                <value>
+                    <fullName>Sto Rosario-Kanluran</fullName>
+                    <default>false</default>
+                    <label>Sto Rosario-Kanluran</label>
+                </value>
+                <value>
+                    <fullName>Sto Rosario-Silangan</fullName>
+                    <default>false</default>
+                    <label>Sto Rosario-Silangan</label>
+                </value>
+                <value>
+                    <fullName>Tabacalera</fullName>
+                    <default>false</default>
+                    <label>Tabacalera</label>
+                </value>
+                <value>
+                    <fullName>Bagumbayan</fullName>
+                    <default>false</default>
+                    <label>Bagumbayan</label>
+                </value>
+                <value>
+                    <fullName>Calzada</fullName>
+                    <default>false</default>
+                    <label>Calzada</label>
+                </value>
+                <value>
+                    <fullName>Hagonoy</fullName>
+                    <default>false</default>
+                    <label>Hagonoy</label>
+                </value>
+                <value>
+                    <fullName>Ibayo-Tipas</fullName>
+                    <default>false</default>
+                    <label>Ibayo-Tipas</label>
+                </value>
+                <value>
+                    <fullName>Ligid-Tipas</fullName>
+                    <default>false</default>
+                    <label>Ligid-Tipas</label>
+                </value>
+                <value>
+                    <fullName>Napindan</fullName>
+                    <default>false</default>
+                    <label>Napindan</label>
+                </value>
+                <value>
+                    <fullName>Palingon</fullName>
+                    <default>false</default>
+                    <label>Palingon</label>
+                </value>
+                <value>
+                    <fullName>Tuktukan</fullName>
+                    <default>false</default>
+                    <label>Tuktukan</label>
+                </value>
+                <value>
+                    <fullName>Ususan</fullName>
+                    <default>false</default>
+                    <label>Ususan</label>
+                </value>
+                <value>
+                    <fullName>Wawa</fullName>
+                    <default>false</default>
+                    <label>Wawa</label>
+                </value>
+                <value>
+                    <fullName>Cainta (Isolated)</fullName>
+                    <default>false</default>
+                    <label>Cainta (Isolated)</label>
+                </value>
+                <value>
+                    <fullName>San Andres</fullName>
+                    <default>false</default>
+                    <label>San Andres</label>
+                </value>
+                <value>
+                    <fullName>San Juan</fullName>
+                    <default>false</default>
+                    <label>San Juan</label>
+                </value>
+                <value>
+                    <fullName>Bagong Lipunan Ng Crame/Cubao</fullName>
+                    <default>false</default>
+                    <label>Bagong Lipunan Ng Crame/Cubao</label>
+                </value>
+                <value>
+                    <fullName>Addition Hills</fullName>
+                    <default>false</default>
+                    <label>Addition Hills</label>
+                </value>
+                <value>
+                    <fullName>Bagong Silang</fullName>
+                    <default>false</default>
+                    <label>Bagong Silang</label>
+                </value>
+                <value>
+                    <fullName>Barangka Drive</fullName>
+                    <default>false</default>
+                    <label>Barangka Drive</label>
+                </value>
+                <value>
+                    <fullName>Barangka Ibaba</fullName>
+                    <default>false</default>
+                    <label>Barangka Ibaba</label>
+                </value>
+                <value>
+                    <fullName>Barangka Ilaya</fullName>
+                    <default>false</default>
+                    <label>Barangka Ilaya</label>
+                </value>
+                <value>
+                    <fullName>Barangka Itaas</fullName>
+                    <default>false</default>
+                    <label>Barangka Itaas</label>
+                </value>
+                <value>
+                    <fullName>Burol</fullName>
+                    <default>false</default>
+                    <label>Burol</label>
+                </value>
+                <value>
+                    <fullName>Daang Bakal</fullName>
+                    <default>false</default>
+                    <label>Daang Bakal</label>
+                </value>
+                <value>
+                    <fullName>Hagdang Bato Itaas</fullName>
+                    <default>false</default>
+                    <label>Hagdang Bato Itaas</label>
+                </value>
+                <value>
+                    <fullName>Hagdang Bato Libis</fullName>
+                    <default>false</default>
+                    <label>Hagdang Bato Libis</label>
+                </value>
+                <value>
+                    <fullName>Harapin Ang Bukas</fullName>
+                    <default>false</default>
+                    <label>Harapin Ang Bukas</label>
+                </value>
+                <value>
+                    <fullName>Highway Hills</fullName>
+                    <default>false</default>
+                    <label>Highway Hills</label>
+                </value>
+                <value>
+                    <fullName>Hulo</fullName>
+                    <default>false</default>
+                    <label>Hulo</label>
+                </value>
+                <value>
+                    <fullName>Mabini-J. Rizal</fullName>
+                    <default>false</default>
+                    <label>Mabini-J. Rizal</label>
+                </value>
+                <value>
+                    <fullName>Malamig</fullName>
+                    <default>false</default>
+                    <label>Malamig</label>
+                </value>
+                <value>
+                    <fullName>Mauway</fullName>
+                    <default>false</default>
+                    <label>Mauway</label>
+                </value>
+                <value>
+                    <fullName>Namayan</fullName>
+                    <default>false</default>
+                    <label>Namayan</label>
+                </value>
+                <value>
+                    <fullName>New Zaniga</fullName>
+                    <default>false</default>
+                    <label>New Zaniga</label>
+                </value>
+                <value>
+                    <fullName>Old Zaniga</fullName>
+                    <default>false</default>
+                    <label>Old Zaniga</label>
+                </value>
+                <value>
+                    <fullName>Pag-Asa</fullName>
+                    <default>false</default>
+                    <label>Pag-Asa</label>
+                </value>
+                <value>
+                    <fullName>Plainview</fullName>
+                    <default>false</default>
+                    <label>Plainview</label>
+                </value>
+                <value>
+                    <fullName>Pleasant Hills</fullName>
+                    <default>false</default>
+                    <label>Pleasant Hills</label>
+                </value>
+                <value>
+                    <fullName>Vergara</fullName>
+                    <default>false</default>
+                    <label>Vergara</label>
+                </value>
+                <value>
+                    <fullName>Wack-Wack Greenhills East</fullName>
+                    <default>false</default>
+                    <label>Wack-Wack Greenhills East</label>
+                </value>
+                <value>
+                    <fullName>Balong-Bato</fullName>
+                    <default>false</default>
+                    <label>Balong-Bato</label>
+                </value>
+                <value>
+                    <fullName>Batis</fullName>
+                    <default>false</default>
+                    <label>Batis</label>
+                </value>
+                <value>
+                    <fullName>Corazon De Jesus</fullName>
+                    <default>false</default>
+                    <label>Corazon De Jesus</label>
+                </value>
+                <value>
+                    <fullName>Ermitano</fullName>
+                    <default>false</default>
+                    <label>Ermitano</label>
+                </value>
+                <value>
+                    <fullName>Greenhills</fullName>
+                    <default>false</default>
+                    <label>Greenhills</label>
+                </value>
+                <value>
+                    <fullName>Isabelita</fullName>
+                    <default>false</default>
+                    <label>Isabelita</label>
+                </value>
+                <value>
+                    <fullName>Kabayanan</fullName>
+                    <default>false</default>
+                    <label>Kabayanan</label>
+                </value>
+                <value>
+                    <fullName>Little Baguio</fullName>
+                    <default>false</default>
+                    <label>Little Baguio</label>
+                </value>
+                <value>
+                    <fullName>Maytunas</fullName>
+                    <default>false</default>
+                    <label>Maytunas</label>
+                </value>
+                <value>
+                    <fullName>Onse</fullName>
+                    <default>false</default>
+                    <label>Onse</label>
+                </value>
+                <value>
+                    <fullName>Pasadena</fullName>
+                    <default>false</default>
+                    <label>Pasadena</label>
+                </value>
+                <value>
+                    <fullName>Pedro Cruz</fullName>
+                    <default>false</default>
+                    <label>Pedro Cruz</label>
+                </value>
+                <value>
+                    <fullName>Progreso</fullName>
+                    <default>false</default>
+                    <label>Progreso</label>
+                </value>
+                <value>
+                    <fullName>Rivera</fullName>
+                    <default>false</default>
+                    <label>Rivera</label>
+                </value>
+                <value>
+                    <fullName>Salapan</fullName>
+                    <default>false</default>
+                    <label>Salapan</label>
+                </value>
+                <value>
+                    <fullName>San Perfecto</fullName>
+                    <default>false</default>
+                    <label>San Perfecto</label>
+                </value>
+                <value>
+                    <fullName>St. Joseph</fullName>
+                    <default>false</default>
+                    <label>St. Joseph</label>
+                </value>
+                <value>
+                    <fullName>Tibagan</fullName>
+                    <default>false</default>
+                    <label>Tibagan</label>
+                </value>
+                <value>
+                    <fullName>West Crame</fullName>
+                    <default>false</default>
+                    <label>West Crame</label>
+                </value>
+                <value>
+                    <fullName>Bangkal</fullName>
+                    <default>false</default>
+                    <label>Bangkal</label>
+                </value>
+                <value>
+                    <fullName>Bel-Air</fullName>
+                    <default>false</default>
+                    <label>Bel-Air</label>
+                </value>
+                <value>
+                    <fullName>Carmona</fullName>
+                    <default>false</default>
+                    <label>Carmona</label>
+                </value>
+                <value>
+                    <fullName>Cembo</fullName>
+                    <default>false</default>
+                    <label>Cembo</label>
+                </value>
+                <value>
+                    <fullName>Comembo</fullName>
+                    <default>false</default>
+                    <label>Comembo</label>
+                </value>
+                <value>
+                    <fullName>Dasmarinas</fullName>
+                    <default>false</default>
+                    <label>Dasmarinas</label>
+                </value>
+                <value>
+                    <fullName>East Rembo</fullName>
+                    <default>false</default>
+                    <label>East Rembo</label>
+                </value>
+                <value>
+                    <fullName>Forbes Park</fullName>
+                    <default>false</default>
+                    <label>Forbes Park</label>
+                </value>
+                <value>
+                    <fullName>Guadalupe Nuevo</fullName>
+                    <default>false</default>
+                    <label>Guadalupe Nuevo</label>
+                </value>
+                <value>
+                    <fullName>Guadalupe Viejo</fullName>
+                    <default>false</default>
+                    <label>Guadalupe Viejo</label>
+                </value>
+                <value>
+                    <fullName>Kasilawan</fullName>
+                    <default>false</default>
+                    <label>Kasilawan</label>
+                </value>
+                <value>
+                    <fullName>La Paz</fullName>
+                    <default>false</default>
+                    <label>La Paz</label>
+                </value>
+                <value>
+                    <fullName>Magallanes</fullName>
+                    <default>false</default>
+                    <label>Magallanes</label>
+                </value>
+                <value>
+                    <fullName>Makati (Isolated)</fullName>
+                    <default>false</default>
+                    <label>Makati (Isolated)</label>
+                </value>
+                <value>
+                    <fullName>Makati City</fullName>
+                    <default>false</default>
+                    <label>Makati City</label>
+                </value>
+                <value>
+                    <fullName>Olympia</fullName>
+                    <default>false</default>
+                    <label>Olympia</label>
+                </value>
+                <value>
+                    <fullName>Palanan</fullName>
+                    <default>false</default>
+                    <label>Palanan</label>
+                </value>
+                <value>
+                    <fullName>Pembo</fullName>
+                    <default>false</default>
+                    <label>Pembo</label>
+                </value>
+                <value>
+                    <fullName>Pinagkaisahan</fullName>
+                    <default>false</default>
+                    <label>Pinagkaisahan</label>
+                </value>
+                <value>
+                    <fullName>Pio Del Pilar</fullName>
+                    <default>false</default>
+                    <label>Pio Del Pilar</label>
+                </value>
+                <value>
+                    <fullName>Pitogo</fullName>
+                    <default>false</default>
+                    <label>Pitogo</label>
+                </value>
+                <value>
+                    <fullName>Post Proper Northside</fullName>
+                    <default>false</default>
+                    <label>Post Proper Northside</label>
+                </value>
+                <value>
+                    <fullName>Post Proper Southside</fullName>
+                    <default>false</default>
+                    <label>Post Proper Southside</label>
+                </value>
+                <value>
+                    <fullName>Rizal</fullName>
+                    <default>false</default>
+                    <label>Rizal</label>
+                </value>
+                <value>
+                    <fullName>San Isidro</fullName>
+                    <default>false</default>
+                    <label>San Isidro</label>
+                </value>
+                <value>
+                    <fullName>San Lorenzo</fullName>
+                    <default>false</default>
+                    <label>San Lorenzo</label>
+                </value>
+                <value>
+                    <fullName>Singkamas</fullName>
+                    <default>false</default>
+                    <label>Singkamas</label>
+                </value>
+                <value>
+                    <fullName>South Cembo</fullName>
+                    <default>false</default>
+                    <label>South Cembo</label>
+                </value>
+                <value>
+                    <fullName>Tejeros</fullName>
+                    <default>false</default>
+                    <label>Tejeros</label>
+                </value>
+                <value>
+                    <fullName>Urdaneta</fullName>
+                    <default>false</default>
+                    <label>Urdaneta</label>
+                </value>
+                <value>
+                    <fullName>Valenzuela</fullName>
+                    <default>false</default>
+                    <label>Valenzuela</label>
+                </value>
+                <value>
+                    <fullName>West Rembo</fullName>
+                    <default>false</default>
+                    <label>West Rembo</label>
+                </value>
+                <value>
+                    <fullName>Fort Bonifacio</fullName>
+                    <default>false</default>
+                    <label>Fort Bonifacio</label>
+                </value>
+                <value>
+                    <fullName>Ato</fullName>
+                    <default>false</default>
+                    <label>Ato</label>
+                </value>
+                <value>
+                    <fullName>Taguig (Isolated)</fullName>
+                    <default>false</default>
+                    <label>Taguig (Isolated)</label>
+                </value>
+                <value>
+                    <fullName>Western Bicutan</fullName>
+                    <default>false</default>
+                    <label>Western Bicutan</label>
+                </value>
+                <value>
+                    <fullName>Pinagsama</fullName>
+                    <default>false</default>
+                    <label>Pinagsama</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_City_Municipal__c</fullName>
+        <externalId>false</externalId>
+        <label>City / Municipality</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cainta</fullName>
+                    <default>false</default>
+                    <label>Cainta</label>
+                </value>
+                <value>
+                    <fullName>Makati City</fullName>
+                    <default>false</default>
+                    <label>Makati City</label>
+                </value>
+                <value>
+                    <fullName>Mandaluyong</fullName>
+                    <default>false</default>
+                    <label>Mandaluyong</label>
+                </value>
+                <value>
+                    <fullName>Manila City</fullName>
+                    <default>false</default>
+                    <label>Manila City</label>
+                </value>
+                <value>
+                    <fullName>Pasig City</fullName>
+                    <default>false</default>
+                    <label>Pasig City</label>
+                </value>
+                <value>
+                    <fullName>Pateros</fullName>
+                    <default>false</default>
+                    <label>Pateros</label>
+                </value>
+                <value>
+                    <fullName>Q. C.-Kaunlaran Dist 4</fullName>
+                    <default>false</default>
+                    <label>Q. C.-Kaunlaran Dist 4</label>
+                </value>
+                <value>
+                    <fullName>San Juan</fullName>
+                    <default>false</default>
+                    <label>San Juan</label>
+                </value>
+                <value>
+                    <fullName>Taguig City</fullName>
+                    <default>false</default>
+                    <label>Taguig City</label>
+                </value>
+                <value>
+                    <fullName>Taytay</fullName>
+                    <default>false</default>
+                    <label>Taytay</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Country__c</fullName>
+        <defaultValue>&quot;Philippines&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Meter Address Country</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Geocode_Accuracy__c</fullName>
+        <externalId>false</externalId>
+        <label>Meter Address Geocode Accuracy</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Address</fullName>
+                    <default>false</default>
+                    <label>Address</label>
+                </value>
+                <value>
+                    <fullName>NearAddress</fullName>
+                    <default>false</default>
+                    <label>NearAddress</label>
+                </value>
+                <value>
+                    <fullName>Block</fullName>
+                    <default>false</default>
+                    <label>Block</label>
+                </value>
+                <value>
+                    <fullName>Street</fullName>
+                    <default>false</default>
+                    <label>Street</label>
+                </value>
+                <value>
+                    <fullName>ExtendedZip</fullName>
+                    <default>false</default>
+                    <label>ExtendedZip</label>
+                </value>
+                <value>
+                    <fullName>Zip</fullName>
+                    <default>false</default>
+                    <label>Zip</label>
+                </value>
+                <value>
+                    <fullName>Neighborhood</fullName>
+                    <default>false</default>
+                    <label>Neighborhood</label>
+                </value>
+                <value>
+                    <fullName>City</fullName>
+                    <default>false</default>
+                    <label>City</label>
+                </value>
+                <value>
+                    <fullName>County</fullName>
+                    <default>false</default>
+                    <label>County</label>
+                </value>
+                <value>
+                    <fullName>State</fullName>
+                    <default>false</default>
+                    <label>State</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Latitude__c</fullName>
+        <externalId>false</externalId>
+        <label>Latitude</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>15</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Longitude__c</fullName>
+        <externalId>false</externalId>
+        <label>Longitude</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>15</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Province__c</fullName>
+        <externalId>false</externalId>
+        <label>Province</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Metro Manila</fullName>
+                    <default>false</default>
+                    <label>Metro Manila</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Street_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Street Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Street_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Street #</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Subdivision__c</fullName>
+        <externalId>false</externalId>
+        <label>Subdivision</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Unit_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Unit No</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address_Zip_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Zip/Postal Code</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Meter_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Meter_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Meter Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <default>false</default>
+                    <label>Inactive</label>
+                </value>
+                <value>
+                    <fullName>Sealed</fullName>
+                    <default>false</default>
+                    <label>Sealed</label>
+                </value>
+                <value>
+                    <fullName>Created</fullName>
+                    <default>false</default>
+                    <label>Created</label>
+                </value>
+                <value>
+                    <fullName>Removed</fullName>
+                    <default>false</default>
+                    <label>Removed</label>
+                </value>
+                <value>
+                    <fullName>Reserved</fullName>
+                    <default>false</default>
+                    <label>Reserved</label>
+                </value>
+                <value>
+                    <fullName>Scrapped</fullName>
+                    <default>false</default>
+                    <label>Scrapped</label>
+                </value>
+                <value>
+                    <fullName>Maintenance</fullName>
+                    <default>false</default>
+                    <label>Maintenance</label>
+                </value>
+                <value>
+                    <fullName>Requested</fullName>
+                    <default>false</default>
+                    <label>Requested</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Meter_Tag_Sent__c</fullName>
+        <externalId>false</externalId>
+        <label>Meter Tag Sent?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Metering_Point_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Legacy Metering Point ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Metering_Point_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Metering Point Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Active</fullName>
+                    <default>false</default>
+                    <label>Active</label>
+                </value>
+                <value>
+                    <fullName>Locked</fullName>
+                    <default>false</default>
+                    <label>Locked</label>
+                </value>
+                <value>
+                    <fullName>Vacant</fullName>
+                    <default>false</default>
+                    <label>Vacant</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Next_reading_date__c</fullName>
+        <externalId>false</externalId>
+        <label>Next Reading Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Phase__c</fullName>
+        <externalId>false</externalId>
+        <label>Phase</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Single Phase (1Ø), Two (2)-Wire,</fullName>
+                    <default>false</default>
+                    <label>Single Phase (1Ø), Two (2)-Wire,</label>
+                </value>
+                <value>
+                    <fullName>Single Phase (1Ø), Network,</fullName>
+                    <default>false</default>
+                    <label>Single Phase (1Ø), Network,</label>
+                </value>
+                <value>
+                    <fullName>Three Phase (3Ø), Four (4)-Wire (Grounded Wye),</fullName>
+                    <default>false</default>
+                    <label>Three Phase (3Ø), Four (4)-Wire (Grounded Wye),</label>
+                </value>
+                <value>
+                    <fullName>Three Phase (3Ø), Three (3)-Wire (Delta),</fullName>
+                    <default>false</default>
+                    <label>Three Phase (3Ø), Three (3)-Wire (Delta),</label>
+                </value>
+                <value>
+                    <fullName>Single Phase (1Ø), Three (3)-Wire,</fullName>
+                    <default>false</default>
+                    <label>Single Phase (1Ø), Three (3)-Wire,</label>
+                </value>
+                <value>
+                    <fullName>Three Phase (3Ø), Four (4)-Wire (Delta),</fullName>
+                    <default>false</default>
+                    <label>Three Phase (3Ø), Four (4)-Wire (Delta),</label>
+                </value>
+                <value>
+                    <fullName>Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta)</fullName>
+                    <default>false</default>
+                    <label>Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Reading_Frequency__c</fullName>
+        <externalId>false</externalId>
+        <label>Reading Frequency</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Monthly</fullName>
+                    <default>false</default>
+                    <label>Monthly</label>
+                </value>
+                <value>
+                    <fullName>Two monthly</fullName>
+                    <default>false</default>
+                    <label>Bi-monthly</label>
+                </value>
+                <value>
+                    <fullName>Three monthly</fullName>
+                    <default>false</default>
+                    <label>Quarterly</label>
+                </value>
+                <value>
+                    <fullName>Half-Yearly</fullName>
+                    <default>false</default>
+                    <label>Semi-Annually</label>
+                </value>
+                <value>
+                    <fullName>Yearly</fullName>
+                    <default>false</default>
+                    <label>Annually</label>
+                </value>
+                <value>
+                    <fullName>Tele</fullName>
+                    <default>false</default>
+                    <label>Tele</label>
+                </value>
+                <value>
+                    <fullName>Unmeasured</fullName>
+                    <default>false</default>
+                    <label>Unmeasured</label>
+                </value>
+                <value>
+                    <fullName>Daily</fullName>
+                    <default>false</default>
+                    <label>Daily</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SAP_Installation_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>SAP Installation Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Serial_number__c</fullName>
+        <externalId>false</externalId>
+        <label>Meter Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Supply_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Supply Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Normal with meter</fullName>
+                    <default>false</default>
+                    <label>Normal with meter</label>
+                </value>
+                <value>
+                    <fullName>Streetlight with meter</fullName>
+                    <default>false</default>
+                    <label>Streetlight with meter</label>
+                </value>
+                <value>
+                    <fullName>Normal without meter</fullName>
+                    <default>false</default>
+                    <label>Normal without meter</label>
+                </value>
+                <value>
+                    <fullName>Temporary with meter</fullName>
+                    <default>false</default>
+                    <label>Temporary with meter</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service</label>
+        <referenceTo>Agreement__c</referenceTo>
+        <relationshipLabel>Connections</relationshipLabel>
+        <relationshipName>Connections</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Utility_type__c</fullName>
+        <externalId>false</externalId>
+        <label>Utility Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Electricity</fullName>
+                    <default>false</default>
+                    <label>Electricity</label>
+                </value>
+                <value>
+                    <fullName>Gas</fullName>
+                    <default>false</default>
+                    <label>Gas</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Voltage__c</fullName>
+        <externalId>false</externalId>
+        <label>Voltage</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>69/39 kV</fullName>
+                    <default>false</default>
+                    <label>69/39 kV</label>
+                </value>
+                <value>
+                    <fullName>115/66 kV</fullName>
+                    <default>false</default>
+                    <label>115/66 kV</label>
+                </value>
+                <value>
+                    <fullName>6.24/3.60 kV</fullName>
+                    <default>false</default>
+                    <label>6.24/3.60 kV</label>
+                </value>
+                <value>
+                    <fullName>13.2/7.62 kV</fullName>
+                    <default>false</default>
+                    <label>13.2/7.62 kV</label>
+                </value>
+                <value>
+                    <fullName>13.8/7.97 kV</fullName>
+                    <default>false</default>
+                    <label>13.8/7.97 kV</label>
+                </value>
+                <value>
+                    <fullName>34.5/19.92 kV</fullName>
+                    <default>false</default>
+                    <label>34.5/19.92 kV</label>
+                </value>
+                <value>
+                    <fullName>216 V</fullName>
+                    <default>false</default>
+                    <label>216 V</label>
+                </value>
+                <value>
+                    <fullName>230 V</fullName>
+                    <default>false</default>
+                    <label>230 V</label>
+                </value>
+                <value>
+                    <fullName>460/265 V</fullName>
+                    <default>false</default>
+                    <label>460/265 V</label>
+                </value>
+                <value>
+                    <fullName>400/230 V</fullName>
+                    <default>false</default>
+                    <label>400/230 V</label>
+                </value>
+                <value>
+                    <fullName>4.8 kV</fullName>
+                    <default>false</default>
+                    <label>4.8 kV</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Connection</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Service__c</columns>
+        <columns>Installation_Date__c</columns>
+        <columns>Meter_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllGas</fullName>
+        <columns>NAME</columns>
+        <columns>Service__c</columns>
+        <columns>Installation_Date__c</columns>
+        <columns>Meter_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Utility_type__c</field>
+            <operation>equals</operation>
+            <value>Gas</value>
+        </filters>
+        <label>All Gas Connections</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Electricity_Connections</fullName>
+        <columns>NAME</columns>
+        <columns>Service__c</columns>
+        <columns>Installation_Date__c</columns>
+        <columns>Meter_Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Utility_type__c</field>
+            <operation>equals</operation>
+            <value>Electricity</value>
+        </filters>
+        <label>All Electricity Connections</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>CONN-{00000000}</displayFormat>
+        <label>Connection ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Connections</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Delivery_Postal_Code__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Delivery_Street__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Serial_number__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Delivery_Postal_Code__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Delivery_Street__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Serial_number__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>Account__c</lookupFilterFields>
+        <lookupFilterFields>Connection_Status__c</lookupFilterFields>
+        <lookupFilterFields>Delivery_Postal_Code__c</lookupFilterFields>
+        <lookupFilterFields>Delivery_Street__c</lookupFilterFields>
+        <lookupFilterFields>Meter_Status__c</lookupFilterFields>
+        <lookupFilterFields>Utility_type__c</lookupFilterFields>
+        <lookupPhoneDialogsAdditionalFields>Account__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Delivery_Postal_Code__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Delivery_Street__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Serial_number__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Account__c</searchFilterFields>
+        <searchFilterFields>Connection_Direction__c</searchFilterFields>
+        <searchFilterFields>Delivery_City__c</searchFilterFields>
+        <searchFilterFields>Delivery_Country__c</searchFilterFields>
+        <searchFilterFields>Delivery_Postal_Code__c</searchFilterFields>
+        <searchFilterFields>Delivery_State__c</searchFilterFields>
+        <searchFilterFields>Delivery_Street__c</searchFilterFields>
+        <searchFilterFields>Meter_Status__c</searchFilterFields>
+        <searchFilterFields>Utility_type__c</searchFilterFields>
+        <searchResultsAdditionalFields>Service__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Installation_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Meter_Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>Modification_of_meter_requires_SA</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(NOT($Profile.Name = &apos;System Administrator&apos;),NOT(ISBLANK(  Serial_number__c )))</errorConditionFormula>
+        <errorMessage>Modification of meter requires the creation of a case</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

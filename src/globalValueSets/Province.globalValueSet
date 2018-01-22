@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>BATANGAS</fullName>
+        <default>false</default>
+        <label>BATANGAS</label>
+    </customValue>
+    <customValue>
+        <fullName>BULACAN</fullName>
+        <default>false</default>
+        <label>BULACAN</label>
+    </customValue>
+    <customValue>
+        <fullName>METRO MANILA</fullName>
+        <default>false</default>
+        <label>METRO MANILA</label>
+    </customValue>
+    <customValue>
+        <fullName>CAVITE</fullName>
+        <default>false</default>
+        <label>CAVITE</label>
+    </customValue>
+    <customValue>
+        <fullName>LAGUNA</fullName>
+        <default>false</default>
+        <label>LAGUNA</label>
+    </customValue>
+    <customValue>
+        <fullName>RIZAL</fullName>
+        <default>false</default>
+        <label>RIZAL</label>
+    </customValue>
+    <customValue>
+        <fullName>QUEZON</fullName>
+        <default>false</default>
+        <label>QUEZON</label>
+    </customValue>
+    <customValue>
+        <fullName>PAMPANGA</fullName>
+        <default>false</default>
+        <label>PAMPANGA</label>
+    </customValue>
+    <customValue>
+        <fullName>NUEVA ECIJA</fullName>
+        <default>false</default>
+        <label>NUEVA ECIJA</label>
+    </customValue>
+    <customValue>
+        <fullName>FLAT STREETLIGHT</fullName>
+        <default>false</default>
+        <label>FLAT STREETLIGHT</label>
+    </customValue>
+    <masterLabel>Province</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

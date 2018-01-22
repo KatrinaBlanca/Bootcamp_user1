@@ -1,0 +1,372 @@
+<apex:page docType="html-5.0" controller="CommodityProductsConfiguratorController" tabStyle="Opportunity">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<apex:stylesheet value="{!URLFOR($Resource.LighteningStyleSheet,'assets/styles/salesforce-lightning-design-system-ltng.css')}"/>
+    <!-- Unfortunately dynamic tab styles is not possible. Using Opportunity as default. -->
+    <apex:stylesheet value="/resource/jqueryUICSS" id="jquerUICSS"/>
+    
+    <style type="text/css">
+        .width-50-pct { 
+            width: 50%; 
+        }
+        
+        .width-33-pct { 
+            width: 33%; 
+        }   
+        .cs{ border-bottom: 1px solid #C4B771;
+       border-top :2px solid #DDB929;
+    }
+    .vertical_line{height:10px; width:1px;background:#FF0000;} 
+ span.tab{
+    padding:  500px; /* Or desired space*/
+}
+    </style>
+    <style>
+        input[type=radio] { margin-left: 100px;}
+        .radioClass { margin-left: -100px;}
+    </style>
+    
+    <!-- <apex:pageMessages /> 
+    <div class="slds">
+    <div class="slds-media">    
+      <div class="slds-media__figure">
+        <span class="slds-avatar slds-avatar--small">
+          <span class="slds-icon__container slds-icon-standard-opportunity">
+            <svg aria-hidden="true" class="slds-icon">
+              <use xlink:href="{!URLFOR($Resource.LighteningStyleSheet,'assets/icons/standard-sprite/svg/symbols.svg#opportunity')}"></use>        
+            </svg>
+          </span>
+        </span>
+      </div>
+      <div class="slds-media__body">
+        <p class="slds-text-heading--label">{!title}</p>
+        <h1 class="slds-text-heading--medium">{!subtitle}</h1>
+      </div>
+      
+    </div> -->
+   <!-- <apex:sectionHeader title="{!title}" subtitle="{!subtitle}"/> -->
+  <!-- </div>
+     
+     <c:ConnectionSearchComponent listener="{!this}" defaultCity="{!acc.BillingCity}" defaultStreet="{!acc.BillingStreet}" defaultPostalcode="{!acc.BillingPostalcode}" defaultElectricity="True" defaultGas="True" autoSearch="true" id="ConnectionSearchId"/>
+    
+     <apex:form >
+     <div class="slds"> -->
+     <!--
+     <apex:pageblock rendered="{!if(productsize > 0,true,false)}">
+     
+         <apex:pageblockButtons location="top">
+             <apex:commandButton value="Estimate EAV" action="{!showpopup}" immediate="True" rerender="hiddenblock,popup">
+             </apex:commandbutton>  
+        </apex:pageblockButtons>
+     
+     </apex:pageblock>
+    
+        -->   
+          
+     
+            <!-- <table  class="table" cellspacing="20" width="100%">
+                <apex:outputPanel id="productoverview">
+                <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover" cellspacing="20" width="100%" >
+                    <div style="background-color:#DDB929; color:white; padding:2px;"></div> <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <apex:commandButton value="Estimate EAV" action="{!showpopup}" immediate="True" rerender="hiddenblock,popup" rendered="{!if(productsize > 0,true,false)}" styleclass="slds-button slds-button--brand">
+                         </apex:commandbutton><br/>
+                    <apex:repeat value="{!connectionIdToProductIdMap}" var="connectionId">
+                      <br/>  <p class="cs"><span></span></p>{!connectionIdToConnectionMap[connectionId].Utility_Type__c} - {!connectionIdToConnectionMap[connectionId].Name}
+                    <div style="background-color:#DDB929; color:white; padding:2px;">
+                    Filter Criteria</div> <br/>
+                        <apex:outputLabel value="Contract Duration" for="Duration"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <apex:selectList id="Duration" label="" value="{!connectionIdTofilterMap[connectionId]}" size="1">
+                                    <apex:selectOption itemValue="All" itemLabel="All"/>
+                                    <apex:selectOption itemValue="Variable" itemLabel="Variable"/>
+                                    <apex:selectOption itemValue="1 Year" itemLabel="1 Year"/>
+                                    <apex:selectOption itemValue="2 Years" itemLabel="2 Years"/>
+                                    <apex:selectOption itemValue="3 Years" itemLabel="3 Years"/>
+                                    <apex:selectOption itemValue="4 Years" itemLabel="4 Years"/>
+                                    <apex:selectOption itemValue="5 Years" itemLabel="5 Years"/>
+                                    <apex:actionSupport action="{!filter}" event="onchange" reRender="{!$Component.productoverview}" status="{!$Component.filter}"/>
+                                </apex:selectList>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <apex:outputLabel value="Fee Type" for="Feetype"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                
+                                <apex:selectList id="Feetype" label="" value="{!connectionIdTofilterFeeMap[connectionId]}" size="1">
+                                    <apex:selectOption itemValue="All" itemLabel="All"/>
+                                    <apex:selectOption itemValue="Fixed" itemLabel="Fixed"/>
+                                    <apex:selectOption itemValue="Variable" itemLabel="Variable"/>
+                                    <apex:actionSupport action="{!filter}" event="onchange" reRender="{!$Component.productoverview}" status="{!$Component.filter}"/>
+                                </apex:selectList>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <apex:outputLabel value="Brand" for="Brand" id="branding"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <apex:selectList id="Brand" label="" value="{!connectionIdTofilterBrandMap[connectionId]}" size="1">
+                                    <apex:selectOption itemValue="All" itemLabel="All"/>
+                                    <apex:selectOption itemValue="ARPU Luxurious Brand" itemLabel="ARPU Luxurious Brand"/>
+                                    <apex:selectOption itemValue="ARPU Price Fighter Brand" itemLabel="ARPU Price Fighter Brand"/>
+                                    <apex:selectOption itemValue="ARPU Standard Brand" itemLabel="ARPU Standard Brand"/>
+                                    <apex:selectOption itemValue="ARPU Eco Brand" itemLabel="ARPU Eco Brand"/>
+                                    <apex:actionSupport action="{!filter}" event="onchange" reRender="{!$Component.productoverview}" status="{!$Component.filter}"/>
+                                </apex:selectList>&nbsp;&nbsp;&nbsp;&nbsp;
+                                EAV&nbsp;&nbsp;&nbsp;&nbsp; <apex:inputField value="{!connectionIdToOpportunityLineItemMap[connectionId].EAV__c}" id="test">
+                            <apex:actionSupport event="onchange" 
+                                                    reRender="{!$Component.commercialProductOverview}"
+                                                    status="{!$Component.filter}"/>                                   
+                            </apex:inputField><br/> <br/>
+                            <apex:actionStatus id="filter">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image url="/img/loading.gif"/>
+                                    <br/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                            <div style="background-color:#DDB929; color:white; padding:2px;">
+                            Products</div>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <apex:selectRadio value="{!connectionIdToProductIdMap[connectionId]}" 
+                                              required="false" styleClass="radioClass">
+                                             &nbsp;
+                                  <apex:selectOptions value="{!connectionIdToProductSelectOptionsMap[connectionId]}"/>
+                                  <apex:actionSupport event="onchange" 
+                                                reRender="{!$Component.commercialProductOverview}, {!$Component.parameters_panel}"
+                                                status="{!$Component.cpvloading}"/> 
+                                             
+                              </apex:selectRadio>
+                              <apex:actionStatus id="cpvLoading">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image url="/img/loading.gif"/>
+                                    <br/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus> 
+                        <br/><br/>
+                
+                </apex:repeat>
+                <apex:commandButton value="Cancel" action="{!Cancel}" styleclass="slds-button slds-button--neutral"/>
+              
+                <apex:commandButton value="Save & Non-Commodity" action="{!saveandNoncom}" styleclass="slds-button slds-button--neutral"/>
+                <apex:commandButton value="Save & Discount" action="{!saveanddiscount}" styleclass="slds-button slds-button--neutral"/>
+                  <apex:commandButton value="Save" action="{!save}" styleclass="slds-button slds-button--brand"/> 
+                
+                </table>
+                </apex:outputPanel>
+            </table> -->
+             
+            
+         <!--
+            <apex:pageBlock title="{!connectionIdToConnectionMap[connectionId].Utility_Type__c} - {!connectionIdToConnectionMap[connectionId].Name}" id="block">
+            
+                    <apex:pageMessages />
+                
+                <!--<apex:panelGrid columns="3" width="100%" columnClasses="width-33-pct">-->
+                      
+                    <!--<apex:outputPanel >-->
+                    <!--
+                        <apex:pageblocksection title="Filter Criteria">
+                        <apex:panelGrid columns="4" width="110%" columnClasses="width-50-pct">
+                        
+                        <apex:pageBlockSection >
+                           
+                                <apex:outputLabel value="Contract Duration" for="Duration"/>
+                                <apex:selectList id="Duration" label="" value="{!connectionIdTofilterMap[connectionId]}" size="1">
+                                    <apex:selectOption itemValue="All" itemLabel="All"/>
+                                    <apex:selectOption itemValue="Variable" itemLabel="Variable"/>
+                                    <apex:selectOption itemValue="1 Year" itemLabel="1 Year"/>
+                                    <apex:selectOption itemValue="2 Years" itemLabel="2 Years"/>
+                                    <apex:selectOption itemValue="3 Years" itemLabel="3 Years"/>
+                                    <apex:selectOption itemValue="4 Years" itemLabel="4 Years"/>
+                                    <apex:selectOption itemValue="5 Years" itemLabel="5 Years"/>
+                                    <apex:actionSupport action="{!filter}" event="onchange" reRender="{!$Component.block},{!$Component.productoverview}" status="{!$Component.filter}"/>
+                                </apex:selectList>
+                                
+                               
+                        </apex:pageBlockSection>
+                           
+                            
+                        <apex:pageBlockSection >
+                          
+                                <apex:outputLabel value="Fee Type" for="Feetype"/>
+                                
+                                <apex:selectList id="Feetype" label="" value="{!connectionIdTofilterFeeMap[connectionId]}" size="1">
+                                    <apex:selectOption itemValue="All" itemLabel="All"/>
+                                    <apex:selectOption itemValue="Fixed" itemLabel="Fixed"/>
+                                    <apex:selectOption itemValue="Variable" itemLabel="Variable"/>
+                                    <apex:actionSupport action="{!filter}" event="onchange" reRender="{!$Component.block},{!$Component.productoverview}" status="{!$Component.filter}"/>
+                                </apex:selectList>
+                                                           
+                        </apex:pageBlockSection>
+                        
+                            
+                        <apex:pageBlockSection >
+                                <apex:outputLabel value="Brand" for="Brand" id="branding"/>
+                                <apex:selectList id="Brand" label="" value="{!connectionIdTofilterBrandMap[connectionId]}" size="1">
+                                    <apex:selectOption itemValue="All" itemLabel="All"/>
+                                    <apex:selectOption itemValue="ARPU Luxurious Brand" itemLabel="ARPU Luxurious Brand"/>
+                                    <apex:selectOption itemValue="ARPU Price Fighter Brand" itemLabel="ARPU Price Fighter Brand"/>
+                                    <apex:selectOption itemValue="ARPU Standard Brand" itemLabel="ARPU Standard Brand"/>
+                                    <apex:selectOption itemValue="ARPU Eco Brand" itemLabel="ARPU Eco Brand"/>
+                                    <apex:actionSupport action="{!filter}" event="onchange" reRender="{!$Component.block},{!$Component.productoverview}" status="{!$Component.filter}"/>
+                                </apex:selectList>                            
+                        </apex:pageBlockSection>
+                            
+                        <apex:pageblocksection rendered="{!if(opportunity.id!=null,true,false)}">
+                            <apex:inputField value="{!connectionIdToOpportunityLineItemMap[connectionId].EAV__c}" id="test">
+                            <apex:actionSupport event="onchange" 
+                                                    reRender="{!$Component.commercialProductOverview}, {!$Component.parameters_panel}"
+                                                    status="{!$Component.filter}"/>                                   
+                            </apex:inputField>
+                            </apex:pageBlockSection>
+                             <apex:pageBlockSection rendered="{!if(Quote!=null,true,false)}">
+                             <apex:inputField value="{!connectionIdToQuoteLineItemMap[connectionId].EAV__c}" >
+                                <apex:actionSupport event="onchange" 
+                                                    reRender="{!$Component.commercialProductOverview}, {!$Component.parameters_panel}"
+                                                    status="{!$Component.filter}"/>                                   
+                            </apex:inputField>
+                        </apex:pageBlockSection>
+                        
+                       <apex:actionStatus id="filter">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image url="/img/loading.gif"/>
+                                    <br/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus>
+                        </apex:panelgrid>  
+                        
+                       </apex:pageblocksection>
+                        
+                        
+                    <apex:pageBlockSection title="Products">        
+                    <!--</apex:outputPanel>--->
+                   <!--<div class="slds">-->
+                    <!--<div class="slds-grid slds-grid--align-spread">-->
+                        <!--<div class="slds-col--padded"> -->                       
+                       <!--      <apex:selectRadio value="{!connectionIdToProductIdMap[connectionId]}" 
+                                              required="false" styleClass="radioClass">
+                                              &nbsp;
+                                  <apex:selectOptions value="{!connectionIdToProductSelectOptionsMap[connectionId]}"/>
+                                  <apex:actionSupport event="onchange" 
+                                                reRender="{!$Component.commercialProductOverview}, {!$Component.parameters_panel}"
+                                                status="{!$Component.cpvloading}"/> 
+                                              
+                                            
+                              </apex:selectRadio>
+                              <!--<apex:outputtext value="{!prodtoproddescmap[connectionId]}"/>-->
+                              <!--<apex:outputfield label="" value="{!prodtoproddescmap[connectionIdToProductIdMap[connectionId]]}"/>-->
+                       <!--  </div>
+                         
+                       
+                     </div>  
+                    </div>  
+                    </apex:panelGrid>--> 
+                    
+                   <!-- 
+                    <apex:actionStatus id="cpvLoading">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image url="/img/loading.gif"/>
+                                    <br/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                        </apex:actionStatus> 
+                    
+                    </apex:pageblocksection>
+                    
+                    
+                    <apex:pageBlockSection title="Product Details" id="commercialProductOverview">   
+                    <apex:outputPanel >
+                               
+                        <apex:outputPanel rendered="{!!ISBlank(trim(connectionIdToProductIdMap[connectionId]))}" id="productoverview">
+                            <c:CommercialProductOverview prodId="{!connectionIdToProductIdMap[connectionId]}" 
+                                                         eav="{!connectionIdToOpportunityLineItemMap[connectionId].EAV__c}"/>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <!--</apex:panelGrid>-->
+                 <!--
+                    <apex:outputPanel >
+                        <apex:pageBlockSection title="Parameters" columns="2" id="electricity" collapsible="false" 
+                                               rendered="{!connectionIdToConnectionMap[connectionId].Utility_Type__c=='Electricity' &&
+                                                           productIdToB2BProductMap[connectionIdToProductIdMap[connectionId]]}">
+                            <apex:repeat value="{!$ObjectType.opportunityLineItem.FieldSets.Electricity_B2B}" var="f">
+                                <apex:inputField value="{!connectionIdToOpportunityLineItemMap[connectionId][f]}"/>
+                            </apex:repeat>
+                        </apex:pageBlockSection>
+                    
+                        <apex:pageBlockSection title="Parameters" columns="2" id="gas" collapsible="false" 
+                                               rendered="{!connectionIdToConnectionMap[connectionId].Utility_Type__c=='Gas' &&
+                                                         productIdToB2BProductMap[connectionIdToProductIdMap[connectionId]]}">
+                            <apex:repeat value="{!$ObjectType.opportunityLineItem.FieldSets.Gas_B2B}" var="f">
+                                <apex:inputField value="{!connectionIdToOpportunityLineItemMap[connectionId][f]}"/>
+                            </apex:repeat>                    
+                        </apex:pageBlockSection>  
+                    </apex:outputPanel>
+                </apex:pageblocksection>    
+                   
+            </apex:pageBlock> -->
+        <!--
+        <apex:commandButton value="Save" action="{!save}"/>
+        <apex:commandButton value="Save & Non-Commodity" action="{!saveandNoncom}"/>
+        <apex:commandButton value="Save & Discount" action="{!saveanddiscount}"/>
+        <apex:commandButton value="Cancel" action="{!Cancel}"/> -->
+        
+        <!-- <apex:outputPanel id="popup"> -->
+       <!-- <apex:pageblock > -->
+        <!-- <table  class="table" cellspacing="20" width="100%">
+            <apex:outputpanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}" />
+                <apex:outputPanel styleClass="customPopup" layout="block" rendered="{!displayPopUp}"> -->
+                 <!--  <apex:pageblocksection title="EAV Estimate Details" collapsible="false"> -->
+                      <!-- <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover" cellspacing="20" width="100%" >
+                        
+                       <div style="background-color:#DDB929; color:white; padding:2px;">
+                           EAV Estimate Details</div> <br/>
+                         <apex:repeat value="{!labeltovaluemap}" var="Question">
+                        <apex:outputlabel style="font-weight:bold" value="{!Question}"/>
+                            <apex:selectList id="picklist" styleclass="std" size="1" value="{!labeltoanswermap[Question]}">
+                               
+                                <apex:selectOptions value="{!labeltovaluemap[Question]}"/>
+                            </apex:selectList>
+                            <br/>
+                        </apex:repeat>&nbsp; -->
+                        
+                <!--   </apex:pageblocksection>-->
+                        <!--   </table> 
+                    <apex:outputPanel >
+                        <div align="center">
+                            
+                            <apex:commandButton value="Cancel" action="{!closePopup}"  rerender="popup" immediate="true" styleclass="slds-button slds-button--neutral"/>
+                            <apex:commandButton value="Generate EAV" action="{!calculateeav}" styleclass="slds-button slds-button--brand"/>
+                        </div>
+                    </apex:outputPanel>
+            </apex:outputPanel>
+            </table>  -->
+       <!-- </apex:pageblock>   -->
+        <!-- </apex:outputPanel>
+        </div>    
+    </apex:form> -->
+    
+    <style type="text/css">
+       .popupBackground{
+             background-color:black;
+             opacity: 0.60;
+             position:absolute;
+             width: 100%;
+             height: 100%;
+             top: 0;
+             left: 0;
+             z-index: 9998;
+         }     
+       .customPopup{
+            background-color: white;
+            left: 50%;
+            padding:10px;
+            position: fixed;
+            z-index: 9999;           
+            width: 550px;          /* Please adjust according to the screen */
+            height:250px;          /* Please adjust according to the screen */
+            margin-left:-275px;    /* Please adjust according to the screen */
+            top:100px;
+            
+        }
+    </style>
+    
+</html>
+</apex:page>

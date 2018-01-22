@@ -1,0 +1,36 @@
+<messaging:emailTemplate subject="MERALCO – Your electric service has already been terminated!" recipientType="Contact" relatedToType="Case">
+ <messaging:htmlEmailBody >
+ <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Dear <b>{!IF((relatedTo.Last_Name_Business_Name__c == null), relatedTo.First_Name__c, relatedTo.Last_Name_Business_Name__c)}</b>, <br/>
+        <br></br>
+        <br></br>
+        This is to confirm the completion of your request for the termination of electric service for Service ID No. {!relatedTo.CXE_Service__r.SIN__c} filed by {!relatedTo.CXE_Contractor_Name__c} covered by reference no. {!relatedTo.CaseNumber}. <br/>
+        <br></br>
+        <br></br>
+        The details of the terminated service are as follows: <br/>
+        <br></br>
+        <b>
+        Service Identification No.: {!relatedTo.CXE_Service__r.SIN__c}<br/>
+        Registered Customer: {!IF(relatedTo.Last_Name_Business_Name__c == null, relatedTo.Full_Name_Concatenated__c, relatedTo.Last_Name_Business_Name__c)}<br/>
+        Service Address: {!relatedTo.CXE_Service_Address__c}<br/>
+        <c:CXE_ServBillAddWeb serv="{!relatedTo.Service_Address_from_Web__c}" bill="{!relatedTo.Billing_Address_from_Web__c}"/> 
+        Landline No.: {!relatedTo.Telephone_No__c}<br/>
+        </b> 
+        <br></br>
+        You may expect the final bill for your electric service within 5 working days.  This may be requested to be deducted from your bill deposit.  Otherwise, we request settlement prior refund processing of your bill deposit.<br/>
+        <br></br>
+        For more information on the refund of bill deposit, or re-activation of electric service in the future, you may visit www.meralco.com.ph.<br/>
+        <br></br>
+        For other questions, clarifications, and immediate assistance, please call our 24-hour customer care hotline 16211 or email us at ask@meralco.com.ph.<br/>
+        <br></br>
+        Thank you and we look forward in serving you again.<br/>
+        <br></br>
+        <b>MERALCO</b><br/>
+        <br></br>
+        <br></br>
+        <br></br>
+       <c:CXE_Footer_R2 />
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

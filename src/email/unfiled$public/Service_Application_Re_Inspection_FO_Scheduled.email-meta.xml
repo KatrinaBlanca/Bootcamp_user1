@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to customer upon Re/Inspection FO is scheduled</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Service Application: Re/Inspection FO Scheduled</name>
+    <style>none</style>
+    <subject>MERALCO: Inspection of your service entrance has been scheduled (SA Ref.: {!Case.CaseNumber})</subject>
+    <type>text</type>
+</EmailTemplate>

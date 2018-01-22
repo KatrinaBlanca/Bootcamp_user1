@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Additional_Load__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Additional Load</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Change_in_Name__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Change in Name</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Reduction_in_Load__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Reduction in Load</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Relocation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Relocation</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Remodel__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Remodel</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Service Request Type Field Setting</label>
+    <pluralLabel>Service Request Type Field Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Master Product Discount</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Master Product Discounts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Master Product --></label>
+        <name>Master_Product__c</name>
+        <relationshipLabel><!-- Discounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Discount Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- Master Products --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Discount to Master Product Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Can&apos;t change values of an Active Product --></errorMessage>
+        <name>Active_product_cant_be_changed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Can&apos;t change values of an Archived Product --></errorMessage>
+        <name>Archived_product_cant_be_changed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t add new Master Product Item to an Archived Product --></errorMessage>
+        <name>Cant_Add_New_Values_to_Archived_Product</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t add new Master Product Discount Item to an Active Product --></errorMessage>
+        <name>Cant_Add_new_values_to_Active_Product</name>
+    </validationRules>
+</CustomObjectTranslation>

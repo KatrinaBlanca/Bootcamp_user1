@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to customer upon Pre-Survey FO Resolved with MS Pickup</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Service Application: Pre-Survey FO Resolved MS Pickup</name>
+    <style>none</style>
+    <subject>MERALCO: Survey of your premises has been completed (SA Ref.: {!Case.CaseNumber})</subject>
+    <type>text</type>
+</EmailTemplate>

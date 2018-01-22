@@ -1,0 +1,37 @@
+<messaging:emailTemplate subject="MERALCO – We've received your application!" recipientType="Contact" relatedToType="Case">
+    <messaging:htmlEmailBody >
+        
+        <c:CXE_Header />
+
+        <br></br>
+        <br></br>
+        Dear <b><c:CXE_AuthRepOrFirstName caseRecord="{!relatedTo.Id}"/></b>, <br/>
+        <br></br>
+        <br></br>
+        We’ve received your application for modification of service for business with reference no. {!relatedTo.CaseNumber}.  Please keep this handy in tracking the progress of the service application. <br/> 
+        <br></br>
+        Below are the details of the application: <br/>
+        <b> Service Request/s: {!relatedTo.CXE_Service_Request_s__c} <br/>
+        Service Identification No.: {!relatedTo.CXE_Service__r.SIN__c} <br/>
+        Registered Customer: {!relatedTo.CXE_Service__r.Account__r.Name} <br/>
+        <c:CXE_NewRegCustomer caseRecord="{!relatedTo.Id}"/>
+        <c:CXE_EmailCaseServBillAddress serId="{!relatedTo.CXE_Service__c}" contrId="{!relatedTo.CXE_Service__r.Contract__c}"/><br/>
+        Landline No.: {!relatedTo.Telephone_No__c} <br/>
+        <br></br>
+        <c:CXE_AuthRepDetails caseRecord="{!relatedTo.Id}"/> <br/>
+        <br></br>
+        <c:CXE_EmailAMCTag caseRecord="{!relatedTo.Id}"/> </b><br/>
+        <br></br>
+        Please expect a MERALCO field personnel to conduct an on-site inspection of the facilities within 3 working days.  Our customer care officer may also get in touch with you for additional information on the application.. <br/>
+        <br></br>
+        Thank you and we look forward in serving you. <br/>
+         <br></br>
+        <br></br>
+        <b>MERALCO </b><br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

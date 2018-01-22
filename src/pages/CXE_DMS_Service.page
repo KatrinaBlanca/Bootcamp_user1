@@ -1,0 +1,12 @@
+<apex:page standardController="Agreement__c">
+
+    <apex:slds />
+    
+    <c:CXE_DMS_Upload service_id="{!Agreement__c.Id}" 
+        account_id="{!Agreement__c.Account__c}" 
+        case_id="{!Agreement__c.Case__c}"
+        type="service" 
+        account_name="{!Agreement__c.Account__r.Name}" 
+        sin="{!Agreement__c.SIN__c}"></c:CXE_DMS_Upload>
+
+</apex:page>

@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Requirement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Requirements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Can Delete --></label>
+        <name>Can_Delete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Requirements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Remarks --></label>
+        <name>Remarks__c</name>
+    </fields>
+    <fields>
+        <help><!-- Requirement for service application evaluation procecss --></help>
+        <label><!-- Requirement Type --></label>
+        <name>Requirement_Type__c</name>
+        <picklistValues>
+            <masterLabel>Authorization Documents</masterLabel>
+            <translation><!-- Authorization Documents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Final Electrical Inspection</masterLabel>
+            <translation><!-- Certificate of Final Electrical Inspection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer’s Service Application Warranty</masterLabel>
+            <translation><!-- Customer’s Service Application Warranty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documents for Correction of Name</masterLabel>
+            <translation><!-- Documents for Correction of Name --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documents for Special Discounts and Tax Privileges</masterLabel>
+            <translation><!-- Documents for Special Discounts and Tax Privileges --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electric Load Documents</masterLabel>
+            <translation><!-- Electric Load Documents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energization Date Agreement Form</masterLabel>
+            <translation><!-- Energization Date Agreement Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Identification</masterLabel>
+            <translation><!-- Proof of Identification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Occupancy</masterLabel>
+            <translation><!-- Proof of Occupancy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RES Document Requirements</masterLabel>
+            <translation><!-- RES Document Requirements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Request for Electric Service Documents</masterLabel>
+            <translation><!-- Request for Electric Service Documents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Right of Way Grant</masterLabel>
+            <translation><!-- Right of Way Grant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Application Requirements</masterLabel>
+            <translation><!-- Service Application Requirements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Level Requirement</masterLabel>
+            <translation><!-- Service Level Requirement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tax Identification Documents</masterLabel>
+            <translation><!-- Tax Identification Documents --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transaction Level Requirement</masterLabel>
+            <translation><!-- Transaction Level Requirement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undertaking to Submit Pending Document/s</masterLabel>
+            <translation><!-- Undertaking to Submit Pending Document/s --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Requirement for service application evaluation procecss --></help>
+        <label><!-- Requirement --></label>
+        <name>Requirement__c</name>
+        <picklistValues>
+            <masterLabel>Energization Requirement</masterLabel>
+            <translation><!-- Energization Requirement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Load Requirement</masterLabel>
+            <translation><!-- Load Requirement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Requirements</masterLabel>
+            <translation><!-- Other Requirements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Identification</masterLabel>
+            <translation><!-- Proof of Identification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Valid Occupancy</masterLabel>
+            <translation><!-- Proof of Valid Occupancy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Representative Requirements</masterLabel>
+            <translation><!-- Representative Requirements --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tax Identification Document</masterLabel>
+            <translation><!-- Tax Identification Document --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Status of supporting document(s) --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Deferred</masterLabel>
+            <translation><!-- Deferred --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Existing</masterLabel>
+            <translation><!-- Existing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Submitted</masterLabel>
+            <translation><!-- Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Waived</masterLabel>
+            <translation><!-- Waived --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Specific supporting document required for service application evaluation process --></help>
+        <label><!-- Supporting Document --></label>
+        <name>Supporting_Document__c</name>
+        <picklistValues>
+            <masterLabel>AUBD Annexes</masterLabel>
+            <translation><!-- AUBD Annexes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Acknowledgement Receipt for Deposit Credited</masterLabel>
+            <translation><!-- Acknowledgement Receipt for Deposit Credited --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Agreement for Extension of Lines and/or Additional Facilities (CA Agreement)</masterLabel>
+            <translation><!-- Agreement for Extension of Lines and/or Additional Facilities (CA Agreement) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amended Articles of Incorporation</masterLabel>
+            <translation><!-- Amended Articles of Incorporation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amended Articles of Partnership, if applicable</masterLabel>
+            <translation><!-- Amended Articles of Partnership, if applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Annual Information Form</masterLabel>
+            <translation><!-- Annual Information Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Annual Update of Bill Deposit (AUBD) Notification Letter</masterLabel>
+            <translation><!-- Annual Update of Bill Deposit (AUBD) Notification Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Letter for SCID</masterLabel>
+            <translation><!-- Application Letter for SCID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application for BIR Registration (Forms 1901, 1902, 1903, 1905, 2303, 0605)</masterLabel>
+            <translation><!-- Application for BIR Registration (Forms 1901, 1902, 1903, 1905, 2303, 0605) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Articles of Cooperation, CDA &amp; GIS</masterLabel>
+            <translation><!-- Articles of Cooperation, CDA &amp; GIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Articles of Partnership &amp; SEC Registration</masterLabel>
+            <translation><!-- Articles of Partnership &amp; SEC Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Artist Record Book (POEA-issued)</masterLabel>
+            <translation><!-- Artist Record Book (POEA-issued) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authority to Move-in</masterLabel>
+            <translation><!-- Authority to Move-in --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authorization Letter / SPA</masterLabel>
+            <translation><!-- Authorization Letter / SPA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authorization letter</masterLabel>
+            <translation><!-- Authorization letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authorization letter to transact with MERALCO</masterLabel>
+            <translation><!-- Authorization letter to transact with MERALCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authorized Withholding Agent (AWA) Notice from BIR</masterLabel>
+            <translation><!-- Authorized Withholding Agent (AWA) Notice from BIR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIR Certificate</masterLabel>
+            <translation><!-- BIR Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIR Certificate of Registration</masterLabel>
+            <translation><!-- BIR Certificate of Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIR Certificate of VAT Exemption</masterLabel>
+            <translation><!-- BIR Certificate of VAT Exemption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIR Form 2307</masterLabel>
+            <translation><!-- BIR Form 2307 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BIR Ruling on the exemption being claimed</masterLabel>
+            <translation><!-- BIR Ruling on the exemption being claimed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BOI Certification</masterLabel>
+            <translation><!-- BOI Certification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangay Certificate</masterLabel>
+            <translation><!-- Barangay Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangay Certificate / Notarized Affidavit of 2 Disinterested Persons</masterLabel>
+            <translation><!-- Barangay Certificate / Notarized Affidavit of 2 Disinterested Persons --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangay Certificate with Picture, Signature and Dry Seal</masterLabel>
+            <translation><!-- Barangay Certificate with Picture, Signature and Dry Seal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangay/Sangguniang Bayan Resolution</masterLabel>
+            <translation><!-- Barangay/Sangguniang Bayan Resolution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bill Deposit Notification Letter</masterLabel>
+            <translation><!-- Bill Deposit Notification Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bill Deposit Notification Letter Transmittal/Receiving Copy</masterLabel>
+            <translation><!-- Bill Deposit Notification Letter Transmittal/Receiving Copy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Birth Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</masterLabel>
+            <translation><!-- Birth Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Board Resolution</masterLabel>
+            <translation><!-- Board Resolution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business TIN</masterLabel>
+            <translation><!-- Business TIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Tax Identification</masterLabel>
+            <translation><!-- Business Tax Identification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CFEI</masterLabel>
+            <translation><!-- CFEI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMELEC Voter&apos;s ID</masterLabel>
+            <translation><!-- COMELEC Voter&apos;s ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRB Switch Approval</masterLabel>
+            <translation><!-- CRB Switch Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Accreditation issued by the Bureau of Exporter Trade Promotion (BETP)/PHILEXPORT under Republic Act 7844</masterLabel>
+            <translation><!-- Certificate of Accreditation issued by the Bureau of Exporter Trade Promotion (BETP)/PHILEXPORT under Republic Act 7844 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Compliance</masterLabel>
+            <translation><!-- Certificate of Compliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Contestability</masterLabel>
+            <translation><!-- Certificate of Contestability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Creditable Tax Withheld at Source (Form 2307)</masterLabel>
+            <translation><!-- Certificate of Creditable Tax Withheld at Source (Form 2307) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Final Electrical Inspection</masterLabel>
+            <translation><!-- Certificate of Final Electrical Inspection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Final Electrical Inspection (CFEI)</masterLabel>
+            <translation><!-- Certificate of Final Electrical Inspection (CFEI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Registration (SEC - first page only, CDA, NEA, HLURB, BIR, etc.)</masterLabel>
+            <translation><!-- Certificate of Registration (SEC - first page only, CDA, NEA, HLURB, BIR, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Registration (e.g. DTI, SEC, BIR, etc.)</masterLabel>
+            <translation><!-- Certificate of Registration (e.g. DTI, SEC, BIR, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Sale</masterLabel>
+            <translation><!-- Certificate of Sale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certification Issued to CRB for Regular Switch</masterLabel>
+            <translation><!-- Certification Issued to CRB for Regular Switch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certification Issued to CRB for Termination of Service</masterLabel>
+            <translation><!-- Certification Issued to CRB for Termination of Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certified True Copy of Charter</masterLabel>
+            <translation><!-- Certified True Copy of Charter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Charter</masterLabel>
+            <translation><!-- Charter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Condominium Certificate of Title</masterLabel>
+            <translation><!-- Condominium Certificate of Title --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Condominium Certificate of Title (CCT)</masterLabel>
+            <translation><!-- Condominium Certificate of Title (CCT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connection Agreement</masterLabel>
+            <translation><!-- Connection Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract for Electric Service</masterLabel>
+            <translation><!-- Contract for Electric Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract of Lease</masterLabel>
+            <translation><!-- Contract of Lease --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract to Sell</masterLabel>
+            <translation><!-- Contract to Sell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy of Cover Memo to CRB of MIRF Submission</masterLabel>
+            <translation><!-- Copy of Cover Memo to CRB of MIRF Submission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy of Cover Memo to RAO on the MIRF Submission of MERALCO</masterLabel>
+            <translation><!-- Copy of Cover Memo to RAO on the MIRF Submission of MERALCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy of Official Receipts (for Bill Deposit Payment)</masterLabel>
+            <translation><!-- Copy of Official Receipts (for Bill Deposit Payment) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy of Official receipts</masterLabel>
+            <translation><!-- Copy of Official receipts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy of Signed ILP Conforme Letter</masterLabel>
+            <translation><!-- Copy of Signed ILP Conforme Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Correspondences from RES&apos;s, CRB, ERC, and other stakeholders</masterLabel>
+            <translation><!-- Correspondences from RES&apos;s, CRB, ERC, and other stakeholders --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders</masterLabel>
+            <translation><!-- Correspondences to RES&apos;s, CRB, ERC, and other stakeholders --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Correspondences to RES&apos;s, CRB, ERC, and other stakeholders Transmittal/Receiving Copy</masterLabel>
+            <translation><!-- Correspondences to RES&apos;s, CRB, ERC, and other stakeholders Transmittal/Receiving Copy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Card</masterLabel>
+            <translation><!-- Credit Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit Card with Photo &amp; Signature</masterLabel>
+            <translation><!-- Credit Card with Photo &amp; Signature --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer’s Service Application Warranty</masterLabel>
+            <translation><!-- Customer’s Service Application Warranty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DFA Certification of association to embassy</masterLabel>
+            <translation><!-- DFA Certification of association to embassy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DSWD Accreditation Certificate</masterLabel>
+            <translation><!-- DSWD Accreditation Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DTI Registration</masterLabel>
+            <translation><!-- DTI Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DWSA Annexes</masterLabel>
+            <translation><!-- DWSA Annexes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deed of Conditional Sale</masterLabel>
+            <translation><!-- Deed of Conditional Sale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deed of Donation</masterLabel>
+            <translation><!-- Deed of Donation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deed of Sale</masterLabel>
+            <translation><!-- Deed of Sale --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DepEd or CHED Certificate of Recognition/Permit</masterLabel>
+            <translation><!-- DepEd or CHED Certificate of Recognition/Permit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Department of Social Welfare and Development (DSWD) Field Office Endorsement Letter for the availment of SCID</masterLabel>
+            <translation><!-- Department of Social Welfare and Development (DSWD) Field Office Endorsement Letter for the availment of SCID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disconnection Waiver</masterLabel>
+            <translation><!-- Disconnection Waiver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Asset Study Fees / Receipts*</masterLabel>
+            <translation><!-- Distribution Asset Study Fees / Receipts* --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Impact Study Fee / Receipt</masterLabel>
+            <translation><!-- Distribution Impact Study Fee / Receipt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Wheeling Service Agreement (DWSA) for Embedded Generators</masterLabel>
+            <translation><!-- Distribution Wheeling Service Agreement (DWSA) for Embedded Generators --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Wheeling Services Agreement (DWSA)</masterLabel>
+            <translation><!-- Distribution Wheeling Services Agreement (DWSA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driver&apos;s License</masterLabel>
+            <translation><!-- Driver&apos;s License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Driver’s License</masterLabel>
+            <translation><!-- Driver’s License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electrical Plan</masterLabel>
+            <translation><!-- Electrical Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energization Date Agreement Form</masterLabel>
+            <translation><!-- Energization Date Agreement Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Final Withholding VAT Request Letter</masterLabel>
+            <translation><!-- Final Withholding VAT Request Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firearm&apos;s License</masterLabel>
+            <translation><!-- Firearm&apos;s License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Firearm’s License</masterLabel>
+            <translation><!-- Firearm’s License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed Assest Boundary Document (FABD)</masterLabel>
+            <translation><!-- Fixed Assest Boundary Document (FABD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Forecast of Ultimate Load</masterLabel>
+            <translation><!-- Forecast of Ultimate Load --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GCS Annexes</masterLabel>
+            <translation><!-- GCS Annexes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GIS &amp; SEC Registration</masterLabel>
+            <translation><!-- GIS &amp; SEC Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GSIS ID</masterLabel>
+            <translation><!-- GSIS ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Information Sheet</masterLabel>
+            <translation><!-- General Information Sheet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Good Credit Standing (GCS) Notification Letter</masterLabel>
+            <translation><!-- Good Credit Standing (GCS) Notification Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government-issued Certificate of Award</masterLabel>
+            <translation><!-- Government-issued Certificate of Award --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HLURB Certificate &amp; HOA List of Officers</masterLabel>
+            <translation><!-- HLURB Certificate &amp; HOA List of Officers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBP ID</masterLabel>
+            <translation><!-- IBP ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITR</masterLabel>
+            <translation><!-- ITR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Income Tax Return (ITR)</masterLabel>
+            <translation><!-- Income Tax Return (ITR) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inter-Connection Agreement (ICA)</masterLabel>
+            <translation><!-- Inter-Connection Agreement (ICA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interruptible Load Program (ILP) Tripartite Agreement</masterLabel>
+            <translation><!-- Interruptible Load Program (ILP) Tripartite Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lease Purchase Agreement</masterLabel>
+            <translation><!-- Lease Purchase Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Letter of Authority</masterLabel>
+            <translation><!-- Letter of Authority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Letter of Intent - Contract Termination</masterLabel>
+            <translation><!-- Letter of Intent - Contract Termination --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Letter requesting for service</masterLabel>
+            <translation><!-- Letter requesting for service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>License to operate from the Bureau of Health Facilities and Services (BHFS) of the DOH</masterLabel>
+            <translation><!-- License to operate from the Bureau of Health Facilities and Services (BHFS) of the DOH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>List of Electrical Loads</masterLabel>
+            <translation><!-- List of Electrical Loads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MERALCO Invitation Letter</masterLabel>
+            <translation><!-- MERALCO Invitation Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MERALCO&apos;s Confirmation of Initial Switch</masterLabel>
+            <translation><!-- MERALCO&apos;s Confirmation of Initial Switch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marriage Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar)</masterLabel>
+            <translation><!-- Marriage Certificate (NSO Certified or Certified True Copy issued by the Local Civil Registrar) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mayor&apos;s Permit</masterLabel>
+            <translation><!-- Mayor&apos;s Permit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metering Installation Registration Form (MIRF) and other attachments</masterLabel>
+            <translation><!-- Metering Installation Registration Form (MIRF) and other attachments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly Remittance Return of Income Taxes Withheld – Expanded (Form 1601E)</masterLabel>
+            <translation><!-- Monthly Remittance Return of Income Taxes Withheld – Expanded (Form 1601E) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NBI Clearance</masterLabel>
+            <translation><!-- NBI Clearance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NHA Certification</masterLabel>
+            <translation><!-- NHA Certification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net-metering Agreement</masterLabel>
+            <translation><!-- Net-metering Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notarized Board Resolution</masterLabel>
+            <translation><!-- Notarized Board Resolution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notarized Special Power of Attorney</masterLabel>
+            <translation><!-- Notarized Special Power of Attorney --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notarized Undertaking for Leased Properties</masterLabel>
+            <translation><!-- Notarized Undertaking for Leased Properties --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notice/Order/Certificate of Award issued by National Government Agencies</masterLabel>
+            <translation><!-- Notice/Order/Certificate of Award issued by National Government Agencies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Notarized and Unexpired Contract of Lease</masterLabel>
+            <translation><!-- Original Notarized and Unexpired Contract of Lease --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (refer to Other Supporting Document)</masterLabel>
+            <translation><!-- Other (refer to Other Supporting Document) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Government-issued ID</masterLabel>
+            <translation><!-- Other Government-issued ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PEZA Certificate of Registration</masterLabel>
+            <translation><!-- PEZA Certificate of Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PEZA Certification</masterLabel>
+            <translation><!-- PEZA Certification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>POEA Artist Record Book</masterLabel>
+            <translation><!-- POEA Artist Record Book --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC ID</masterLabel>
+            <translation><!-- PRC ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRC License</masterLabel>
+            <translation><!-- PRC License --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pag-ibig ID</masterLabel>
+            <translation><!-- Pag-ibig ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passport</masterLabel>
+            <translation><!-- Passport --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PhilHealth ID</masterLabel>
+            <translation><!-- PhilHealth ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Philippine Passport</masterLabel>
+            <translation><!-- Philippine Passport --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Police Clearance</masterLabel>
+            <translation><!-- Police Clearance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Postal ID</masterLabel>
+            <translation><!-- Postal ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power Accounts Data Sheet</masterLabel>
+            <translation><!-- Power Accounts Data Sheet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Proof of Identification</masterLabel>
+            <translation><!-- Proof of Identification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RCOA-Related DOE Circulars</masterLabel>
+            <translation><!-- RCOA-Related DOE Circulars --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RCOA-Related ERC Rules and Resolutions</masterLabel>
+            <translation><!-- RCOA-Related ERC Rules and Resolutions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RES License (Issued by ERC)</masterLabel>
+            <translation><!-- RES License (Issued by ERC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ramp-up Agreement</masterLabel>
+            <translation><!-- Ramp-up Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recent Electric Bill Under the Name of the Customer</masterLabel>
+            <translation><!-- Recent Electric Bill Under the Name of the Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Request letter for Zero-rated VAT</masterLabel>
+            <translation><!-- Request letter for Zero-rated VAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requirements for Master Plan preparation</masterLabel>
+            <translation><!-- Requirements for Master Plan preparation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Counterparty Confirmation Form</masterLabel>
+            <translation><!-- Retail Counterparty Confirmation Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Right of Way Grant</masterLabel>
+            <translation><!-- Right of Way Grant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEC Certificate of Merger</masterLabel>
+            <translation><!-- SEC Certificate of Merger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SEC Registration</masterLabel>
+            <translation><!-- SEC Registration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SSS ID</masterLabel>
+            <translation><!-- SSS ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schedule of Development</masterLabel>
+            <translation><!-- Schedule of Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secretary Certificate</masterLabel>
+            <translation><!-- Secretary Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secretary Certificate or Board Resolution</masterLabel>
+            <translation><!-- Secretary Certificate or Board Resolution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Secretary&apos;s Certificate</masterLabel>
+            <translation><!-- Secretary&apos;s Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Senior Citizen ID</masterLabel>
+            <translation><!-- Senior Citizen ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Application Form</masterLabel>
+            <translation><!-- Service Application Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Signed ILP Compensation Conforme Letter</masterLabel>
+            <translation><!-- Signed ILP Compensation Conforme Letter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Signed and Sealed Electrical Plan (Single line + Load Schedule)</masterLabel>
+            <translation><!-- Signed and Sealed Electrical Plan (Single line + Load Schedule) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Signed and Sealed Electrical Plan (Single line diagram + Load schedule)</masterLabel>
+            <translation><!-- Signed and Sealed Electrical Plan (Single line diagram + Load schedule) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplemental Agreement for Multi Metering per Floor</masterLabel>
+            <translation><!-- Supplemental Agreement for Multi Metering per Floor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplier of Last Resort (SoLR) contract</masterLabel>
+            <translation><!-- Supplier of Last Resort (SoLR) contract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switch Approval</masterLabel>
+            <translation><!-- Switch Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switch Request Form</masterLabel>
+            <translation><!-- Switch Request Form --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TCT</masterLabel>
+            <translation><!-- TCT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIN Card</masterLabel>
+            <translation><!-- TIN Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TIN ID</masterLabel>
+            <translation><!-- TIN ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tax Declaration</masterLabel>
+            <translation><!-- Tax Declaration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tax Declaration, Tax Receipt &amp; Barangay Certificate</masterLabel>
+            <translation><!-- Tax Declaration, Tax Receipt &amp; Barangay Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer Certificate of Title (TCT)</masterLabel>
+            <translation><!-- Transfer Certificate of Title (TCT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UPAO Certification</masterLabel>
+            <translation><!-- UPAO Certification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undertaking</masterLabel>
+            <translation><!-- Undertaking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undertaking for Residential and Non-Residential Applicant-Tenants</masterLabel>
+            <translation><!-- Undertaking for Residential and Non-Residential Applicant-Tenants --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Undertaking to Submit Pending Document/s</masterLabel>
+            <translation><!-- Undertaking to Submit Pending Document/s --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Multi Purpose ID</masterLabel>
+            <translation><!-- Unified Multi Purpose ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unified Multipurpose ID</masterLabel>
+            <translation><!-- Unified Multipurpose ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VAT Undertaking and or Zero-rated Certificate</masterLabel>
+            <translation><!-- VAT Undertaking and or Zero-rated Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VAT Zero-rating PEZA Certificate</masterLabel>
+            <translation><!-- VAT Zero-rating PEZA Certificate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valid ID of the Representative</masterLabel>
+            <translation><!-- Valid ID of the Representative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valid IDs of Applicant</masterLabel>
+            <translation><!-- Valid IDs of Applicant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voter’s ID</masterLabel>
+            <translation><!-- Voter’s ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Written Authorization from the Owner</masterLabel>
+            <translation><!-- Written Authorization from the Owner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zero Vat Certification</masterLabel>
+            <translation><!-- Zero Vat Certification --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>CXE Requirement Page Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Type of Requirement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You can only add 10 Requirements per case --></errorMessage>
+        <name>CXE_Max_Requirement_Count_Validate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only G4 to G1 Users can change Status to &quot;Deferred&quot;. --></errorMessage>
+        <name>CXE_Status_Deferred_Validate_User</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please Select a Supporting Document. --></errorMessage>
+        <name>Documents_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can only add 10 type of requirements per case --></errorMessage>
+        <name>Ensure_Only_10_records_Per_Record</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to updated status after Pending --></errorMessage>
+        <name>Not_allow_to_change_back_to_pending</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Only G4 to G2 Users can change to &quot;Deferred&quot;. --></errorMessage>
+        <name>Only_G4_to_G2_Can_Deffer</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Indicate the CFEI # on the Remarks field when updating the requirement to Submitted. --></errorMessage>
+        <name>Remarks_Required_When_Type_is_CFEI</name>
+    </validationRules>
+</CustomObjectTranslation>

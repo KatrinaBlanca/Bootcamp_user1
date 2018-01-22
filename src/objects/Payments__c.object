@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Overview of Payments</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <description>Account</description>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Payments</relationshipLabel>
+        <relationshipName>Payments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Accounting_Date__c</fullName>
+        <description>Date of payment</description>
+        <externalId>false</externalId>
+        <label>Accounting Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <description>Amount of payment</description>
+        <externalId>false</externalId>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Customer_Bank_Account__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Account</label>
+        <length>26</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_of_Payment__c</fullName>
+        <description>Method of payment applied</description>
+        <externalId>false</externalId>
+        <label>Method of Payment</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Agent_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Agent Details</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Agent_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Agent Sub-Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>Payment_Agent_Type__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HMB (Office, ABC, EOS, Cust Care Center)</fullName>
+                    <default>false</default>
+                    <label>HMB (Office, ABC, EOS, Cust Care Center)</label>
+                </value>
+                <value>
+                    <fullName>Cpay (satellite Ofc)</fullName>
+                    <default>false</default>
+                    <label>Cpay (satellite Ofc)</label>
+                </value>
+                <value>
+                    <fullName>CBG (office)</fullName>
+                    <default>false</default>
+                    <label>CBG (office)</label>
+                </value>
+                <value>
+                    <fullName>Specific bank</fullName>
+                    <default>false</default>
+                    <label>Specific bank</label>
+                </value>
+                <value>
+                    <fullName>Bayad Center</fullName>
+                    <default>false</default>
+                    <label>Bayad Center</label>
+                </value>
+                <value>
+                    <fullName>Smart</fullName>
+                    <default>false</default>
+                    <label>Smart</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Meralco</controllingFieldValue>
+                <valueName>HMB (Office, ABC, EOS, Cust Care Center)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Meralco</controllingFieldValue>
+                <valueName>Cpay (satellite Ofc)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Meralco</controllingFieldValue>
+                <valueName>CBG (office)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Bank</controllingFieldValue>
+                <valueName>Specific bank</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>TPA</controllingFieldValue>
+                <valueName>Bayad Center</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>TPA</controllingFieldValue>
+                <valueName>Smart</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Agent_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Agent Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Meralco</fullName>
+                    <default>false</default>
+                    <label>Meralco</label>
+                </value>
+                <value>
+                    <fullName>Bank</fullName>
+                    <default>false</default>
+                    <label>Bank</label>
+                </value>
+                <value>
+                    <fullName>TPA</fullName>
+                    <default>false</default>
+                    <label>TPA</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Payment ID from back-end</description>
+        <externalId>true</externalId>
+        <label>Payment ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Platform_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Platform Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Over-the-Counter (OTC)</fullName>
+                    <default>false</default>
+                    <label>Over-the-Counter (OTC)</label>
+                </value>
+                <value>
+                    <fullName>Online/Internet</fullName>
+                    <default>false</default>
+                    <label>Online/Internet</label>
+                </value>
+                <value>
+                    <fullName>Self-Service Payment Machine</fullName>
+                    <default>false</default>
+                    <label>Self-Service Payment Machine</label>
+                </value>
+                <value>
+                    <fullName>ATM banking</fullName>
+                    <default>false</default>
+                    <label>ATM banking</label>
+                </value>
+                <value>
+                    <fullName>Phone Banking</fullName>
+                    <default>false</default>
+                    <label>Phone Banking</label>
+                </value>
+                <value>
+                    <fullName>Mobile Application</fullName>
+                    <default>false</default>
+                    <label>Mobile Application</label>
+                </value>
+                <value>
+                    <fullName>Auto Debit</fullName>
+                    <default>false</default>
+                    <label>Auto Debit</label>
+                </value>
+                <value>
+                    <fullName>Auto Charge</fullName>
+                    <default>false</default>
+                    <label>Auto Charge</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Reference__c</fullName>
+        <description>Reference of the payment</description>
+        <externalId>false</externalId>
+        <label>Payment Reference</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Timeliness__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Timeliness</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>By Due Date</fullName>
+                    <default>false</default>
+                    <label>By Due Date</label>
+                </value>
+                <value>
+                    <fullName>By DN Expiry Date</fullName>
+                    <default>false</default>
+                    <label>By DN Expiry Date</label>
+                </value>
+                <value>
+                    <fullName>After DN Expiry Date</fullName>
+                    <default>false</default>
+                    <label>After DN Expiry Date</label>
+                </value>
+                <value>
+                    <fullName>Disconnected, Not Yet Terminated</fullName>
+                    <default>false</default>
+                    <label>Disconnected, Not Yet Terminated</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Payment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Payments Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Payments</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Customer_Bank_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Payment_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Payment_Reference__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

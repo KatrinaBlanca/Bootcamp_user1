@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Service Provider Offering</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Service Provider Offerings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Service Provider --></label>
+        <name>Service_Provider__c</name>
+        <relationshipLabel><!-- Services Offered --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Services Offered --></label>
+        <name>Services_Offered__c</name>
+        <relationshipLabel><!-- Service Provider --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

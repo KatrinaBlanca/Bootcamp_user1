@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Inactive_For__c</fullName>
+        <description>- 1 username per line
+- 1 profile id per line
+- Or put &quot;ALL&quot; to inactive for all user.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Inactive For</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <label>Trigger Setting</label>
+    <pluralLabel>Trigger Settings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
