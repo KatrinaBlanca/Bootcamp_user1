@@ -1,9 +1,0 @@
-<apex:page controller="SINValidatorController">
-    <apex:form >
-        <apex:inputTextarea id="sinList"/> <apex:commandButton value="Validate" action="{!validateSIN}"/>
-        <br />
-        <apex:outputText id="herokuOutput">{!herokuResponse}</apex:outputText>
-        <br />
-        <apex:outputText id="cmsOutput">CMS V10</apex:outputText>
-    </apex:form>
-</apex:page>

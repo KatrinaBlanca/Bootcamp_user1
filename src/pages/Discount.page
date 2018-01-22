@@ -1,3 +1,0 @@
-<apex:page controller="DiscountController" showHeader="false" sidebar="false" action="{!discountbutton}">
- 
-</apex:page>

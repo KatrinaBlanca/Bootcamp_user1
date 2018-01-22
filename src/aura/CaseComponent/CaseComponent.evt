@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="Case Application Input">
-	<aura:attribute name="caseApplicationEvt" type="Case" description="Case Application Input"/>
-</aura:event>

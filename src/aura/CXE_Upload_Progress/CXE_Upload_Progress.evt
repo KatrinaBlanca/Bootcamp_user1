@@ -1,4 +1,0 @@
-<aura:event type="COMPONENT" description="File upload progress">
-    <aura:attribute name="progress" type="Integer"/>
-    <aura:attribute name="complete" type="Boolean"/>
-</aura:event>

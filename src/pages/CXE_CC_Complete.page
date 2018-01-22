@@ -1,3 +1,0 @@
-<apex:page showHeader="false" sidebar="false" applyHtmlTag="false" standardStylesheets="false" controller="CXE_CC">
-	complete
-</apex:page>

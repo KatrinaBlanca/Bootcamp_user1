@@ -1,3 +1,0 @@
-<aura:event type="COMPONENT" description="sample">
-    <aura:attribute name="eventTriggeronClickNextTab3" type="Boolean"/>
-</aura:event>

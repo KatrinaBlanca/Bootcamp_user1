@@ -1,3 +1,0 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
-	<aura:handler name="init" action="{!c.doInit}" value="{!this}" />	
-</aura:component>

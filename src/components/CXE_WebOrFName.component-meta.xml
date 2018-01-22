@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ApexComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>40.0</apiVersion>
-    <description>For cases from Web, shows &quot;First Name&quot; from Web Reference Section if it is not null or blank, else show the primary &quot;First Name&quot;.
-For non-web cases, always shows the primary First Name,</description>
-    <label>CXE_WebOrFName</label>
-</ApexComponent>

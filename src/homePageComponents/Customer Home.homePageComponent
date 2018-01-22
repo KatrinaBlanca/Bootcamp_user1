@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
-    <body>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;Hello! Welcome to the Meralco Customer Community!&lt;/b&gt;&lt;/span&gt;&lt;br&gt; &lt;/p&gt;
-
-&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span&gt;To log a new case with Meralco, on the left sidebar, click &lt;b&gt;Create New... &lt;/b&gt;then &lt;b&gt;Case&lt;/b&gt;&lt;/span&gt;&lt;br&gt;To view a case logged with Meralco, click on the &lt;b&gt;Cases &lt;/b&gt;tab and with the &amp;#39;All Cases&amp;#39; view selected, click &lt;b&gt;Go!&lt;/b&gt;&lt;/p&gt;</body>
-    <pageComponentType>htmlArea</pageComponentType>
-    <width>wide</width>
-</HomePageComponent>

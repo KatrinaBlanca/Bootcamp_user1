@@ -1,8 +1,0 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes" >
-	<ltng:require scripts="{!join(',',
-                           $Resource.LDSCustom + '/custom/js/jquery-3.1.1.min.js',
-                           'https://www.google.com/recaptcha/api.js',
-                           'https://code.jquery.com/ui/1.12.1/jquery-ui.js',
-                           'https://code.jquery.com/jquery-1.12.4.js')}"
-                   />
-</aura:component>

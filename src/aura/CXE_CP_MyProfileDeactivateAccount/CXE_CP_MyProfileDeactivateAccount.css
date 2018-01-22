@@ -1,7 +1,0 @@
-.THIS .CXE_deactivateKnowledgeLinks {
-    display: none;
-}
-
-.THIS .mov-radio-container input:checked ~ .CXE_deactivateKnowledgeLinks {
-    display: block;
-}

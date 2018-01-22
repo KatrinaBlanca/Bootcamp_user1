@@ -1,3 +1,0 @@
-<apex:page controller="NonCommodityController" showHeader="false" sidebar="false"  action="{!noncommodity}">
- 
-</apex:page>

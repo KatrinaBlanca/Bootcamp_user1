@@ -1,1 +1,0 @@
-"https://meralco.cxespv.s3-ap-northeast-1.amazonaws.com/DMS%7Csample1.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20170823T095325Z&X-Amz-SignedHeaders=host&X-Amz-Expires=17999&X-Amz-Credential=AKIAIAM22RTQ4CHBPHOQ%2F20170823%2Fap-northeast-1%2Fs3%2Faws4_request&X-Amz-Signature=0b12ce0677b940fe80b66be57dc415c579e7116926641d2f961d2131130acf81"

@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="returns true if has case history">
-	<aura:attribute name="hasCaseHistory" type="Boolean" description="returns true if has case history"/>
-</aura:event>

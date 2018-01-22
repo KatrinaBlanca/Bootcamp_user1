@@ -1,9 +1,0 @@
-<apex:page sidebar="false" showHeader="false">
-   <head>
-        <title>Connecting...</title>
-        <script>
-            window.location.replace("{!$Setup.OrganizationSettings__c.Google_Linking__c}{!$Setup.OrganizationSettings__c.CP_URL__c}")
-        </script>
-   </head>
-   <body>Connecting...</body>
-</apex:page>

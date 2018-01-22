@@ -1,9 +1,0 @@
-<apex:component controller="CXE_EmailHelper_CC" access="global">
-<!-- PARAMETERS -->
-<apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/>
-<apex:variable var="c" value="{!case}" />
-<apex:variable var="newReg" value="{!NewRegisteredCustomer}" />
-<apex:variable var="ind" value="ind" rendered="{!not(or(newReg == '', newReg == null))}">
-New Registered Customer: {!newReg}<br/>
-</apex:variable>
-</apex:component>

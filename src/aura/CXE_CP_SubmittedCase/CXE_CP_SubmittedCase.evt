@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="Stores case">
-	<aura:attribute name="submittedCase" type="Case" description="Stores case"/>
-</aura:event>
