@@ -1,0 +1,32 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_PicklistFieldController">
+    <!--Use salesforce lightning design style-->
+    <ltng:require styles="{! $Resource.SLDS221 + '/assets/styles/salesforce-lightning-design-system.css'}" />
+ 
+    <!--init function which is call on component load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+ 
+    <!--Using Attributes-->
+    <aura:attribute name="objInfo" type="string" default="Case" description="store object Info." />
+    <aura:attribute name="dependentFieldMap" type="map" description="store controller(key)--> dependent(values) picklist value as a map." />
+    <aura:attribute name="isDependentDisable" type="boolean" default="true" description="use for, make disbale depandent field." />
+    
+    <aura:attribute name="controllingFieldEvt" type="String" default="" description="Name for controlling field event." />
+    <aura:attribute name="controllingFieldApi" type="String" default="" description="Name for controlling field." />
+    <aura:attribute name="controllingFieldLabel" type="String" default="" description="Label for controlling field." />
+
+    <aura:attribute name="dependentFieldEvt" type="String" default="" description="Name for dependent field event." />
+    <aura:attribute name="dependentFieldApi" type="String" default="" description="Name for dependent field." />
+    <aura:attribute name="dependentFieldLabel" type="String" default="" description="Label for dependent field." />
+ 
+        <!--Controller Field-->
+        <label class="slds-form-element__label" for="select-01">{!v.controllingFieldLabel}</label>
+        <div class="slds-select_container">
+            <ui:inputSelect aura:id="controllingFieldId" class="slds-select" change="{!c.onControllerFieldChange}" />
+        </div>
+ 
+        <!--Dependent Field-->
+        <label class="slds-form-element__label" for="select-01">{!v.dependentFieldLabel}</label>
+        <div class="slds-select_container">
+            <ui:inputSelect aura:id="dependentFieldId" disabled="{!v.isDependentDisable}" class="slds-select" change="{!c.onDependentFieldChange}" />
+        </div>
+</aura:component>

@@ -1,0 +1,70 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global" controller="CXE_CP_MyProfileTab4CTRL">
+    
+    <aura:handler name="init" action="{!c.doInit2}" value="{!this}" />
+    <aura:attribute name="userEmail"       type="string" />
+    <aura:attribute name="FirstName"       type="string" />
+    <aura:attribute name="FName"           type="string" />
+    <aura:attribute name="MobilePhone"     type="string" />
+    <aura:attribute name="recordId"        type="string" />
+    <aura:attribute name="pictureSrc" type="String" 
+                    default="https://s3-us-west-1.amazonaws.com/sfdc-demo/image-placeholder.png"/>
+    
+    <aura:attribute name="contactDetails"  type="CXE_CP_MyProfileCTRL.UserData" />
+    
+    <!-- tab 1 contents -->
+    <div id="tab-1" class="slds-tabs_default__content" role="tabpanel">
+        <div class="slds-grid slds-wrap">
+            <!-- START CSM-14681 Edgar Eisma – retrofit from R2B -->
+            <!--div class="slds-size_1-of-4 slds-max-large-size_4-of-4">
+                <div class="upload-photo slds-text-align_center">
+                    <img src="{!v.pictureSrc}" />
+                </div>
+            </div-->
+            <!-- END CSM-14681 Edgar Eisma – retrofit from R2B -->
+            
+            <div class="CXE_fontSizeProfInfoFix slds-size_3-of-4 slds-max-large-size_4-of-4">
+                <ul class="edit-profile">
+                    <li>
+                        <label>NAME</label>
+                        <p>{!v.contactDetails.FName}</p>
+                        <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+                    </li>
+                    <li>
+                        <label>EMAIL ADDRESS</label>
+                        <p>{!v.contactDetails.Email}</p>
+                        <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+                    </li>
+                    <li>
+                        <label>SECONDARY EMAIL ADDRESS</label>
+                        <p>{!v.contactDetails.Email2}</p>
+                        <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+                    </li>
+                    <li>
+                        <label>MOBILE</label>
+                        <p>{!v.contactDetails.MobilePhone}</p>
+                        <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+                    </li>
+                    <li>
+                        <label>SECONDARY MOBILE</label>
+                        <p>{!v.contactDetails.Mobile2}</p>
+                        <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+                    </li>
+                    <li>
+                        <label>Landline</label>
+                        <p>{!v.contactDetails.Phone}</p>
+                        <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+                    </li>
+                    <li>
+                        <!-- START CSM-13745 JRances - Formatted Birthdate format to be displayed on My Profile -->
+                        <label>Birthdate</label>
+                        <p>{!v.contactDetails.BirthdateString}</p>
+                        <!--<p>{!v.contactDetails.Birthdate2}</p>-->
+                        <!-- <i class="fa fa-pencil" aria-hidden="true"></i> -->
+                        <!-- END CSM-13745 JRances -->
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</aura:component>

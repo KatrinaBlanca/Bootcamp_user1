@@ -1,0 +1,808 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="CXE_BillDepositSimulator_CC">
+	<ltng:require styles="{!$Resource.CXE_SLDS_2 + '/salesforce-lightning-toastContainer.min.css'}" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<!-- CASE ID -->
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="caseRecord" type="Case" default="{ 'sobjectType': 'Case' }"/>
+    <!-- BILL DEPOSIT WRAPPER  -->
+    <aura:attribute name="variable" type="CXE_BillDepositWrapper.CXE_BillDepositWrapper"/>	
+
+    <div class="slds-button-group" role="group">
+		<!-- BILL DEPOSIT SIMULATOR BUTTON -->
+	    <ui:button class="slds-button slds-button--neutral" aura:id="simulateButton" press="{!c.validateUpdate}" label="Update Bill Deposit"/>
+		
+		<!-- BILL DEPOSIT - BUTTON -->
+	    <ui:button class="slds-button slds-button--neutral" aura:id="Button" press="{!c.validateSimulation}" label="Estimate Bill Deposit"/>
+	</div>
+
+	<!-- MANUAL SIMULATION MODAL BEGIN -->
+    <div aria-hidden="false" aura:id="manualSimulationDiv" role="dialog" class="slds-modal slds-fade-in-hide">
+		
+		<div class="slds-modal__container">
+
+			<!-- MANUAL SIMULATION HEADER -->
+			<div class="slds-modal__header" style="margin-top: 90px;">
+				<h2 class="slds-text-heading--medium">Manual Simulation</h2>
+				<button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.hideManualSimulation}">
+                    <c:svgIcon svgPath="/assets/icons/utility-sprite/svg/symbols.svg#close" category="utility" size="small" name="Close" />
+                    <span class="slds-assistive-text">Close</span>
+                </button>                
+			</div>
+
+			<div class="slds-modal__content slds-p-around--medium">
+				
+				<div class="slds-grid slds-wrap slds-grid--pull-padded">
+					<!-- APPLIED LOAD -->
+  					<div class="slds-p-horizontal--small slds-size--1-of-2">
+  						<label class="slds-form-element__label">Applied Load</label>
+						<ui:inputText class="dynamic" aura:id="appliedLoad" value="{!v.variable.appliedLoad}" disabled="{!!v.variable.isAdmin}"/>
+  					</div>
+
+					<!-- RATE -->
+  					<div class="slds-p-horizontal--small slds-size--1-of-2">
+  						<label class="slds-form-element__label">Demand Factor</label>
+						<ui:inputText class="dynamic" aura:id="demandFactor" value="{!v.variable.demandFactor}" disabled="{!!v.variable.isAdmin}"/>
+  					</div>
+  				</div>
+
+  				<div class="slds-grid slds-wrap slds-grid--pull-padded">
+					<!-- APPLIED LOAD -->
+  					<div class="slds-p-horizontal--small slds-size--1-of-2">
+  						<label class="slds-form-element__label">Load Factor</label>
+						<ui:inputText class="dynamic" aura:id="loadFactor" value="{!v.variable.loadFactor}" disabled="{!!v.variable.isAdmin}"/>
+  					</div>
+
+					<!-- RATE -->
+  					<div class="slds-p-horizontal--small slds-size--1-of-2">
+  						<label class="slds-form-element__label">Contracted Capacity</label>
+						<ui:inputText class="dynamic" aura:id="contractedCapacity" value="{!v.variable.contractedCapacity}" disabled="{!!v.variable.isAdmin}"/>
+  					</div>
+  				</div>
+
+				<div class="slds-grid slds-wrap slds-grid--pull-padded">
+					<!-- RATE -->
+  					<div class="slds-p-horizontal--small slds-size--1-of-2">
+  						<label class="slds-form-element__label">Rate</label>
+						<!-- <ui:inputText class="dynamic" aura:id="rate" value="{!v.variable.rate}" disabled="{!!v.variable.isAdmin}"/> -->
+						<ui:inputSelect class="dynamic" aura:id="rateType" value="{!v.caseRecord.Service_Rate_Type__c}" disabled="{!!v.variable.isAdmin}"/>
+  					</div>
+  				</div>
+
+  				<div class="slds-grid slds-wrap slds-grid--pull-padded">
+  					<!-- EQUIVALENT MONTHLY CONSUMPTION -->	
+  					<div class="slds-p-horizontal--small slds-size--1-of-2">
+  						<label class="slds-form-element__label">Equivalent Monthly Consumption</label>
+						<ui:inputText class="dynamic" aura:id="monthlyConsumption" value="{!v.variable.kwHConsumption}" disabled="true"/>
+  					</div>
+
+  					<!-- CITY / MUNICIPALITY -->
+					<div class="slds-p-horizontal--small slds-size--1-of-2 slds-hide">
+						<label class="slds-form-element__label">Municipality</label>
+						<ui:inputText class="dynamic" aura:id="city" value="{!v.variable.municipality}" disabled="true"/>
+					</div>
+  				</div>
+
+				<div class="slds-grid slds-wrap slds-grid--pull-padded slds-hide">
+					<!-- PROVINCE -->
+					<div class="slds-p-horizontal--small slds-size--1-of-2">
+						<label class="slds-form-element__label">Province</label>
+						<ui:inputText class="dynamic" aura:id="province" value="{!v.variable.province}" disabled="true"/>
+					</div>
+				</div>
+
+				<br/>
+
+				<div class="slds-grid slds-wrap slds-grid--pull-padded">
+					<!-- LOCAL FRANCHISE TAX -->
+	  				<div class="slds-p-horizontal--small slds-size--1-of-3">
+						<label class="slds-form-element__label">Local Franchise Tax</label>
+						<ui:inputSelect aura:id="localFranchiseTax" updateOn="change" change="{!c.reCalculate}" disabled="true"/>
+					</div>
+
+					<!-- LIFELINE DISCOUNT -->
+					<div class="slds-p-horizontal--small slds-size--1-of-3">
+						<label class="slds-form-element__label">Lifeline Discount</label>
+						<ui:inputSelect aura:id="lifelineDiscount" updateOn="change" change="{!c.reCalculate}" disabled="true"/>
+					</div>
+					
+					<!-- LIFELINE SUBSIDY -->
+					<div class="slds-p-horizontal--small slds-size--1-of-3">
+						<label class="slds-form-element__label">Lifeline Subsidy</label>
+						<ui:inputSelect aura:id="lifelineSubsidy" updateOn="change" change="{!c.reCalculate}" disabled="true"/>
+					</div>
+				</div>
+
+				<div class="slds-grid slds-wrap slds-grid--pull-padded">
+					<!-- SC SUBSIDY -->
+	  				<div class="slds-p-horizontal--small slds-size--1-of-3">
+						<label class="slds-form-element__label">SC Subsidy</label>
+						<ui:inputSelect aura:id="scSubsidy" updateOn="change" change="{!c.reCalculate}" disabled="true"/>
+					</div>
+
+					<!-- ENERGY TAX -->
+					<div class="slds-p-horizontal--small slds-size--1-of-3">
+						<label class="slds-form-element__label">Energy Tax</label>
+						<ui:inputSelect aura:id="energyTax" updateOn="change" change="{!c.reCalculate}" disabled="true"/>
+					</div>
+					
+					<!-- ZERO RATED -->
+					<div class="slds-p-horizontal--small slds-size--1-of-3">
+						<label class="slds-form-element__label">Zero Rated</label>
+						<ui:inputSelect aura:id="zeroRated" updateOn="change" change="{!c.reCalculate}" disabled="true"/>
+					</div>
+				</div>
+
+				<br/>
+
+				<ui:scrollerWrapper >
+					<!-- MANUAL SIMULATION TABLE -->
+					<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+						<thead>
+							<tr class="slds-text-title--caps">
+								<!-- TABLE HEADER -->
+								<th scope="col">
+									<strong>Bill Component</strong>
+								</th>
+								<th scope="col">
+									<strong>Base</strong>
+								</th>
+								<th scope="col">
+									<strong>Price</strong>
+								</th>
+								<th scope="col">
+									<strong>Amount</strong>
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							<tr>
+								<!-- TABLE CONTENT -->
+								<th scope="row">
+									Generation Charge (Blended)
+								</th>
+								<td>
+									<!-- <ui:outputNumber aura:id="baseGC" value="{!v.variable.kwHConsumption}"/> -->
+									<!-- START CSM-166 Jerome To MAY-15-17  -->
+									<ui:outputNumber aura:id="baseGC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+									<!-- END CSM-166 Jerome To MAY-15-17  -->
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceGC" value="{!v.variable.priceGenerationCharge}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountGC" value="{!v.variable.amountGenerationCharge}" format="0.00"/>
+								</td>
+							</tr>
+
+							<!-- <tr>
+								<th scope="row">
+									Power Act Reduction
+								</th>
+								<td>
+									<ui:outputNumber aura:id="basePAR" value="{!v.variable.kwHConsumption}"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="pricePAR" value="{!v.variable.pricePowerActReduction}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountPAR" value="{!v.variable.amountPowerActReduction}" format="0.00"/>
+								</td>
+							</tr> -->
+
+							<tr>
+								<th scope="row">
+									Transmission Charge <strong>(VATable)</strong>
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseTCVAT" value="{!v.variable.amountTransmissionCharge}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceTCVAT" value="{!v.variable.priceTCVAT}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountTCVAT" value="{!v.variable.amountTCVAT}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									Transmission Charge <strong>(Non-VATable)</strong>
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseTCnonVAT" value="{!v.variable.amountTransmissionCharge}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceTCnonVAT" value="{!v.variable.priceTCnonVAT}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountTCnonVAT" value="{!v.variable.amountTCnonVAT}" format="0.00"/>
+								</td>
+							</tr>							
+
+							<tr>
+								<th scope="row">
+									System Loss Charge
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseSLC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceSLC" value="{!v.variable.priceSystemLossCharge}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountSLC" value="{!v.variable.amountSystemLossCharge}" format="0.00"/>
+								</td>
+							</tr>
+							<aura:if isTrue="{!v.variable.hasDistributionCharge}" >
+								<tr>
+									<th scope="row">
+										Distribution Charge
+									</th>
+									<td>
+										<ui:outputNumber aura:id="baseDC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="priceDC" value="{!v.variable.priceDistributionCharge}" format="0.0000"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="amountDC" value="{!v.variable.amountDistributionCharge}" format="0.00"/>
+									</td>
+								</tr>
+							</aura:if>
+							<aura:if isTrue="{!v.variable.hasDistributionDemandCharge}" >
+								<tr>
+									<th scope="row">
+										Distribution Demand Charge
+									</th>
+									<td>
+										<ui:outputNumber aura:id="baseDDC" value="{!v.variable.kwDemand}" format="0.00"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="priceDDC" value="{!v.variable.priceDistributionDemandCharge}" format="0.0000"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="amountDDC" value="{!v.variable.amountDistributionDemandCharge}" format="0.00"/>
+									</td>
+								</tr>
+							</aura:if>
+							<aura:if isTrue="{!v.variable.hasDistributionEnergyCharge}" >
+								<tr>
+									<th scope="row">
+										Distribution Energy Charge
+									</th>
+									<td>
+										<ui:outputNumber aura:id="baseDEC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="priceDEC" value="{!v.variable.priceDistributionEnergyCharge}" format="0.0000"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="amountDEC" value="{!v.variable.amountDistributionEnergyCharge}" format="0.00"/>
+									</td>
+								</tr>
+							</aura:if>
+
+							<tr>
+								<th scope="row">
+									Fixed Metering Charge
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseFMC" value="{!v.variable.baseFixedMeteringCharge}"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceFMC" value="{!v.variable.priceFixedMeteringCharge}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountFMC" value="{!v.variable.amountFixedMeteringCharge}" format="0.00"/>
+								</td>
+							</tr>
+
+							<aura:if isTrue="{!v.variable.hasMeteringCharge}" >
+							<tr>
+								<th scope="row">
+									Metering Charge
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseMC" value="{!v.variable.kwHConsumption}"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceMC" value="{!v.variable.priceMeteringCharge}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountMC" value="{!v.variable.amountMeteringCharge}" format="0.00"/>
+								</td>
+							</tr>
+							</aura:if>
+
+							<tr>
+								<th scope="row">
+									Fixed Supply Charge
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseFSC" value="{!v.variable.baseFixedSupplyCharge}"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceFSC" value="{!v.variable.priceFixedSupplyCharge}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountFSC" value="{!v.variable.amountFixedSupplyCharge}" format="0.00"/>
+								</td>
+							</tr>
+							
+							<aura:if isTrue="{!v.variable.hasSupplyCharge}" >
+								<tr>
+									<th scope="row">
+										Supply Charge
+									</th>
+									<td>
+										<ui:outputNumber aura:id="baseFSC" value="{!v.variable.kwHConsumption}"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="priceFSC" value="{!v.variable.priceSupplyChargekWh}" format="0.0000"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="amountFSC" value="{!v.variable.amountSupplyChargekWh}" format="0.00"/>
+									</td>
+								</tr>
+							</aura:if>
+
+							<aura:if isTrue="{!v.variable.hasPowerFactorAdjustment}" >
+								<tr>
+									<th scope="row">
+										Power Factor Adjustment
+									</th>
+									<td>
+										<ui:outputNumber aura:id="basePFA" value="{!v.variable.kwHConsumption}"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="pricePFA" value="{!v.variable.pricePowerFactorAdjustment}" format="0.0000"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="amountPFA" value="{!v.variable.amountPowerFactorAdjustment}" format="0.00"/>
+									</td>
+								</tr>
+							</aura:if>
+
+							<tr>
+								<th scope="row">
+									Lifeline Rate Subsidy
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseLRS" value="{!v.variable.kwHConsumption}"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceLRS" value="{!v.variable.priceLifelineRateSubsidy}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountLRS" value="{!v.variable.amountLifelineRateSubsidy}" format="0.00"/>
+								</td>
+							</tr>
+
+							<aura:if isTrue="{!v.variable.hasCrossSubsidyCharge}" >
+								<tr>
+									<th scope="row">
+										Cross Subsidy Charge
+									</th>
+									<td>
+										<ui:outputNumber aura:id="baseCSC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+									</td>
+									<td>
+										<ui:outputNumber aura:id="priceCSC" value="{!v.variable.priceCrossSubsidyCharge}" format="0.00"/>%
+									</td>
+									<td>
+										<ui:outputNumber aura:id="amountCSC" value="{!v.variable.amountCrossSubsidyCharge}" format="0.00"/>
+									</td>
+								</tr>
+							</aura:if>
+
+							<tr>
+								<th scope="row">
+									Senior Citizen Subsidy
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseSCS" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceSCS" value="{!v.variable.priceSeniorCitizenSubsidy}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountSCS" value="{!v.variable.amountSeniorCitizenSubsidy}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									VAT on Generation Charge (Blended)
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATGC" value="{!v.variable.amountGenerationCharge}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceVATGC" value="{!v.variable.priceVATGenerationCost}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountVATGC" value="{!v.variable.amountVATGenerationCost}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									VAT on Transmission Charge
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATTC" value="{!v.variable.amountTCVAT}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceVATTC" value="{!v.variable.priceVATTransmissionCharge}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountVATTC" value="{!v.variable.amountVATTransmissionCharge}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									VAT- System Loss Charge
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATSLC" value="{!v.variable.amountSystemLossCharge}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceVATSLC" value="{!v.variable.priceVATSystemLossCharge}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountVATSLC" value="{!v.variable.amountVATSystemLossCharge}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									VAT- Distribution Revenue Amount
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATDRA" value="{!v.variable.baseVATDistributionRevenueAmount}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceVATDRA" value="{!v.variable.priceVATDistributionRevenueAmount}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountVATDRA" value="{!v.variable.amountVATDistributionRevenueAmount}" format="0.00"/>
+								</td>
+							</tr>
+							
+<!-- 
+							<tr>
+								<th scope="row">
+									VAT- Power Act Reduction
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATPAR" value="{!v.variable.amountPowerActReduction}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceVATPAR" value="{!v.variable.priceVATPowerActReduction}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountVATPAR" value="{!v.variable.amountVATPowerActReduction}" format="0.00"/>
+								</td>
+							</tr> -->							
+
+							<tr>
+								<th scope="row">
+									VAT- Subsidies and Others
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATSO" value="{!v.variable.baseVATSubsidies}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceVATSO" value="{!v.variable.priceVATSubsidies}" format="0.00"/>%
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountVATSO" value="{!v.variable.amountVATSubsidies}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									Missionary Electrification Charge
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseMEC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceMEC" value="{!v.variable.priceMissionaryCharge}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountMEC" value="{!v.variable.amountMissionaryCharge}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									Environmental Fund
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseEFC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceEFC" value="{!v.variable.priceEnvironmentalCharge}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountEFC" value="{!v.variable.amountEnvironmentalCharge}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									NPC Stranded Debts
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseNPCSD" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceNPCSD" value="{!v.variable.priceNPCStrandedDebts}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountNPCSD" value="{!v.variable.amountNPCStrandedDebts}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									NPC Stranded Contract Cost
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseNPCSCS" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceNPCSCS" value="{!v.variable.priceNPCStrandedContractCosts}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountNPCSCS" value="{!v.variable.amountNPCStrandedContractCosts}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									DUs Stranded Contract Cost
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseDUSCC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceDUSCC" value="{!v.variable.priceDUsStrandedCost}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountDUSCC" value="{!v.variable.amountDUsStrandedCost}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									Equalization Taxes and Royalties
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseETR" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceETR" value="{!v.variable.priceEqualizationTaxesAndRoyalties}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountETR" value="{!v.variable.amountEqualizationTaxesAndRoyalties}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									FiT-All (Renewable)
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseFA" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceFA" value="{!v.variable.priceFitAll}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountFA" value="{!v.variable.amountFitAll}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									LFT
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseLFT" value="{!v.variable.basedLFT}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceLFT" value="{!v.variable.priceLFT}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountLFT" value="{!v.variable.amountLFT}" format="0.00"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									TRAC
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseTRAC" value="{!v.variable.kwHConsumption}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceTRAC" value="{!v.variable.priceTRAC}" format="0.0000"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="amountTRAC" value="{!v.variable.amountTRAC}" format="0.00"/>
+								</td>
+							</tr>
+													
+
+							<tr>
+								<th scope="row"/>
+								<td/>
+								<td/>
+								<td/>
+							</tr>
+
+							<!-- <tr>
+								<th scope="row">
+									VAT Sales
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATS" value="{!v.variable.baseVATSales}" format="0.00"/>
+								</td>
+								<td>
+									<ui:outputNumber aura:id="priceVATS" value="{!v.variable.priceVATSales}" format="0.00"/>
+								</td>
+								<td/>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									VAT Zero
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATZero" value="{!v.variable.baseVATZero}" format="0.00"/>
+								</td>
+								<td/>
+								<td/>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									VAT Exempt
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseVATE" value="{!v.variable.baseVATExempt}" format="0.00"/>
+								</td>
+								<td/>
+								<td/>
+							</tr> -->
+
+							<!-- <tr>
+								<th scope="row">
+									Total Bill Amount (Pre-VAT)
+								</th>
+								<td>
+									<ui:outputNumber aura:id="baseTBA" value="{!v.variable.baseTotalBillAmount}" format="0.00"/>
+								</td>
+								<td/>
+								<td>
+									<ui:outputNumber aura:id="amountTBA" value="{!v.variable.amountTotalBillAmount}" format="0.00"/>
+								</td>
+							</tr> -->
+
+							<tr>
+								<th scope="row">
+									<strong>TOTAL AMOUNT</strong>
+								</th>
+								<td/>
+								<td/>
+								<td>
+									<ui:outputNumber aura:id="totalAmount" value="{!v.variable.totalCurrentAmount}" format="0.00" class="strong"/>
+								</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									<strong>ROUND</strong>
+								</th>
+								<td/>
+								<td/>
+								<td>
+									<ui:outputNumber aura:id="roundedTotalAmount" value="{!v.variable.roundedTotalAmount}" format="0.00" class="strong"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<br/>
+					<br/>
+
+					<!-- ENERGY TAX TABLE -->
+					<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+						<thead>
+
+							<tr class="slds-text-title--caps">
+								<!-- TABLE HEADER -->
+								<th scope="col">
+									<strong>kWh Bracket</strong>
+								</th>
+								<th scope="col"/>
+								<th scope="col">
+									<strong>Cut Off</strong>
+								</th>
+								<th scope="col">
+									<strong>Base</strong>
+								</th>
+							</tr>
+
+						</thead>
+
+						<tbody>
+							
+							<tr>
+								<!-- TABLE CONTENT -->
+								<th scope="row">0</th>
+								<td>
+									<ui:outputNumber aura:id="energyTax1" value="650"/>
+								</td>
+								<td>650</td>
+								<td>No Etax</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									<ui:outputNumber aura:id="kWhBracket1"/>
+								</th>
+								<td>
+									<ui:outputNumber aura:id="energyTax2" value="1000"/>
+								</td>
+								<td>1000</td>
+								<td>Block 1:</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									<ui:outputNumber aura:id="kWhBracket2"/>
+								</th>
+								<td>
+									<ui:outputNumber aura:id="energyTax3" value="1500"/>
+								</td>
+								<td>1000</td>
+								<td>Block 2:</td>
+							</tr>
+
+							<tr>
+								<th scope="row">
+									<ui:outputNumber aura:id="kWhBracket3"/>
+								</th>
+								<td>and above</td>
+								<td/>
+								<td>Block 3:</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</ui:scrollerWrapper>
+			</div>
+
+			<!-- MANUAL SIMULATION MODAL BUTTONS -->
+			<div class="slds-modal__footer">
+				<div class="slds-x-small-buttons--horizontal">
+					<ui:button aura:id="button" buttonTitle="Close" class="button" label="Close" press="{!c.hideManualSimulation}"/>
+					<aura:if isTrue="{!v.variable.isAdmin}" >
+						<ui:button aura:id="button" buttonTitle="Estimate" class="button" label="Estimate" press="{!c.estimate}" />
+					</aura:if>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- MODAL OVERLAY -->
+	<div class="slds-backdrop slds-fade-in-hide" aura:id="backGroundSectionId"></div>
+
+</aura:component>

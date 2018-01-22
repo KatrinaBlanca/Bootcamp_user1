@@ -1,0 +1,190 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_PaperlessBillingSubscribe">
+    <aura:attribute name="isOpen" type="boolean" default="false" />
+    <aura:attribute name="accountPass" type="String" />
+    <aura:handler name="change" value="{!v.accountPass}" action="{!c.accountChange}"/>
+    
+    <aura:attribute name="changeBox" type="boolean"/>
+    <aura:attribute name="IdPass" type="String" />
+    <aura:attribute name="firstEmail" type="String" />
+    <aura:attribute name="secondEmail" type="String" />
+    <aura:attribute name="reference" type="String" />
+    <aura:attribute name="accountSelected" type="boolean" default="false"/> <!-- //CSM-12870 GGrandea 09.21.2017 Added attribute-->
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:handler name="setAttribute" event="c:CXE_CP_PaperlessBillingSubscribe_event" action="{!c.EventFire}"/> <!-- CSM-12548 Mike Verdad 09/25/2017 -->
+    
+    <aura:registerEvent name="setAttribute2" type="c:CXE_CP_MyAccount_Event"/> <!-- CSM-12548 Mike Verdad 09/25/2017 -->
+   
+    <!-- START/END R2C CSM-13274 Shayne 10/13/2017 -->
+    <aura:attribute name="isConglomerate" type="boolean" default="false" /> 
+    <aura:attribute name="isEndpoint" type="boolean" default="true" />
+     <!-- START/END R2C CSM-13274 Shayne 10/13/2017 -->
+    
+    <!-- START R2C CSM-14773 Shayne 12/05/2017 -->
+    <aura:attribute name="isLoaded" type="Boolean" default="false"/>
+    <!-- END R2C CSM-14773 Shayne 12/05/2017 -->
+    
+    <c:CXE_CP_Header />
+    
+    <aura:renderIf isTrue="{!v.isLoaded}"> <!--R2C CSM-14773 Shayne 12/05/2017 -->
+    <div class="main mov-background-color_f7f7f7 mov-background_mobile mov-js-window-height">
+        <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <!-- START Breadcrumb-task RBellalba SEPT-26-17 -->
+                            <!-- <a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a> -->
+                            <a onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                            <!-- <a href="javascript:void(0);">Accounts</a> -->
+                            <a onclick="{!c.redirectToAccount}">Accounts</a>
+                        </li>
+                        
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a href="javascript:void(0);">Subscribe to Paperless Billing</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+        <div aura:id="MainForm" class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                    <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold mov-page-title">Paperless Billing</h3>
+                        </div>
+                    </div>
+                    <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small mov-mobile-box">
+                        <div class="slds-box mov-box mov-box_margin-bottom_850 mov-element-box-shadow mov-background-color_ffffff">
+                            <p class="mov-text_size-18 mov-text_color-323232 slds-p-top_small mov-text_weight-semi-bold mov-box_title">Subscribe to Paperless Billing</p>
+                            <div class="mov-form">
+                                <div class="slds-form slds-form_stacked">
+                                    
+                                    <div class="slds-form-element slds-m-top_large slds-m-bottom_large mov-mobile_full-width">
+                                        <label class="slds-form-element__label mov-text_size-14 mov-text_color-6a6a6a mov-min-width_200 valign-label" for="primary-email-address">Account Number
+                                            <!--START CSM-13673 JRances - Inline Text Not Appearing in Paperless Billing Subscribe and Cancellation Pages -->
+                                            <!--START CSM-14056 JRances - Inline text when user failed to select an Account during Paperless Billing Subscription/Cancellation in Portal-->
+                                            <p class="small slds-hide" id="checkIfAccountIsSelected">Please select an account.</p><!-- CSM 14160 Lisen 20171028 -->
+                                            <!--END CSM-14056 JRances -->
+                                            <!--END CSM-13673 JRances -->
+                                        </label>
+                                        
+                                        <div class="slds-form-element__control mov-inline-block valign-top">
+                                            <div class="slds-select_container mov-select_container mov-select_container-left-align mov-element_max-width-345">
+                                                <ui:inputSelect change="{!c.checkboxChange}" aura:id="myAccountData" class="slds-select mov-select-aftersales mov-text_color-afafaf mov-input-width-344 select-text-left">
+                                                </ui:inputSelect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- <div class="slds-form-element slds-p-top_large">
+                      <button class="slds-button mov-button-transparent mov-element_max-width-170 mov-button-trackmyapp">SUBMIT</button>
+                  </div> -->
+                                </div>
+                            </div>
+                            
+                            <div class="mov-warning-group">
+                               <!-- <p class="mov-text_size-12 mov-text_note mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i>Note: You must be the Account Holder to subscribe to Paperless Billing. Update your details by calling us at our 24/7 hotline at 16211 or business hotline at 16210.</p> -->
+                            	<p class="mov-text_size-12 mov-text_note mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i>Note: You must be the Account Holder to subscribe to Paperless Billing. For further assistance, please call us at our 24/7 hotline at 16211 or business hotline at 16210.</p> 
+                            </div>
+                            
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                                    <ul class="list-unstyled text-center mov-form-btn-list">
+                                        <li><button onclick="{!c.redirectMERALCOSite}" class="CXE_lineHeight18    mov-button-transparent mov-element_max-width-170 mov-text_weight-semi-bold"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Download Authorization Form</button></li> <!--Start CSM-14653 Mike Verdad 11/29/2017 -->
+                                        <li><button onclick="{!c.redirectMERALCOSite}" class="CXE_lineHeight18    mov-button-transparent mov-element_max-width-170 mov-text_weight-semi-bold"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Download Terms &amp; Conditions</button></li>
+                                        <!-- <li><button onclick="{!c.redirectMERALCOSite}" class="slds-button    mov-button-transparent mov-element_max-width-170 mov-text_weight-semi-bold"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Download Form 3</button></li>
+                                        <li><button onclick="{!c.redirectMERALCOSite}" class="slds-button    mov-button-transparent mov-element_max-width-170 mov-text_weight-semi-bold"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Download Form 4</button></li> --> <!--End CSM-14653 Mike Verdad 11/29/2017 -->
+                                    </ul>
+                                </div>
+                                
+                                <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                                    
+                                    <!--Start of CSM-14772  Corbes Melvin 12/5/2017-->
+                                    <div class="mov-image_box slds-m-top_medium slds-m-bottom_medium" style="cursor:Pointer" onclick="{!c.redirectMERALCOSitePaperLessBilling}" >
+                                     <!--End of CSM-14772  Corbes Melvin 12/5/2017-->
+                                        <!--h3 class="mov-text_weight-semi-bold mov-image_box-text">Lorem ipsum<br/> dolor sit amet</h3-->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-wrap slds-grid slds-m-top_medium">
+                                <div class="checkbox cbox-orange cbox-paperterms">
+                                    <label class="checkbox-container">
+                                        <ui:inputCheckbox value="{!v.changeBox}" aura:id="termCheckMain" change="{!c.changeboxChange}"/><span>I have read and agree to the Paperless Billing<br class="visible-lg visible-md" />  <a onclick="{! c.showTerms }" href="javascript:void(0);" class="text-orange" id="modal-toggle">Terms &amp; Conditions</a> and <a  target="_blank" class="text-orange" href="http://www.meralco.com.ph/privacy-policy"> Privacy Policy</a></span>
+                                        <div class="checkbox-custom"></div>
+                                    </label>
+                                </div>
+                                
+                                <div class="mov-button-group mov-inline-block slds-p-left_xx-large mov-mobile_center mov-mobile_full-width flex-rightfloat mov-tablet_center">
+                                    <a onclick="{!c.goBack}" class="slds-button mov-button-transparent mov-button-transparent_gray mov-element_max-width-170 mov-text_weight-semi-bold">Back</a> <!-- CSM-12548 Mike Verdad 09/25/2017 -->
+                                    <!--START CSM-13672 JRances - Enable the 'Next' button in Paperless Billing page -->
+                                    	<ui:button aura:id="proceedButton" press="{! c.showConfirmReadTerms }" class="slds-m-bottom_none slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold" >Next</ui:button>
+                                        
+                                    	<!-- //START CSM-12870 GGrandea 09.21.2017 -->
+                                        <!--
+                                        <aura:if isTrue="{!v.accountSelected}">
+                                            <ui:button aura:id="proceedButton" press="{! c.showConfirmReadTerms }" class="slds-m-bottom_none slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold" >Next</ui:button>
+                                            <aura:set attribute="else">
+                                                <a class="slds-m-bottom_none slds-button mov-button-transparent mov-button-transparent_gray mov-element_max-width-170 mov-text_weight-semi-bold " style="pointer-events:none;" >Next</a>
+                                            </aura:set>
+                                        </aura:if>
+                                        -->
+                                        <!-- <ui:button aura:id="proceedButton" press="{! c.showConfirmReadTerms }" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold pull-right" >Next</ui:button> -->
+                                        <!-- //END CSM-12870 GGrandea 09.21.2017 -->
+                                    
+                                    <!--END CSM-13672 JRances -->
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 slds-p-horizontal_x-small mov-xs">
+                        <div class="mov-dashboard_misc-list">
+                            <c:CXE_CP_WidgetFAQPaperless />
+                            <c:CXE_CP_WidgetPaperlessTnC />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div aura:id="PaperlessBillingSubscribe" class="slds-hide">
+            <c:CXE_CP_PaperlessBillingSubscribeEmail acctId="{!v.IdPass}" firstEmail="{!v.firstEmail}" secondEmail="{!v.secondEmail}"/>
+        </div>
+        <div aura:id="PaperlessBillingSuccess" class="slds-hide">
+            <c:CXE_CP_PaperlessBillingSubscribeConfirmation reference="{!v.reference}" />
+        </div>
+        
+    </div>
+    </aura:renderIf> <!--R2C CSM-14773 Shayne 12/05/2017 -->
+    
+    <aura:if isTrue="{!v.isOpen}">
+        <c:CXE_CP_ModalTermsConditionsPaperless checkboxChecker="{!v.changeBox}"/>
+    </aura:if>
+    
+    <!-- PROCEED MODAL -->
+    <div class="mov-modal mov-modal_proceed mov-modal_width-730" id="mov-proceed-modal">
+        <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" id="proceed-modal-background">
+            <div class="slds-modal__container">
+                
+                <div class="slds-modal__content slds-p-around_xx-large mov-background-color_ffffff" id="modal-content-id-1">
+                    <h2 class="text-center">Please read and agree to the Paperless Billing Terms &amp; Conditions and the Privacy Policy
+                    </h2>
+                    <div class="slds-p-top_large text-center">
+                        <button  onclick="{!c.closeModalProceed}" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold" id="close-proceed-modal">OK</button>      
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open mov-backdrop" id="proceed-modal-background"></div>
+    </div>
+</aura:component>

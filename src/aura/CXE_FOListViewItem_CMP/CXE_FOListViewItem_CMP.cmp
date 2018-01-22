@@ -1,0 +1,47 @@
+<aura:component >
+    <aura:attribute type="Object" name="fieldOrder" />
+    <aura:attribute type="Integer" name="index" />
+    <aura:attribute type="Object[]" name="fieldOrderPrint" />
+    
+    <aura:registerEvent name="listViewItemEventHandler" type="c:CXE_FOListView_EVT"/>       
+    
+    <tr class="slds-hint-parent">
+        <td scope="col" class="slds-text-align_right" style="width: 3.25rem;">
+            {! v.index }
+        </td>
+        <td role="gridcell" class="slds-text-align_right" style="width: 3.25rem;">
+            <span class="slds-checkbox">
+                <input type="checkbox" name="options" id="{! v.index}" value="on" checked = "{! v.fieldOrder.isCheck}" onchange = "{! c.setIsCheck}"/>
+                <label class="slds-checkbox__label" for="{! v.index}">
+                    <span class="slds-checkbox_faux"></span>
+                    <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
+                </label>
+            </span>
+        </td>
+        <td role="gridcell">
+            <div class="slds-truncate" title="{! v.fieldOrder.fieldOrderName}">
+                <a href = "{! '/' + v.fieldOrder.fieldOrderId}" target = "_blank">{! v.fieldOrder.fieldOrderName}</a>
+            </div>
+        </td>
+        <td role="gridcell">
+            <div class="slds-truncate" title="{! v.fieldOrder.caseNumber}">
+                <a href = "{! '/' + v.fieldOrder.caseId}" target = "_blank">{! v.fieldOrder.caseNumber}</a>
+            </div>
+        </td>
+        <td role="gridcell">
+            <div class="slds-truncate" title="{! v.fieldOrder.createdDate}">{! v.fieldOrder.createdDate}</div>
+        </td>
+        <td role="gridcell">
+            <div class="slds-truncate" title="{! v.fieldOrder.scheduleDate}">{! v.fieldOrder.scheduleDate}</div>
+        </td>
+        <td role="gridcell">
+            <div class="slds-truncate" title="{! v.fieldOrder.status}">{! v.fieldOrder.status}</div>
+        </td>
+        <td role="gridcell">
+            <div class="slds-truncate" title="{! v.fieldOrder.recordTypeName}">{! v.fieldOrder.recordTypeName}</div>
+        </td>
+        <td role="gridcell">
+            <div class="slds-truncate" title="{! v.fieldOrder.address}">{! v.fieldOrder.address}</div>
+        </td>
+    </tr>
+</aura:component>

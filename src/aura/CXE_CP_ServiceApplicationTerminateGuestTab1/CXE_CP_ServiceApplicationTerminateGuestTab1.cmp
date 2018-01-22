@@ -1,0 +1,158 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_ServiceApplication">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="caseApplication" type="Case"/>  
+    <!-- <aura:attribute name="persona" type="String" default=""/> -->
+    <!-- REGISTER BUTTON EVENT CHANGE TAB -->
+    <aura:registerEvent name="changeTabUsingButtonEvent" type="c:changeTabUsingButtonEvent"/>  
+    
+    <!-- REGISTER TAB EVENT CHANGE TAB  -->
+    <!-- <aura:method name="validateTab1" action="{!c.validateTab1}" access="PUBLIC"/> -->
+    <aura:registerEvent name="callTabEvent" type="c:SetTabValueEvent"/>
+    <aura:attribute name="persona" type="String" default=""/> 
+    <aura:attribute name="hasErrorOnPage" type="Boolean" default="true"/>
+    <aura:attribute name="relationToCustomerPicklist" type="String[]"/>
+    <aura:method name="doPageValidation" action="{!c.doPageValidation}" access="PUBLIC"/>
+
+    
+
+    <div class="tab-pane active slds" id="request_to_modify" role="tabpanel">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group slds-text-align_center">
+                <!-- <h3 class="mov-text_size-21 mov-text_weight-semi-bold">Contact Information</h3> -->
+                <div class="mov-form-group slds-m-top_medium">
+                    <div class="mov-form">
+                        <div class="slds-form">
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small"/>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Service Identification Number<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control mov-element-position-relative">
+                                        <ui:inputText class="slds-input mov-input" aura:id="terminationSIN" value="{!v.caseApplication.Account_No__c}"  label="Service Identification Number" maxlength="12" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="Service Identification Number" required="true"/>
+
+                                        <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align">
+                                            <img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                            <span class="tooltiptext">Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text</span>
+                                        </div>
+                                    </div>
+                                     <!-- <label class="FormError slds-hide" aura:id="errorSin" for="guest-ref-no">Please Enter SIN Number</label> -->
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small"/>
+                            </div>
+                            
+                            <br/>
+                            
+                            <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_large">Who will be processing to stop the service?</h3>
+                            
+                            <br/>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">First Name<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText class="slds-input mov-input" aura:id="terminationRepFirstname" value="{!v.caseApplication.Authorized_Representative_First_Name__c}" label="First Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="First Name" required="true"/>
+                                    </div>
+                                     <!-- <label class="FormError slds-hide" aura:id="errorFname" for="guest-ref-no">Please Enter First Name</label> -->
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Middle Name</label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText class="slds-input mov-input" aura:id="terminationRepMiddlename" value="{!v.caseApplication.Authorized_Representative_Middle_Name__c}" label="Middle Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="Middle Name"/>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Last Name<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                       <ui:inputText class="slds-input mov-input" aura:id="terminationRepLastname" value="{!v.caseApplication.Authorized_Representative_Last_Name__c}" label="Last Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="Last Name" required="true"/>
+                                          
+                                    </div>
+                                     <!-- <label class="FormError slds-hide" aura:id="errorLname" for="guest-ref-no">Please Enter Last Name</label> -->
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">
+                                <div class="slds-form-element slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Email Address <span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText class="slds-input mov-input" aura:id="terminationRepEmailAddress" value="{!v.caseApplication.Authorized_Representative_Email__c}" label="Email Address" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="Email Address" required="true"/>
+                                    </div>
+                                     <!-- <label class="FormError slds-hide" aura:id="errorEmail" for="guest-ref-no">Please Enter Email Address</label> -->
+                                     <!-- <label class="FormError slds-hide" aura:id="errorEmailInvalid" for="guest-ref-no">Please Enter Valid Email Address</label> -->
+                                </div>
+                                
+                               
+                            </div>
+                            <br/>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Mobile Number<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText class="slds-input mov-input" maxlength="13" aura:id="terminationRepMobileNumber" value="{!v.caseApplication.Authorized_Rep_Primary_Contact_Number__c}" label="Mobile Number" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="Mobile Number" required="true"/>
+                                    </div>
+                                  <!-- <label class="FormError slds-hide" aura:id="errorMobile" for="guest-ref-no">Please Enter Mobile Number</label> -->
+                                  <!-- <label class="FormError slds-hide" aura:id="errorMobileinValid" for="guest-ref-no">Please Enter Valid Mobile Number</label> -->
+                                </div>
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">                                    
+                                    <aura:if isTrue="{!v.persona == 'Biz'}">
+                                        <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Designation<span class="mov-text_color-ff5114">*</span></label> -->
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText class="slds-input mov-input" aura:id="bizDesignation" value="{!v.caseApplication.Relationship__c}" label="Designation" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="Designation"/>
+                                        </div>
+
+                                        <aura:set attribute="else">
+                                            <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Relationship to Customer<span class="mov-text_color-ff5114">*</span></label> -->
+                                            <ui:inputSelect aura:id="selectedRelationToOwner" change="{!c.onChangeRelationToOwner}" class="slds-select mov-select-aftersales mov-text_color-afafaf" label="Relation to Customer" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232">
+                                                <aura:iteration items="{!v.relationToCustomerPicklist}" var="relationToOwner">
+                                                     <ui:inputSelectOption text="{!relationToOwner}" label="{!relationToOwner}"/>
+                                                </aura:iteration>
+                                            </ui:inputSelect>
+
+                                            <!-- <div class="slds-form-element__control">
+                                                <ui:inputText class="slds-input mov-input" aura:id="selectedRelationToOwner" value="{!v.caseApplication.Relationship__c}"/>
+                                            </div> -->
+                                        </aura:set>
+
+                                    </aura:if>
+                                    
+                                    
+                                     <!-- <label class="FormError slds-hide" aura:id="errorAppRelative" for="guest-ref-no">Please Enter Relationship to Customer / Designation</label> -->
+                                </div>
+                            </div>
+                            
+                            <!-- <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-file-selector slds-file-selector_files">
+                                            <div class="slds-file-selector__dropzone  mov-element-border-none">
+                                                <input type="file" class="slds-file-selector__input slds-assistive-text" id="file-upload-input-01" aria-describedby="file-selector-id" />
+                                                <label class="slds-file-selector__body" for="file-upload-input-01">
+                                                    <span class="slds-file-selector__button slds-button slds-button_neutral mov-element-border-none">
+                                                        <span class="slds-file-selector__text mov-text_color-ff5114 mov-text_weight-normal mov-text_size-16">
+                                                            <i class="fa fa-plus">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                                                            Attach Documents
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>		
+                            </div> -->
+                            
+                            <br/>
+                            <br/>
+                            <!-- <c:CXE_CP_FileUpload aura:id="fileUploadCmp" /> -->
+
+                            <div class="mov-form-row">
+                                <div class="slds-form-element slds-p-top_large">
+                                    
+                                    <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickNext}">NEXT</ui:button>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,27 @@
+<aura:component >
+	<aura:attribute name="caseNumber" type="String" default=""/>
+	<aura:if isTrue="{!not(empty(v.caseNumber))}">
+	    <div class="confirm-message">
+	    	<!--START CSM-12174 RReyes AUG-04-17 - Changed confirmation message-->
+	        <h3>Thank you for registering on Meralco Online!</h3>        
+	        <br />
+            <!--
+	        <p>Your reference number is <span class="text-orange">{!v.caseNumber}</span>. We'll get in touch with you soon to finalize your registration.</p>
+	        -->
+            <!--START CSM-14514 GSerrano NOV-21-17 - Adjustments on confirmation message-->
+            <p>Your Reference No. is <span class="text-orange">{!v.caseNumber}</span>. We'll get in touch with you soon to finalize your registration.</p>
+			<!--END CSM-14514 GSerrano NOV-21-17 - Adjustments on confirmation message-->
+            <br />
+	        <p>For further assistance, please call us at our 24/7 business hotline at 16210.</p>
+	        <!-- <p>To track your portal application, your request number/customer portal application number is <span class="text-orange">{!v.caseNumber}</span></p> -->
+	        <!--END CSM-12174 RReyes AUG-04-17 - Changed confirmation message-->
+	    </div>
+    </aura:if>
+    <aura:if isTrue="{!empty(v.caseNumber)}">
+	    <div class="confirm-message">
+	        <!--h3>One more step...</h3> 
+	        <br /-->     
+	        <p>We've sent you a confirmation email. Please click on the link to proceed with your registration.</p>
+	    </div>
+    </aura:if>
+</aura:component>

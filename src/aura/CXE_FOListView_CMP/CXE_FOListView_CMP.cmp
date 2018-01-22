@@ -1,0 +1,222 @@
+<aura:component controller="CXE_FOListView_CC" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute type="Object[]" name="fieldOrderList" />
+    <aura:attribute type="Object[]" name="filteredfieldOrderList" />
+    <aura:attribute type="Object[]" name="fieldOrderPrint" />
+    <aura:attribute type="Boolean" name="isAllCheck" />
+    <aura:attribute type="Date" name="fromDate" />
+    <aura:attribute type="Date" name="toDate" />
+    <aura:attribute type="Date" name="oldScheduleDateFilter" />
+    <aura:attribute type="String" name="ifmsrc" />
+    <aura:attribute type="Object" name="filterValue" />
+    <aura:attribute type="String" name="modal" default="slds-hide"/>
+    
+    <ltng:require scripts="{!join(',',
+                           $Resource.jquery2,
+                           $Resource.jsPDF,
+                           $Resource.jsPDFmin,
+                           $Resource.jsPDF_from_html,
+                           $Resource.jsPDF_split_text_to_size,
+                           $Resource.jsPDF_standard_fonts_metrics,
+                           $Resource.FileSaver,
+                           $Resource.PrintPreview
+                           )}"
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <div style = "height: 100%">
+        <!--
+        <div class="{!v.modal + ' demo-only'}" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <iframe class="slds-hide" type="application/pdf" src="{!v.ifmsrc}">
+                </iframe>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+		-->
+        <article class="slds-card" style = "border-bottom: 0px !important;">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-contact" title="description of icon when needed">
+                            <c:svgIcon svgPath="/assets/icons/custom-sprite/svg/symbols.svg#custom18" category="custom" size="medium" name="custom18" assistiveText="Field Order"/>
+                            <!--svg class="slds-icon slds-icon_small" aria-hidden="true">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                        </svg-->
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2>
+                            <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="[object Object]">
+                                <span class="slds-text-heading_small">FIELD ORDERS</span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
+                <div class="slds-no-flex">
+                    <button class="slds-button slds-button_neutral" id="btnPrint" onclick="{!c.openActionWindow}">Print</button>
+                    
+                </div>
+            </div>
+            
+            <c:CXE_FOListViewFilter_CMP filterEventHandler="{! c.catchFilteredFieldOrderList}" fieldOrderList="{! v.fieldOrderList}" filterValue="{! v.filterValue}"/>
+            
+            <div class="slds-card__body" id="masterContent">
+                <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col" class="slds-text-align_right" style="width: 3.25rem;">
+                                
+                            </th>
+                            <th scope="col" class="slds-text-align_right" style="width: 3.25rem;">
+                                <div class="slds-th__action slds-th__action_form">
+                                    <span class="slds-checkbox">
+                                        <input type="checkbox" name="options" id="checkbox-1" value="on" checked = "{! v.isAllCheck}" onchange = "{! c.selectAll}"/>
+                                        <label class="slds-checkbox__label" for="checkbox-1">
+                                            <span class="slds-checkbox_faux"></span>
+                                            <span class="slds-form-element__label slds-assistive-text">Select All</span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </th>
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                                    <span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="Name">Field Order Name</span>
+                                    <!--div class="slds-icon_container">
+                                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-is-sortable__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </div-->
+                                    <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Field Order Name</span>
+                                </a>
+                                <!-- Resizable icon -->
+                                <!--div class="slds-resizable">
+                                <label for="cell-resize-handle-1" class="slds-assistive-text">Field Order Name</label>
+                                <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-1" tabindex="0"/>
+                                <span class="slds-resizable__handle">
+                                    <span class="slds-resizable__divider"></span>
+                                </span>
+                            </div-->
+                            </th>
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                                    <span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="Account Name">Case</span>
+                                    <!--div class="slds-icon_container">
+                                    <!svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-is-sortable__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </div-->
+                                    <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Case</span>
+                                </a>
+                                <!-- Resizable icon -->
+                                <!--div class="slds-resizable">
+                                <label for="cell-resize-handle-2" class="slds-assistive-text">Account Name column width</label>
+                                <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-2" tabindex="0"/>
+                                <span class="slds-resizable__handle">
+                                    <span class="slds-resizable__divider"></span>
+                                </span>
+                            </div-->
+                            </th>
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                                    <span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="Stage">CreatedDate</span>
+                                    <!--div class="slds-icon_container">
+                                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-is-sortable__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </div-->
+                                    <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">CreatedDate</span>
+                                </a>
+                                <!-- Resizable icon -->
+                                <!--div class="slds-resizable">
+                                <label for="cell-resize-handle-4" class="slds-assistive-text">Stage column width</label>
+                                <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-4" tabindex="0"/>
+                                <span class="slds-resizable__handle">
+                                    <span class="slds-resizable__divider"></span>
+                                </span>
+                            </div-->
+                            </th>
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                                    <span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="Close Date">Schedule Date</span>
+                                    <!--div class="slds-icon_container">
+                                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-is-sortable__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </div-->
+                                    <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Schedule Date</span>
+                                </a>
+                                <!-- Resizable icon -->
+                                <!--div class="slds-resizable">
+                                <label for="cell-resize-handle-3" class="slds-assistive-text">Close Date column width</label>
+                                <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-3" tabindex="0"/>
+                                <span class="slds-resizable__handle">
+                                    <span class="slds-resizable__divider"></span>
+                                </span>
+                            </div-->
+                            </th>
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                                    <span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="Stage">Status</span>
+                                    <!--div class="slds-icon_container">
+                                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-is-sortable__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </div-->
+                                    <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Status</span>
+                                </a>
+                                <!-- Resizable icon -->
+                                <!--div class="slds-resizable">
+                                <label for="cell-resize-handle-4" class="slds-assistive-text">Stage column width</label>
+                                <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-4" tabindex="0"/>
+                                <span class="slds-resizable__handle">
+                                    <span class="slds-resizable__divider"></span>
+                                </span>
+                            </div-->
+                            </th>
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                                    <span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="Stage">Record Type</span>
+                                    <!--div class="slds-icon_container">
+                                    <svg class="slds-icon slds-icon_x-small slds-icon-text-default slds-is-sortable__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </div-->
+                                    <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Record Type</span>
+                                </a>
+                                <!-- Resizable icon -->
+                                <!--div class="slds-resizable">
+                                <label for="cell-resize-handle-4" class="slds-assistive-text">Stage column width</label>
+                                <input type="range" min="20" max="1000" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-4" tabindex="0"/>
+                                <span class="slds-resizable__handle">
+                                    <span class="slds-resizable__divider"></span>
+                                </span>
+                            </div-->
+                            </th>
+                            <th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col" style="width: 33.25rem;">
+                                <a href="javascript:void(0);" class="slds-th__action slds-text-link_reset" tabindex="0">
+                                    <span class="slds-assistive-text">Sort </span>
+                                    <span class="slds-truncate" title="Stage">Address</span>
+                                    <span class="slds-assistive-text" aria-live="assertive" aria-atomic="true">Address</span>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{! v.filteredfieldOrderList}" var="fieldOrderItem" indexVar="i">
+                            <c:CXE_FOListViewItem_CMP listViewItemEventHandler="{! c.isAllSelected}" fieldOrder="{! fieldOrderItem}" index="{! i + 1}" fieldOrderPrint="{!v.fieldOrderPrint}"/>
+                        </aura:iteration>                    
+                    </tbody>
+                </table>
+            </div>
+            <footer class="slds-card__footer">                
+            </footer>
+        </article>
+    </div>
+</aura:component>

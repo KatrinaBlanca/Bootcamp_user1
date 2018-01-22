@@ -1,0 +1,193 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_ServiceApplication">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <!-- START CSM-14333 Jerome To 11/21/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. --> 
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+    <aura:handler name="change" value="{!v.isDoneRendering}" action="{!c.handleValueChange}"/>
+    <aura:attribute name="isDoneRendering" type="Boolean" default="false"/>
+    <!-- END CSM-14333 Jerome To 11/21/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+    <aura:attribute name="SAType" type="String" default=""/>
+    <!-- <aura:attribute name="caseVar" type="Case" /> -->
+    <aura:attribute name="persona" type="String" default=""/>
+    <aura:attribute name="caseRecord" type="Case"/>
+    <c:CXE_CP_Header />
+   <!-- <c:CXE_CP_HeaderNavigation /> -->
+
+    <!-- MAIN CONTENT -->
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height slds-show slds-p-top_medium" style="min-height: 648px;" aura:id="serviceApp">
+        <!-- <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a href="javascript:void(0);">Service Application</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div> -->
+
+        <div class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_7-of-7">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Service Application</h3>
+
+                            <p class="select-option">Select an option below</p>
+                        </div>
+                    </div>
+
+                    <div class="slds-size_4-of-7 slds-max-medium-size_7-of-7">
+
+                        <!-- ACCORDION -->
+                        <ul class="slds-accordion mov-accordion">
+
+                            <li class="slds-accordion__list-item mov-accordion__list-item">
+                                <section class="slds-accordion__section slds-is-open">
+                                    <div aura:id="indAccordion" data-aura-id="indAccordion" class="slds-accordion__summary accordion" onclick="{! c.toggleSwitch }">
+                                        <h3 class="slds-text-heading_small slds-accordion__summary-heading">
+                                            <button class="slds-button slds-button_reset slds-accordion__summary-action">
+                                                <img src="{! $Resource.CXE_CP_Assets + '/images/acc-individual.png' }" class="acc-icon"/>
+                                                <p class="acc-title" title="Accordion summary">INDIVIDUAL<br /><span class="acc-subtitle">Are you applying for your home or microbusiness? Get started by clicking an option below.</span></p>
+
+                                            </button>
+                                        </h3>
+                                        <button class="slds-button slds-button_icon acc-arrow">
+                                            <i class="ion-chevron-down"></i>
+                                            <span class="slds-assistive-text">More Options</span>
+                                        </button>
+                                    </div>
+                                    <div class="slds-accordion__content mov-accordion__content" id="accordion-details-01">
+
+                                        <div class="mov-accordion__content_menu">
+                                            <ui:outputURL aura:id="guestStart" class="ion-android-arrow-forward" value="" label=" Start Service" click="{!c.redirectToRegistration}"/><!--value="registration"-->
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Start Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Modify Service" click="{!c.onClickModifyIndividual}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Modify Service</a> -->
+                                            <ui:outputURL aura:id="guestReac" class="ion-android-arrow-forward" value="" label=" Reactivate Service" click="{!c.redirectToRegistration}"/>
+
+                                            <!-- <ui:outputURL class="ion-android-arrow-forward" value="" label=" Reactivate Service" click="{!c.onClickReactivateIndividual}"/> -->
+                                            <!--value="registration" aura:id="guestStart"-->
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Reactive Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Stop Service" click="{!c.onClickStopServiceIndividual}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Stop Service</a> -->
+
+                                        </div>
+
+                                    </div>
+                                </section>
+                            </li>
+
+                            <li class="slds-accordion__list-item mov-accordion__list-item mov-accordion__list-item">
+                                <section class="slds-accordion__section slds-is-open">
+                                    <div aura:id="busAccordion" data-aura-id="busAccordion" class="slds-accordion__summary accordion" onclick="{! c.toggleSwitch }">
+                                        <h3 class="slds-text-heading_small slds-accordion__summary-heading">
+                                            <button class="slds-button slds-button_reset slds-accordion__summary-action">
+                                                <img src="{! $Resource.CXE_CP_Assets + '/images/biz-orange.png' }" class="acc-icon" />
+                                                <p class="acc-title" title="Accordion summary">BUSINESS<br /><span class="acc-subtitle">Are you applying for your business? Get started by clicking an option below.</span></p>
+                                            </button>
+                                        </h3>
+                                        <button class="slds-button slds-button_icon acc-arrow">
+                                            <i class="ion-chevron-down"></i>
+                                            <span class="slds-assistive-text">More Options</span>
+                                        </button>
+                                    </div>
+                                    <div class="slds-accordion__content mov-accordion__content" id="accordion-details-02">
+
+                                        <div class="mov-accordion__content_menu">
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Start Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Start Service" click="{!c.onClickStartBiz}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Modify Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Modify Service" click="{!c.onClickModifyBiz}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Reactive Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Reactivate Service" click="{!c.onClickReactivateBiz}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Stop Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Stop Service" click="{!c.onClickStopServiceBiz}"/>
+
+                                        </div>
+
+                                    </div>
+                                </section>
+                            </li>
+
+                            <li class="slds-accordion__list-item mov-accordion__list-item mov-accordion__list-item">
+                                <section class="slds-accordion__section slds-is-open">
+                                    <div aura:id="conAccordion" data-aura-id="conAccordion" class="slds-accordion__summary accordion" onclick="{! c.toggleSwitch }">
+                                        <h3 class="slds-text-heading_small slds-accordion__summary-heading">
+                                            <button class="slds-button slds-button_reset slds-accordion__summary-action">
+                                                <img src="{! $Resource.CXE_CP_Assets + '/images/Contractor-2.png' }" class="acc-icon" style="width: 62px"/>
+                                                <p class="acc-title" title="Accordion summary">CONTRACTOR<br /><span class="acc-subtitle">Are you a contractor and applying for your clients? Get started by clicking an option below.</span></p>
+                                            </button>
+                                        </h3>
+                                        <button class="slds-button slds-button_icon acc-arrow">
+                                            <i class="ion-chevron-down"></i>
+                                            <span class="slds-assistive-text">More Options</span>
+                                        </button>
+                                    </div>
+                                    <div class="slds-accordion__content mov-accordion__content" id="accordion-details-02">
+
+                                        <div class="mov-accordion__content_menu">
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Start Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Start Service" click="{!c.onClickStartContractor}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Modify Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Modify Service" click="{!c.onClickModifyContractor}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Reactive Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Reactivate Service" click="{!c.onClickReactivateContractor}"/>
+                                            <!-- <a href="#"><i class="ion-android-arrow-forward"></i> Stop Service</a> -->
+                                            <ui:outputURL class="ion-android-arrow-forward" value="" label=" Stop Service" click="{!c.onClickStopServiceContractor}"/>
+                                        </div>
+
+                                    </div>
+                                </section>
+                            </li>
+
+                        </ul>
+                        <!-- END ACCORDION -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end MAIN CONTENT -->
+    <div aura:id="CXE_CP_ServiceApplicationTerminate" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationTerminateGuest persona="{!v.persona}"/>
+    </div>
+
+    <div aura:id="CXE_CP_ServiceApplicationReactivate" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationReactivate SAType="{!v.SAType}" caseRecord="{!v.caseRecord}" />
+    </div>
+
+
+    <div aura:id="CXE_CP_ServiceApplicationIndModify" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationIndModify caseRecord="{!v.caseRecord}" persona="{!v.persona}"/>
+    </div>
+
+    <div aura:id="CXE_CP_ServiceApplicationGuestStart" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationGuestStart caseRecord="{!v.caseRecord}" persona="{!v.persona}"/>
+    </div>
+    
+    <!--Start Mike Verdad 10/06/2017 -->
+    <div aura:id="CXE_CP_ContractorIndApply" class="slds-hide">
+        <c:CXE_CP_ContractorIndApply caseRecord="{!v.caseRecord}" persona="{!v.persona}"/>
+    </div>
+    
+    <div aura:id="CXE_CP_ContractorChangeService" class="slds-hide">
+        <c:CXE_CP_ContractorChangeService persona="{!v.persona}"/>
+    </div>
+    
+    <div aura:id="CXE_CP_ContractorIndReactivate" class="slds-hide">
+        <c:CXE_CP_ContractorIndReactivate persona="{!v.persona}"/>
+    </div>
+    
+    <div aura:id="CXE_CP_ContractorStopService" class="slds-hide">
+        <c:CXE_CP_ContractorStopService persona="{!v.persona}"/>
+    </div>
+    
+	<!--End Mike Verdad 10/06/2017 -->
+
+    <!-- <c:CXE_CP_Footer /> -->
+</aura:component>

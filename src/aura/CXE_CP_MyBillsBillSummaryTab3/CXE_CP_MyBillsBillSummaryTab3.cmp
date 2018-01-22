@@ -1,0 +1,233 @@
+<aura:component controller="CXE_CP_MyBillsSummaryCtlr" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId">
+    
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }"/>
+    <aura:attribute name="totalAmountToPay" type="Decimal" default="0.00"/>
+    <aura:attribute name="convenienceFee" type="Decimal" default="0.00"/>
+    <aura:attribute name="totalAmountForSettlement" type="Decimal" default="0.00"/>
+    <aura:attribute name="showOverpayment" type="boolean" default="true"/>
+    <aura:attribute name="subTotalMap" type="Object[]" default="[]"/>
+    <aura:attribute name="payment_status" type="string" default="" />    
+    <aura:attribute name="advancePayment" type="boolean" default="false" />
+    <aura:attribute name="payAsGuest" type="boolean" default="false" />
+    <aura:attribute name="statusOfPayment" type="string" default="active"  />
+    <aura:attribute name="payAsGuestReference" type="string" />
+    <aura:attribute name="payAsGuestReferenceValue" type="string" />
+    <aura:attribute name="paymentOptionCode" type="String" default=""/>
+    
+    <aura:attribute name="external_ID" type="String" />
+    
+    <aura:attribute name="advanceState" type="string" />
+    <aura:attribute name="filteredBillingSummary" type="Object[]"/>
+    <aura:attribute name="account_number" type="string" />
+    
+    
+    <aura:attribute name="ccCardNumber" type="String"/>
+    <aura:attribute name="ccCardName" type="String"/>
+    <aura:attribute name="ccBillingAddress" type="String"/>
+    <aura:attribute name="ccMonth" type="String"/>
+    <aura:attribute name="ccYear" type="String"/>
+    <aura:attribute name="ccSecCode" type="String"/>
+    <aura:attribute name="paymentTokenId" type="String"/>
+    <aura:attribute name="overpaymentList" type="Object[]"/>
+    <aura:attribute name="emailPass" type="String"/>
+    <aura:attribute name="myViewBills" type="Boolean" default="false" />
+    
+
+    <aura:attribute name="overPaid_Amount" type="string" default="0" />
+    <aura:attribute name="billId" type="String" />
+    <aura:registerEvent name="setTotalAmount" type="c:CXE_CP_MyBillsEvent"/>
+    
+    <div class="slds-tabs_default__content tabcontent" id="tab-3">
+        <div>
+            <div class="mov-text-group">
+                <p class="mov-text_size-24 mov-text_color-323232 mov-text_weight-semi-bold text-center">Payment Summary</p>
+            </div>
+            <!--
+            <a onclick="{!c.test}" >Here</a>
+            -->
+            <div class="CXE_amountAlignment mov-table-group mov-background-color_ffffff slds-m-vertical_large mov-table-group_custom mov-bill-table mov-bill-table_receipt">
+                <table class="slds-table slds-table_cell-buffer mov-table mov-table-advanced mov-background-color_ffffff mov-table-striped_inverse">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <th scope="col">
+                                <div>
+                                    DESCRIPTION
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div>
+                                    AMOUNT (PHP)
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:If isTrue="{!and(v.payAsGuest == false, v.advancePayment == false )}">
+                            <aura:iteration items="{!v.filteredBillingSummary}" var="parentAccount">
+                                
+                                <aura:iteration items="{!parentAccount.listBills}" var="billSum" indexVar="i"> <!-- //CSM-14404 -->
+                                    <aura:if isTrue="{!billSum.isSINSel == 'true'}"> <!-- //CSM-14404 -->
+                                        <tr>
+                                            <td data-label="Ref #" scope="row">
+                                                <div>
+                                                    <label>Account #{!billSum.acctNum} (SIN #{!billSum.svcNum})</label> <!-- //CSM-14404 -->
+                                                    <!--<h3><ui:outputDate format="MMM dd, YYYY" value="{!billSum.last_bill_date}"/> - <ui:outputDate format="MMM dd, YYYY" value="{!billSum.billDt}"/></h3>--> <!-- //CSM-14404 -->
+                                                    <h3>{!billSum.billStartEndDate}</h3> <!--CSM-14725 JFERNANDEZ-->
+                                                </div>
+                                            </td>
+                                            <td data-label="Request Type">
+                                                <div>
+                                                    <label><ui:outputCurrency aura:id="totAmt" format="#,##0.00" value="{!billSum.penAmt}"/></label> <!-- //CSM-14404 -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </aura:if>
+                                </aura:iteration>
+                                
+                            </aura:iteration>
+                            
+                            <aura:iteration items="{!v.subTotalMap}" var="map">
+                                    <!-- START CSM-14423 RReyes NOV-11-17 - show only for overpayment - added greaterthan-->
+                                    <aura:if isTrue="{!map.isAccountSelected == 'true' &amp;&amp; map.subtotal != map.prevSubtotal &amp;&amp; map.subtotal gt map.prevSubtotal}">
+                                    <!-- END CSM-14423 RReyes NOV-11-17 - show only for overpayment - - added greaterthan-->
+                                    <tr>
+                                        <td data-label="Ref #" scope="row">
+                                            <div>
+                                                <!-- START CSM-14423 RReyes NOV-11-17 - removed 'Overpayment' word -->
+                                                <label>Account #{!map.key}</label>
+                                                <h3>This is an overpayment. The balance will be credited to your next bill.</h3>
+                                                <!-- END CSM-14423 RReyes NOV-11-17 - removed 'Overpayment' word -->
+                                            </div>
+                                        </td>
+                                        <td data-label="Request Type">
+                                            <div>
+                                                <aura:iteration items="{!v.overpaymentList}" var="over">
+                                                    <aura:if isTrue="{!map.key == over.accountId}">
+                                                		<label><ui:outputCurrency aura:id="totAmt" format="#,##0.00" value="{!over.amount}"/></label>
+                                                    </aura:if>
+                                                </aura:iteration>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </aura:if>
+                                
+                            </aura:iteration>
+
+                        </aura:If>
+                        
+                        <aura:If isTrue="{!v.advancePayment}">
+                            <tr>
+                                <td data-label="Ref #" scope="row">
+                                    <div>
+                                        <!-- START CSM-14423 RReyes NOV-11-17 - removed 'Advance Payment' word -->
+                                        <!--
+                                        <label class="mov-no-padding">{!v.payAsGuestReference} #{!v.payAsGuestReferenceValue}</label>
+                                        <h3 class="mov-no-padding">This is an advance payment. The balance will be credited to your next bill.</h3>
+                                        -->
+                                        	<label class="mov-no-padding">{!v.payAsGuestReference} #{!v.payAsGuestReferenceValue}</label>
+                                            <aura:If isTrue="{!v.payAsGuest == false}">
+                                                <h3 class="mov-no-padding">This is an advance payment. The balance will be credited to your next bill.</h3>
+                                        	</aura:If>
+                                        
+                                        <!-- END CSM-14423 RReyes NOV-11-17 - removed 'Advance Payment' word -->
+                                    </div>
+                                </td>
+                                <td data-label="Request Type">
+                                    <div>
+                                        <label><ui:outputCurrency value="{!v.totalAmountToPay}" format="#,##0.00"/></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </aura:If>
+                        
+                        <aura:If isTrue="{!and(v.payAsGuest == true, v.advancePayment == false )}">
+                            <tr>
+                                <td data-label="Ref #" scope="row">
+                                    <div>
+                                        <!-- START CSM-14423 RReyes NOV-11-17 - removed space after # -->
+                                        <label>{!v.payAsGuestReference} #{!v.payAsGuestReferenceValue}</label>
+                                        <!-- END CSM-14423 RReyes NOV-11-17 - removed space after # -->
+                                    </div>
+                                </td>
+                                <td data-label="Request Type">
+                                    <div>
+                                        <label><ui:outputCurrency aura:id="totalAmountMeralco" value="{!v.totalAmountToPay}" format="#,##0.00"/></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </aura:If>
+                        <tr>
+                            <td data-label="Ref #" scope="row">
+                                <div>
+                                    <label class="text-orange">Total Amount to Pay to Meralco</label>
+                                </div>
+                                <div>
+                                    <label class="mov-no-padding">Convenience Fee</label>
+                                    <h3 class="mov-no-padding">This fee will go directly to our payment partner facilitating this transaction.</h3>
+                                </div>
+                            </td>
+                            <td data-label="Request Type">
+                                <div>
+                                    <label class="text-orange"><ui:outputCurrency value="{!v.totalAmountToPay}" format="#,##0.00"/></label>
+                                </div>
+                                <div>
+                                    <label><ui:outputCurrency value="{!v.convenienceFee}" format="#,##0.00"/></label>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="light-orangebg">
+                            <td data-label="Ref #" scope="row">
+                                <div>
+                                    <!--aura:renderIf isTrue="{!v.payAsGuest == false }">
+                                        <label class="text-orange">Total Amount for Settlement</label>
+                                    </aura:renderIf>
+                                    <aura:renderIf isTrue="{!v.payAsGuest}">
+                                        <label class="mov-no-padding text-orange">Total Amount to Pay</label>
+                                    </aura:renderIf-->
+                                    
+                                    <!-- 14328 @gibs -->
+                                    <label class="mov-no-padding text-orange">Total Amount for Payment</label>
+                                </div>
+                            </td>
+                            <td data-label="Request Type">
+                                <aura:renderIf isTrue="{!v.payAsGuest == false }">
+                                    <div>
+                                        <label class="text-orange"><ui:outputCurrency value="{!v.totalAmountForSettlement}" format="#,##0.00"/></label>
+                                    </div>
+                                </aura:renderIf>
+                                <aura:renderIf isTrue="{!v.payAsGuest}">
+                                    <label class="text-orange"><ui:outputCurrency value="{!v.totalAmountForSettlement}" format="#,##0.00"/></label>
+                                </aura:renderIf>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mov-button-group text-center slds-m-top_xx-large">
+                <a onclick="{!c.Cancel}"  href="javascript:void(0);" class="slds-button mov-button-default mov-element_max-width-170">Cancel</a>
+                <a onclick="{!c.payNow}" href="javascript:void(0);" class="slds-button mov-button mov-element_max-width-170">Submit</a>
+                <!--
+                <ui:button aura:id="nextButton" press="{!c.getConvenienceFee}" class="slds-button mov-button mov-element_max-width-170 modal-toggle" >get</ui:button> 
+        	-->    
+			</div>
+        </div>
+    </div>
+    
+    <style>
+        .CXE_amountAlignment tr td div {
+            text-align: right !important;
+        }
+        
+        .CXE_amountAlignment.mov-bill-table_receipt .light-orangebg td div {
+   			 padding-right: 1.5rem !important;
+        	padding-left: 50px;
+		}
+        
+        .CXE_amountAlignment.mov-bill-table_receipt .light-orangebg td {
+    		padding-left: 1.5rem !important;
+		} 
+    </style>
+    
+</aura:component>

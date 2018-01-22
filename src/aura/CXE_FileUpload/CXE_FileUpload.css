@@ -1,0 +1,6 @@
+.THIS .invalid-size {
+    color: red;
+}
+.THIS .busy .busy-hide{
+	display:none;
+}

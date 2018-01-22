@@ -1,0 +1,48 @@
+<aura:component >
+    <aura:attribute name="totalAmountToPay" type="Decimal" default="0.00"/>
+    <aura:attribute name="convenienceFee" type="Decimal" default="1,634.60"/>
+    <aura:attribute name="totalAmountForSettlement" type="Decimal" default="0.00"/>
+    <aura:attribute name="payAsGuestReference" type="string" />
+    <aura:attribute name="payAsGuestReferenceValue" type="string" />
+    <aura:attribute name="totalAmountToPay2" type="string" />
+    
+    <div class="slds-tabs_default__content tabcontent" id="tab-3"> 
+        <div class="text-center mov-review-payment_thank-you ">
+            <h3>Thank You!</h3>
+            
+            <!--<p>Your payment is now being processed. Below are the details for your reference:</p>-->
+            <p>We’re now processing your payment. <br/>Below are the details for your reference.</p>
+            
+            <div class="light-orangebg">
+                <p>Payment reference number:<br />
+                    <span>{!v.payAsGuestReference}</span>
+                </p>
+                
+                <p>Total amount paid:<br />
+                    <span>&#8369;{!v.totalAmountForSettlement}</span>
+                </p>
+                
+                <p>Amount paid to Meralco:<br />
+                    <span>&#8369;{!v.totalAmountToPay2}</span>
+                </p>
+                
+                <p>Convenience fee:<br />
+                    <span>&#8369;{!v.convenienceFee}</span>
+                </p>
+            </div>
+            
+            <!--<p>You will be informed via email once your payment has been posted.</p>-->
+            <p>We'll email you once your payment has been posted.</p>
+            
+            <p>Want to view your payment history conveniently? Click <a href="" class="text-orange">here</a> to register on Meralco Online.</p>
+            
+            <!--<p>For further assistance, call 16211 (for residential) and 16210 (for business).</p>-->
+            <p>For further assistance, please call us at our 24/7 hotline at 16211 or business hotline at 16210.</p>
+            
+            <div class="slds-form-element slds-p-top_medium">
+                <button onclick="{!c.Back}" class="slds-button mov-button center-block mov-element_max-width-170">OK</button>
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

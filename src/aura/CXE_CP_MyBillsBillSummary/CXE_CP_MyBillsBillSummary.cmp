@@ -1,0 +1,166 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_MyBillsSummaryCtlr">
+    <aura:attribute name="tabToShow" type="String" required="false" description="" access="private"/>
+    <aura:handler name="setAttribute" event="c:CXE_CP_CXE_CP_MyBillsBillSummary_event" action="{!c.EventFire}"/> 
+    <aura:attribute name="mainComponent" type="boolean" default="true" />
+    <aura:attribute name="paperlessCmp" type="boolean" default="false" />
+    
+    <aura:attribute name="billConsumptionCmp" type="boolean" default="false" />
+ 	<aura:handler name="setAttribute" event="c:CXE_CP_MyBillsSummaryCtlr_event" action="{!c.EventFireToConsumption}"/> 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" /> <!-- CSM-12823 Emandolado 9/20/2017 -->
+    <aura:handler name="setLoader" event="c:CXE_CP_Loader" action="{!c.eventFireLoader}"/> <!-- CSM-12823 Emandolado 9/20/2017 -->
+    <aura:attribute name="sinPass" type="string" />
+    
+    <!-- START CSM-12680 Fernandez 9/25/2017 -->
+    <aura:handler name="setTotalAmount" event="c:CXE_CP_MyBillsEvent" action="{!c.EventFireTotalAmount}"/>
+    <aura:attribute name="filteredBillingSummary" type="Object[]"/>
+    <aura:attribute name="totalAmountToPay" type="Decimal" default="0.00"/>
+    <aura:attribute name="convenienceFee" type="Decimal" default="0.00"/>
+    <aura:attribute name="totalAmountForSettlement" type="Decimal" default="0.00"/>
+    <aura:attribute name="totalAmountToPay2" type="Decimal" />
+    <aura:attribute name="paymentOptionCode" type="String" default=""/>
+    <!-- END CSM-12680 Fernandez 9/25/2017 -->
+    
+    <aura:handler name="setAttribute" event="c:CXE_CP_Portal_event" action="{!c.advancePaymentDetails}"/>
+    <aura:attribute name="advanceState" type="string" />
+    <aura:attribute name="isAdvancePayment" type="boolean" default="false"/>
+    <aura:attribute name="paymentReference" type="string" />
+    <aura:attribute name="paymentReferenceNumber" type="string" />
+    
+    <aura:handler name="setCCDetails"  event="c:CXE_CP_paymayaTokenForTab2"  action="{!c.EventFireCreditCard}"/>
+    <aura:attribute name="ccCardNumber" type="String"/>
+    <aura:attribute name="ccCardName" type="String"/>
+    <aura:attribute name="ccBillingAddress" type="String"/>
+    <aura:attribute name="ccMonth" type="String"/>
+    <aura:attribute name="ccYear" type="String"/>
+    <aura:attribute name="ccSecCode" type="String"/>
+    <aura:attribute name="paymentTokenId" type="String"/>
+    <aura:attribute name="subTotalMap" type="Object[]" default="[]"/>
+    <aura:attribute name="overpaymentList" type="Object[]"/>
+    <aura:attribute name="isEndpoint" type="Boolean" default="false"/>
+    
+    <aura:attribute name="external_ID" type="string" />
+    <aura:attribute name="account_number" type="string" />   
+    <!-- START/END R2C CSM-13274 Shayne 10-12-2017-->
+    <aura:attribute name="isConglomerate" type="boolean" default="false" /> 
+    
+    <c:CXE_CP_Header />
+    
+    <style>
+    	.CXE_myBillFix .mov-tabs_round {
+            padding: 0;
+        }
+    </style>
+    
+    <!-- MAIN CONTENT -->
+       <aura:attribute name="status" type="String[]" default="View Bill Details,View Consumption Report"/>
+    
+    <!-- CSM-12823 Start Emandolado 9/20/2017 -->
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div> 
+    <!-- CSM-12823 End Emandolado 9/20/2017 -->
+
+    <!-- //START CSM-14070 GGrandea 10.24.2017 -->
+    <aura:handler name="spinnerHandler" event="c:CXE_CP_SpinnerEvent" 
+            action="{!c.handleSpinner}"/> 
+    <!-- //END CSM-14070 -->
+    
+    
+    <aura:if isTrue="{!v.mainComponent}">
+        <div aura:id="mainContent" class="main mov-background-color_f7f7f7 mov-js-window-height">
+            <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+                <div class="main-wrapper">
+                    <nav data-reactroot="">
+                        <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                                <!--<a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>-->
+                                <a onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a>
+                            </li>
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                                <!--<a href="javascript:void(0);">Bills &amp; Payments</a>-->
+                                <a onclick="{!c.redirectToMyBills}">Bills &amp; Payments</a>
+                            </li>
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                                <!--<a href="javascript:void(0);">Bills Summary</a>-->
+                                <a onclick="{!c.redirectToMyBills}">Bills Summary</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="mov-services">
+                <div class="main-wrapper">
+                    <div class="mov-text-group slds-p-top_small">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Bills &amp; Payments</h3>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="CXE_myBillFix slds-large-size_9-of-12 slds-medium-size_1-of-1 slds-small-size_2-of-2 mov-xs">
+                            
+                            <div class="mov-tabs-group mov-bills-and-payments-tabs">
+                                <div class="slds-tabs_default mov-tabs_round mov-slds-tabs_default mov-tabs_round slds-p-bottom_x-small">
+                                    <ul class="slds-tabs_default__nav mov-nav-tabs mov-nav-tabs_aftersales mov-nav-tabs_aftersales__change-details " role="tablist">
+                                        <li class="slds-tabs_default__item tablinks slds-is-active" role="presentation">
+                                            <a data-aura-id="billSummaryTab1" id="billSummaryTab1" onclick="#" role="tab"><span>1</span>BILLS SELECTION</a>
+                                        </li>
+                                        <li class="slds-tabs_default__item tablinks" role="presentation">
+                                            <a data-aura-id="billSummaryTab2" id="billSummaryTab2" onclick="#" aria-controls="value_add_services" aria-expanded="false" data-toggle="tab" role="tab"><span>2</span>INPUT PAYMENT DETAILS</a>
+                                        </li>
+                                        <li class="slds-tabs_default__item tablinks" role="presentation">
+                                            <a data-aura-id="billSummaryTab3" id="billSummaryTab3" onclick="#" aria-controls="terms_and_conditions" aria-expanded="false" data-toggle="tab" role="tab"><span>3</span>REVIEW PAYMENT</a>
+                                        </li>
+                                    </ul>
+                                    <div class="mov-tab-content">
+                                        <aura:renderIf isTrue="{!v.tabToShow=='billSummaryTab1' || empty(v.tabToShow)}">
+                                            <c:CXE_CP_MyBillsBillSummaryTab1 isEndpoint="{!v.isEndpoint}" isConglomerate="{!v.isConglomerate}"/>
+                                        </aura:renderIf> 
+                                        
+                                        <aura:renderIf isTrue="{! v.tabToShow=='billSummaryTab2' }">
+                                            <c:CXE_CP_MyBillsBillSummaryTab2 ccCardNumber="{!v.ccCardNumber}" totalAmountToPay="{!v.totalAmountToPay}" subTotalMap="{!v.subTotalMap}"/>
+                                        </aura:renderIf> 
+                                        
+                                        <aura:renderIf isTrue="{! v.tabToShow=='billSummaryTab3'}">
+                                            <c:CXE_CP_MyBillsBillSummaryTab3 external_ID="{!v.external_ID}" account_number="{!v.account_number}" advanceState="{!v.advanceState}" advancePayment="{!v.isAdvancePayment}" payAsGuestReference="{!v.paymentReference}" payAsGuestReferenceValue="{!v.paymentReferenceNumber}" totalAmountToPay="{!v.totalAmountToPay}" filteredBillingSummary="{!v.filteredBillingSummary}" convenienceFee="{!v.convenienceFee}" totalAmountForSettlement="{!v.totalAmountForSettlement}" paymentTokenId="{!v.paymentTokenId}" ccCardName="{!v.ccCardName}" ccBillingAddress="{!v.ccBillingAddress}" subTotalMap="{!v.subTotalMap}" overpaymentList="{!v.overpaymentList}" paymentOptionCode="{!v.paymentOptionCode}"/> <!-- CSM-12680 Fernandez 9/25/2017 -->
+                                            
+                                            <!-- @gibs: To be rendered if payment is successful -->
+                                        </aura:renderIf> 
+                                        
+                                        <aura:renderIf isTrue="{! v.tabToShow=='billSummaryTab4' }">
+                                            <c:CXE_CP_MyBillsBillSummaryTab4 totalAmountToPay2="{!v.totalAmountToPay2}" payAsGuestReference="{!v.paymentReferenceNumber}" totalAmountToPay="{!v.totalAmountToPay}" convenienceFee="{!v.convenienceFee}" totalAmountForSettlement="{!v.totalAmountForSettlement}" />      
+                                        </aura:renderIf>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Side Nav (Helper Nav) -->
+                        <div class="CXE_myBillFix slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2  slds-p-horizontal_x-small mov-bills-and-payments-tabs_helper slds-align_absolute-center slds-m-top--none">
+                            <div class="mov-dashboard_misc-list">
+                                <c:CXE_CP_WidgetEBills isConglomerate="{!v.isConglomerate}"/>
+                                <c:CXE_CP_WidgetEnergyUsage />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end MAIN CONTENT -->
+    </aura:if>
+    
+    <aura:if isTrue="{!v.paperlessCmp}">
+       <!-- <c:CXE_CP_PaperlessBillingSubscribe />-->
+        <!-- Start CSM-12550 Emandolado 9/14/2017 -->
+        	<c:CXE_CP_PaperlessBillingSubscriptionV2 />
+        <!--End CSM-12550 Emandolado 9/14/2017 -->                                 
+    </aura:if>
+    
+   <div aura:id="consumptionReport" class="slds-hide">
+       <!-- <c:CXE_CP_MyBillsConsumptionReport sinPass="{!v.sinPass}" /> -->
+        <!-- HAVING ERRORS ON LOAD OF BILLS SUMMARY -->
+    </div>
+</aura:component>

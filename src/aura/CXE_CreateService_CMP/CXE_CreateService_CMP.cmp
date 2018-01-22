@@ -1,0 +1,440 @@
+<!-- Description: Create Service button on Contract with prepopulated Case based on Contract -->
+<!-- Author: Michael Lasala -->
+<!-- Date Created: MAR-08-17  -->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="CXE_CreateService_CC">
+
+	<!-- CONTRACT RECORD ID and Attribute -->
+	<aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="contractRecord" type="Contract" default="{sobjectType: 'Contract'}"/>
+
+	<!-- SERVICE ATTRIBUTES -->
+	<aura:attribute name="service" type="Agreement__c" default="{sobjectType: 'Agreement__c'}"/>
+	<force:outputField value="{!v.service.Contract__c}" class="slds-hide"/>
+
+	<!-- LOOKUP IDS -->
+	<aura:attribute name="caseId" type="String"/>
+	<aura:attribute name="accountId" type="String"/>
+
+	<!-- ERROR MESSAGES FOR LOOKUPS -->
+	<aura:attribute name="psicError" type="String[]"/>
+	<aura:attribute name="accountError" type="String[]"/>
+
+	<!-- BOOLEAN DISPLAY OF ACCOUNT INPUT AND LOOKUP (CSM-1880) -->
+    <aura:attribute name="isAccountInput" type="Boolean"/>
+
+	<!-- CREATE SERVICE BUTTON -->
+	<button class="slds-button slds-button--neutral" onclick="{!c.validateContract}">Create Service</button>
+
+	<!-- SERVICE MODAL BEGIN -->
+    <div aria-hidden="false" aura:id="serviceDiv" role="dialog" class="slds-modal slds-fade-in-hide"> 
+		
+		<div class="slds-modal__container">
+
+			<!-- SERVICE HEADER -->
+			<div class="slds-modal__header" style="margin-top: 90px;">
+				<h2 class="slds-text-heading--medium">Create Service</h2>
+				<button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeServiceModal}">
+                    <c:svgIcon svgPath="/assets/icons/utility-sprite/svg/symbols.svg#close" category="utility" size="small" name="Close" />
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+			</div>
+
+			<!-- SERVICE FORM -->
+			<div class="slds-modal__content slds-p-around--medium">
+
+				<h3 class="slds-section-title--divider">Information</h3>
+
+				<fieldset class="slds-form--compound">
+					<div class="slds-form-element__group">
+
+						<div class="slds-form-element__row">
+							<!-- CASE -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputText label="Case" class="dynamic" aura:id="case" disabled="true"/>
+							</div>
+							
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-left: 0.5rem" />
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- CONTRACT -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputText label="Contract" class="dynamic" aura:id="contract" disabled="true"/>
+							</div>
+							
+							<!-- SIN -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputText label="SIN" class="dynamic" aura:id="sin" value="{!v.service.SIN__c}" maxlength="255"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- CONNECTION -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:outputText value="Connection"/>
+								<force:inputField aura:id="connection" value="{!v.service.Connection__c}"/>
+							</div>
+							
+							<!-- ACTIVE AGREEMENT -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:outputText value="Active Agreement"/>
+								<force:inputField aura:id="activeAgreement" value="{!v.service.Active_Agreement__c}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- (CSM-1880) -->
+                            <aura:if isTrue="{!v.isAccountInput}">
+
+                                <!-- ACCOUNT PREPROP (ENABLED FOR SINGLE METER) -->
+								<div class="slds-size--1-of-2" id="accountOutputSection" style="padding-right: 0.5rem">
+									<ui:inputText label="Account Name" class="dynamic" aura:id="accountOutput" disabled="true"/>
+								</div>
+
+                                <aura:set attribute="else">
+                                    <!-- ACCOUNT (ENABLED FOR MULTIMETERING) -->
+									<div class="slds-size--1-of-2" id="accountInputSection" style="padding-left: 0.5rem">
+										<ui:outputText value="Account Name"/>
+										<abbr class="required" title="required">*</abbr>
+										<force:inputField aura:id="accountInput" value="{!v.service.Account__c}"/>
+										<ui:inputDefaultError aura:id="accountError" value="{!v.accountError}" />
+									</div>
+                                </aura:set>
+
+                            </aura:if> 
+
+							<!-- SERVICE STATUS -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<!-- BEGIN MICHAEL LASALA MAR-27-17 CSM-2006 -->
+								<!-- <ui:outputText value="Service Status"/> -->
+								<!-- <force:inputField aura:id="serviceStatus" value="{!v.service.Service_Status__c}"/> -->
+								<ui:inputSelect label="Service Status" aura:id="Service_Status__c" value="{!v.service.Service_Status__c}" disabled="true"/>
+								<!-- END MICHAEL LASALA MAR-27-17 -->
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- PSIC -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:outputText value="PSIC"/>
+								<abbr class="required" title="required">*</abbr>
+								<force:inputField aura:id="psic" value="{!v.service.PSIC__c}"/>
+								<ui:inputDefaultError aura:id="psicError" value="{!v.psicError}" />
+							</div>
+							
+							<!-- START DATE -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:outputText value="Start Date"/>
+								<force:inputField aura:id="startDate" value="{!v.service.Agreement_Start_Date__c}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- V10 ACCOUNT # -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputText label="V10 Account #" class="dynamic" aura:id="v10AccountNo" value="{!v.service.V10_Account_No__c}" maxlength="20"/>
+							</div>
+							
+							<!-- END DATE -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:outputText value="End Date"/>
+								<force:inputField aura:id="endDate" value="{!v.service.Agreement_End_Date__c}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- V10 PAYOR ACCOUNT # -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputText label="V10 Payor Account #" class="dynamic" aura:id="v10PayorAccountNo" value="{!v.service.V10_Payor_Account__c}" maxlength="20"/>
+							</div>
+							
+							<!-- RATE -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputSelect label="Rate" required="true" aura:id="Rate__c" value="{!v.service.Rate__c}" updateOn="change" change="{!c.filterBillingClass}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- V10 BUSINESS UNIT -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputText label="V10 Business Unit" class="dynamic" aura:id="v10BusinessUnit" value="{!v.service.V10_Business_Unit__c}" maxlength="100"/>
+							</div>
+							
+							<!-- BILLING CLASS -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputSelect label="Billing Class" required="true" aura:id="billingClass" value="{!v.service.Billing_Class__c}" disabled="true"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SERVICE DESCRIPTION -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputTextArea label="Service Description" class="dynamic" aura:id="serviceDescription" value="{!v.service.Service_Description__c}" maxlength="255" rows="2"/>
+							</div>
+							
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-left: 0.5rem" />
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SEGMENT -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputSelect label="Segment" required="true" aura:id="Segment__c" value="{!v.service.Segment__c}"/>
+							</div>
+							
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-left: 0.5rem" />
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- ILP -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:outputText value="ILP"/>
+								<force:inputField aura:id="ilp" value="{!v.service.ILP__c}"/>
+							</div>
+							
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-left: 0.5rem" />
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- RES -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:outputText value="RES"/>
+								<force:inputField aura:id="res" value="{!v.service.RES__c}"/>
+							</div>
+							
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-left: 0.5rem" />
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- DEPOSIT AMOUNT -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:outputText value="Deposit Amount"/>
+								<force:inputField aura:id="depositAmount" value="{!v.service.Deposit_Amount__c}"/>
+							</div>
+							
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-left: 0.5rem" />
+						</div>
+
+					</div>
+				</fieldset>
+
+				<h3 class="slds-section-title--divider">Premise Information</h3>
+
+				<fieldset class="slds-form--compound">
+					<div class="slds-form-element__group">
+
+                        <div class="slds-form-element__row">
+							<!-- PREMISES TYPE -->
+							<div class="slds-form-element slds-size--1-of-2">
+								<ui:outputText value="Premises Type"/>
+								<force:inputField aura:id="premisesType" value="{!v.service.Premises_Type__c}"/>
+							</div>
+							
+							<!-- PREMISES # -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputNumber label="Premises #" class="dynamic" aura:id="premisesNo" value="{!v.service.Premises__c}" maxlength="18"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- PREMISES DIRECTION -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputText label="Premises Direction" class="dynamic" aura:id="premisesDirection" value="{!v.service.Premise_Direction__c}" maxlength="255"/>
+							</div>
+							
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-left: 0.5rem" />
+						</div>
+
+					</div>
+				</fieldset>
+
+				<h3 class="slds-section-title--divider">Service Wire and Supply Information</h3>
+
+				<fieldset class="slds-form--compound">
+					<div class="slds-form-element__group">
+
+						<div class="slds-form-element__row">
+							<!-- SERVICE SUPPLY # -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputText label="Service Supply #" class="dynamic" aura:id="serviceSupplyNo" value="{!v.service.Service_Supply__c}" maxlength="255"/>
+							</div>
+							
+							<!-- SERVICE WIRE MAXIMUM CAPACITY -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputNumber label="Service Wire Maximum Capacity" class="dynamic" aura:id="serviceWireMaxCap" value="{!v.service.Service_Wire_Maximum_Capacity__c}" format=".000"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SERVICE SUPPLY PHASE -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+                                <!--START CSM-7283 JUL-06-17 - converted from inputField to inputSelect -->
+								<!--ui:outputText value="Service Supply Phase"/-->
+								<!--force:inputField aura:id="serviceSupplyPhase" value="{!v.service.Service_Supply_Phase__c}"/-->
+								<ui:inputSelect label="Service Supply Phase" aura:id="Service_Supply_Phase__c" value="{!v.service.Service_Supply_Phase__c}"/>
+                                <!--END CSM-7283 JUL-06-17 - converted from inputField to inputSelect -->
+                            </div>
+							
+							<!-- SERVICE WIRE TLN -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputText label="Service Wire TLN" required="true" class="dynamic" aura:id="serviceWireTLN" value="{!v.service.Service_Wire_TLN__c}" maxlength="12"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SERVICE WIRE PHASE -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputSelect label="Service Wire Phase" required="true" aura:id="Service_Wire_Phase__c" value="{!v.service.Service_Wire_Phase__c}"/>
+							</div>
+							
+							<!-- SERVICE WIRE POLE NUMBER -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputText label="Service Wire Pole Number" required="true" class="dynamic" aura:id="serviceWirePoleNumber" value="{!v.service.Service_Wire_Pole_Number__c}" maxlength="10"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SERVICE WIRE VOLTAGE -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+                                <!--START CSM-7283 JUL-06-17 - converted from inputField to inputSelect -->
+								<!--ui:outputText value="Service Wire Voltage"/-->
+								<!--force:inputField aura:id="serviceWireVoltage" value="{!v.service.Service_Wire_Voltage__c}"/-->
+								<ui:inputSelect label="Service Wire Voltage" aura:id="Service_Wire_Voltage__c" value="{!v.service.Service_Wire_Voltage__c}"/>
+                                <!--END CSM-7283 JUL-06-17 - converted from inputField to inputSelect -->
+                            </div>
+							
+							<!-- SERVICE WIRE TYPE -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputSelect label="Service Wire Type" required="true" aura:id="Service_Wire_Type__c" value="{!v.service.Service_Wire_Type__c}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SERVICE SUPPLY VOLTAGE -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+                                <div class="slds-form-element slds-size--1-of-2" id="accountInputSection" style="display:none; padding-left: 0.0rem;">
+                                	<ui:inputText aura:id="Code_Voltage_Level__c" value="{!v.service.Code_Voltage_Level__c}" class="display:none;"/>
+                                </div>
+                                <ui:inputSelect label="Service Supply Voltage" required="true" aura:id="Service_Supply_Voltage__c" value="{!v.service.Service_Supply_Voltage__c}" change="{!c.onSelectChange}"/>
+							</div>
+							
+							<!-- SERVICE WIRE LENGTH -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputNumber label="Service Wire Length" required="true" class="dynamic" aura:id="serviceWireLength" value="{!v.service.Service_Wire_Length__c}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SERVICE SUPPLY TYPE -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputSelect label="Service Supply Type" required="true" aura:id="Service_Supply_Type__c" value="{!v.service.Service_Supply_Type__c}"/>
+							</div>
+							
+							<!-- SERVICE WIRE SIZE -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputSelect label="Service Wire Size" required="true" aura:id="Service_Wire_Size__c" value="{!v.service.Service_Wire_Size__c}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- EMPTY SPACE -->
+                            <div class="slds-size--1-of-2" style="padding-right: 0.5rem" />
+							
+							<!-- SERVICE WIRE MATERIAL -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputSelect label="Service Wire Material" required="true" aura:id="Service_Wire_Material__c" value="{!v.service.Service_Wire_Material__c}"/>
+							</div>
+						</div>
+
+					</div>
+				</fieldset>
+
+				<h3 class="slds-section-title--divider">Global Parameter</h3>
+
+				<fieldset class="slds-form--compound">
+					<div class="slds-form-element__group">
+
+						<div class="slds-form-element__row">
+							<!-- APPLIED LOAD -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputNumber label="Applied Load" required="true" class="dynamic" aura:id="appliedLoad" value="{!v.service.Applied_Load__c}" format=".00"/>
+							</div>
+							
+							<!-- PHASE -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<!-- Michael Lasala MAR-12-17 Made required for CSM-1820 -->
+								<ui:inputSelect label="Phase" required="true" aura:id="Phase__c" value="{!v.service.Phase__c}"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- DEMAND FACTOR -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputNumber label="Demand Factor" class="dynamic" aura:id="demandFactor" value="{!v.service.Demand_Factor__c}" format=".00"/>
+							</div>
+							
+							<!-- GMBD (KW) -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputNumber label="GMBD (kW)" class="dynamic" aura:id="gmbd" value="{!v.service.GMBD_kW__c}" format=".000"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- LOAD FACTOR -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputNumber label="Load Factor" class="dynamic" aura:id="loadFactor" value="{!v.service.Load_Factor__c}" format=".00"/>
+							</div>
+							
+							<!-- PROGRAM -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputText label="Program" class="dynamic" aura:id="program" value="{!v.service.Program__c}" maxlength="30"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- CONTRACTED CAPACITY -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+								<ui:inputNumber label="Contracted Capacity" class="dynamic" aura:id="contractedCapacity" value="{!v.service.Contracted_Capacity__c}" format=".000"/>
+							</div>
+							<!-- DISCOUNT PROGRAMS -->
+							<div class="slds-size--1-of-2" style="padding-left: 0.5rem">
+								<ui:inputSelect label="Discount Program" aura:id="CXE_Discount_Program__c" value="{!v.service.CXE_Discount_Program__c}"/>
+							</div>							
+						</div>
+
+						<div class="slds-form-element__row">
+								
+							<!-- VOLTAGE LEVEL -->
+							<div class="slds-size--1-of-2" style="padding-right: 0.5rem">
+                                <ui:inputText label="Voltage Level" class="dynamic" aura:id="Voltage_Level__c" value="{!v.service.Voltage_Level__c}"  disabled="true"/>
+								<!--ui:inputSelect label="Voltage Level" aura:id="Voltage_Level__c" value="{!v.service.Voltage_Level__c}"/-->
+							</div>
+							
+						</div>
+
+					</div>
+				</fieldset>
+
+			</div>
+
+			<!-- SERVICE MODAL BUTTONS -->
+			<div class="slds-modal__footer">
+				<div class="slds-x-small-buttons--horizontal">
+					<button class="slds-button slds-button--neutral" onclick="{!c.closeServiceModal}" >Cancel</button>
+					<lightning:button label="Save" aura:id="insertService" onclick="{!c.insertService}"/>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- MODAL OVERLAY -->
+	<div class="slds-backdrop slds-fade-in-hide" aura:id="backGroundSectionId"></div>
+
+</aura:component>

@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+
+	<lightning:container src="{!'../../../apex/CXE_DMS_Account?id=' + v.recordId}"/>
+
+</aura:component>

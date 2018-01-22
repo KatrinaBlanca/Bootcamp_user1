@@ -1,0 +1,124 @@
+<aura:component >
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="isGuest" type="Boolean" default="false"/>
+    <aura:attribute name="isSame" type="Boolean" default="true"/>
+
+    <aura:handler event="c:CXE_selectControllingPicklistEvent" action="{!c.getControllingPicklistService}" />
+    <aura:handler event="c:CXE_selectDependentPicklistEvent" action="{!c.getDependentPicklistService}" />
+
+    <aura:handler event="c:CXE_selectBusinessProvinceEvent" action="{!c.getControllingPicklistBusiness}" />
+    <aura:handler event="c:CXE_selectBusinessCityEvent" action="{!c.getDependentPicklistBusiness}" />
+	
+    <!-- REGISTER TAB EVENT TO CHANGE TAB 3  -->
+    <aura:method name="submitValueAddedServices" action="{!c.submitValueAddedServices}" access="PUBLIC"/>
+    <aura:registerEvent name="callTabEvent" type="c:SetTabValueEvent"/>
+    
+    <!-- REGISTER BUTTON EVENT TO CHANGE TAB 3-->
+    <aura:registerEvent name="changeTabUsingButtonEvent" type="c:changeTabUsingButtonEvent"/>    
+ 
+    
+    <div class="slds-tabs_default__content tabcontent" id="new_address" role="tabpanel">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group slds-text-align_center">
+                <div class="mov-form-group slds-m-top_medium">
+                    <div class="mov-form">
+                        <div class="slds-form">
+                            <h4 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Reactivate a Service</h4>
+                            <h3 class="slds-form-element__label slds-m-bottom_large mov-text_size-21 mov-text_color-323232" for="guest-ref-no">Where will you use the electric service?</h3>
+
+                            <aura:if isTrue="{!not(v.isGuest)}">
+                                <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                    <div class="slds-form-element slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Home Address</label>
+                                        <div class="slds-form-element__control mov-element-position-relative">
+                                            <ui:inputText aura:id="serv_home" class="slds-input mov-input mov-input-trackmyapp" 
+                                                          placeholder="" required="true" value="{!v.caseRecord.address_1__c}" disabled="true"/>
+                                        </div>
+                                        <p aura:id="servHome-error" class="slds-hide">Please specify your home service address.</p>
+                                    </div>
+                                </div>
+                                <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                    <div class="slds-form-element slds-large-size_1-of-2 slds-medium-size_1-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Province</label>
+                                        <div class="slds-form-element__control mov-element-position-relative">
+                                            <ui:inputText aura:id="serv_province" class="slds-input mov-input mov-input-trackmyapp" 
+                                                          placeholder="" required="true" value="{!v.caseRecord.Service_Address_Province__c}" disabled="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-large-size_1-of-2 slds-medium-size_1-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">City/Municipality</label>
+                                        <div class="slds-form-element__control mov-element-position-relative">
+                                            <ui:inputText aura:id="serv_city" class="slds-input mov-input mov-input-trackmyapp" 
+                                                          placeholder="" required="true" value="{!v.caseRecord.Service_Address_City_Municiple__c}" disabled="true"/>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <aura:set attribute="else">
+                                    <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center mov-element_max-width-740">
+                                        <div class="slds-form-element slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                            <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Home Address</label>
+                                            <div class="slds-form-element__control mov-element-position-relative">
+                                                <ui:inputText aura:id="serv_home" class="slds-input mov-input mov-input-trackmyapp" 
+                                                              placeholder="" required="true" value="{!v.caseRecord.address_1__c}"/>
+                                            </div>
+                                            <p aura:id="servHome-error" class="slds-hide">Please specify your home service address.</p>
+                                        </div>
+                                    </div>
+                                    <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small mov-element_max-width-740 slds-m-top_large">       
+                                        <c:CXE_CP_DependentPicklist objInfo="Case" controllingFieldEvt="CXE_selectControllingPicklistEvent" controllingFieldApi="Service_Address_Province__c" controllingFieldLabel="Province" dependentFieldEvt="CXE_selectDependentPicklistEvent"  dependentFieldApi="Service_Address_City_Municiple__c" dependentFieldLabel="City / Municipality" />
+                                    </div>  
+                                </aura:set>
+                            </aura:if>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="mov-text-group slds-m-vertical_large slds-p-bottom_large">
+                                    <span class="mov-text_size-18 mov-text_weight-semi-bold mov-element-position-relative mov-element_display-inline-block_valign-center slds-m-right_large">
+                                        Will you have the same billing address?
+                                    </span>
+                                    <div class="mov-radio-group mov-radio-group_inline">
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_large">
+                                            <!--<input type="radio" id="new-radio" value="option1" name="iCheck" /> -->
+                                            <input aura:id="isSameAsService" type="radio" id="yes_radio" value="option1" name="iCheck" onclick="{!c.onClickSameAsService}"/>
+                                            <span>Yes</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>	
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold">
+                                            <!--<input type="radio" id="new-radio" value="option1" name="iCheck" /> -->
+                                            <input type="radio" id="no_radio" value="option1" name="iCheck" onclick="{!c.onClickSameAsService}"/>
+                                            <span>No&nbsp;</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>	
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <aura:if isTrue="{!not(v.isSame)}">
+                                <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                    <div class="slds-form-element slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <h3 class="slds-form-element__label slds-m-bottom_large mov-text_size-21 mov-text_color-323232" for="guest-ref-no">Where will you use the electric service?</h3>
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Home Address</label>
+                                        <div class="slds-form-element__control mov-element-position-relative">
+                                            <!--<input class="slds-input mov-input-trackmyapp" id="guest-ref-no" type="text" />-->
+                                            <ui:inputText aura:id="bill_home" class="slds-input mov-input mov-input-trackmyapp" 
+                                                      placeholder="" required="true" value="{!v.caseRecord.Address_2__c}"/>
+                                        </div>
+                                        <p aura:id="billHome-error" class="slds-hide">Please specify your home billing address.</p>
+                                    </div>
+                                </div>
+                                <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small mov-element_max-width-740 slds-m-top_large">		
+                                    <c:CXE_CP_DependentPicklist objInfo="Case" controllingFieldEvt="CXE_selectBusinessProvinceEvent" controllingFieldApi="Billing_Address_Province__c" controllingFieldLabel="Province" dependentFieldEvt="CXE_selectBusinessCityEvent"  dependentFieldApi="Billing_Address_City_Municipal__c" dependentFieldLabel="City / Municipality" />
+                                </div>
+                                <!--<p aura:id="billDropdown-error" class="slds-hide">Please select yout Province, City or Municipality!.</p>-->
+                            </aura:if>
+
+                            <div class="mov-form-row">
+                                <div class="slds-form-element slds-p-top_xx-large">
+                                    <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickBtn}">Almost there!</ui:button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

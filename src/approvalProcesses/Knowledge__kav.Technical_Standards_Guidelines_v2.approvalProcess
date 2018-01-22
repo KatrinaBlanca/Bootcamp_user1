@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Title</field>
+        <field>RecordType</field>
+        <field>Sub_Category__c</field>
+        <field>Content__c</field>
+        <field>CreatedBy</field>
+        <field>CreatedDate</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Publish</name>
+                <type>KnowledgePublish</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>CP_Process_Team_Leader</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>First approval by CP Process Team Leader</description>
+        <label>Submit to CP Process Team Leader</label>
+        <name>Submit_to_CP_Process_Team_Leader</name>
+    </approvalStep>
+    <description>Approval process for all articles with Technical Standards &amp; Guidelines record type</description>
+    <emailTemplate>unfiled$public/Knowledge_Article_Approval</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Knowledge__kav.RecordType</field>
+            <operation>equals</operation>
+            <value>Technical Standards &amp; Guidelines</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Knowledge__kav.PublishStatus</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Knowledge_Article_Approved</name>
+            <type>Alert</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>FAQs_Rejection_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Uncheck_Submit_Checkbox</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Technical Standards &amp; Guidelines v2</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

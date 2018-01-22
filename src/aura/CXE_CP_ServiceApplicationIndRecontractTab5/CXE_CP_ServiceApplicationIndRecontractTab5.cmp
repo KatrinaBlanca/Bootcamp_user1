@@ -1,0 +1,16 @@
+<aura:component >
+    <div class="tab-pane" id="confirmation">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group">
+                <h3 class="mov-text_size-24 mov-text_weight-semi-bold">Confirmation</h3>
+                <p class="mov-text_color-6a6a6a slds-m-top_small slds-m-bottom_medium mov-text_weight-semi-bold">All done! We’ve received your request for reactivation of service. Your reference number is <span class="mov-text_color-323232 mov-text_weight-bold">AA-1404201712345</span>.</p>
+                
+                <p class="mov-text_color-6a6a6a slds-m-bottom_large mov-text_weight-semi-bold">Within 3 working days, an AMC should be getting in touch with you about your application. We will also be sending you updates via <span class="mov-text_color-323232 mov-text_weight-bold">SMS and email</span>. If you need further help, email us at <a class="mov-text_color-ff5114 mov-text_weight-bold" href="javascript:void(0)">ask@meralco.com.ph</a> or call 16211.</p>
+            </div>
+            <div class="mov-button-group mov-element_max-width-400">
+                <!--<a class="slds-button mov-button-transparent slds-m-left_none mov-element_max-width-170" href="javascript:void(0)">Back to Home</a>-->
+                <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.backToHomeBtn}">Back to Home</ui:button>
+            </div>
+        </div>
+    </div>
+</aura:component>

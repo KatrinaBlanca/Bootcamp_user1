@@ -1,0 +1,12 @@
+.THIS div.toastContainer {
+    position: absolute !important;
+}
+
+.THIS div.slds-notify-container {
+    position: absolute !important;
+}
+
+
+/*.toastContainer .slds-notify-container .slds-notify_container {
+    position: absolute !important;
+}*/

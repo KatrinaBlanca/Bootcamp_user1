@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="CXE_WebToCaseApplication">    
+    <aura:attribute name="caseApplication" type="Case"  default="{sobjectType: 'Case'}"/>
+    <aura:attribute name="electricServiceType" type="String[]" default="Residential,Business"/>
+   	<aura:registerEvent name="getCaseApplicationInput" type="c:CaseComponent"/>
+    <aura:registerEvent name="getCmpToHide" type="c:HideTargetComponentEvent"/>
+    <aura:registerEvent name="getCmpToShow" type="c:ShowTargetComponentEvent"/>      
+    <div class="slds">
+        <div class="slds-grid slds-wrap CXE_mainContainer">
+            <div class="slds-size--1-of-1">
+                <div class="slds-grid slds-wrap">
+                    <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+                        <h1 class="CXE_color--orange CXE_text--h1"><b>Start an Electric Service</b></h1>
+                        
+                        <fieldset class="slds-form-element slds-m-top--small slds-p-left--small">
+                            <p class="CXE_color--gray">I am applying for</p>
+                            <div class="slds-form-element__control slds-m-top--small">
+                                <aura:iteration items="{!v.electricServiceType}" var="serviceType">
+                                    <label class="slds-radio CXE_radioButton">
+                                        <ui:inputRadio change="{!c.onSelect}" name="ServiceApp_Choice" text="{!serviceType}"/>
+                                        <span class="slds-radio--faux"></span>
+                                        <span class="slds-form-element__label CXE_color--gray">{!serviceType}</span>
+                                    </label>
+                                </aura:iteration>                                
+                            </div>
+                        </fieldset>
+                        
+                        <div class="slds-text-align--right slds-m-top--large">
+                            <ui:button class="CXE_button" press="{!c.proceed}" label="LET'S BEGIN"/>
+                            <!--<button class="CXE_button" onClick="{!c.proceed}">PROCEED</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

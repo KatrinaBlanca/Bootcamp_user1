@@ -1,0 +1,21 @@
+<aura:component implements="flexipage:availableForAllPageTypes" >
+    <aura:attribute name="caseNumber" type="String"/>
+    <div class="slds">
+        <div class="slds-grid slds-wrap CXE_mainContainer">
+            <div class="slds-large-size--1-of-1">
+                <div class="slds-grid slds-wrap">
+                    <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+                        <h1 class="CXE_color--gray CXE_text--h1">
+                            Thank you for applying with Meralco.
+                        </h1>
+                        <p class="CXE_color--gray slds-m-top--small">We have sent the confirmation email to the registered email address in your application form. Also, one of our Biz Partners will get in touch with you with 2 working days.</p>
+                        <p class="CXE_color--gray slds-m-top--small">Your case reference number is <strong>{!v.caseNumber}</strong></p>
+                        <div class="slds-text-align--right slds-m-top--large">
+                            <button class="CXE_button" onclick="window.location='SAT01'">BACK TO HOME</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

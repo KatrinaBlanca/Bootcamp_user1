@@ -1,0 +1,200 @@
+<!-- Description: Create Account and Contact button on Case page layout (CSM-610/611) -->
+<!-- Author: Michael Lasala -->
+<!-- Date Created: FEB-17-17  -->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="CXE_CreateAccountContactOnCase_CC">
+	
+	<!-- ACCOUNT ATTRIBUTES -->
+	<ltng:require styles="{!$Resource.SLDS + '/assets/styles/salesforce-lightning-design-system.css'}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="myCaseId" type="String"/>
+    <aura:attribute name="accountList" type="Object[]"/>
+    <aura:attribute name="createdAccount" type="Account"/>
+    <aura:attribute name="selectedAcctId" type="String"/>
+    <aura:attribute name="isBusiness" type="Boolean"/>
+
+	<!-- CONTACT ATTRIBUTES -->
+	<aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="contactList" type="Contact[]"/>
+    <aura:attribute name="selectedContactId" type="String"/>
+    
+    <style>
+        body .slds-button, a, .uiTabset--default {
+            <!-- color:#FF5113 !important; -->
+        }
+        body .slds-global-header {
+            <!-- background: rgb(0, 0, 0) !important; -->
+        }
+        body .tabHeader {
+            <!-- border-color: #FF5113 !important; -->
+        }
+    </style>
+
+    <!--lightning:button variant="brand" label="Create Account" onclick="{!c.showModal}"/-->
+	<div class="slds-button-group" role="group">
+        <!-- <div class="slds-col"> -->
+
+    		<!-- CREATE ACCOUNT BUTTON -->
+    	    <!-- <lightning:button variant="brand" label="Create Account" onclick="{!c.relateAccount}"/> -->
+            <!-- CSM-1925 -->
+            <lightning:button label="Create Account" aura:id="createAccount" onclick="{!c.relateAccount}"/>
+
+            <!-- CREATE CONTACT BUTTON -->
+            <!-- CSM-1925 -->
+            <lightning:button label="Create Contact" aura:id="createContactButton" onclick="{!c.validateCaseDetails}"/>
+    	    
+        <!-- </div> -->
+    </div>
+
+    
+
+    <!--START: ACCOUNT MODAL PAGE-->
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open" id="modalPopUp" style="display:none;">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.hideModal}">
+                    <c:svgIcon svgPath="/assets/icons/utility-sprite/svg/symbols.svg#close" category="utility" size="small" name="Close" />
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="header43" class="slds-text-heading--medium">Select Account to Relate to {!v.caseRecord.CaseNumber}</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <!--LIST START -->
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                    <thead>
+                        <tr class="slds-text-title--caps">
+                            <th scope="col">
+                                <div class="slds-truncate" title="Select">Select</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Account Name">Account Name</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Email">Email</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Phone">Phone</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Mobile">Mobile</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.accountList}" var="acctRec" indexVar="key">
+                            <tr>
+                                <!-- HOW TO SET DEFAULT AS INITIAL VALUE? -->
+                                <td data-label="Select">
+                                    <input type="radio" value="{!acctRec.Id}"  name ="acctRadio" id="{!acctRec.Id}" checked="{!key == 0 ? 'checked':''}" onclick ="{!c.getSelectedAcct}" />
+                                </td>
+                                <td data-label="Account Name">
+                                    <div class="slds-truncate" title="Account Name">{!acctRec.Name}</div>
+                                </td>
+                                <aura:if isTrue="{!v.isBusiness}">
+                                <td data-label="Email">
+                                        <div class="slds-truncate" title="Email">{!acctRec.Email__c}</div>
+                                    </td>
+                                    <td data-label="Phone">
+                                        <div class="slds-truncate" title="Phone">{!acctRec.Phone}</div>
+                                    </td>
+                                    <td data-label="Mobile">
+                                        <div class="slds-truncate" title="Mobile">{!acctRec.Mobile_Phone__c}</div>
+                                    </td>
+                                    <aura:set attribute="else">
+									<td data-label="Email">
+                                        <div class="slds-truncate" title="Email">{!acctRec.PersonEmail}</div>
+                                    </td>
+                                    <td data-label="Phone">
+                                        <div class="slds-truncate" title="Phone">{!acctRec.Phone}</div>
+                                    </td>
+                                    <td data-label="Mobile">
+                                        <div class="slds-truncate" title="Mobile">{!acctRec.PersonMobilePhone}</div>
+                                    </td>
+                                    </aura:set>
+                                </aura:if> 
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                <!--LIST END -->      
+            </div>
+            <div class="slds-modal__footer">
+                <button class="slds-button slds-button--neutral" onclick="{!c.hideModal}">Cancel</button>
+                <button class="slds-button slds-button--brand" onclick="{!c.saveSelectedAccount}">Save</button>
+            </div>
+        </div>
+    </div>
+    <!--END: ACCOUNT MODAL PAGE-->
+
+    <!-- CONTACT LIST MODAL BEGIN -->
+    <div aria-hidden="false" id="contactListDiv" role="dialog" class="slds-modal slds-modal--large slds-fade-in-open" style="display:none;">
+		<div class="slds-modal__container">
+
+			<!-- HEADER -->
+			<div class="slds-modal__header">
+				<h2 class="slds-text-heading--medium">Select Contact to relate to </h2>
+				<button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModal}">
+                    <c:svgIcon svgPath="/assets/icons/utility-sprite/svg/symbols.svg#close" category="utility" size="small" name="Close" />
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+			</div>
+
+			<div class="slds-modal__content">
+
+				<!-- CONTACT LIST TABLE -->
+				<table class="slds-table slds-table--bordered">
+					<thead>
+						<!-- TABLE HEADER -->
+						<tr class="slds-text-heading--label">
+							<th class="slds-cell-shrink" scope="col"></th>
+							<th class="slds-truncate" scope="col">
+								<span class="slds-truncate">Name</span>
+							</th>
+							<th scope="col">
+								<span class="slds-truncate">Mobile Phone</span>
+							</th>
+							<th scope="col">
+								<span class="slds-truncate">Email</span>
+							</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<!-- TABLE CONTENT -->
+						<aura:iteration items="{!v.contactList}" var="con">
+							<tr class="slds-hint-parent">
+								<th data-label="acc-name" role="row">
+	                                <input type="radio" value="{!con.Id}" name ="contactRadio" id="{!con.Id}" onclick="{!c.selectedContact}"/>
+								</th>
+								<th data-label="acc-name" role="row">
+									<span class="slds-truncate" >{!con.FirstName}</span>
+									<span class="slds-truncate" style="padding-left:5px">{!con.LastName}</span>
+								</th>
+								<td data-label="industry">
+									<span class="slds-truncate">{!con.MobilePhone}</span>
+								</td>
+								<td data-label="industry">
+									<span class="slds-truncate">{!con.Email}</span>
+								</td>
+							</tr>
+						</aura:iteration>
+					</tbody>
+				</table>
+
+			</div>
+
+			<!-- MODAL BUTTONS -->
+			<div class="slds-modal__footer">
+				<div class="slds-x-small-buttons--horizontal">
+					<button class="slds-button slds-button--neutral" onclick="{!c.closeModal}" >Cancel</button>
+					<button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.updateContact}">Save</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- MODAL OVERLAY -->
+	<div class="slds-backdrop slds-backdrop--open" id="backGroundSectionId" style="display:none;"></div>
+
+</aura:component>

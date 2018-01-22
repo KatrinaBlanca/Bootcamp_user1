@@ -1,0 +1,56 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_ServiceApplication" >
+        
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+
+    <aura:attribute name="persona" type="String" default="Contractor"/>    
+    <aura:attribute name="caseRecord" type="Case"/>
+    
+    <style>
+        .mov-nav-tabs_aftersales > li::before {
+        	margin-left: 100%;
+        }
+    </style>
+    
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                            <a href="javascript:void(0);">Requests</a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a href="javascript:void(0);">Request an Electric Service</a>
+                        </li>
+                        <!--<li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a href="javascript:void(0);">Change Service Details</a>
+                        </li> -->
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                        <div class="mov-text-group slds-p-top_small">
+                            <div class="mov-text-group slds-p-top_small">
+                                <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Requests</h3>
+                            </div>
+                            <div class="mov-tabs-group">
+                                
+                                <c:CXE_CP_ServiceApplicationContractorStart persona="{!v.persona}" caseVar="{!v.caseRecord}"/>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end MAIN CONTENT -->
+    
+    
+</aura:component>

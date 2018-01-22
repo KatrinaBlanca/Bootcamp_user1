@@ -1,0 +1,85 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_APAFileUpload_CC">
+
+    <ltng:require styles="{!$Resource.SLDS + '/assets/styles/salesforce-lightning-design-system.css'}"/>
+
+    <aura:attribute name="fileToUpload" type="Object" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="caseRec" type="Object" />
+    <aura:attribute name="isUploadDisabled" type="Boolean" default="false"/>
+    <aura:attribute name="isAPACancel" type="Boolean" default="false"/>
+    <aura:attribute name="uploadErrorReason" type="String" default=""/>
+
+    <aura:attribute name="keyValueSettings" type="Object[]" default="[]"/>
+    <aura:attribute name="maxFileSize" type="Integer" default="0"/>
+    <aura:attribute name="validFileTypes" type="String[]" default="[]"/>
+    <aura:attribute name="fileSizeErrorMsg" type="String" default=""/>
+    <aura:attribute name="fileTypeErrorMsg" type="String" default=""/>
+    <aura:attribute name="noFileErrorMsg" type="String" default=""/>
+    <aura:attribute name="hasFileError" type="Boolean" default="false"/>
+
+    <aura:attribute name="isFileUploaded" type="Boolean" default="false"/>
+    <aura:attribute name="fileUploadMessage" type="String" default=""/>
+
+    <aura:attribute name="selectedFileName" type="String" default="No file selected."/>
+    <aura:attribute name="uploadInProgress" type="Boolean" default="false"/>
+
+    <aura:if isTrue="{!not(v.isAPACancel)}">
+    <div class="main mov-background-color_f7f7f7">
+            <div class="main-wrapper">
+                <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                        <aura:if isTrue="{!not(v.isUploadDisabled)}">
+                            <div class="apa-formset apa-formset-3">
+                                <!-- start -->
+                                <br/>
+                                <div class="slds-text-heading_medium">Upload File</div>
+                                <div class="slds-text-title">Scan and upload enrollment form and any government-issued ID.</div>
+                                <br/>
+
+                                <div class="slds-form-element">
+                                  <div class="slds-form-element__control">
+                                    <div class="slds-file-selector slds-file-selector_files">
+                                        <input type="file" class="slds-file-selector__input slds-assistive-text" aura:id="file" id="file-upload-input-01" name="enrollform" accept=".pdf, .jpg, .png, .bmp"
+                                            onchange="{!c.selectFile}" aria-labelledby="file-selector-primary-label file-selector-secondary-label" disabled="{!v.uploadInProgress}"/>
+                                        <label class="slds-file-selector__body" for="file-upload-input-01" id="file-selector-secondary-label">
+                                          <span class="slds-file-selector__button slds-button slds-button_neutral">
+                                            Select File
+                                          </span>
+                                        </label>
+                                    </div>
+                                    &nbsp; &nbsp; &nbsp;{!v.selectedFileName}
+                                  </div>
+                                </div>
+
+                                <div>
+                                    <br/>
+                                    <div class="slds-text-color_error">{!v.fileSizeErrorMsg}</div>
+                                    <aura:if isTrue="{!not(v.fileSizeErrorMsg == '')}"><br/></aura:if>
+                                    <div class="slds-text-color_error">{!v.fileTypeErrorMsg}</div>
+                                    <aura:if isTrue="{!not(v.fileTypeErrorMsg == '')}"><br/></aura:if>
+                                    <div class="slds-text-color_error">{!v.noFileErrorMsg}</div>
+                                    <aura:if isTrue="{!not(v.noFileErrorMsg == '')}"><br/></aura:if>
+                                </div>
+                                <!-- end -->
+                                <div class="mov-button-group slds-large-size_12-of-12 center-block">
+                                    <button class="slds-button slds-button--neutral slds-button--brand" onclick="{!c.checkUpload}" disabled="{!v.uploadInProgress}">Upload</button>
+                                </div>
+                                <br/>
+                                <div class="slds-text-color_weak">{!v.fileUploadMessage}</div>
+                                <aura:if isTrue="{!v.isFileUploaded}">
+                                    <a href="javascript:void(0);" class="slds-button" onclick="{!c.initAttr}">Click here to upload another file.</a>
+                                </aura:if>
+                            </div>
+                            <aura:set attribute="else">
+                                <br/>
+                                <div>
+                                <div class="slds-text-heading_medium">File Uploader Disabled</div>
+                                <div class="slds-text-color_error">{!v.uploadErrorReason}</div>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                </div>
+            </div>
+    </div>
+    </aura:if>
+</aura:component>

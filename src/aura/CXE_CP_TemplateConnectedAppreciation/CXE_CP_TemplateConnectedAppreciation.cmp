@@ -1,0 +1,26 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_FooterCtrl">
+    <!-- CSM-12511 Mike Verdad 09/12/2017 -->
+    <div class="slds-col">
+        <div class="mov-dashboard-footnotes slds-text-align_center">
+            <div class="mov-text-group">
+                <h3 class="mov-text_size-30 mov-text_weight-semi-bold">Thanks for staying connected</h3>
+                <h4 class="slds-m-top_medium slds-text-heading_small mov-text_color-a5a5a5">Get the latest news and service advisories from Meralco.</h4>
+            </div>
+            <ul class="slds-list_horizontal mov-dashboard-footnotes_social">
+                <li>
+                    <a onclick="{!c.Facebook}"><i class="fa fa-facebook-f"></i></a>
+                </li>
+                <li>
+                    <a onclick="{!c.twitter}"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a onclick="{!c.youtube}"><i class="fa fa-youtube-play"></i></a>
+                </li>
+                <li>
+                    <a onclick="{!c.Instagram}"><i class="fa fa-instagram"></i></a>
+                </li>
+            </ul>
+            <h4 class="slds-m-top_medium slds-text-heading_small mov-text_color-a5a5a5">Help us improve our service. <a onclick="{!c.linkFeedback}" class="mov-text_color-ff5114 mov-text_decoration-underline">Submit Feedback.</a></h4>
+        </div>
+    </div> 
+</aura:component>

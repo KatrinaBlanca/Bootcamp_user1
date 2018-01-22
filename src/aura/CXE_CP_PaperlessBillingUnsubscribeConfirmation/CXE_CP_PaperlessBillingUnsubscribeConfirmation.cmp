@@ -1,0 +1,44 @@
+<aura:component >
+    <aura:attribute name="reference" type="string" />
+    <!-- MAIN CONTENT -->
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <div class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                    <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Paperless Billing</h3>
+                        </div>
+                    </div>
+                    <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                        <div class="slds-box mov-box mov-box_margin-bottom_850 mov-element-box-shadow mov-background-color_ffffff">
+                            <p class="mov-text_size-21 mov-text_color-323232 slds-p-top_small slds-p-bottom_large mov-text_weight-semi-bold">Cancel Paperless Billing</p>
+                            
+                            <p class="mov-text_color-323232 mov-text_size-16 mov-text_weight-semi-bold slds-m-top_medium slds-m-bottom_medium">Your Reference No. is <span class="text-orange">{!v.reference}</span>. We’ll email you a confirmation shortly.</p>
+                            
+                            <p class="mov-text_color-323232 mov-text_size-16 mov-text_weight-semi-bold slds-m-bottom_xx-large">For further assistance, please call us at our 24/7 hotline at 16211 or business hotline at 16210.</p>
+                            
+                            <div class="slds-m-bottom_xx-large">&nbsp;</div>
+                            
+                            <div class="slds-m-top_medium text-center">
+                                <a href="javascript:void(0);" class="slds-button mov-button mov-text_weight-semi-bold mov-button_250 mov-no-float center-block" onclick="{!c.redirectToListOfAccounts}">OK</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 slds-p-horizontal_x-small">
+                        <div class="mov-dashboard_misc-list">
+                            <c:CXE_CP_WidgetAutoPayArrangement />
+                            <c:CXE_CP_WidgetPaymentOption />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <!-- end MAIN CONTENT -->
+</aura:component>

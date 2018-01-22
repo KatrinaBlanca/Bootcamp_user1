@@ -1,0 +1,9 @@
+/* START CSM-15171 EEisma */
+.THIS .req-fields {
+    font-size: 14px !important;
+    font-style: italic;
+    text-align: right;
+    font-weight: 600;
+    color: #fd0606;
+}
+/* END CSM-15171 EEisma */

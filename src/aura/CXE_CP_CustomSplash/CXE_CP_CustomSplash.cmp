@@ -1,0 +1,209 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="showError" type="Boolean" required="true" description="" default="false" access="private"/>
+    <aura:attribute name="errorMessage" type="String" required="false" description="" access="private"/>
+    
+    <aura:attribute name="forgotPasswordLabel" type="String" required="false" default="Forgot your password?"/>
+    <aura:attribute name="forgotPasswordUrl" type="String" required="false" default="/customers/secur/forgotpassword"/>
+    
+    <aura:attribute name="communityForgotPasswordUrl" type="String" access="private"/>
+    
+    <!-- <aura:attribute name="activeTab" type="String" default="One"/> -->
+    
+    <ltng:require styles="{!join(',', 
+                          $Resource.Assets + '/css/bootstrap.min.css',
+                          $Resource.Assets + '/css/salesforce-lightning-design-system.min.css', 
+                          $Resource.Assets + '/css/custom.css',
+                          $Resource.Assets + '/library/icheck/skins/minimal/minimal.css'
+                          )}"
+                  />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
+    
+    <div class="login-page">
+        <div class="main-wrapper">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-large-size_1-of-2 slds-max-large-size_2-of-2">
+                    <div class="slds-box_small">
+                        
+                        <div class="login-page__logo">
+                            <img src="{! $Resource.Assets + '/images/meralco-logo-white.png'}" />
+                        </div>
+                        
+                        <h2 class="welcome">Welcome to Meralco <i class="fa fa-angle-down" aria-hidden="true"></i></h2>
+                        
+                        <div class="mobile-ddown">
+                            <p>Nullam semper bibendum sollicitudin. Proin ut massa pretium, mollis tellus et, ultricies ante. Curabitur convallis viverra velit, a accumsan diam auctor id.</p>
+                            
+                            <div class="login-page__menu">
+                                <a href="#"><img src="{! $Resource.Assets + '/images/icon-login.png'}" /></a>
+                                <a href="#"><img src="{! $Resource.Assets + '/images/icon-credit.png'}" /></a>
+                                <a href="#"><img src="{! $Resource.Assets + '/images/icon-paper.png'}" /></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="slds-large-size_1-of-2 slds-max-large-size_2-of-2">
+                    
+                    <section class="login-page__tabs">
+                        <div class="slds-tabs_default">
+                            
+                            <ul class="slds-tabs_default__nav mov-tabs_default__nav_splash" role="tablist">
+                                <li aura:id="tabpage" class="slds-tabs_default__item mov-tabs_default__item mov-tabs_default__item_login slds-has-focus" title="Active" onclick="{!c.changeTab}" role="presentation"><a class="slds-tabs_default__link mov-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Login</a></li>
+                                <li aura:id="tabpage" class="slds-tabs_default__item mov-tabs_default__item mov-tabs_default__item_signup" title="Previous" onclick="{!c.changeTab}" role="presentation"><a class="slds-tabs_default__link mov-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Sign up</a></li>
+                            </ul>
+                            
+                            <!-- tab 1 content -->
+                            <div aura:id="tab-default-1" class="slds-tabs_default__content mov-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+                                <form class="login">
+                                    <h3>Login</h3>
+                                            <aura:renderIf isTrue="{!v.showError}">
+                                                <div id="error">
+                                                    <ui:outputRichText value="{!v.errorMessage}"/>
+                                                </div>
+                                            </aura:renderIf>
+                                    
+                                    <p>Enter your Email Address</p>
+                                    
+                                    <div class="slds-grid slds-wrap">
+                                        <div class="slds-form-element slds-size_2-of-2">
+                                            <div class="slds-box_x-small">
+                                                <ui:inputText value="" aura:id="username" placeholder="Email" keyup="{!c.onKeyUp}" class="slds-input mov-input" label="{!v.usernameLabel}"/>
+                                                <!--<input type="text" id="input-unique-id" class="slds-input mov-input" placeholder="Email" />-->
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="slds-form-element slds-size_2-of-2">
+                                            <div class="slds-box_x-small">
+                                                <ui:inputSecret value="" aura:id="password" class="slds-input mov-input" placeholder="Password" keyup="{!c.onKeyUp}" label="{!v.passwordLabel}" />
+                                                <!--<input type="text" id="input-unique-id" class="slds-input mov-input" placeholder="Password" />-->
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="slds-form-element slds-size_2-of-2">
+                                            <div class="slds-box_x-small">
+                                                <button class="slds-button mov-button mov-button_login">Login</button>
+                                                
+                                                <!--<p class="forgot-pw">Forgot your password?</p>-->
+                                                <p class="forgot-pw"><a href="{!if(v.communityForgotPasswordUrl == null, v.forgotPasswordUrl, v.communityForgotPasswordUrl)}">{!v.forgotPasswordLabel}</a></p>
+                                                <p class="or">or</p>
+                                                
+                                                <button class="slds-button mov-button mov-button_fblogin"><i class="fa fa-facebook" aria-hidden="true"></i> Login with Facebook</button>
+                                                <button class="slds-button mov-button mov-button_gplogin"><i class="fa fa-google-plus" aria-hidden="true"></i> Sign with Google +</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                            
+                            <!-- tab 2 content -->
+                            <div aura:id="tab-default-2" class="slds-tabs_default__content mov-tabs_default__content mov-register slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
+                                <h3>Create a New Account</h3>
+                                <span class="acct-type">This is a: 
+                                    <label class="radio-inline">
+                                        <input type="radio" id="new-radio" value="option1" name="iCheck" /> New Service
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" id="existing-radio" value="option2" name="iCheck" checked="checked" /> Existing Service
+                                        <span class="mov-tooltip mov-tooltip_exist" data-toggle="tooltip" data-placement="left" title="Tooltip on left" ><img src="{! $Resource.Assets + '/images/tooltip.png'}" /></span>
+                                    </label>
+                                    
+                                </span>
+                                
+                                <div class="slds-grid slds-wrap mov-register-wrap">
+                                    <div class="slds-form-element slds-size_7-of-7">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-unique-id" class="slds-input mov-input" placeholder="Email" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element slds-size_2-of-7 slds-max-medium-size_7-of-7 ">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-01" class="slds-input mov-input" placeholder="First Name *" />
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-size_2-of-7 slds-max-medium-size_7-of-7">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-02" class="slds-input mov-input" placeholder="Middle Name *" />
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-size_2-of-7 slds-max-medium-size_5-of-7">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-02" class="slds-input mov-input" placeholder="Last Name *" />
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-size_1-of-7 slds-max-medium-size_2-of-7">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-02" class="slds-input mov-input" placeholder="Suffix *" />
+                                            <span class="mov-tooltip" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><img src="{! $Resource.Assets + '/images/tooltip.png'}"  /></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element slds-size_4-of-7 slds-max-medium-size_7-of-7">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-02" class="slds-input mov-input" placeholder="Mobile Number * (+63 XXX XXXXXXX) *" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element slds-size_3-of-7 slds-max-medium-size_7-of-7">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-02" class="slds-input mov-input" placeholder="Service ID Number *" />
+                                            <span class="mov-tooltip" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><img src="{! $Resource.Assets + '/images/tooltip.png'}"  /></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-size_1-of-1">
+                                        <div class="slds-box_x-small">
+                                            <p>To ensure the security of your account, please provide the ff:</p>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="slds-form-element slds-size_1-of-2 slds-max-medium-size_2-of-2">
+                                        <div class="slds-box_x-small">
+                                            <input type="text" id="input-02" class="slds-input mov-input" placeholder="Total kWh*" />
+                                            <span class="mov-tooltip" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><img src="{! $Resource.Assets + '/images/tooltip.png'}" /></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element slds-size_1-of-2 slds-max-medium-size_2-of-2 ">
+                                        <div class="slds-box_x-small">
+                                            <input type="date" id="input-02" class="slds-input mov-input mov-input_date" placeholder="Bill Date*" />
+                                            <span class="mov-tooltip" data-toggle="tooltip" data-placement="left" title="Tooltip on left"><img src="{! $Resource.Assets + '/images/tooltip.png'}" /></span>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="slds-size_1-of-1">
+                                        <div class="slds-box_x-small">
+                                            <div class="slds-form-element">
+                                                <div class="slds-form-element__control">
+                                                    <span class="slds-checkbox mov-checkbox">
+                                                        <input type="checkbox" name="options" id="checkbox-1" value="on" />
+                                                        <label class="slds-checkbox__label" for="checkbox-1">
+                                                            <span class="slds-form-element__label mov-form-element__label_terms">I have read and agree to the <span class="underline">Terms &amp; Conditions</span> of Meralco Customer Portal</span>
+                                                        </label>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <button class="slds-button mov-button mov-button_login mov-button_register">Register</button>
+                                
+                            </div>
+                        </div>
+                    </section>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,84 @@
+<aura:component controller="CXE_ServiceApplication">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="caseRecord" type="Case" />
+    <aura:attribute name="hasErrorOnPage" type="Boolean" default="true"/>
+    <aura:attribute name="persona" type="String" default=""/>   
+    <aura:attribute name="relationToCustomerPicklist" type="String[]"/>
+    
+    <!-- REGISTER TAB EVENT TO CHANGE TAB 2  -->
+    <aura:method name="doPageValidation" action="{!c.doPageValidation}" access="PUBLIC"/>
+    
+    <!-- REGISTER BUTTON EVENT TO CHANGE TAB 2 -->
+    <aura:registerEvent name="changeTabUsingButtonEvent" type="c:changeTabUsingButtonEvent"/> 
+
+    <div class="slds-tabs_default__content tabcontent" id="tab-2" >
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group slds-text-align_center">
+                <div class="mov-form-group slds-m-top_medium">
+                    <div class="mov-form">
+                        <div class="slds-form">
+                            <h3 class="slds-form-element__label slds-m-bottom_large mov-text_size-21 mov-text_color-323232">Who will be processing the request for modification?</h3>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                    <div class="slds-form-element__control">
+                                        <!-- <input class="slds-input mov-input" placeholder="First Name*" type="text" /> -->
+                                        <ui:inputText aura:id="repFirstName" placeholder="Juan" class="slds-input mov-input" value="{!v.caseRecord.Authorized_Representative_First_Name__c}" label="First Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" required="true"/>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="repMiddleName" placeholder="Pedro" class="slds-input mov-input" value="{!v.caseRecord.Authorized_Representative_Middle_Name__c}" label="Middle Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232"/>                                        
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <div class="slds-form-element__control">
+                                        <!-- <input class="slds-input mov-input" placeholder="Last Name*" type="text" /> -->
+                                        <ui:inputText aura:id="repLastName" placeholder="Dela Cruz" class="slds-input mov-input" value="{!v.caseRecord.Authorized_Representative_Last_Name__c}" label="Last Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                    <div class="slds-form-element__control">
+                                        <!-- <input class="slds-input mov-input" placeholder="Email Address*" type="text" /> -->
+                                        <ui:inputText aura:id="repEmail" placeholder="cxe_user@meralco.com" class="slds-input mov-input" value="{!v.caseRecord.Authorized_Representative_Email__c}" label="Email Address" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" required="true"/>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <div class="slds-form-element__control">
+                                        <!-- <input class="slds-input mov-input" placeholder="Mobile Number*" type="text" /> -->
+                                        <ui:inputText aura:id="repMobile" maxlength="13" placeholder="+639123456789" class="slds-input mov-input" value="{!v.caseRecord.Authorized_Rep_Primary_Contact_Number__c}" label="Mobile Number" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" required="true"/>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                   <!--  <div class="slds-form-element__control"> -->
+
+                                    <aura:if isTrue="{!v.persona == 'Biz'}">
+                                        <aura:set attribute="else">
+                                            <ui:inputSelect aura:id="selectedRelationToOwner" class="slds-select mov-select-aftersales mov-text_color-afafaf" label="Relation to Customer" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" change="{!c.onChangeRelationToOwner}">
+                                                <aura:iteration items="{!v.relationToCustomerPicklist}" var="relationToOwner">
+                                                     <ui:inputSelectOption text="{!relationToOwner}" label="{!relationToOwner}"/>
+                                                </aura:iteration>
+                                            </ui:inputSelect>  
+                                        </aura:set>
+                                    </aura:if>
+
+                                        <!-- <input class="slds-input mov-input" placeholder="Relation to Customer/Designation" type="text" /> -->
+                                        
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row">
+                                <div class="slds-form-element slds-p-top_xx-large">
+                                    <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickNext}">NEXT</ui:button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

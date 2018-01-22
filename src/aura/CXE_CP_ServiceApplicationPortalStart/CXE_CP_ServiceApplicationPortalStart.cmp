@@ -1,0 +1,72 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_ServiceApplication" >
+        
+    <aura:attribute name="persona" type="String" default="Ind"/>    
+    <aura:attribute name="caseVar" type="Case" default="{sobjectType: 'Case'}"/>
+    <aura:handler name="init" action="{!c.initCase}" value="{!this}" />
+
+    <!-- START CSM-14333 Jerome To 11/21/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. --> 
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+    <aura:handler name="change" value="{!v.isDoneRendering}" action="{!c.handleValueChange}"/>
+    <aura:handler name="change" value="{!v.isSourceUpdated}" action="{!c.handleSourcePageChange}"/>
+    <aura:attribute name="isDoneRendering" type="Boolean" default="false"/>
+    <aura:attribute name="prevPage" type="String" default=""/>
+    <!-- END CSM-14333 Jerome To 11/21/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+
+    <c:CXE_CP_Header />
+    
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <!-- START CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+        <!-- <div class="mov-breadcrumbs mov-breadcrumbs_modified"> -->
+            <!-- <div class="main-wrapper"> -->
+                <!-- <nav data-reactroot=""> -->
+                    <!-- <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap"> -->
+                        <!-- <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps"> -->
+                            <!-- <a onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a> -->
+                        <!-- </li> -->
+                        <!-- <li class="slds-breadcrumb__item mov-breadcrumb__item"> -->
+                            <!-- <a onclick="{!c.redirectToRequests}">Requests</a> -->
+                        <!-- </li> -->
+                        <!-- <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active"> -->
+                            <!-- <a href="javascript:void(0);">Request an Electric Service</a> -->
+                        <!-- </li> -->
+                    <!-- </ol> -->
+                <!-- </nav> -->
+            <!-- </div> -->
+        <!-- </div> -->
+
+        <aura:if isTrue="{!v.prevPage == 'dashboard'}">
+            <c:CXE_CP_BreadCrumbs sourcePages="['dashboard', 'Start Service']"/>
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.prevPage == 'accounts'}">
+                    <c:CXE_CP_BreadCrumbs sourcePages="['dashboard', 'Accounts', 'Start Service']"/>
+                    <aura:set attribute="else">
+                        <c:CXE_CP_BreadCrumbs sourcePages="['dashboard', 'trackapp', 'Start Service']"/>
+                    </aura:set>
+                </aura:if>
+            </aura:set>
+        </aura:if>
+
+        <!-- END CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+        <div class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                        <div class="mov-text-group slds-p-top_small">
+                            <div class="mov-text-group slds-p-top_small">
+                                <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Start a Service</h3>
+                            </div>
+                            <div class="mov-tabs-group">
+
+                                <c:CXE_CP_ServiceApplicationBizStart persona="{!v.persona}" 
+                                                                        caseVar="{!v.caseVar}"/>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end MAIN CONTENT -->
+    
+    <!--c:CXE_CP_Footer /-->
+</aura:component>

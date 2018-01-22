@@ -1,0 +1,187 @@
+<aura:component controller="CXE_CP_ConglomerateTableCtrl" implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="conglomerateRecords" type="Object[]" />  
+    <aura:attribute name="AccountName" type="String" />  
+    <aura:attribute name="AccountId" type="String" />  
+    <aura:attribute name="TotalNumberOfServices" type="String" /> 
+    <aura:attribute name="TotalRecord" type="CXE_CP_ConglomerateTableCtrl.ConglomerateData" />  <!--CSM-14073 Shayne 10/26/17 -->
+    <aura:registerEvent name="setLoader" type="c:CXE_CP_Loader"/>
+    <aura:attribute name="ongoingProcessMessage" type="String"/>  <!-- CSM-14726 Shayne 11/28/2017-->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    
+    
+     <!--START R2C CSM-14749 Shayne 12012017 -->
+    <aura:if isTrue="{!v.AccountId != null}">
+    <div class="slds-grid slds-wrap">
+                    <!-- Left Side Nav (Account Nav) -->
+                    <div class="slds-large-size_12-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                            <div class="slds-box mov-box mov-element-box-shadow mov-box_p-none">
+                                <!-- <aura:renderIf isTrue="{!v.ongoingProcessMessage == null}"> START R2C CSM-14832 Shayne 12/08/17 REMOVE DEPENDENCY IF THERE'S A DATA --> 
+                               <div class="mov-text-group slds-p-around_x-large">
+                                <h3 class="slds-m-bottom_small mov-text_size-32 mov-text_weight-semi-bold">{!v.AccountName}</h3>
+                                <!--p class="mov-text_size-16">Total Services: <span>6</span></p-->
+                            	</div>
+                           <!-- </aura:renderIf> END R2C CSM-14832 Shayne 12/08/17 -->
+                           <div class="mov-table-group mov-background-color_ffffff slds-m-vertical_medium slds-m-bottom_none mov-table-group_custom a">
+                                    <table class="slds-table slds-table_cell-buffer mov-table mov-table-advanced mov-table-conglomerate mov-background-color_ffffff">
+                                        <thead>
+                                            <tr class="slds-text-title_caps">
+                                                <th scope="col">
+                                                    <div>
+                                                        BUSINESS UNITS
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        COUNT OF SERVICES
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        KWH CONSUMPTION
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        BILLED <br/>DEMAND (KW)
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        BALANCE FROM PREVIOUS BILLING (PHP)
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                       BALANCE FOR CURRENT MONTH (PHP) <!--CSM-14073 Shayne 10/26/17  Changed from  CURRENT BILLED AMOUNT -->
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        PAYMENTS (PHP)
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        OUTSTANDING BALANCE (PHP)
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                             <aura:iteration items="{!v.conglomerateRecords}" var="conglomerate">
+                                            <tr>
+                                                <td data-label="Subsidiaries" scope="row">
+                                                    <div class="slds-text-align_left">
+                                                        {!conglomerate.name}
+                                                    </div>
+                                                </td>
+                                                <td data-label="Count of Services per Account">
+                                                    <div>  <!--CSM-14073 Shayne 10/26/17  Remove class to align right -->
+                                                        {!conglomerate.sin}
+                                                    </div>
+                                                </td>
+                                                <td data-label="KwH Consumption (Current Month)">
+                                                    <div class="slds-text-align_right">
+                                                        <ui:outputCurrency aura:id="totAmt" format="#,##0" value="{!conglomerate.kwh}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Billed Demand (KW)">
+                                                    <div class="slds-text-align_right">
+                                                       <ui:outputCurrency aura:id="totAmt" format="#,##0" value="{!conglomerate.bill_demand}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Balance from Previous Billing">
+                                                        <div class="slds-text-align_right"> <!--CSM-14073 Shayne 10/25/17  Added class to align right -->
+                                                       		<ui:outputCurrency aura:id="totAmt" format="#,##0.00" value="{!conglomerate.prev_bal}"/>
+                                                        </div>
+                                                </td>
+                                                <td data-label="Current Billed Amount">
+                                                    <div class="slds-text-align_right">
+                                                       <ui:outputCurrency aura:id="totAmt" format="#,##0.00" value="{!conglomerate.bill_amt}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Payments" scope="col">
+                                                    <div class="slds-text-align_right">
+                                                       <ui:outputCurrency aura:id="totAmt" format="#,##0.00" value="{!conglomerate.pay_amt}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Outstanding Balance" scope="col">
+                                                    <div class="slds-text-align_right">
+                                                       <ui:outputCurrency aura:id="totAmt" format="#,##0.00" value="{!conglomerate.pending_amt}"/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                             </aura:iteration>
+                                            
+                                            <aura:renderIf isTrue="{!v.ongoingProcessMessage != null}">
+                                                <tr>
+                                                    <td colspan="8">
+                                                        <div class="slds-p-vertical_x-large">
+                                                            <h4 style="font-size: 12px;" class="slds-p-vertical_x-large">
+                                                            <aura:unescapedHtml value="{!v.ongoingProcessMessage}" />
+                                                            </h4>
+                                                        </div> 
+                                                    </td>
+                                                </tr>
+                                			</aura:renderIf>
+
+                                            <!--START CSM-14073 Shayne 10/26/17 FOR TOTAL-->
+                                            <tr>
+                                                <td data-label="Subsidiaries" scope="row">
+                                                    <div>
+                                                        TOTAL
+                                                    </div>
+                                                </td>
+                                                <td data-label="Count of Services per Account">
+                                                    <div> 
+                                                        {!v.TotalRecord.sin == null ? '0' : v.TotalRecord.sin}
+                                                    </div>
+                                                </td>
+                                                <td data-label="KwH Consumption (Current Month)">
+                                                    <div class="slds-text-align_right">
+                                                        <ui:outputCurrency aura:id="totAmt" format="#,##0" value="{!v.TotalRecord.kwh == null ? '0' : v.TotalRecord.kwh}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Billed Demand (KW)">
+                                                    <div class="slds-text-align_right">
+                                                       <ui:outputCurrency aura:id="totAmt" format="#,##0" value="{!v.TotalRecord.bill_demand == null ? '0' : v.TotalRecord.bill_demand}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Balance from Previous Billing">
+                                                    <div class="slds-text-align_right"> 
+                                                       <ui:outputCurrency aura:id="totAmt" format="#,##0.00" value="{!v.TotalRecord.prev_bal == null ? '0' : v.TotalRecord.prev_bal}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Current Billed Amount">
+                                                    <div class="slds-text-align_right">
+                                                       <ui:outputCurrency format="#,##0.00" value="{!v.TotalRecord.bill_amt == null ? '0' : v.TotalRecord.bill_amt}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Payments" scope="col">
+                                                    <div class="slds-text-align_right">
+                                                      <ui:outputCurrency format="#,##0.00" value="{!v.TotalRecord.pay_amt == null ? '0' : v.TotalRecord.pay_amt}"/>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Outstanding Balance" scope="col">
+                                                    <div class="slds-text-align_right slds-m-right_medium">
+                                                       <ui:outputCurrency format="#,##0.00" value="{!v.TotalRecord.pending_amt == null ? '0' : v.TotalRecord.pending_amt}"/>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!--END CSM-14073 Shayne 10/26/17 -->
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+	 </div>
+                    </div><!-- Center Nav (Square Grid Nav) -->
+    
+    
+                    <p class="slds-m-top_x-small mov-text_size-11">*All figures are aggregated per business unit, excluding services subscribed to prepaid electricity or with existing contracts with retail electricity suppliers.</p>
+                    <p class="slds-m-top_x-small mov-text_size-11">*kWh Consumption, Billed Demand, Balance for Current Month, Payments and Outstanding Balance are updated upon bill generation and payment for specific services.</p>
+                    <p class="slds-m-top_x-small mov-text_size-11">*Outstanding Balance refers to the aggregated amount of all unpaid bills under a specific business unit. </p>
+                    <p class="slds-m-top_x-small mov-text_size-11">*Figures are refreshed every 1st of the month.</p>
+        </aura:if>   
+	<!--END R2C CSM-14749 Shayne 12012017 -->    
+</aura:component>

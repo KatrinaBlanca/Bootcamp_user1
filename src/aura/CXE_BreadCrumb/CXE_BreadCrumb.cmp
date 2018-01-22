@@ -1,0 +1,10 @@
+<aura:component >
+    <!-- BREADCRUMBS -->
+    <nav data-reactroot="" role="navigation" aria-label="Breadcrumbs">
+        <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+            <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps"><a href="#"><i class="fa fa-home breadcrumb-home" aria-hidden="true"></i></a></li>
+            <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps"><a href="#">My Account</a></li>
+            <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active slds-text-title_caps">User Details</li>
+        </ol>
+    </nav>
+</aura:component>

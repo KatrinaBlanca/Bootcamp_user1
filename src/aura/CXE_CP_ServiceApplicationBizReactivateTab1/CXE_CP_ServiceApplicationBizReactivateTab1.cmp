@@ -1,0 +1,168 @@
+<aura:component >
+    <aura:attribute name="caseRecord" type="Case"/>
+    <aura:attribute name="hasErrorOnPage" type="Boolean" default="false"/>
+
+    <!-- REGISTER TAB EVENT TO CHANGE TAB 2  -->
+    <aura:method name="doPageValidation" action="{!c.doPageValidation}" access="PUBLIC"/>
+    
+    <!-- REGISTER BUTTON EVENT TO CHANGE TAB 2 -->
+    <aura:registerEvent name="changeTabUsingButtonEvent" type="c:changeTabUsingButtonEvent"/>  
+    
+    <style>
+    	.bSinError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .bCompNameError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .bFirstNameError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .bLastNameError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .bEmailAddError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .bMobileError{
+			color: red!important;
+			font-size: 12px!important;        
+        }
+        .bRelationshipError{
+        color: red!important;
+        font-size: 12px!important;        
+		}
+        .bEmailFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .bEmailAddFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .bMobileFormatError{
+			color: red!important;
+			font-size: 12px!important;        
+        }
+    </style>
+    
+    <div class="tab-pane active slds" id="request_to_modify" role="tabpanel" >
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group slds-text-align_center">
+                <div class="mov-form-group slds-m-top_medium">
+                    <div class="mov-form">
+                        <div class="slds-form">
+                            <label class="slds-form-element__label slds-m-vertical_large mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Service Identification Number of the electric service you want to reactivate<span class="mov-text_color-ff5114">*</span></label>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <div class="slds-form-element__control mov-element-position-relative">                                       
+                                        <ui:inputText aura:id="biz_Sin" class="slds-input mov-input" maxlength="12"
+                                                      placeholder="123456789012" required="true" label="SIN" labelClass="hidden" value="{!v.caseRecord.Account_No__c}"/>
+                                        <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                            <span class="tooltiptext">Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text</span>
+                                        </div>
+                                        <!-- <p aura:id="bSin-error" class="slds-hide">Please indicate your SIN.</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_xx-large slds-p-top_medium">Please enter contact information for the person who will be responsible for the account.</h3>
+                                                        
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small ">	
+                                <div class="slds-form-element slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Company Name<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="biz_CompName" class="slds-input mov-input"
+                                                      placeholder="ABC Corporation" required="true" label="Company Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.CXE_Web_Business_Name__c}"/>
+                                    </div>
+                                    <!-- <p aura:id="bCompName-error" class="slds-hide">Please indicate your Company Name.</p> -->
+                                </div>	
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Doing Business As</label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="biz_DoingBizAs" class="slds-input mov-input"
+                                                      placeholder="Meralco" label="Doing Business As" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.CXE_Web_Doing_Business_As__c}"/>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Business Email Address</label> -->
+                                    <div class="slds-form-element__control">
+                                        <!--<input class="slds-input mov-input-trackmyapp" id="guest-last-name" type="text" />-->
+                                        <ui:inputText aura:id="biz_Email" class="slds-input mov-input"
+                                                      placeholder="abccorp@asdf.com" label="Business Email Address" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.CXE_Web_Business_Primary_Email__c}"/>
+                                    </div>                                    
+                                    <!-- <p aura:id="bEmailFormat-error" class="slds-hide">Email Address incorrect format!.</p> -->
+                                </div>
+                                <div class="slds-form-element slds-large-size_12-of-12 slds-medium-size_12-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Business Landline<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="biz_landline" class="slds-input mov-input"
+                                                      placeholder="+632585000" label="Business Landline" maxlength="11" required="true" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.CXE_Web_Business_Landline__c}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small ">	
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">First Name<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="biz_FirstName" class="slds-input mov-input" label="First Name" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" placeholder="Juan" required="true" value="{!v.caseRecord.CXE_Web_First_Name__c}"/>
+                                    </div>
+                                    <!-- <p aura:id="bFirstName-error" class="slds-hide">Please indicate your First Name.</p> -->
+                                </div>
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref    -no">Last Name<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                         <ui:inputText aura:id="biz_LastName" class="slds-input mov-input"
+                                                      placeholder="Dela Cruz" label="Last Name" required="true" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.CXE_Web_Last_Name__c}"/>
+                                    </div>
+                                    <!-- <p aura:id="bLastName-error" class="slds-hide">Please indicate your Last Name.</p> -->
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Email Address<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                         <ui:inputText aura:id="biz_EmailAdd" class="slds-input mov-input"
+                                                      placeholder="juandc@asdf.com" label="Email Address" required="true" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.CXE_Web_Primary_Email__c}"/>
+                                    </div>
+                                    <!-- <p aura:id="bEmailAdd-error" class="slds-hide">Please indicate your Email Address.</p> -->
+                                    <!-- <p aura:id="bEmailAddFormat-error" class="slds-hide">Email Address incorrect format!.</p> -->
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Mobile Number<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                         <ui:inputText aura:id="biz_Mobile" class="slds-input mov-input"
+                                                      placeholder="+639268152777" label="Mobile Number" maxlength="13" required="true" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.CXE_Web_Primary_Mobile__c}"/>
+                                    </div>
+                                    <!-- <p aura:id="bMobile-error" class="slds-hide">Please indicate your Mobile Number.</p> -->
+                                    <!-- <p aura:id="bMobileFormat-error" class="slds-hide">Email Address incorrect format!.</p> -->
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Designation<span class="mov-text_color-ff5114">*</span></label> -->
+                                    <div class="slds-form-element__control">
+                                         <ui:inputText aura:id="biz_Designation" class="slds-input mov-input"
+                                                      placeholder="Mother" required="true" label="Designation" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-14 mov-text_weight-bold mov-text_color-323232" value="{!v.caseRecord.Designation__c}"/>
+                                    </div>
+                                    <!-- <p aura:id="bRelationship-error" class="slds-hide">Please specify your Relationship/Designation.</p> -->
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row">
+                                <div class="slds-form-element slds-p-top_large">
+                                    <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickNext}">NEXT</ui:button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

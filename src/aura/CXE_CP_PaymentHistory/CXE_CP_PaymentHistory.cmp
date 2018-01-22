@@ -1,0 +1,317 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_CP_PaymentHistory">
+    
+    <style>
+        @media print {
+            body * {
+            	visibility: hidden;
+            }
+            #paymentTable, #paymentTable * {
+            	visibility: visible;
+            }
+            #paymentTable {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        
+        .payref-number {margin: 30px auto 0px; max-width: 500px;}
+        .payref-number p {text-align: center; font-weight:bold; margin-top: 6px;}
+        .payref-number .slds-input {background-color: #fff; color: #000000; border: 1px solid #898989;}
+        .search-payref {position:relative;}
+        .search-payref:before {
+            content: "\f002";
+            font-family: FontAwesome;
+            color: #898989;
+            position: absolute;
+            top: 4px;
+            right: 11px;
+            font-size: 17px;
+            z-index: 2;
+        }
+        
+        <!--Start R2C CSM-14692 Von Pernicia-->
+        .search-payref button {
+            background: transparent;
+            border: 1px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 32px;
+            height: 32px;
+            color: #898989;
+        }
+        
+        .search-payref:before {
+        	display: none;
+        }
+        <!--End R2C CSM-14692 Von Pernicia-->
+    </style>
+    
+    <aura:attribute name="tableReturn" type="CXE_CP_PaymentHistory.paymentrecordList[]"/>
+    <aura:attribute name="tablePagination" type="CXE_CP_PaymentHistory.paymentrecordList[]"/>
+    <aura:attribute name="tableCurrent" type="CXE_CP_PaymentHistory.paymentList[]"/>
+    <aura:attribute name="allData" type="CXE_CP_PaymentHistory.paymentList[]"/>
+    <aura:attribute name="currentPageNum" type="integer"/>
+    <aura:attribute name="isConglomerate" type="Boolean" default="false"/> <!--R2C CSM-14749 Shayne 12/01/2017 -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    
+    <c:CXE_CP_Header />
+    <!-- CSM-12823 Start Emandolado 9/20/2017 -->
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div> 
+    <!-- CSM-12823 End Emandolado 9/20/2017 -->
+    
+    <!-- MAIN CONTENT -->
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <!--<a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>-->
+                            <!--START Breadcrumb-task GSerrano SEPT-25-17-->
+                            <a  onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                            <!--<a href="javascript:void(0);">Bills &amp; Payments</a>-->
+                            <a onclick="{!c.redirectToBillsPayments}">Bills &amp; Payments</a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <!-- <a href="javascript:void(0);">Bills Summary</a> -->
+                            <!-- Start CSM-12458 Emandolado 9/6/2017 -->
+                            <!--<a href="javascript:void(0);">Payment History</a>-->
+                            <a onclick="{!c.redirectToBillsPayments}">Payment History</a>
+                            <!-- End CSM-12458 Emandolado 9/6/2017 -->
+                            <!--END Breadcrumb-task GSerrano SEPT-25-17-->
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+        
+        <div class="main-wrapper">
+            <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+                    <div class="mov-text-group slds-p-top_small">
+                        <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Bills &amp; Payments</h3>
+                        <!-- //CSM-12488 corrected spelling -->
+                    </div>
+                </div>
+                <div class="slds-large-size_9-of-12 slds-max-large-size_12-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                    
+                    <div class="slds-box mov-box mov-box_margin-bottom_850 mov-element-box-shadow mov-background-color_ffffff mov-payment-history">
+                        
+                        <div class="mov-text-group text-center">
+                            <p class="mov-text_size-24 mov-text_color-323232 mov-text_weight-semi-bold move-box_title">Payment History</p>
+                            <p>This list includes only payments made for services enrolled in your Meralco Online account.</p>
+                        </div>
+                        
+                        <div onkeyup="{!c.search}" class="payref-number">
+								<div class="slds-grid slds-wrap">
+									<div class="slds-size_5-of-12 slds-max-large-size_12-of-12">
+										<p class="text-center">Payment Reference No.</p>
+									</div>
+                                    
+                                    <!--Start R2C CSM-14692 Von Pernicia-->
+                                    <div class="slds-size_7-of-12 slds-max-large-size_12-of-12">
+                                        <div class="search-payref">
+                                            <!-- <input onblur="{!c.search}" type="search" aria-activedescendant="" aria-autocomplete="list" aria-controls="global-search-list-01" autocomplete="off" class="slds-input slds-lookup__search-input" id="global-search-01" placeholder="Search" role="textbox" /> -->
+                                            <ui:inputText aura:id="searchId" class="slds-input slds-lookup__search-input" value="" />
+                                            <button type="submit" onclick="{!c.searchIcon}"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                    <!--End R2C CSM-14692 Von Pernicia-->
+                                    
+                            </div>
+                        </div>
+                        
+                        <div class="mov-table-group mov-table-group_dropdown mov-background-color_ffffff slds-m-vertical_large mov-table-group_custom mov-bill-table">
+                            <table id="paymentTable" class="slds-table slds-table_cell-buffer mov-table mov-table-advanced mov-background-color_ffffff mov-table-striped_inverse mov-table-payment-history">
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div>
+                                                PAYMENT DATE
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>
+                                                PAYMENT REFERENCE NO. *
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>
+                                                PAYMENT STATUS
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>
+                                                PAYMENT OFFICE
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>
+                                                PAYMENT MODE
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div>
+                                                AMOUNT PAID TO MERALCO (PHP)
+                                            </div>
+                                        </th>
+                                        
+                                        <th scope="col">
+                                            <div>
+                                                PAYMENT POSTING DATE
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!v.tableCurrent}" var="return" indexVar="key">    
+                                        <tr>
+                                            <td>{!return.PaymentDate}</td>
+                                            <td>{!return.PaymentReference}</td>
+                                            <td>{!return.PaymentStatus}</td>
+                                            <td>{!return.PaymentOffice}</td>
+                                            <td>{!return.PaymentMode}</td>
+                                            <!--Start CSM-12428 EMandolado 9/5/2017-->
+                                            <!--START CSM-14101 JRances / UAT, Payment History_Remove peso sign before the amount paid -->
+                                            <td> <ui:outputCurrency aura:id="amount" value="{!return.AmountPaid}" format="###,###,###,##0.00"/></td>
+                                            <!--END CSM-14101 JRances-->
+                                            <!-- End CSM-12428 EMandolado 9/5/2017-->
+                                            <td>{!return.PostingDate}</td>
+                                            
+                                        </tr>
+                                    </aura:iteration>
+                                    
+                                    <!-- <tr>
+                                        <td data-label="Received Date">
+                                            <div>
+                                                <strong>01/01/17</strong>
+                                            </div>
+                                        </td>
+                                        <td data-label="Received Date">
+                                            <div>
+                                                XXXXXX
+                                            </div>
+                                        </td>
+                                        <td data-label="Address">
+                                            <div>
+                                                Pending Payment Posting
+                                            </div>
+                                        </td>
+                                        <td data-label="Status">
+                                            <div>
+                                                Taguig BGC
+                                            </div>
+                                        </td>
+                                        <td data-label="Remarks">
+                                            <div>
+                                                Credit Card
+                                            </div>
+                                        </td>
+                                        <td data-label="Remarks">
+                                            <div>
+                                                <strong>3,000.00</strong>
+                                            </div>
+                                        </td>
+                                        <td data-label="Remarks">
+                                            <div>
+                                                -
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td data-label="Received Date">
+                                            <div>
+                                                <strong>01/01/17</strong>
+                                            </div>
+                                        </td>
+                                        <td data-label="Received Date">
+                                            <div>
+                                                XXXXXX
+                                            </div>
+                                        </td>
+                                        <td data-label="Address">
+                                            <div>
+                                                Posted
+                                            </div>
+                                        </td>
+                                        <td data-label="Status">
+                                            <div>
+                                                BPI
+                                            </div>
+                                        </td>
+                                        <td data-label="Remarks">
+                                            <div>
+                                                Cash
+                                            </div>
+                                        </td>
+                                        <td data-label="Remarks">
+                                            <div>
+                                                <strong>500.00</strong>
+                                            </div>
+                                        </td>
+                                        <td data-label="Remarks">
+                                            <div>
+                                                12/02/12
+                                            </div>
+                                        </td>
+                                        
+                                    </tr> -->
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- PAGINATION -->
+                        <nav class="pager-history">
+                            <ul class="pagination">
+                                <li><ui:outputURL aura:id="firstBTN" value="" click="{!c.firstPage}" label="First"/></li>
+                                <li><ui:outputURL aura:id="prevBTN" value="" click="{!c.prevPage}" label="Previous"/></li>
+                                 <aura:iteration items="{!v.tableReturn}" var="return" indexVar="key">  
+                                     <!--<li><ui:button buttonTitle="{!return.recordPagenum}" press="{!c.Pagination}">{!return.recordPagenum}</ui:button></li> -->
+                                     <li><ui:outputURL aura:id="pagesBTN" value="" click="{!c.Pagination}" label="{!return.recordPagenum}"/></li>
+                                </aura:iteration>
+                                <!-- <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li> -->
+                                <li><ui:outputURL aura:id="nextBTN" value="" click="{!c.nextPage}" label="Next"/></li>
+                                <li><ui:outputURL aura:id="lastBTN" value="" click="{!c.lastPage}" label="Last"/></li>
+                            </ul>
+                        </nav>
+                        
+                        <div class="mov-button-group text-center">
+                            <ui:button disabled="true" press="{!c.printTable}" aura:id="printBTN" class="slds-button mov-button mov-element_max-width-170">Print</ui:button>
+                            <ui:button disabled="true" press="{!c.downloadPDF}" aura:id="downloadBTN" class="slds-button mov-button mov-element_max-width-170">Download</ui:button>
+                        </div>
+                        <!--START CSM-13947 JRances - Missing Note and * in Payment History page -->
+                        <!-- <p>* Applies to payments made through the Customer Portal.</p> -->
+                        <p>* Reference number only applies to Meralco Online Payments.</p>
+                        <!--END CSM-13947 JRances -->
+                    </div>
+                </div>
+                
+                <!-- Right Side Nav (Helper Nav) -->
+                <div class="slds-large-size_3-of-12 slds-max-large-size_12-of-12 slds-p-horizontal_x-small">
+                    <div class="mov-dashboard_misc-list">
+                        <c:CXE_CP_WidgetAutoPayArrangementSubscrpition isConglomerate="{!v.isConglomerate}" /> <!--R2C CSM-14749 Shayne 12/01/2017 -->
+                        <c:CXE_CP_WidgetPaymentOption />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end MAIN CONTENT -->
+</aura:component>

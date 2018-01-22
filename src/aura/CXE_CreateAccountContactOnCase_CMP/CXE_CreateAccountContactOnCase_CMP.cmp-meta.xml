@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>39.0</apiVersion>
+    <description>Auto create/pick from a similar list of Accounts and Contacts based on Case information</description>
+</AuraDefinitionBundle>
