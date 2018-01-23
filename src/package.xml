@@ -966,5 +966,5 @@
         <members>*</members>
         <name>Settings</name>
     </types>
-    <version>35.0</version>
+    <version>36.0</version>
 </Package>
