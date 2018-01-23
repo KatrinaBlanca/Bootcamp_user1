@@ -1,0 +1,117 @@
+<aura:component >
+    <aura:attribute name="caseRecord" type="Case" />
+    
+    <!-- REGISTER TAB EVENT TO CHANGE TAB 3  -->
+    <aura:method name="submitValueAddedServices" action="{!c.submitValueAddedServices}" access="PUBLIC"/>
+    <aura:registerEvent name="callTabEvent" type="c:SetTabValueEvent"/>
+    
+    <!-- REGISTER BUTTON EVENT TO CHANGE TAB 2 -->
+    <aura:registerEvent name="changeTabUsingButtonEvent" type="c:changeTabUsingButtonEvent"/>  
+    
+    <style>
+        .statAppError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .procAppError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+    </style>
+    
+    <div class="tab-pane" id="value_add_services">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group mov-element-overflow-auto slds-m-top_medium slds-m-bottom_xx-large">
+                <span class="mov-text_size-18 mov-text_weight-semi-bold slds-m-top_small">How would you like to be updated the status of this application?</span>
+                
+                <div class="mov-radio-group mov-radio-group_inline slds-float_right">
+                    <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_medium slds-hide">
+                        <!--<input type="radio" id="sms_radio" value="option1" name="iCheck1" onclick="{!c.radioClick}"/> -->
+                        <input type="radio" id="sms_radio" value="option1" name="iCheck1" onclick="{!c.onSelectNotification}" aura:id="sms"/>
+                        <span>SMS</span>
+                        <div class="radio-custom mov-radio-custom"></div>
+                    </label>	
+                    <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_medium">                       
+                        <!--<input type="radio" id="email_radio" value="option2" name="iCheck1" onclick="{!c.radioClick}"/> -->
+                        <input type="radio" id="email_radio" value="option1" name="iCheck1" onclick="{!c.onSelectNotification}" aura:id="email"/>
+                        <span>Email</span>
+                        <div class="radio-custom mov-radio-custom"></div>
+                    </label>	
+                    <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-hide">
+                        <!--<input type="radio" id="both_radio" value="option3" name="iCheck1" onclick="{!c.radioClick}"/> -->
+                        <input type="radio" id="both_radio" value="option1" name="iCheck1" onclick="{!c.onSelectNotification}" aura:id="both"/>
+                        <span>Both</span>
+                        <div class="radio-custom mov-radio-custom"></div>
+                    </label><br></br><br></br>
+                    <!--<p aura:id="statApp-error" class="slds-hide">Please select how would you like to be updated.</p> -->
+                </div>
+                
+            </div>
+            <div class="mov-text-group mov-element_display-flex slds-m-bottom_medium">
+                <div class="mov-element-position-relative mov-element_display-flex-auto ">
+                    <span class="mov-text_size-18 mov-text_weight-semi-bold slds-m-top_small mov-element-position-relative">
+                        Would you like to have Accredited Meralco Contractor help process your application?
+                        
+                    </span>
+                    <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align mov-tooltip_right-0">
+                        <img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                        <span class="tooltiptext">Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text</span>
+                    </div>
+                </div>
+                <div class="mov-element_display-flex-auto slds-text-align_right">
+                    <div class="mov-radio-group mov-radio-group_inline">
+                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_large">
+                            <!--<input type="radio" id="yesProc_radio" value="option4" name="iCheck2" onclick="{!c.radioClick}"/> -->
+                            <input type="radio" id="yesProc_radio" value="option1" name="iCheck2" onclick="{!c.onClickAMC}" aura:id="amc"/>
+                            <span>Yes</span>
+                            <div class="radio-custom mov-radio-custom"></div>
+                        </label>	
+                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold">
+                            <!--<input type="radio" id="noProc_radio" value="option5" name="iCheck2" onclick="{!c.radioClick}"/> -->
+                            <input type="radio" id="noProc_radio" value="option1" name="iCheck2" onclick="{!c.onClickAMC}"/>
+                            <span>No&nbsp;</span>
+                            <div class="radio-custom mov-radio-custom"></div>
+                        </label>
+                        <br></br><br></br>
+                        <!--<p aura:id="procApp-error" class="slds-hide">Please select if you would like Meralco to process your application.</p> -->
+                    </div>
+                </div>
+                
+            </div>
+            <div class="mov-alert slds-m-bottom_small slds-hide" aura:id="amcNotif">
+                <div class="slds-notify_container slds-is-relative">
+                    <div class="slds-notify slds-notify_toast slds-theme_info mov-notify-custom slds-m-horizontal_none mov-background-color_ffe3d9 mov-element-border-none" role="alert">
+                        <div class="slds-notify__content">
+                            <h2 class="mov-text_size-14 mov-notify__content-custom mov-text_color-ff5114">Great! An AMC will get in touch with you within 3 days. They will be assisting you with the application process making it hassle-free! They can take care of all the needed documents up to the technical requirement.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <div class="slds-file-selector slds-file-selector_files">
+                            <div class="slds-file-selector__dropzone  mov-element-border-none">
+                                <input type="file" class="slds-file-selector__input slds-assistive-text" id="file-upload-input-01" aria-describedby="file-selector-id" />
+                                <label class="slds-file-selector__body" for="file-upload-input-01">
+                                    <span class="slds-file-selector__button slds-button slds-button_neutral mov-element-border-none slds-p-left_none">
+                                        <span class="slds-file-selector__text mov-text_color-ff5114 mov-text_weight-normal mov-text_size-16 slds-m-left_none">
+                                            <i class="fa fa-plus">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                                            Attach Documents
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>		
+            </div> -->
+            <div class="mov-button-group mov-element_max-width-400 slds-m-top_medium">
+                <!--<a class="slds-button mov-button-transparent slds-m-bottom_small slds-m-left_none mov-element_max-width-170" href="javascript:void(0)">Almost Done!</a>-->
+                <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickNext}">Almost Done!</ui:button>
+            </div>
+        </div>
+    </div>
+</aura:component>

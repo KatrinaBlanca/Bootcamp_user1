@@ -1,0 +1,8 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+    <!-- PARAMETERS -->
+    <apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/>
+    <apex:variable var="c" value="{!case}" />
+    <apex:variable var="amcDetails" value="amcDetails" rendered="{!NOT(c.AMC_Service_Tag__c)}">
+    <br/>You may also be interested in availing of Accredited Meralco Contractor (AMC) services to address your technical issues.  AMCs are experts in the construction of customer loadside facilities, including the installation of service entrance, following industry-accepted technical and safety standards.  Please visit <a>www.amc.org.ph</a> for more information and complete listing of AMCs.<br/>
+    </apex:variable>
+</apex:component>

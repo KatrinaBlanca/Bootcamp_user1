@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Org Wide Fixed Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Org Wide Fixed Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Portal No Enrollment Grace Period --></label>
+        <name>Portal_No_Enrollment_Grace_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portal No Password Grace Period --></label>
+        <name>Portal_No_Password_Grace_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portal User Inactivity Deactivation --></label>
+        <name>Portal_User_Inactivity_Deactivation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portal User Inactivity Notif Count --></label>
+        <name>Portal_User_Inactivity_Notif_Count__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

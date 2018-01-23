@@ -1,0 +1,118 @@
+<aura:component controller="CXE_CP_MyAccountsAccountDetail">
+    
+    <style>
+        .Hideme {
+        display: none;
+        }
+    </style> 
+    
+    <!--<aura:handler name="init" action="{!c.doInit}" value="{!this}" />-->
+    <aura:registerEvent name="setAttribute" type="c:CXE_CP_MyAccount_Event"/>
+    <aura:attribute name="dataReceived" type="CXE_CP_MyAccounts.ReturnData"/>
+    <aura:attribute name="WithSin" type="string"/>
+    <aura:handler name="change" value="{!v.WithSin}" action="{!c.onWithSinChange}"/>
+    
+    <aura:attribute name="showUnenrollmentSuccessfulModal" type="boolean" default="false" />
+    <aura:attribute name="showSINPaperlessModal" type="boolean" default="false" />
+    
+    <!--START/END R2C CSM-13274 Shayne 10/12/2017 -->
+    <aura:attribute name="isConglomerate" type="boolean" default="false"/>
+    
+     <!-- START R2C CSM-14840 Shayne 12/08/2017 -->
+    <aura:attribute name="isCongloModal" type="boolean"  default="false"/>
+    <aura:attribute name="congloMessage" type="String"/>
+    <!-- END R2C CSM-14840 Shayne 12/08/2017 -->
+    
+    <aura:renderIf isTrue="{!v.showUnenrollmentSuccessfulModal}" >
+        <c:CXE_CP_ModalUnenrollmentSuccessful getValue="{!v.showUnenrollmentSuccessfulModal}"/>
+    </aura:renderIf>
+    
+    <aura:renderIf isTrue="{!v.showSINPaperlessModal}" >
+        <c:CXE_CP_ModalSINPaperless getValue2="{!v.showSINPaperlessModal}"/>
+    </aura:renderIf>
+    
+    <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+        <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+            <div class="mov-text-group slds-p-top_small">
+                <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Accounts</h3>
+            </div>
+        </div>
+        <!-- ACCOUNT DETAILS -->
+        <div class="slds-box mov-box mov-element-box-shadow mov-background-color_ffffff mov-myaccounts_details">
+            <h3>{!v.dataReceived.AccountNumber}</h3>
+            
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Account Number</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.AccountNumber}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Account Type</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.AccountType}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Authorized Withholding Agent (AWA):</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.AWA}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Payment Mode</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.PaymentMode}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Paperless Billing</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.PaperlessBilling}</p> </div>
+            </div>
+        </div>
+        
+        <div aura:id="SinForm" class="slds-box mov-box mov-element-box-shadow mov-background-color_ffffff mov-myaccounts_details Hideme">
+            <aura:if isTrue="{!empty(v.dataReceived.Alias)}" >
+                <h3>{!v.dataReceived.SIN}</h3>
+                <aura:set attribute="else" >
+                    <h3>{!v.dataReceived.SIN} ({!v.dataReceived.Alias})</h3>
+                </aura:set>
+            </aura:if>
+            
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Service ID Number</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SIN}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Service Address</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SAddress}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Program/Service Type</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SServerType}</p> </div><!-- CSM-12600 Emandolado 9/18/2017 -->
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Contracted Capacity</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SCapacity}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Guaranteed Minimum Billing Demand (GMBD)</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SGMBD}</p> </div>
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Service Supply Voltage</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SVoltage}</p> </div>
+                
+                <!--div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Service Description</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SDescription}</p> </div-->
+                
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p>Service Status</p> </div>
+                <div class="slds-size_3-of-6 slds-max-medium-size_6-of-6"> <p class="text-bold">{!v.dataReceived.SStatus}</p> </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="slds-form-element slds-p-top_large">
+            <ui:button class="slds-button mov-button center-block mov-element_max-width-345" press="{!c.GoBack}">Back</ui:button><br></br>
+        </div>
+        
+    </div>
+    
+    <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+        <div aura:id="unEnrollBtn" class="slds-form-element slds-p-top_large Hideme" ><!--disabled="true"-->
+            <ui:button aura:id="unEnrollbtn" class="slds-button mov-button center-block mov-element_max-width-345" press="{!c.unEnrollService}">UNENROLL ELECTRIC SERVICE</ui:button> <!--R2C CSM-14840 Shayne 12/08/2017 remove disabled -->
+        </div>
+        <c:CXE_CP_WidgetManageService isConglomerate="{!v.isConglomerate}" />
+        <c:CXE_CP_WidgetPaperlessSubscription />
+        
+    </div>
+     <!-- START R2C CSM-14840 Shayne 12/08/2017 -->
+        <aura:renderIf isTrue="{!v.isCongloModal}">
+            <c:CXE_CP_ModalTemplateOk popUpMessageToShow="{!v.congloMessage}" popUpModalChild="{! v.isCongloModal }" confirmText="OK"/>
+       </aura:renderIf>
+       <!-- END R2C CSM-14840 Shayne 12/08/2017 -->
+</aura:component>

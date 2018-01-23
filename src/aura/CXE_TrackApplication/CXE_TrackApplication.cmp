@@ -1,0 +1,152 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_ServiceApplication">
+	<ltng:require styles="{!$Resource.CXE_SLDS + '/salesforce-lightning-design-system.min.css'}" />
+	<aura:attribute name="caseApplication" type="Case" default="{sobjectType: 'Case'}"/>	
+	<aura:attribute name="caseHistoryList" type="CXE_CaseHistoryWrapper[]"/>
+	<aura:attribute name="referenceNumber" type="String" default=""/>
+	<aura:attribute name="lastName" type="String" default=""/>
+	<aura:attribute name="caseNumber" type="String" default=""/>
+	<aura:attribute name="isTerminate" type="Boolean" default="false"/>
+	<div class="container">
+		<div class="slds">
+			<div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+				<div role="status" class="slds-spinner slds-spinner--medium">
+					<span class="slds-assistive-text">Loading</span>
+					<div class="slds-spinner__dot-a"></div>
+					<div class="slds-spinner__dot-b"></div>
+				</div>
+			</div>
+
+			<div aura:id="searchPage" class="CXE_applicationSearch">
+				<p class="slds-text-heading_small"> Track my Application </p>
+				<div class="slds-form-element slds-m-top--large">
+					<label class="slds-form-element__label" for="text-input-id-1">Application Reference Number</label>
+					<div class="slds-form-element__control">
+						<ui:inputText aura:id="" value="{!v.referenceNumber}" placeholder="A1234-56789001"/>
+					</div>
+				</div>
+
+				<div class="slds-form-element">
+					<label class="slds-form-element__label" for="text-input-id-1">Last Name</label>
+					<div class="slds-form-element__control">
+						<ui:inputText aura:id="" value="{!v.lastName}" placeholder="Dela Cruz"/>
+					</div>
+				</div>
+
+				<br/>
+				<ui:button aura:id="submitBtn" class="CXE_button-submit slds-button_brand" press="{!c.onSubmit}" label="SUBMIT"/>
+			</div>
+
+			<div aura:id="results" class="CXE_applicationTrack slds-hide">
+				<p class="slds-text-heading_large"> Track Service Application </p>
+				<p class="slds-text-heading_medium"> {!v.caseNumber} </p>
+
+				<div class="slds-tabs_scoped slds-m-top--large">
+					<ul class="slds-tabs_scoped__nav CXE_scopeTabLineHeight-fix" role="tablist">
+						<li aura:id="Apply" class="slds-tabs_scoped__item" title="Item One" role="presentation" >
+							<a class="slds-tabs_scoped__link" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-scoped-1" id="tab-scoped-1__item" href="javascript:void(0);">1<br />Apply</a>
+						</li>
+						<li aura:id="Evaluate" class="slds-tabs_scoped__item" title="Item Two" role="presentation" >
+							<a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-2" id="tab-scoped-2__item" href="javascript:void(0);">2<br />Evaluate</a>
+						</li>
+						<li aura:id="Inspect" class="slds-tabs_scoped__item" title="Item Three" role="presentation" >
+							<a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item" href="javascript:void(0);">3<br />Inspect</a>
+						</li>
+						<li aura:id="Complete" class="slds-tabs_scoped__item" title="Item Four" role="presentation" >
+							<a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-4" id="tab-scoped-4__item" href="javascript:void(0);">4<br />Complete</a>
+						</li>
+
+						<aura:if isTrue="{!!v.isTerminate}" >
+							<li aura:id="Energize" class="slds-tabs_scoped__item" title="Item Five" role="presentation">
+								<a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-5" id="tab-scoped-5__item" href="javascript:void(0);">5<br />Energize</a>
+							</li>
+						</aura:if>
+
+						<aura:if isTrue="{!v.isTerminate}" >
+							<li aura:id="Retire" class="slds-tabs_scoped__item" title="Item Five" role="presentation">
+								<a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-5" id="tab-scoped-5__item" href="javascript:void(0);">5<br />Retire</a>
+							</li>
+						</aura:if>
+					</ul>
+					<div id="tab-scoped-1" class="slds-tabs_scoped__content slds-show" role="tabpanel" aria-labelledby="tab-scoped-1__item">
+						<table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+							<thead>
+								<tr class="slds-line-height_reset">
+									<th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+										<span class="slds-th__action slds-text-link_reset">Date</span>
+									</th>
+									<th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+										<span class="slds-th__action slds-text-link_reset">Status</span>
+									</th>
+									<th class="slds-is-sortable slds-is-resizable slds-text-title_caps" scope="col">
+										<span class="slds-th__action slds-text-link_reset">Remarks</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<aura:iteration items="{!v.caseHistoryList}" var="caseHistory">
+									<tr>
+										<td><ui:outputDate format="MM/dd/YYYY" value="{!caseHistory.CreatedDate}"/></td>
+										<td>{!caseHistory.NewValue}</td>
+										<td>{!caseHistory.Remarks}</td>
+									</tr>
+								</aura:iteration>											
+							</tbody>
+						</table>
+					</div>
+
+					<div id="tab-scoped-2" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-2__item">
+						tab 2
+					</div>
+
+					<div id="tab-scoped-3" class="slds-tabs_scoped__content  slds-hide" role="tabpanel" aria-labelledby="tab-scoped-3__item">
+						tab 3
+					</div>
+
+					<div id="tab-scoped-4" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-4__item">
+						tab 4
+					</div>
+
+					<div id="tab-scoped-5" class="slds-tabs_scoped__content  slds-hide" role="tabpanel" aria-labelledby="tab-scoped-5__item" onclick="return false;">
+						tab 5
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<style>
+		.slds-button_brand {
+		background-color: #FC7019;
+		border-color: #FC7019;
+		}
+
+		.CXE_scopeTabLineHeight-fix .slds-tabs_scoped__link {
+		line-height: 1;
+		padding: 10px;
+		height: auto;
+		text-align: center;
+		}
+
+		.CXE_scopeTabLineHeight-fix li.slds-tabs_scoped__item {
+		width: calc((100% / 5) + 1px);
+		}
+
+		.CXE_scopeTabLineHeight-fix {
+		background-color: white;
+		}
+
+		.CXE_scopeTabLineHeight-fix .slds-is-active> a {
+		background-color: #FC7019;
+		color: white;
+		font-weight: bold;
+		}
+
+		.slds-popover_tooltip {
+		display: none;
+		}
+
+		.CXE_ServiceAppSINHelpIcon:hover + .slds-popover_tooltip {
+		display: block;
+		}
+	</style>
+</aura:component>

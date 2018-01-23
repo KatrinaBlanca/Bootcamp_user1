@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Title</field>
+        <field>ArticleType</field>
+        <field>ArticleNumber</field>
+        <field>CreatedBy</field>
+        <field>CreatedDate</field>
+        <field>LastModifiedBy</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>cxe.devops@accenture.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>First approval by Marketing Manager/Segment Officer</description>
+        <label>Submit to Marketing Manager/Segment Officer</label>
+        <name>Submit_to_Marketing_Manager_Segment_Officer</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>cxe.devops@accenture.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Second approval by Marketing Head/Segment Area Manager</description>
+        <label>Submit to Marketing Head/Segment Area Manager</label>
+        <name>Submit_to_Marketing_Head_Segment_Area_Manager</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>cxe.devops@accenture.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Final approval by MCSPD Head/Segment Head</description>
+        <label>Submit to MCSPD Head/Segment Head</label>
+        <name>Submit_to_MCSPD_Head_Segment_Head</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Approval process for all articles with FAQ record type</description>
+    <emailTemplate>unfiled$public/Knowledge_Article_Approval</emailTemplate>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Knowledge__kav.RecordType</field>
+            <operation>equals</operation>
+            <value>FAQ</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Knowledge__kav.PublishStatus</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Knowledge_Article_Approved</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Publish</name>
+            <type>KnowledgePublish</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>FAQs_Rejection_Email</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>FAQs Approval Process</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

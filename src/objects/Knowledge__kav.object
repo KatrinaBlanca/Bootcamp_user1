@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleTypeChannelDisplay>
+        <articleTypeTemplates>
+            <channel>App</channel>
+            <template>Tab</template>
+        </articleTypeTemplates>
+        <articleTypeTemplates>
+            <channel>Prm</channel>
+            <template>Tab</template>
+        </articleTypeTemplates>
+        <articleTypeTemplates>
+            <channel>Csp</channel>
+            <template>Tab</template>
+        </articleTypeTemplates>
+        <articleTypeTemplates>
+            <channel>Pkb</channel>
+            <template>Toc</template>
+        </articleTypeTemplates>
+    </articleTypeChannelDisplay>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <fields>
+        <fullName>Article_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Article Details</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Attachment__c</fullName>
+        <externalId>false</externalId>
+        <label>Attachment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>File</type>
+    </fields>
+    <fields>
+        <fullName>Content__c</fullName>
+        <externalId>false</externalId>
+        <label>Article Summary</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>L1_Approver_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 1 Approver 1</description>
+        <externalId>false</externalId>
+        <label>L1 Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L1_Approver_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 1 Approver 2</description>
+        <externalId>false</externalId>
+        <label>L1 Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L1_Approver_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 1 Approver 3</description>
+        <externalId>false</externalId>
+        <label>L1 Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L2_Approver_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 2 Approver 1</description>
+        <externalId>false</externalId>
+        <label>L2 Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L2_Approver_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 2 Approver 2</description>
+        <externalId>false</externalId>
+        <label>L2 Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L2_Approver_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 2 Approver 3</description>
+        <externalId>false</externalId>
+        <label>L2 Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L3_Approver_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 3 Approver 1</description>
+        <externalId>false</externalId>
+        <label>L3 Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L3_Approver_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 3 Approver 2</description>
+        <externalId>false</externalId>
+        <label>L3 Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge7</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>L3_Approver_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Level 3 Approver 3</description>
+        <externalId>false</externalId>
+        <label>L3 Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Knowledge8</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Lightning_URL__c</fullName>
+        <description>CSM-2106 - URL of knowledge record which is referenced in email templates.</description>
+        <externalId>false</externalId>
+        <formula>$Label.LIGHTNING_URL &amp; Id &amp;&quot;/view&quot;</formula>
+        <label>Lightning URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Days_in_Draft__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISBLANK(FirstPublishedDate),  TODAY() - DATEVALUE(ArticleCreatedDate) , 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Days in Draft</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sub_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Category</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Keywords</fullName>
+                    <default>false</default>
+                    <label>Keywords</label>
+                </value>
+                <value>
+                    <fullName>Guidelines</fullName>
+                    <default>false</default>
+                    <label>Guidelines</label>
+                </value>
+                <value>
+                    <fullName>Handbook</fullName>
+                    <default>false</default>
+                    <label>Handbook</label>
+                </value>
+                <value>
+                    <fullName>Manual</fullName>
+                    <default>false</default>
+                    <label>Manual</label>
+                </value>
+                <value>
+                    <fullName>Interim Work Procedures Manual</fullName>
+                    <default>false</default>
+                    <label>Interim Work Procedures Manual</label>
+                </value>
+                <value>
+                    <fullName>Procedures Manual</fullName>
+                    <default>false</default>
+                    <label>Procedures Manual</label>
+                </value>
+                <value>
+                    <fullName>Transitory Procedures Manual</fullName>
+                    <default>false</default>
+                    <label>Transitory Procedures Manual</label>
+                </value>
+                <value>
+                    <fullName>Work Instruction</fullName>
+                    <default>false</default>
+                    <label>Work Instruction</label>
+                </value>
+                <value>
+                    <fullName>Work Procedures Manual</fullName>
+                    <default>false</default>
+                    <label>Work Procedures Manual</label>
+                </value>
+                <value>
+                    <fullName>Technical Guidelines</fullName>
+                    <default>false</default>
+                    <label>Technical Guidelines</label>
+                </value>
+                <value>
+                    <fullName>Other Public Documents</fullName>
+                    <default>false</default>
+                    <label>Other Public Documents</label>
+                </value>
+                <value>
+                    <fullName>Business Process Design</fullName>
+                    <default>false</default>
+                    <label>Business Process Design</label>
+                </value>
+                <value>
+                    <fullName>Quality Manual</fullName>
+                    <default>false</default>
+                    <label>Quality Manual</label>
+                </value>
+                <value>
+                    <fullName>QRG</fullName>
+                    <default>false</default>
+                    <label>QRG</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Submit_Article__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Submit Article</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <label>Knowledge</label>
+    <listViews>
+        <fullName>For_Approval_Articles</fullName>
+        <columns>ARTICLE_NUMBER</columns>
+        <columns>TITLE</columns>
+        <columns>PUBLISH_STATUS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>LANGUAGE</columns>
+        <columns>LAST_PUBLISHED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>LANGUAGE</field>
+            <operation>equals</operation>
+            <value>en_US</value>
+        </filters>
+        <filters>
+            <field>PUBLISH_STATUS</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>Submit_Article__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>For Approval Articles</label>
+    </listViews>
+    <listViews>
+        <fullName>archived_articles</fullName>
+        <columns>TITLE</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Content__c</columns>
+        <columns>ARTICLE_NUMBER</columns>
+        <columns>LANGUAGE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PUBLISH_STATUS</field>
+            <operation>equals</operation>
+            <value>3</value>
+        </filters>
+        <filters>
+            <field>LANGUAGE</field>
+            <operation>equals</operation>
+            <value>en_US</value>
+        </filters>
+        <label>Archived Articles</label>
+    </listViews>
+    <listViews>
+        <fullName>draft_articles</fullName>
+        <columns>TITLE</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Content__c</columns>
+        <columns>ARTICLE_NUMBER</columns>
+        <columns>LANGUAGE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PUBLISH_STATUS</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>LANGUAGE</field>
+            <operation>equals</operation>
+            <value>en_US</value>
+        </filters>
+        <label>Draft Articles</label>
+    </listViews>
+    <listViews>
+        <fullName>published_articles</fullName>
+        <columns>TITLE</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Content__c</columns>
+        <columns>ARTICLE_NUMBER</columns>
+        <columns>LANGUAGE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PUBLISH_STATUS</field>
+            <operation>equals</operation>
+            <value>2</value>
+        </filters>
+        <filters>
+            <field>LANGUAGE</field>
+            <operation>equals</operation>
+            <value>en_US</value>
+        </filters>
+        <label>Published Articles</label>
+    </listViews>
+    <pluralLabel>Knowledge</pluralLabel>
+    <recordTypes>
+        <fullName>FAQ</fullName>
+        <active>true</active>
+        <label>FAQ</label>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>Keywords</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Guidelines_Procedures</fullName>
+        <active>true</active>
+        <label>Guidelines &amp; Procedures</label>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>Guidelines</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Other_Documents</fullName>
+        <active>true</active>
+        <label>Other Documents</label>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>Business Process Design</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quality Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Quick_Reference_Guide</fullName>
+        <active>true</active>
+        <label>Quick Reference Guide</label>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>QRG</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Regulatory_Publications</fullName>
+        <active>true</active>
+        <label>Regulatory Publications</label>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>Other Public Documents</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Technical_Standards_Guidelines</fullName>
+        <active>true</active>
+        <label>Technical Standards &amp; Guidelines</label>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>Technical Guidelines</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Work_Procedures_Manual</fullName>
+        <active>true</active>
+        <label>Work Procedures Manual</label>
+        <picklistValues>
+            <picklist>Sub_Category__c</picklist>
+            <values>
+                <fullName>Handbook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Interim Work Procedures Manual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Procedures Manual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transitory Procedures Manual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Work Instruction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Work Procedures Manual</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <validationRules>
+        <fullName>CXE_Require_Summary</fullName>
+        <active>true</active>
+        <description>Require Summary when submit article is checked</description>
+        <errorConditionFormula>AND(
+ LEN(Content__c) == 0,
+ Submit_Article__c = TRUE )</errorConditionFormula>
+        <errorMessage>Please input Article Summary</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Summary</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(
+ISBLANK( Content__c ),
+ISPICKVAL(PRIORVALUE(PublishStatus), &quot;Draft&quot;),
+ISCHANGED(PublishStatus)
+)</errorConditionFormula>
+        <errorMessage>Summary is required.</errorMessage>
+    </validationRules>
+</CustomObject>

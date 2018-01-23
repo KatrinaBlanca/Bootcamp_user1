@@ -1,0 +1,81 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" docType="html-5.0" showChat="FALSE" applyBodyTag="False" applyHtmlTag="False">
+
+    <head>
+        <title>Service Application</title>
+        <apex:stylesheet value="{!URLFOR($Resource.LDSAssets, 'assets/styles/salesforce-lightning-design-system.min.css')}" />
+        <apex:stylesheet value="{!URLFOR($Resource.LDSCustom, 'custom/css/ExDesign.css')}" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        <script>
+            function goToHome(){
+                var home = window.location.protocol + '//' + window.location.hostname + '/' + location.pathname.split('/')[1];
+                window.location.assign(home);                                
+            }
+
+            function resize() {
+            
+                var height;
+                if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) 
+                {
+                    //alert('1');
+                     height = document.getElementsByTagName("html")[0].scrollHeight;
+                }
+                else if(navigator.userAgent.indexOf("Chrome") != -1 )
+                {
+                     //alert('2');
+                     height = document.getElementsByTagName("html")[0].scrollHeight;
+                }
+                else if(navigator.userAgent.indexOf("Safari") != -1)
+                {
+                     //alert('3');
+                     height = document.getElementsByTagName("html")[0].scrollHeight;
+                }
+                else if(navigator.userAgent.indexOf("Firefox") != -1 ) 
+                {
+                     //alert('4');
+                      height = document.getElementById("CXE_body").scrollHeight;
+                }
+                else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+                {
+                     //alert('5');
+                     height = document.getElementById("CXE_body").scrollHeight;
+                }  
+                else 
+                {
+                    // alert('6');
+                    height = document.getElementsByTagName("html")[0].scrollHeight;
+                }
+        
+                //var height = document.getElementsByTagName("html")[0].scrollHeight;
+                window.parent.postMessage(["setHeight", height], "*"); 
+                //alert(height);
+            }
+
+            window.onload = resize;
+        </script>
+    </head>
+
+    <body id="CXE_body">
+        <div class="slds">
+            <div class="slds-grid slds-wrap CXE_mainContainer">
+                <div class="slds-large-size--1-of-1">
+                    <div class="slds-grid slds-wrap">
+                        <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+                            <h1 class="CXE_color--gray CXE_text--h1">
+                              Thank you for applying with Meralco.
+                            </h1>
+                          
+                            <p class="CXE_color--gray slds-m-top--small">Your application reference number is <strong>{!$CurrentPage.parameters.casenumber}</strong></p>
+                            <p class="CXE_color--gray slds-m-top--small">We have sent you a confirmation email to the email address in your application form. Our BIZ Partner will get in touch with you within 3 working days. If you did not receive our email, please check your spam folder first before calling our Call Center at 16211. You may also email us at ask@meralco.com.ph.</p>
+                            
+                            
+                          <div class="slds-text-align--right slds-m-top--large">
+                                <button class="CXE_button" onclick="goToHome()">BACK TO HOME</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</apex:page>

@@ -1,0 +1,51 @@
+<apex:page standardController="case" sidebar="false" showHeader="false">
+<style>
+ 
+*{ color:Maroon; 
+}
+
+a:link {
+    text-decoration: none;
+    color:Maroon; 
+
+}    
+
+a:visited {     text-decoration: none;
+    color:Maroon; 
+ }
+
+    </style>
+<div>
+    <b>You can't update the case to "Application Evaluated" if the following fields are empty or unchecked:</b>
+<ul>
+
+<li>Billing Address</li>
+<li>Except CFEI, all Energization Requirements, especially the <strong>Target Energization Date</strong></li>
+<li>Rate</li>
+<li>Billing Class</li>
+<li>Deposit</li>
+</ul>
+</div>
+    
+   <div>
+<b>Things to check if your case isn't updating to "Application Approved":</b>
+<ul>
+<li>Is there any <strong>requirement</strong> that's still in Pending status? <cite>Hint: Have you clicked on <u><strong>Show 1 More »</strong></u> ?</cite></li> 
+<li>Is the <strong>CFEI No.</strong> empty?</li>
+<li>Is the <strong>Customer / Premises with arrears?</strong> checked?</li>
+<li>Is the <strong>Deposit amount</strong> empty?</li>
+<li>Have you finished a successful Inspection or is the AMC Service already completed?</li>
+        </ul>
+    </div>
+
+   <div>
+   
+<b>Ran into problems / Need assistance or help on what to do next?</b>   
+ <ul>
+<li>  <apex:outputLink value="https://meralco--c.ap2.content.force.com/servlet/servlet.ImageServer?id=01528000000TfLC&oid=00D28000000fAvP&lastMod=1455588903000" id="WF" target="_blank"> Review the Online SA workflow on the Documents tab or by clicking here.</apex:outputLink></li>
+<li>Post your concern/inquiry on the "User Logs"</li>
+
+        </ul>
+    </div>
+ 
+</apex:page>

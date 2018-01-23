@@ -1,0 +1,475 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_MyAccounts">
+    
+    <style>
+        .Hideme {
+        display: none;
+        }
+        
+    </style> 
+    
+    <aura:handler name="setAttribute" event="c:CXE_CP_MyAccount_Event" action="{!c.EventFire}"/> 
+    
+    <aura:handler name="setAttribute2" event="c:CXE_CP_MyAccount_Event" action="{!c.EventFirePaperlessBilling}"/> <!-- CSM-12548 Mike Verdad 09/25/2017 -->
+    
+    <aura:attribute name="WithSin" type="String" default="NoSin"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="accts" type="String[]"/><!-- List of Accounts -->
+    <aura:attribute name="sins" type="String[]"/>
+    <aura:attribute name="Services" type="Agreement__c[]"/>
+    <aura:attribute name="Enrollments" type="CXE_Service_Enrollment__c[]"/>
+    
+    <aura:attribute name="UserDataHolder" type="CXE_CP_PortalUtility.PortalData"/>
+    <aura:attribute name="wrapperServiceList" type="CXE_CP_MyAccounts.ServiceWrapper[]"/>
+    <aura:attribute name="UserType" type="String"/>
+    <aura:attribute name="CheckValidation" type="Boolean" default="false"/>
+    <aura:attribute name="PreviousAct" type="String" default="ImDefault"/>
+    <aura:attribute name="isOpen" type="boolean" default="false" />
+    <!--Start CSM-13079, CSM-13204 R2C Rabayon 10/04/17 -->
+    <aura:attribute name="isApaEnroll" type="boolean" default="true" />
+    <aura:attribute name="isApaCancel" type="boolean" default="true" />
+    <aura:attribute name="EnrollCursor" type="String" default="cursor: default;" />
+    <aura:attribute name="CancelCursor" type="String" default="cursor: default;" />
+    <!--End CSM-13079, CSM-13204 R2C Rabayon 10/04/17 -->
+    <aura:attribute name="sinCheckHolder" type="string" />
+    <aura:attribute name="acctCheckHolder" type="string"/>
+    
+    <aura:attribute name="isConglomerate" type="Boolean" default="false" />  <!--R2C CSM-14350 Shayne 11-09-2017] -->
+    <!--START R2C CSM-13982 Shayne 10/25/2017 -->
+    <aura:attribute name="sinCount" type="integer" default="0" /> 
+    <aura:attribute name="popUpModal" type="String" default="myAccounts" />
+    <!--END R2C CSM-13982 Shayne 10/25/2017 -->
+    
+    <aura:attribute name="dataReceived" type="CXE_CP_MyAccounts.ReturnData"/>
+    <aura:attribute name="selectedSin" type="String" default="122222222222"/>
+    <aura:attribute name="caseVar" type="Case" default="{sobjectType: 'Case'}"/>
+    <aura:attribute name="SAType" type="String" default=""/>
+    <aura:attribute name="currentAura" type="String" />
+    <aura:attribute name="currentId" type="String" />
+    
+    <aura:attribute name="homeOwnership" type="String[]"/>
+    
+    <aura:attribute name="selectedSinAlias" type="String" default="Sample Alias"/>
+    <aura:attribute name="accountPass" type="String" default="null"/>
+    
+     <!--CSM-13719  Melvin Corbes Oct. 10, 2017  -->
+    <aura:attribute name="caseBPOpenMap" type="Map"/>
+    
+   <!-- START R2C CSM-14581  12/06/2017 -->
+    <aura:attribute name="isCongloModal" type="boolean"  default="false"/>
+    <aura:attribute name="congloMessage" type="String"/>
+    <!-- END R2C CSM-14581 Shayne 12/06/2017 -->
+    
+    <!-- List of SIN -->
+    
+    <c:CXE_CP_Header />
+    <!--<c:CXE_CP_HeaderNavigation />-->
+    
+    <!-- modal -->
+    <aura:if isTrue="{!v.isOpen}">
+        <!-- @gibs: replaced current modal with new one, following the original overall aesthetics
+        <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+            <div class="slds-modal__container">
+                <!-_- ###### MODAL BOX HEADER Part Start From Here ######-_-
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button-_-icon-inverse" title="Close" onclick="{!c.closeModel}">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="header99" class="slds-text-heading-_-medium">Edit Alias</h2>
+                </div>
+                <!-_-###### MODAL BOX BODY Part Start From Here ######-_-
+                <div class="slds-modal__content slds-p-around-_-medium">
+                     <ui:inputText aura:id="input_aura" class="slds-input mov-input"
+                                  placeholder="Alias" value="{!v.currentAura}"/>
+                </div>
+                <!-_-###### MODAL BOX FOOTER Part Start From Here ######-_-
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button-_-neutral" onclick="{!c.closeModel}" >Cancel</button>
+                    <button class="slds-button slds-button-_-brand" onclick="{!c.saveAura}">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop-_-open"></div>
+  -->
+        
+        <!---->
+        <div class="mov-modal mov-modal_proceed mov-modal_width-650">
+            <div role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open modal-bg-close">
+                <div class="slds-modal__container">
+                    
+                    <div class="slds-modal__content slds-p-around_xx-large mov-background-color_ffffff" id="modal-content-id-1">
+                        <h2 class="text-center">Edit Alias</h2>
+                        
+                        <div class="mov-form slds-p-bottom_large">
+                            <div class="slds-form slds-form_stacked text-center">
+                                <div class="slds-form-element slds-m-top_medium slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-323232">Alias</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="input_aura" class="slds-input mov-input"
+                                                      placeholder="Alias" value="{!v.currentAura}"/>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="slds--size_12-of-12">
+                            <div class="mov-button-group text-center mov-button-group_mobile-flex ">
+                                <button class="slds-button mov-button-transparent mov-button-transparent_gray mov-element_max-width-170" onclick="{!c.closeModel}" >Cancel</button>
+                                <button class="slds-button mov-button mov-element_max-width-170" onclick="{!c.saveAura}">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop_open mov-backdrop"></div>
+        </div>
+        <!---->
+    </aura:if>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height slds-show" aura:id="mainCmp">
+        <div aura:id="MainFormNav" class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <!--<a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>-->
+                            <a onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                            <!--<a href="javascript:void(0);">Accounts</a>-->
+                            <a onclick="{!c.redirectToMyAccounts}">Accounts</a>
+                        </li>
+                        <!-- START CSM-14333 Jerome To 11/24/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. --> 
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a onclick="return false;">List of Accounts</a>
+                        </li>
+                        <!-- END CSM-14333 Jerome To 11/24/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. --> 
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="mov-track-my-application_guest" aura:id="MainForm">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                    <div class="CXE_myAccountFix slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Accounts</h3>
+                        </div>
+                        <div class="slds-box mov-box_p-none mov-box mov-element-box-shadow my-acct-padding  mov-background-color_ffffff slds-text-align_center slds-m-bottom_large">
+                            <p class="mov-text_size-18 mov-text_color-323232 slds-p-top_x-large mov-text_weight-semi-bold">Manage your service account here.</p>
+                            <div class="mov-form slds-p-bottom_large">
+                                <div class="slds-form slds-form_stacked">
+                                    <div class="slds-form-element slds-m-top_medium">
+                                        <label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-6a6a6a" for="guest-last-name">Account Number</label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-select_container mov-select_container mov-element_max-width-345 CXE_roundFields">
+                                                <ui:inputSelect aura:id="accountSelected" class="slds-select inline mov-input" change="{!c.handleAccountChange}" >
+                                                    
+                                                </ui:inputSelect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-m-top_medium slds-text-align_center slds-p-top_medium">
+                                        <label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-6a6a6a" for="guest-last-name">Service ID Number</label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-select_container mov-select_container mov-element_max-width-345 CXE_roundFields">
+                                                <ui:inputSelect aura:id="sinPopulated" class="slds-select inline mov-input" change="{!c.handleSinChange}">
+                                                </ui:inputSelect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <!-- START R2C CSM-13982 Shayne 10/25/2017 -->
+                                    <aura:if isTrue="{!and(v.isConglomerate, v.sinCount==0)}"> 
+                                        <!--<aura:renderif isTrue="{!v.popUpModal== 'myAccounts'}">
+                                           <c:CXE_CP_ModalTemplateOk popUpModalChild="{! v.popUpModal }" popUpMessageToShow="There are no current services enrolled under your Meralco Online account. Please call us at our 24/7 business hotline at 16210 for assistance." />                                     
+                                        </aura:renderif>-->
+                                        <div class="slds-p-top_large">
+                                        	<div class="slds-box slds-theme_shade slds-size_6-of-12 slds-align_absolute-center slds-text-color_error">
+                                            <p>There are no current services enrolled under your Meralco Online account. Please call us at our 24/7 business hotline at 16210 for assistance.  </p>
+                                        	</div>
+                                        </div>
+                                        <aura:set attribute="else">
+                                     		<div class="slds-form-element slds-p-top_large">
+                                                <ui:button aura:id="searchButton" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold center-block" press="{!c.Validate}">Submit</ui:button>
+                                            </div>
+                                            <div class="mov-warning-group slds-m-top_large">
+                                                <!-- START CSM-14570 MCorbes R2B Retrofit -->
+                                                <!--
+                                                <p class="mov-text_size-14 mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i> To view your account or service details, click on the Account or Service ID Number.</p>
+                                                <p class="mov-text_size-14 mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i> To make a transaction, tick the box beside your Account Number or Service ID Number.</p>
+                                                -->
+                                                <p class="mov-text_size-14 mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i> To view your account or service details, click on the corresponding Account Number or Service ID Number.</p>
+                                                <p class="mov-text_size-14 mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i> To make a transaction for a specific account or service, tick the box beside your Account Number or Service ID Number. </p>
+                                                <!-- END CSM-14570 MCorbes R2B Retrofit -->
+                                            </div>  
+                                        </aura:set>
+                                    </aura:if>
+   									 <!-- END R2C CSM-13982 Shayne 10/25/2017 -->
+                                </div>
+                            </div>
+                            <div class="Hideme" aura:id="TableHolder">
+                                <div class="mov-table-group mov-background-color_ffffff slds-m-vertical_large mov-table-group_custom a">
+                                    <table class="slds-table slds-table_cell-buffer mov-table mov-table-advanced mov-background-color_ffffff mov-table-striped_inverse">
+                                        <thead>
+                                            <tr class="slds-text-title_caps">
+                                                <th class="mov-table_cell-empty" scope="col">
+                                                    <div>
+                                                        &nbsp;
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        ACCOUNT NUMBER
+                                                    </div>
+                                                </th>
+                                                <th class="mov-table_cell-empty" scope="col">
+                                                    <div>
+                                                        &nbsp;
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        SERVICE ID NUMBER
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        NICKNAME
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        TYPE
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div>
+                                                        ADDRESS
+                                                    </div>
+                                                </th>
+                                                
+                                                <th scope="col">
+                                                    <div>
+                                                        SERVICE STATUS
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--<aura:iteration var="sinRec" items="{!v.sinRelatedToAcct}"> -->
+                                            
+                                            <!-- <aura:iteration items="{!v.Services}" var="serve" >                                                       
+                                            <tr>
+                                                <td><ui:inputCheckbox ></ui:inputCheckbox></td>
+                                                <td><ui:outputURL label="{!serve.Contract__r.V10_Account_No__c}" click="{!c.SearchAccount}" value=""/></td>
+                                                <td><ui:outputURL label="{!serve.SIN__c}" click="{!c.SearchSin}" value=""/></td>
+                                                <td>{!v.UserType}</td>
+                                                <td>{!serve.Billing_Preferences__r[0].Address__c}</td>
+                                                <td></td>
+                                                <td>{!serve.Service_Status__c}</td>
+                                                <td></td>
+                                            </tr>
+                                        </aura:iteration> -->
+                                            <aura:iteration items="{!v.wrapperServiceList}" var="serve" indexVar="key">                                                       
+                                                <tr>
+                                                    <td>
+                                                        <aura:if isTrue="{!serve.isSelected == true}">
+                                                            <div class="checkbox cbox-orange">
+                                                                <label class="checkbox-container">
+                                                                    <ui:inputCheckbox aura:id="InDependentCheckbox" labelClass="{!serve.isApaCancel}" text="{!serve.isApaEnroll}"  name="{!serve.service.Payor__r.V10_Account_No__c}" change="{!c.CheckboxChange}" ></ui:inputCheckbox>
+                                                                   <div class="checkbox-custom"></div>
+                                                                </label>
+                                                            </div>
+                                                        </aura:if>      
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        
+                                                        <aura:if isTrue="{!serve.isSelected == true}">
+                                                            <ui:outputURL label="{!serve.service.Payor__r.V10_Account_No__c}" click="{!c.SearchAccount}" value=""/>
+                                                        </aura:if>
+                                                        
+                                                        
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <div class="checkbox cbox-orange">
+                                                            <label class="checkbox-container">
+                                                                <ui:inputCheckbox aura:id="DependentCheckbox" labelClass="{!serve.alias}" class="{!serve.service.Payor__r.V10_Account_No__c}" name="{!serve.service.SIN__c}" change="{!c.sinCheckChange}"></ui:inputCheckbox>
+                                                                <div class="checkbox-custom"></div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <ui:outputURL label="{!serve.service.SIN__c}" click="{!c.SearchSin}" value=""/><br /> 
+                                                        <!-- <ui:outputURL label="{!serve.SinList[0].SIN__c}" click="{!c.SearchSin}" value=""/> -->
+                                                    </td>
+                                                    <td class="slds-truncate">{!serve.alias}<ui:button label="{!serve.alias}" buttonTitle="{!serve.service.Id}" class="CXE_inlineIcon" press="{!c.editAlias}"><i class="fa fa-pencil"></i></ui:button></td>
+                                                    <td>{!serve.typeOf}</td>
+                                                    <td>{!serve.service.Billing_Preferences__r[0].Address__c}</td>
+                                                    
+                                                    <td>{!serve.service.Service_Status__c}</td>
+                                                    <!--td></td-->
+                                                </tr>
+                                            </aura:iteration>
+                                            
+                                            <!-- </aura:iteration> -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- START CSM-14249 Gibs Teodosio -->
+                                <div class="mov-button-group mov-button-group-aftersales mov-button-group-accounts slds-m-bottom_large slds-p-bottom_medium">
+                                <!-- END CSM-14249 Gibs Teodosio -->
+                                    <div class="mov-element_display-flex">
+                                        <div>
+                                            <!--a aura:id="subscribeBTN" onclick="{!c.onClickPaperlessBilling}" disabled="disabled" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" href="javascript:void(0);">
+                                                <span>Subscribe to Paperless Billing</span>
+                                            </a-->
+                                            
+                                            <span class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold">
+                                                <ui:outputURL click="{!c.onClickPaperlessBilling}" aura:id="subscribeBTN" disabled="true" value="" label="Subscribe to Paperless Billing " />
+                                            </span>
+                                            
+                                            <!--ui:button aura:id="subscribeBTN" disabled="true" label="Subscribe to Paperless Billing" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold" press="{!c.onClickPaperlessBilling}"/-->
+                                        </div>
+                                        
+                                        <div>
+                                            <!--a aura:id="unsubscirbeBTN" onclick="{!c.onClickUnSubPaperlessBilling}" disable="disabled" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" href="javascript:void(0);">
+                                                <span>Unsubscribe to Paperless Billing</span>
+                                            </a-->
+                                            <span class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold">
+                                                <ui:outputURL click="{!c.onClickUnSubPaperlessBilling}" aura:id="unsubscirbeBTN" disabled="true" value="" label="Unsubscribe from Paperless Billing" />
+                                            </span>
+                                            
+                                            
+                                            <!--ui:button aura:id="unsubscirbeBTN" disabled="true" label="Unsubscribe to Paperless Billing" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold" press="{!c.onClickUnSubPaperlessBilling}"/-->
+                                        </div>
+                                        <!-- START Rabayon Auto Payment Mode  10/13/17 10/13/17 CSM-13883, CSM-13204 and CSM-13079-->
+                                        <div>
+                                            <!-- <a class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" href="javascript:void(0);">-->
+                                            
+                                            <a class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" style="{!v.EnrollCursor}">
+                                                <ui:outputURL click="{!c.redirectToEnrollAutoPayment}" aura:id="isApEnable" disabled="{!v.isApaEnroll}" value="" label="Enroll in Auto-Payment Arrangements" />
+                                                <!-- <span>Enroll in Auto-Payment Arrangements</span>-->
+                                            </a> 
+                                        </div>
+                                        
+                                        <div>
+                                            <a class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" style="{!v.CancelCursor}">
+                                                 <ui:outputURL click="{!c.redirectToCancelAutoPayment}" aura:id="isApEnableCancel" disabled="{!v.isApaCancel}" value="" label="Unenroll from Auto-Payment Arrangements" />
+                                               <!-- <span>Unenroll from Auto-Payment Arrangements</span>-->
+                                               <!-- END Rabayon Auto Payment Mode  10/13/17 CSM-13883, CSM-13204 and CSM-13079-->
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mov-element_display-flex">
+                                        <div>
+                                            <a onclick="{!c.onClickChangeService}" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" href="javascript:void(0);">
+                                                <span>Change Service Details</span>
+                                            </a>
+                                            <!--ui:button label="Change Service Details" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold" press="{!c.onClickChangeService}"/-->
+                                        </div>
+                                        
+                                        <div>
+                                            <a onclick="{!c.onClickChangeContract}" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" href="javascript:void(0);">
+                                                <span>Change Contract Details</span>
+                                            </a>
+                                            <!-- ui:button label="Change Contract Details" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold" press="{!c.onClickChangeContract}"/ -->
+                                        </div>
+                                        
+                                        <div>
+                                            <a onclick="{!c.onClickReactiveService}" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" href="javascript:void(0);">
+                                                <span>Reactivate Electric Service</span> <!-- CSM-14164 Lisen 20171029 -->
+                                            </a>
+                                            <!--ui:button label="Reactivate Electric service" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold" press="{!c.onClickReactiveService}"/-->
+                                        </div>
+                                        
+                                        <div>
+                                            <a onclick="{!c.onClickTerminateService}" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295" href="javascript:void(0);">
+                                                <span>Stop Electric Service</span> <!-- CSM-14164 Lisen 20171029 -->
+                                            </a>
+                                            <!--ui:button label="Stop an Electric Service" class="slds-button mov-button-default mov-button-default_gray mov-element_max-width-295 mov-text_weight-semi-bold" press="{!c.onClickTerminateService}"/-->
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- START CSM-14249, CSM-14305 Gibs Teodosio -->
+                    <div class="CXE_myAccountFix slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 slds-p-horizontal_x-small mov-xs">
+                        <!--<a class="slds-button mov-button-transparent mov-element_max-width-295" href="javascript:void(0);">Request for an Electric Service</a>-->
+                        
+                        <!-- 09/14/2017 Jrances
+								Added this line for startservice redirection -->
+                        
+                        
+                        <div class="mov-dashboard_misc-list CXE_marginCentralizer">
+                   <!-- START CSM-14249, CSM-14305 Gibs Teodosio -->
+                            <ui:button aura:id="reqElecServ" class="slds-button mov-button-transparent mov-element_max-width-295" press="{!c.goToElecService}" >Request for an Electric Service</ui:button>
+                            <c:CXE_CP_WidgetManageService isConglomerate="{!v.isConglomerate}"/>
+                            <c:CXE_CP_WidgetPaperlessSubscription />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mov-track-my-application_guest slds-hide" aura:id="result">
+            <div class="main-wrapper slds-grid slds-wrap">
+                <c:CXE_CP_MyAccountsAccountDetail dataReceived="{!v.dataReceived}" WithSin="{!v.WithSin}" isConglomerate="{!v.isConglomerate}" />
+            </div>
+        </div>
+        
+        <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+            <div role="status" class="slds-spinner slds-spinner--medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>  
+        
+    </div><!-- end MAIN CONTENT -->
+    <!-- START CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+    <div aura:id="ReactivateForm" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationReactivate caseRecord="{!v.caseVar}" SAType="{!v.SAType}" aura:id="serviceApp" isRegistered="true"/>
+    </div>
+    
+    <div aura:id="TerminateForm" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationTerminate caseVar="{!v.caseVar}" sinNumber="{!v.selectedSin}" sinAlias="{!v.selectedSinAlias}" isRegistered="true"/>
+    </div>
+
+    <div aura:id="ModifyChangeServiceForm" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationChange caseVar="{!v.caseVar}" sinNumber="{!v.selectedSin}" 
+                                           sinAlias="{!v.selectedSinAlias}" changeService="true" isRegistered="true"/> 
+    </div>
+    <div aura:id="ModifyChangeContractForm" class="slds-hide">
+        <c:CXE_CP_ServiceApplicationChange caseVar="{!v.caseVar}" sinNumber="{!v.selectedSin}" 
+                                           sinAlias="{!v.selectedSinAlias}" changeService="false" isRegistered="true"/> 
+    </div>
+
+    <!-- END CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+    <div aura:id="PaperlessBilling" class="slds-hide">
+        <c:CXE_CP_PaperlessBillingSubscriptionV2 aura:id="paperlessBillSubCmp" accountPass="{!v.acctCheckHolder}" isEndpoint="false"/> <!-- //CSM-12870 GGrandea added aura:id -->
+    </div>
+    <div aura:id="unsubPaperlessBilling" class="slds-hide">
+        <c:CXE_CP_PaperlessBillingUnsubscribe accountPass="{!v.acctCheckHolder}"/> 
+    </div>
+
+
+     <!-- START R2C CSM-14581 Shayne 12/06/2017 -->
+        <aura:renderIf isTrue="{!v.isCongloModal}">
+            <c:CXE_CP_ModalTemplateOk popUpMessageToShow="{!v.congloMessage}" popUpModalChild="{! v.isCongloModal }" confirmText="OK"/>
+       </aura:renderIf>
+       <!-- END R2C CSM-14581 Shayne 12/06/2017 -->
+    <!--<c:CXE_CP_Footer />-->
+</aura:component>

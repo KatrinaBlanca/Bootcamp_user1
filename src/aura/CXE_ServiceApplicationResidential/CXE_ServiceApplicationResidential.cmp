@@ -1,0 +1,371 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_WebToCaseApplication">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="caseApplication" type="Case" />
+    <aura:attribute name="addressRecord" type="Address__c" default="{sobjectType: 'Address__c'}"/>
+    <aura:registerEvent name="getCaseApplicationInput" type="c:CaseComponent"/>
+    <aura:registerEvent name="getCmpToHide" type="c:HideTargetComponentEvent"/>
+    <aura:registerEvent name="getCmpToShow" type="c:ShowTargetComponentEvent"/>
+
+    <aura:attribute name="cityId" type="String" default=""/>
+    <aura:attribute name="provinceId" type="String" default=""/>        
+    <aura:attribute name="filterGroup" type="String" default=""/>
+    
+    <aura:attribute name="searchResults" type="Reference__c[]"/>
+    
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+    
+    <div class="slds">
+        
+        <div class="slds-grid slds-wrap CXE_mainContainer">
+            <div class="slds-size--1-of-1">
+                <div class="slds-grid slds-wrap">
+                    <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+                        <h1 class="CXE_color--orange CXE_text--h1"><b>Start an Electric Service</b></h1>
+                        
+                        <div class="CXE_form CXE_serviceApplication--residentialForm slds-m-top--small slds-grid slds-wrap">
+                            <p class="CXE_color--gray slds-size--1-of-1"><b>TELL US ABOUT YOURSELF</b></p>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-6 slds-medium-size--1-of-6 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small slds-p-left--small">
+                                <div class="CXE_field--neutralizer CXE_field--comboBox slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Salutation</label>
+                                    <br />
+                                    <ui:inputSelect class="dynamic" aura:id="salutations" value="{!v.caseApplication.Salutation__c}"/>
+                                </div>
+                            </div>
+                            <div class="slds-large-size--5-of-6 slds-medium-size--5-of-6 slds-max-small-hide"></div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">First Name</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="firstname" placeholder="Ex. Juan" class="slds-input" required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Middle Name</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="middlename" placeholder="Ex. Pedroza" class="slds-input" required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Last Name</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="lastname" placeholder="Ex. Dela Cruz" class="slds-input" required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer CXE_field--comboBox slds-form-element slds-grid slds-wrap">                                    
+                                    <label class="slds-form-element__label CXE_color--gray slds-size--1-of-1">Birthday</label>
+                                    <br />
+                                    <!--ui:inputDate aura:id="birthdate" class="field slds-size-/-1-of-1" displayDatePicker="true" format="MM / dd / yyyy"/-->
+                                    <span class="slds-size--1-of-3 slds-p-left--xxx-small">
+                                      <select>
+                                        <option>1</option>
+                                      </select>
+                                    </span>
+                
+                                    <span class="slds-size--1-of-3 slds-p-left--xxx-small">
+                                      <select>
+                                        <option>1</option>
+                                      </select>
+                                    </span>
+                
+                                    <span class="slds-size--1-of-3 slds-p-left--xxx-small">
+                                      <select>
+                                        <option>94</option>
+                                      </select>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Telephone Number</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="phoneNumber" placeholder="Ex. (02) 999 9999" class="slds-input" required="true" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Mobile Number</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="mobileNumber" placeholder="Ex. (+63) 999 999 9999" class="slds-input" required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Email Address</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="emailAddress" placeholder="Ex. juan.p.delacruz@email.com" class="slds-input" required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1">Will someone be applying on your behalf?</p>
+                            <span class="CXE_checkBox slds-checkbox">
+                                <input type="checkbox" name="options" id="CXE_serviceApplicationForm--Yes" checked="" onclick="{!c.toggleProxy}"/>
+                                <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--Yes">
+                                    <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label CXE_color--gray">Yes</span>
+                                </label>
+                            </span>
+                            
+                            <div aura:id="CXE_serviceResidential-applyOnBehalf" class="slds-size--1-of-1 slds-grid slds-wrap">
+                                <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1"><b>AUTHORIZED REPRESENTATIVE</b></p>
+                                    
+                                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                    <div class="CXE_field--neutralizer slds-form-element">
+                                        <label class="slds-form-element__label CXE_color--gray">First Name</label>
+                                        <br />
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="repFirstname" placeholder="Ex. Juan" class="slds-input" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                    <div class="CXE_field--neutralizer slds-form-element">
+                                        <label class="slds-form-element__label CXE_color--gray">Middle Name</label>
+                                        <br />
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="repMiddlename" placeholder="Ex. Pedroza" class="slds-input" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                    <div class="CXE_field--neutralizer slds-form-element">
+                                        <label class="slds-form-element__label CXE_color--gray">Last Name</label>
+                                        <br />
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="repLastname" placeholder="Ex. Dela Cruz" class="slds-input" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                    <div class="CXE_field--neutralizer slds-form-element">
+                                        <label class="slds-form-element__label CXE_color--gray">Primary Contact Number</label>
+                                        <br />
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="primaryContactNumber" placeholder="Ex. (_63) 999 999 9999" class="slds-input" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                    <div class="CXE_field--neutralizer slds-form-element">
+                                        <label class="slds-form-element__label CXE_color--gray">Email Address</label>
+                                        <br />
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="repEmailAddress" placeholder="Ex. juan.p.delacruz@email.com" class="slds-input" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1"><b>WHERE WILL YOU BE USING THIS ELECTRIC SERVICE</b></p>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">No/ Block/ Lot</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="unitBlockNumber" placeholder="" class="slds-input"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">City</label>                                    
+                                    <br />                                      
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText required="true" class="dynamic slds-size--1-of-1" aura:id="City" focus="{!c.getCity}"/>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Province</label>
+                                    <br />
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText required="true" class="dynamic slds-size--1-of-1" aura:id="Province" disabled="true"/>                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1 slds-p-left--small">
+                                <div class="CXE_field--neutralizer slds-form-element">
+                                    <label class="slds-form-element__label CXE_color--gray">Home Ownership</label>
+                                    <br />
+                                    <ui:inputSelect class="dynamic slds-size--1-of-1" aura:id="homeOwnership" value="{!v.caseApplication.Home_Ownership__c}"/>                                                                        
+                                </div>
+                            </div>
+                            
+                            <div class="slds-m-top--large">
+                                <span class="CXE_checkBox slds-checkbox">
+                                    <input type="checkbox" name="options" id="CXE_serviceApplicationForm--SameAsBilling" checked="" onclick="{!c.isSameAsBilling}"/>
+                                    <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--SameAsBilling">
+                                        <span class="slds-checkbox--faux"></span>
+                                        <span class="slds-form-element__label CXE_color--gray">My service address is the same as my billing address</span>
+                                    </label>
+                                </span>
+                            </div>
+                            
+                            <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1"><b>HOW CAN WE MAKE IT EASIER FOR YOU?</b></p>
+                            
+                            <p class="CXE_color--gray slds-m-top--small slds-large-size--3-of-4 slds-medium-size--3-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1 CXE_text--size-14">Would you like our Accredited Meralco Contractors to process your electric service application?</p>
+                            <div class="slds-m-top--small slds-large-size--1-of-4 slds-medium-size--1-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                <span class="CXE_checkBox slds-checkbox">
+                                    <input type="checkbox" name="options" id="CXE_serviceApplicationForm--YesAccreditedProcess" checked="" onclick="{!c.toggleAmcNotif}"/>
+                                    <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--YesAccreditedProcess">
+                                        <span class="slds-checkbox--faux"></span>
+                                        <span class="slds-form-element__label CXE_color--gray">Yes</span>
+                                    </label>
+                                </span>
+                            </div>
+                            
+                            <p aura:id="amc_notif" class="CXE_color--gray slds-m-top--xx-large slds-size--1-of-1 slds-hide">
+                                <b>Thank you for availing of our Accredited Meralco Contractors. Someone will contact you within 1 working day to assist you in the electric service application process.</b>
+                            </p>
+                            
+                            <p class="CXE_color--gray slds-m-top--xx-large slds-size--1-of-1">How would you like to be updated about the status of this application?</p>
+                            <span class="CXE_checkBox slds-checkbox">
+                                <input type="checkbox" name="options" id="CXE_serviceApplicationForm--UpdateViaEmail" checked="" onclick="{!c.toggleEmail}"/>
+                                <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaEmail">
+                                    <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label CXE_color--gray">Via Email</span>
+                                </label>
+                            </span>
+                            
+                            <span class="CXE_checkBox slds-checkbox">
+                                <input type="checkbox" name="options" id="CXE_serviceApplicationForm--UpdateViaSMS" checked="" onclick="{!c.toggleSMS}"/>
+                                <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaSMS">
+                                    <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label CXE_color--gray">Via SMS</span>
+                                </label>
+                            </span>
+                            
+                            <span class="CXE_checkBox slds-checkbox">
+                                <input type="checkbox" name="options" id="CXE_serviceApplicationForm--UpdateViaBoth" checked="" />
+                                <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaBoth">
+                                    <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label CXE_color--gray">Both</span>
+                                </label>
+                            </span>
+                        </div>
+                        
+                        <p class="CXE_color--gray slds-m-top--xx-large slds-size--1-of-1"><b>ATTACHMENTS</b></p>
+                        <div class="CXE_file-wrapper">
+                            <div class="CXE_file-buttons">
+                                <input aura:id="attachment" type="file" name="filesToUpload" id="filesToUpload" multiple="multiple" onchange="{!c.makeFileList}" />
+                                <button class="CXE_button CXE_file-fakeButton">CHOOSE FILE</button>
+                            </div>
+                            <div class="CXE_file-attachedFiles">
+                                <b>Attached Files:</b>
+                                <ul id="fileList">  
+                                    <li>No Attached Files</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div aura:id="captcha" class="slds-m-top--large g-recaptcha" data-sitekey="6Lc6HRgUAAAAADfc3XGIOQcDmwziExux6q74I_nY" data-callback="{!c.captchaCallback}"></div>
+                        
+                        <div class="slds-text-align--right slds-m-top--large">
+                            <ui:button class="CXE_button" press="{!c.onSubmit}" label="SUBMIT"/>
+                            <!--button class="CXE_button g-recaptcha" data-sitekey="6LeAuBgUAAAAAO63dt2fpdbtddxgE7N4kj0fzMmO" data-callback='{!c.onSubmit}'>SUBMIT</button-->
+                        </div>
+                        
+                        <!-- SEARCH ADDRESS MODAL BEGIN -->
+                        <div aria-hidden="false" aura:id="searchDiv" role="dialog" class="slds-modal slds-fade-in-hide">
+                            <div class="slds-modal__container">
+                                
+                                <!-- SEARCH ADDRESS HEADER -->
+                                <div class="slds-modal__header">
+                                    <h2 class="slds-text-heading--medium">Search Address</h2>
+                                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeSearchModal}">
+                                        <c:svgIcon svgPath="/assets/icons/utility-sprite/svg/symbols.svg#close" category="utility" size="small" name="Close" />
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                </div>
+                                
+                                <!-- SEARCH ADDRESS FORM -->
+                                <div class="slds-modal__content slds-p-around--medium">
+                                    <fieldset class="slds-form--compound">
+                                        <div class="slds-form-element__group">
+                                            
+                                            <div class="slds-form-element__row">
+                                                <!-- REFERENCE SEARCH -->
+                                                <div class="slds-form-element slds-size--1-of-1">
+                                                    <ui:inputText label="" value="" placeholder="Search" aura:id="referenceSearch" keyup="{!c.searchAddress}" updateOn="keyup"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="slds-form-element__row">
+                                                <!-- SEARCH ADDRESS RESULTS -->
+                                                <div class="slds-form-element slds-size--1-of-1">
+                                                    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                                                        <aura:iteration items="{!v.searchResults}" var="results">
+                                                            <tr class="slds-text-title--caps">
+                                                                <td>
+                                                                    <div class="slds-truncate">
+                                                                        <a data-id="{!results.Id}" data-parentcode="{!results.Parent_Code__c}" data-parentid="{!results.Parent__r.Id}" data-parentname="{!results.Parent__r.Name}" data-name="{!results.Name}" data-code="{!results.Parent_Code__c}" onclick="{!c.mapValue}" href="">{!results.Name}</a>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="slds-truncate">
+                                                                        {!results.Parent__r.Name}
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </aura:iteration>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                
+                                <!-- SEARCH ADDRESS MODAL BUTTONS -->
+                                <div class="slds-modal__footer">
+                                    <div class="slds-x-small-buttons--horizontal">
+                                        <button class="slds-button slds-button--neutral" onclick="{!c.closeSearchModal}">Cancel</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

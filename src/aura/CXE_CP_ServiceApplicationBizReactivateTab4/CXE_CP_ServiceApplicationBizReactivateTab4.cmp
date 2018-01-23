@@ -1,0 +1,31 @@
+<aura:component >
+    <aura:attribute name="caseRecord" type="Case" />
+    <div class="tab-pane" id="confirmation">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group">
+                <h3 class="mov-text_size-24 mov-text_weight-semi-bold">Confirmation</h3>
+                <!-- Start 10/17/2017 CSM - 13604 Gserrano -->
+                <p class="mov-text_color-6a6a6a slds-m-top_small slds-m-bottom_medium mov-text_weight-semi-bold">
+                    We’ve received your request to reactivate a service! Your Reference No. is <span class="mov-text_color-323232 mov-text_weight-bold">{!v.caseRecord.CaseNumber}</span>. We sent a copy of your application to your registered email address.
+				</p>
+                
+                <p class="mov-text_color-6a6a6a slds-m-bottom_large mov-text_weight-semi-bold">
+                    <aura:if isTrue="{!v.caseRecord.AMC_Service_Tag__c}">
+                        An AMC will get in touch with you within 3 working days to finalize your application.
+                    </aura:if> 
+                    <aura:if isTrue="{!not(empty(v.caseRecord.Preferred_Mode_of_Notification__c))}">
+                        Click on Requests to check on the status of your application. We’ll also send you updates via <span class="mov-text_color-323232 mov-text_weight-bold">{!v.caseRecord.Preferred_Mode_of_Notification__c}</span>.
+                    </aura:if> 
+                </p>
+                <p class="mov-text_color-6a6a6a slds-m-bottom_large mov-text_weight-semi-bold">
+                	For further assistance, please call us at our 24/7 business hotline at 16210.
+                </p>
+                  <!-- End 10/17/2017 CSM - 13599 Gserrano -->
+            </div>
+            <div class="mov-button-group slds-text-align--center">
+                <!--<a class="slds-button mov-button-transparent slds-m-left_none mov-element_max-width-170" href="javascript:void(0)" press="{!c.backToHomeBtn}">Back to Home</a>-->
+                <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickBackToHome}">Back to Home</ui:button>
+            </div>
+        </div>
+    </div>
+</aura:component>

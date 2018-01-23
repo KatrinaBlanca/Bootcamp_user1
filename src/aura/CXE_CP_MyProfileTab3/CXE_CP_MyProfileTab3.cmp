@@ -1,0 +1,188 @@
+<aura:component controller="CXE_CP_MyProfileTab3" implements="forceCommunity:availableForAllPageTypes">
+
+    <!-- tab 3 contents -->
+    <div id="tab-3" class="slds-tabs_default__content tab-changepw" role="tabpanel">
+
+    
+    <style>
+        .hideError {
+        display: none;        
+        }
+        
+        .lengthError{
+        display: none;
+		color: red;        
+        }
+        
+        .upperError{
+			color: red!important;
+			font-size: 16px!important;        
+        }
+        
+        .lowerError{
+			color: red!important;
+			font-size: 16px!important;        
+        }
+        
+        .numError{
+			color: red!important;
+			font-size: 16px!important;        
+        }
+        
+        .specError{
+			color: red!important;
+			font-size: 16px!important;        
+        }   
+        
+        .matchSuccess{
+			color: green!important;
+			font-size: 16px!important;        
+        }
+    </style> 
+        
+        <div aura:id ="division1" class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-3 slds-max-large-size_3-of-3">
+                <h3>Change Password</h3>
+                <p>Your password must have at least 8 characters and should have all of the following:</p>
+                
+              <div class="slds-grid slds-wrap pw-checklist pw-checklist_vertical">
+                  
+                <div class="slds-size_2-of-2">
+					<div aura:id="up_uncheck" class="slds-box_x-small"><img class="up-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-uncheck-orange.png' }" /> Upper case letter</div>
+                	<div aura:id="up_check" class="slds-box_x-small slds-hide"><img class="up-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-check-orange.png' }" /> Upper case letter</div>                    
+                </div>
+                  
+                <div class="slds-size_2-of-2">
+                    <div aura:id="lw_uncheck" class="slds-box_x-small"><img class="lw-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-uncheck-orange.png' }" /> Lower case letter</div>
+                	<div aura:id="lw_check" class="slds-box_x-small  slds-hide"><img class="lw-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-check-orange.png' }" /> Lower case letter</div>
+                </div>
+                  
+                <div class="slds-size_2-of-2">
+                    <div aura:id="num_uncheck" class="slds-box_x-small"><img class="num-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-uncheck-orange.png' }" /> Number</div>
+               		<div aura:id="num_check" class="slds-box_x-small slds-hide"><img class="num-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-check-orange.png' }" /> Number</div>
+                </div>
+		<!-- //START CSM-14670 R2B Retrofit -->
+                 <!-- 
+                <div class="slds-size_2-of-2">-->
+                    <!-- START CSM-13945 JRances / UAT - Include in Special Character for 'Change Password', (!@#$%&^) -->
+                    <!-- <div aura:id="sp_uncheck" class="slds-box_x-small"><img class="sp-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-uncheck-orange.png' }" /> Special character <br></br><span class="specialChar-indent">(!#$%=_+&lt;>-)</span></div> -->
+                	<!-- <div aura:id="sp_check" class="slds-box_x-small slds-hide"><img class="sp-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-check-orange.png' }" /> Special character <br></br><span class="specialChar-indent">(!#$%=_+&lt;>-)</span></div> -->
+                    <!-- <div aura:id="sp_uncheck" class="slds-box_x-small"><img class="sp-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-uncheck-orange.png' }" /> Special character <br></br><span class="specialChar-indent">(!@#$%^&amp;)</span></div> -->
+                	<!-- <div aura:id="sp_check" class="slds-box_x-small slds-hide"><img class="sp-checker" src="{! $Resource.CXE_CP_Assets + '/images/pw-check-orange.png' }" /> Special character <br></br><span class="specialChar-indent">(!@#$%^&amp;)</span></div> -->
+                    <!-- END CSM-13945 JRances -->
+                <!--</div> -->
+		<!-- //END CSM-14670 R2B Retrofit -->
+                  
+                </div>
+            </div>
+            
+            <div class="slds-size_1-of-3 slds-max-large-size_3-of-3">
+                
+                <div class="mov-size_220">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-unique-id">Current Password <span class="text-orange">*</span></label>
+                        <div class="slds-form-element__control">
+                           <!--  <input type="text" class="slds-input mov-input-trackmyapp" placeholder="" /> --> 
+                           <ui:inputSecret aura:id="cmp_currentPass" class="slds-input mov-input" placeholder="" value="" keypress="{!c.clearErrorMessageCurrentPass}" /> 
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-unique-id">New Password <span class="text-orange">*</span></label>
+                        <div class="slds-form-element__control">
+                             <!--<input type="text" class="slds-input mov-input-trackmyapp" placeholder="" /> -->
+                            <!--START CSM-13945 JRances / UAT, Include in Special Character for 'Change Password', (!@#$%&^) -->
+                            <!--<ui:inputSecret aura:id="cmp_newPass" class="slds-input mov-input" placeholder="" value="" keypress="{!c.clearErrorMessageNewPass}"/>-->
+                            <ui:inputSecret aura:id="cmp_newPass" class="slds-input mov-input" placeholder="" value="" keypress="{!c.clearErrorMessageNewPass}" blur="{!c.validateInput}"/>
+                            <!--END CSM-13945 JRances -->
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="input-unique-id">Confirm New Password <span class="text-orange">*</span></label>
+                        <div class="slds-form-element__control">
+                            <!-- <input type="text" class="slds-input mov-input-trackmyapp" placeholder="" /> -->
+                            <ui:inputSecret aura:id="cmp_confirmNewPass" class="slds-input mov-input" placeholder=""  value="" keypress="{!c.clearErrorMessageCfmNewPass}"  /> 
+                        </div>
+                       
+                    </div>
+                </div>
+                
+            </div>
+              
+            <div class="slds-size_1-of-3 slds-max-large-size_3-of-3">
+                <div class="mov-size_230">
+                    
+                   <!-- <ul class="pls-enter">
+                        <li>Please enter your old password</li>
+                        <li>Please enter your confirmed password</li>
+                    </ul> -->
+              
+              
+                    
+               <ul class="pls-enter">
+                   		
+                   		<li aura:id="old-pw-incorrect"      class="hideError">Your current password is incorrect.</li> 
+                   
+                   		<!--  CSM-14639 - JIntal - 113017  -->
+                   <li aura:id="old-pw-incorrectReuse" class="hideError">Please set a password that you haven't used before.</li> 
+                   		<!--  CSM-14639 - JIntal - 113017  -->
+                   
+                   		<!-- START CSM-13945 JRances / UAT - Include in Special Character for 'Change Password', (!@#$%&^) -->
+                   		<!-- <li aura:id="passReq-error"         class="hideError">Sorry, but your password doesn't meet the minimum requirements. Please enter a different password. Your password must be at least 8 characters long and must contain at least one upper case letter (A-Z), one lower case letter (a-z), one number (0-9) and one special character (!@#$%^&amp;*).</li> -->
+                    <!-- //START CSM-14670 11.24.2017 GGrandea - remove special characters from password pages -->
+                        <!-- <li aura:id="passReq-error"         class="hideError">Sorry, but your password doesn't meet the minimum requirements. Please enter a different password. Your password must be at least 8 characters long and must contain at least one upper case letter (A-Z), one lower case letter (a-z), one number (0-9) and one special character (!#$%=_+&lt;>-).</li> -->
+                        <li aura:id="passReq-error"         class="hideError">Your password doesn't meet the minimum requirements. Please enter a password that is at least 8 characters long, contains at least one lower case letter (a-z), one upper case letter (A-Z), and one number (0-9).</li>
+                    <!-- //END CSM-14670 11.24.2017 GGrandea - remove special characters from password pages -->
+                        <!-- END CSM-13945 JRances -->
+                   
+                   		<li aura:id="old-pw-error"          class="hideError">Please enter your old password.</li>  
+                   <!-- Start CSM-13464 JAgapito Oct.5,2017 -->
+                   <!--
+                   <li aura:id="new-pw-error"          class="hideError">Please enter your preferred password.</li>
+                   <li aura:id="cfm-pw-error"          class="hideError">Please confirm your preferred password.</li>
+                   <li aura:id="pw-error"              class="hideError">Your password doesn't match the initial password.</li>
+                   -->
+                   <li aura:id="new-pw-error"          class="hideError">Please enter your new password.</li>
+                   <li aura:id="cfm-pw-error"          class="hideError">Please confirm your new password.</li>
+                   <li aura:id="pw-error"              class="hideError">Your confirmation password doesn't match your new password.</li>
+                   <!-- END JAgapito Oct.5,2017 -->
+                   <li aura:id="ma-success"            class="hideError">Password Match.</li>      
+				</ul> 
+          
+                    <ui:button class="slds-button mov-button mov-button_login mov-button_setpw__small mov-element_max-width-205" press="{!c.changePassword}">Set Password</ui:button>
+                </div>
+            </div>
+        </div>
+        
+        
+       <!-- START CSM-14509 Gibs Teodosio R2c Retrofit -->
+        <div aura:id ="division2" class="confirm-message password-changed slds-hide slds-text-align_center" >
+            <div class="slds-form-element">
+        		<h3>Password Successfully Changed!</h3>
+        	</div>
+       
+        	<div class="slds-form-element" >
+        		<ui:button class="slds-button mov-button mov-button_login mov-element_max-width-205 CXE_marginCentralizer" press="{!c.backToHome}">Back to Home</ui:button>
+            </div>
+            
+   		 </div>
+        
+        <div aura:id ="division3" class="confirm-message password-changed slds-hide slds-text-align_center" >
+            <div class="slds-form-element">
+        		<h3>Failed! Incorrect current password.</h3>
+        	</div>
+       
+        	<div class="slds-form-element" >
+        		<ui:button class="slds-button mov-button mov-button_login mov-element_max-width-205 CXE_marginCentralizer" press="{!c.backToHome}">Back to Home</ui:button>
+            </div>
+            
+   		 </div>
+        <!-- END CSM-14509 Gibs Teodosio R2c Retrofit -->
+        
+    </div>
+</aura:component>

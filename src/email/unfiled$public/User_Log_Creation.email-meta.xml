@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>For each created user log</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Meralco</letterhead>
+    <name>User Log Creation</name>
+    <style>formalLetter</style>
+    <subject>New User Log Entry</subject>
+    <textOnly>Hi Cookie, Jaya, Juanch, June, Just,
+
+A new User Log entry was created. Kindly validate and if possible, resolve within the day:
+
+User Log ID: {!User_Logs__c.Issue_Log__c}
+Date: {!User_Logs__c.CreatedDate}
+Created by: {!User_Logs__c.CreatedBy}
+Details: {!User_Logs__c.Issue_Log__c}
+Detail Link: {!User_Logs__c.Link}
+
+Thank you!</textOnly>
+    <type>html</type>
+</EmailTemplate>

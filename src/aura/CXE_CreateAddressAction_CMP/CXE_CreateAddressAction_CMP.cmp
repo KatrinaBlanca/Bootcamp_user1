@@ -1,0 +1,302 @@
+<!-- Description: Create Address lightning action on all Address lookup fields (Account, Case, Connection, Contact, Contract, Service) -->
+<!-- Author: Michael Lasala -->
+<!-- Date Created: MAR-13-17  -->
+<aura:component implements="force:lightningQuickAction,force:hasRecordId" access="global" controller="CXE_CreateAddress_CC">
+
+    <!-- LOOKUP RECORD ID -->
+	<aura:attribute name="recordId" type="String"/>
+	
+	<!-- ACCOUNT RESULTS -->
+	<aura:attribute name="accountSearchResults" type="Account[]"/>
+	
+	<!-- ACCOUNT ADDRESS RESULTS -->
+	<aura:attribute name="addressSearchResults" type="Address__c[]"/>
+	
+	<!-- FILTERED RESULTS -->
+	<aura:attribute name="searchResults" type="Reference__c[]"/>
+	
+	<!-- BLOCK RESULTS -->
+	<aura:attribute name="tempSearchResults" type="Reference__c[]"/>
+	
+	<!-- LOOKUP IDS OF SELECTED ADDRESS FIELDS -->
+	<aura:attribute name="streetId" type="String"/>
+	<aura:attribute name="subdivisionId" type="String"/>
+	<aura:attribute name="barangayId" type="String"/>
+	<aura:attribute name="cityId" type="String"/>
+	<aura:attribute name="provinceId" type="String"/>
+	
+	<!-- PARENT CODE FOR FILTERING OF PARENT ADDRESS -->
+	<aura:attribute name="barangayCode" type="String"/>
+	<aura:attribute name="cityCode" type="String"/>
+	
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+	<!-- ERROR MESSAGE -->
+	<aura:attribute name="noneSelectedMessage" type="String[]"/>
+	<aura:attribute name="noAddressMessage" type="String[]"/>
+
+	<style>
+		body .slds-grid--pull-padded {
+        	margin-left: 0rem !important;
+        	margin-right: 0rem !important;
+        }
+        body .oneGlobalCreate svg {
+        	fill: rgb(0, 0, 0) !important;
+        }
+        
+        body .setupGear {
+        	margin-top: 10px !important;
+        }
+	</style>
+
+    <div aria-hidden="false" aura:id="accountSearchDiv" class="slds-show">
+		<!-- SEARCH ACCOUNT HEADER -->
+		<div class="slds-modal__header">
+			<h2 class="slds-text-heading--medium">Search Address</h2>
+		</div>
+
+		<!-- SEARCH ACCOUNT FORM -->
+		<fieldset class="slds-form--compound">
+			<div class="slds-form-element__group">
+
+				<div class="slds-form-element__row">
+					<!-- ACCOUNT SEARCH -->
+					<div class="slds-form-element slds-size--1-of-1">
+						<ui:inputText label="" value="" placeholder="Search Account" aura:id="accountSearch" keyup="{!c.searchAccount}" updateOn="keyup"/>
+					</div>
+				</div>
+
+				<div class="slds-form-element__row">
+					<!-- SEARCH ACCOUNT RESULTS -->
+					<div class="slds-form-element slds-size--1-of-1">
+						<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+							<aura:iteration items="{!v.accountSearchResults}" var="results">
+								<tr class="slds-text-title--caps">
+	                    			<td>
+										<div class="slds-truncate">
+											<a data-id="{!results.Id}" data-name="{!results.Name}" onclick="{!c.displayAccountAddress}" href="">{!results.Name}</a>
+										</div>
+									</td>
+								</tr>
+							</aura:iteration>
+						</table>
+					</div>
+				</div>
+
+				<ui:inputDefaultError aura:id="noneSelectedMessage" value="{!v.noneSelectedMessage}"/>
+
+				<div class="slds-form-element__row slds-fade-in-hide" aura:id="accountAddressDiv">
+
+					<div class="slds-form-element slds-size--1-of-1">
+						<!-- ACCOUNT ADDRESS RESULTS -->
+						<table class="slds-table slds-table--bordered slds-p-around--medium">
+						    
+						    <thead>
+						        <tr class="slds-text-heading--label">
+						            <th class="slds-cell-shrink" scope="col">
+										<label for="parentCheckbox" class="slds-checkbox">
+											<input type="checkbox" id="parentCheckbox" onchange="{!c.checkAll}"/>
+											<span class="slds-checkbox--faux"/>
+											<span class="slds-form-element__label"/>
+										</label>
+									</th>
+						            <th class="slds-truncate" scope="col">
+						                <span class="slds-truncate">Address Type</span>
+						            </th>
+						            <th scope="col">
+						                <span class="slds-truncate">Address</span>
+						            </th>
+						        </tr>
+						    </thead>
+
+						    <tbody>
+								<aura:iteration items="{!v.addressSearchResults}" var="address">
+					            	<tr class="slds-hint-parent">
+						                <th role="row">
+						                    <label for="{!address.Id}" class="slds-checkbox">
+												<input type="checkbox" class="check" id="{!address.Id}"/>
+												<span class="slds-checkbox--faux"/>
+												<span class="slds-form-element__label"/>
+											</label>
+						                </th>
+						                <th role="row">
+						                    <span class="slds-truncate">{!address.Type__c}</span>
+						                </th>
+						                <td>
+						                    <span class="slds-truncate">{!address.Address__c}</span>
+						                </td>
+					            	</tr>
+				            	</aura:iteration>
+						    </tbody>
+
+						</table>
+					</div>
+				</div>
+
+				<ui:inputDefaultError aura:id="noAddressMessage" value="{!v.noAddressMessage}"/>
+
+			</div>
+		</fieldset>
+
+		<!-- SEARCH ACCOUNT MODAL BUTTONS -->
+		<div class="slds-modal__footer">
+			<div class="slds-x-small-buttons--horizontal">
+				<lightning:button label="Use Address" aura:id="updateAddress" onclick="{!c.updateAddress}"/>
+				<button class="slds-button slds-button--neutral" onclick="{!c.displayAddressModal}">New Address</button>
+			</div>
+		</div>
+	</div>
+
+    <div aria-hidden="false" aura:id="addressDiv" class="slds-hide">
+
+		<!-- ADDRESS FORM -->
+		<fieldset class="slds-form--compound">
+			<div class="slds-form-element__group">
+
+				<div class="slds-form-element__row">
+					<!-- CASE -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Related To" class="dynamic" aura:id="lookupField" disabled="true"/>
+					</div>
+					
+					<!-- OWNER -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Owner" class="dynamic" aura:id="owner" disabled="true"/>
+					</div>
+				</div>
+
+				<div class="slds-form-element__row">
+					<!-- ADDRESS TYPE -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputSelect label="Address Type" required="true" aura:id="addressType"/>
+					</div>
+					
+					<!-- PREMISE ADDRESS -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputSelect label="Premise Type" aura:id="premiseType"/>
+						<!-- <ui:inputCheckbox aura:id="isSameBillingAddress" label="Same For Billing Address?" click="{!c.getSameAddress}"/> -->
+					</div>
+				</div>
+
+				<div class="slds-form-element__row">
+					<!-- ADDRESS SEARCH -->
+					<div class="slds-form-element slds-size--1-of-1">
+						<!-- <ui:inputText label="Address" value="" placeholder="Search Address" aura:id="addressSearch"/> -->
+					</div>
+				</div>
+
+				<div class="slds-form-element__row">
+					<!-- UNIT NUMBER -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Unit #" class="dynamic" aura:id="unitNumber" maxlength="30"/>
+					</div>
+					
+					<!-- STREET NUMBER -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Street #" class="dynamic" aura:id="streetNumber" maxlength="30"/>
+					</div>
+				</div>
+
+				<div class="slds-form-element__row">
+					<!-- STREET -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Street Name" required="true" class="dynamic" aura:id="Street"/> <!-- focus="{!c.displaySearchModal}" -->
+					</div>
+					
+					<!-- SUBDIVISION -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Subdivision" required="true" class="dynamic" aura:id="Subdivision" focus="{!c.displaySearchModal}"/>
+					</div>
+				</div>
+
+				<div class="slds-form-element__row">
+					<!-- BARANGAY -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Barangay" required="true" class="dynamic" aura:id="Barangay" focus="{!c.displaySearchModal}"/>
+					</div>
+					
+					<!-- CITY / MUNICIPALITY -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="City / Municipality" required="true" class="dynamic" aura:id="City" focus="{!c.displaySearchModal}"/>
+					</div>
+				</div>
+
+				<div class="slds-form-element__row">
+					<!-- PROVINCE -->
+					<div class="slds-form-element slds-size--1-of-2">
+						<ui:inputText label="Province" required="true" class="dynamic" aura:id="Province" focus="{!c.displaySearchModal}"/>
+					</div>
+
+					<!-- EMPTY SPACE -->
+					<div class="slds-form-element slds-size--1-of-2"/>
+				</div>
+
+			</div>
+		</fieldset>
+
+		<!-- ADDRESS MODAL BUTTONS -->
+		<div class="slds-modal__footer">
+			<div class="slds-x-small-buttons--horizontal">
+				<lightning:button label="Save" aura:id="saveAddress" onclick="{!c.saveAddress}"/>
+			</div>
+		</div>
+	</div>
+
+    <!-- SEARCH ADDRESS MODAL BEGIN -->
+    <div aria-hidden="false" aura:id="searchDiv" role="dialog" class="slds-modal slds-modal--large slds-fade-in-hide">
+		<div class="slds-modal__container">
+
+			<!-- SEARCH ADDRESS HEADER -->
+			<div class="slds-modal__header">
+				<h2 class="slds-text-heading--medium">Search Address</h2>
+			</div>
+
+			<!-- SEARCH ADDRESS FORM -->
+			<div class="slds-modal__content slds-p-around--medium">
+				<fieldset class="slds-form--compound">
+					<div class="slds-form-element__group">
+
+						<div class="slds-form-element__row">
+							<!-- REFERENCE SEARCH -->
+							<div class="slds-form-element slds-size--1-of-1">
+								<ui:inputText label="" value="" placeholder="Search" aura:id="referenceSearch" keyup="{!c.searchAddress}" updateOn="keyup"/>
+							</div>
+						</div>
+
+						<div class="slds-form-element__row">
+							<!-- SEARCH ADDRESS RESULTS -->
+							<div class="slds-form-element slds-size--1-of-1">
+								<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+									<aura:iteration items="{!v.searchResults}" var="results">
+										<tr class="slds-text-title--caps">
+		                        			<td>
+												<div class="slds-truncate">
+													<a data-id="{!results.Id}" data-name="{!results.Name}" data-code="{!results.Parent_Code__c}" onclick="{!c.mapValue}" href="">{!results.Name}</a>
+												</div>
+											</td>
+											<td>
+												<div class="slds-truncate">
+												    {!results.Parent__r.Name}
+												</div>
+											</td>
+										</tr>
+									</aura:iteration>
+								</table>
+							</div>
+						</div>
+
+					</div>
+				</fieldset>
+			</div>
+
+			<!-- SEARCH ADDRESS MODAL BUTTONS -->
+			<div class="slds-modal__footer">
+				<div class="slds-x-small-buttons--horizontal">
+					<button class="slds-button slds-button--neutral" onclick="{!c.closeSearchModal}">Cancel</button>
+				</div>
+			</div>
+
+	    </div>
+	</div>
+
+</aura:component>

@@ -1,0 +1,54 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    
+    <c:CXE_CP_Header />
+    <!-- <c:CXE_CP_HeaderNavigation /> -->
+    
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                            <a href="javascript:void(0);">My Account</a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a href="javascript:void(0);">Change Service Details</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                        <div class="mov-text-group slds-p-top_small">
+                            <div class="mov-text-group slds-p-top_small">
+                                <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">My Account</h3>
+                            </div>
+                            <div class="mov-tabs-group">
+                                
+                                <!-- <c:CXE_CP_ServiceApplicationIndModify /> -->
+
+                                <c:CXE_CP_ServiceApplicationBizStart />
+                                
+                                <!-- @gibs: load when guest chooses terminate option -->
+                                <!-- <c:CXE_CP_ServiceApplicationTerminateGuest /> -->
+                                
+                                <!-- @gibs: load when user chooses terminate option (regardless of type) -->
+                                <!-- <c:CXE_CP_ServiceApplicationTerminate />  -->
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end MAIN CONTENT -->
+    
+    <c:CXE_CP_Footer />
+</aura:component>

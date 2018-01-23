@@ -1,0 +1,36 @@
+<aura:component >
+    <!-- <aura:handler name="init" action="{!c.doInit}" value="{!this}" /> -->
+    <aura:attribute name="caseVar" type="Object"/>
+    <aura:attribute name="persona" type="String"/>
+
+    <div class="tab-pane" id="confirmation">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group">
+                <h3 class="mov-text_size-24 mov-text_weight-semi-bold">Confirmation</h3>
+                <p class="mov-text_color-6a6a6a slds-m-top_small slds-m-bottom_medium mov-text_weight-semi-bold">We’ve received your request to start a new electric service! Your Reference No. is <span class="mov-text_color-323232 mov-text_weight-bold">{!v.caseVar.CaseNumber}</span>. We sent a copy of your application to your registered email address.</p>
+                <p class="mov-text_color-6a6a6a slds-m-bottom_large mov-text_weight-semi-bold">
+                <aura:if isTrue="{!v.caseVar.AMC_Service_Tag__c}">
+                    <span class="mov-text_color-323232 mov-text_weight-bold">
+                  		An AMC will get in touch with you within 3 working days to finalize your application.
+                    </span>
+                </aura:if> 
+                Click on Requests to check on the status of your application. <!--We’ll also send you updates via SMS and email. -->
+                      <aura:if isTrue="{!not(empty(v.caseVar.Preferred_Mode_of_Notification__c))}">We’ll also send you updates via <span class="mov-text_color-323232 mov-text_weight-bold">{!v.caseVar.Preferred_Mode_of_Notification__c}</span>.</aura:if>
+                	</p>
+                <!--
+                <p class="mov-text_color-6a6a6a slds-m-bottom_large mov-text_weight-semi-bold">For further assistance, please call us at our 24/7 business hotline at 16210.</p>
+            	-->
+                <!-- Start CSM-13594 JAgapito Oct.18,2017 -->
+                <!-- <p class="mov-text_color-6a6a6a slds-m-bottom_large mov-text_weight-semi-bold">For further assistance, please call us at our 24/7 hotline at 16210.</p>-->
+                <p class="mov-text_color-6a6a6a slds-m-bottom_large mov-text_weight-semi-bold">For further assistance, please call us at our 24/7 hotline at 
+                    <aura:if isTrue="{!v.persona == 'Biz'}">16210.</aura:if>
+                    <aura:if isTrue="{!v.persona == 'Ind'}">16211.</aura:if>
+                </p>
+                <!-- END Jagapito Oct.18,2017 -->
+            </div>
+            <div class="mov-button-group slds-text-align--center">                
+                <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickBackToHome}">OK</ui:button>
+            </div>
+        </div>
+    </div>
+</aura:component>

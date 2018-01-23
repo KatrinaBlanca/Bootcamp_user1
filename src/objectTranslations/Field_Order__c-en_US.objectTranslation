@@ -1,0 +1,2461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Field Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Field Orders</value>
+    </caseValues>
+    <fields>
+        <label><!-- AMC Service Package --></label>
+        <name>AMC_Service_Package__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account_Name_text__c</name>
+    </fields>
+    <fields>
+        <help><!-- Additional Facilities Required --></help>
+        <label><!-- Additional Facilities Required --></label>
+        <name>Add_Distribution_Facilities_Required__c</name>
+    </fields>
+    <fields>
+        <help><!-- Additional documents for evaluation required --></help>
+        <label><!-- Additional Docs for Eval Requirement --></label>
+        <name>Additional_Documents_for_Evaluation_Requ__c</name>
+    </fields>
+    <fields>
+        <help><!-- Address --></help>
+        <label><!-- Address --></label>
+        <name>Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Barangay --></label>
+        <name>Barangay__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relationship to the Customer --></label>
+        <name>CXE_Relationship_to_the_Customer__c</name>
+        <picklistValues>
+            <masterLabel>Child</masterLabel>
+            <translation><!-- Child --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contractor</masterLabel>
+            <translation><!-- Contractor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employee</masterLabel>
+            <translation><!-- Employee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Friend</masterLabel>
+            <translation><!-- Friend --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parent</masterLabel>
+            <translation><!-- Parent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relative</masterLabel>
+            <translation><!-- Relative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spouse</masterLabel>
+            <translation><!-- Spouse --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rep Email --></label>
+        <name>CXE_Rep_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rep First Name --></label>
+        <name>CXE_Rep_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rep Last Name --></label>
+        <name>CXE_Rep_Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rep Middle Name --></label>
+        <name>CXE_Rep_Middle_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rep Primary Contact Number --></label>
+        <name>CXE_Rep_Primary_Contact_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- SIN Termination Date --></label>
+        <name>CXE_SIN_Termination_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Supply Phase --></label>
+        <name>CXE_Service_Supply_Phase__c</name>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Network</masterLabel>
+            <translation><!-- Single Phase (1Ø), Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Three (3)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Three (3)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Two (2)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Two (2)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Three (3)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Three (3)-Wire (Delta) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Supply Type --></label>
+        <name>CXE_Service_Supply_Type__c</name>
+        <picklistValues>
+            <masterLabel>Normal with meter</masterLabel>
+            <translation><!-- Normal with meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal without meter</masterLabel>
+            <translation><!-- Normal without meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Streetlight with meter</masterLabel>
+            <translation><!-- Streetlight with meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Streetlight without meter</masterLabel>
+            <translation><!-- Streetlight without meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Temporary with meter</masterLabel>
+            <translation><!-- Temporary with meter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Supply Voltage --></label>
+        <name>CXE_Service_Supply_Voltage__c</name>
+        <picklistValues>
+            <masterLabel>115/66 kV</masterLabel>
+            <translation><!-- 115/66 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.2/7.62 kV</masterLabel>
+            <translation><!-- 13.2/7.62 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.8/7.97 kV</masterLabel>
+            <translation><!-- 13.8/7.97 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>216 V</masterLabel>
+            <translation><!-- 216 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>230 V</masterLabel>
+            <translation><!-- 230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>34.5/19.92 kV</masterLabel>
+            <translation><!-- 34.5/19.92 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4.8 kV</masterLabel>
+            <translation><!-- 4.8 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>400/230 V</masterLabel>
+            <translation><!-- 400/230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>460/265 V</masterLabel>
+            <translation><!-- 460/265 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6.24/3.60 kV</masterLabel>
+            <translation><!-- 6.24/3.60 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>69/39 kV</masterLabel>
+            <translation><!-- 69/39 kV --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Phase --></label>
+        <name>CXE_Service_Wire_Phase__c</name>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Network</masterLabel>
+            <translation><!-- Single Phase (1Ø), Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Three (3)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Three (3)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Two (2)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Two (2)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Three (3)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Three (3)-Wire (Delta) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Voltage --></label>
+        <name>CXE_Service_Wire_Voltage__c</name>
+        <picklistValues>
+            <masterLabel>115/66 kV</masterLabel>
+            <translation><!-- 115/66 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.2/7.62 kV</masterLabel>
+            <translation><!-- 13.2/7.62 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.8/7.97 kV</masterLabel>
+            <translation><!-- 13.8/7.97 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>216 V</masterLabel>
+            <translation><!-- 216 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>230 V</masterLabel>
+            <translation><!-- 230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>34.5/19.92 kV</masterLabel>
+            <translation><!-- 34.5/19.92 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4.8 kV</masterLabel>
+            <translation><!-- 4.8 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>400/230 V</masterLabel>
+            <translation><!-- 400/230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>460/265 V</masterLabel>
+            <translation><!-- 460/265 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6.24/3.60 kV</masterLabel>
+            <translation><!-- 6.24/3.60 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>69/39 kV</masterLabel>
+            <translation><!-- 69/39 kV --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case No --></label>
+        <name>Case_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Status --></label>
+        <name>Case_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Field Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- City / Municipality --></label>
+        <name>City_Municipality__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Metering Scheme --></label>
+        <name>Code_Metering_Scheme__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Mode of Retrieval --></label>
+        <name>Code_Mode_of_Retrieval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Contact_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Contact person unreachable --></help>
+        <label><!-- Contact Person Unreachable --></label>
+        <name>Contact_Person_Unreachable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By --></label>
+        <name>CreatedBy_User__c</name>
+    </fields>
+    <fields>
+        <label><!-- Creation Date --></label>
+        <name>Creation_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Customer&apos;s email of related Service Application --></help>
+        <label><!-- Customer Email --></label>
+        <name>Customer_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- Document to be delivered --></help>
+        <label><!-- Deliver Document --></label>
+        <name>Deliver_Document__c</name>
+    </fields>
+    <fields>
+        <help><!-- Delivery for reschedule --></help>
+        <label><!-- For re-scheduling of meter base delivery --></label>
+        <name>Delivery_for_Reschedule__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Executing Personnel --></label>
+        <name>Executing_Personnel_FO__c</name>
+        <relationshipLabel><!-- Field Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Executing Personnel Name --></label>
+        <name>Executing_Personnel_Name__c</name>
+        <picklistValues>
+            <masterLabel>ABELARDO LOBO</masterLabel>
+            <translation><!-- ABELARDO LOBO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ABRAHAM TENORIO</masterLabel>
+            <translation><!-- ABRAHAM TENORIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALBERT CACHO</masterLabel>
+            <translation><!-- ALBERT CACHO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALEJANDRO MACANIP</masterLabel>
+            <translation><!-- ALEJANDRO MACANIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALEX GARCIA</masterLabel>
+            <translation><!-- ALEX GARCIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALEX RAMOS</masterLabel>
+            <translation><!-- ALEX RAMOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALEXANDER BATONGBAKAL</masterLabel>
+            <translation><!-- ALEXANDER BATONGBAKAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALFREDO CARATIHAN</masterLabel>
+            <translation><!-- ALFREDO CARATIHAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALFREDO JR LOPEZ</masterLabel>
+            <translation><!-- ALFREDO JR LOPEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALFREDO JR MANGAHIS</masterLabel>
+            <translation><!-- ALFREDO JR MANGAHIS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALLAN ALFORJA</masterLabel>
+            <translation><!-- ALLAN ALFORJA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALLAN CRUZ</masterLabel>
+            <translation><!-- ALLAN CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALVIN FRANCIS FLORES</masterLabel>
+            <translation><!-- ALVIN FRANCIS FLORES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ALVIN GATPANDAN</masterLabel>
+            <translation><!-- ALVIN GATPANDAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ANGELITO CUCHAPIN</masterLabel>
+            <translation><!-- ANGELITO CUCHAPIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ANGELITO LACOSTALES</masterLabel>
+            <translation><!-- ANGELITO LACOSTALES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ANTHONY SANDOVAL</masterLabel>
+            <translation><!-- ANTHONY SANDOVAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ANTONIO JR ALBERTO</masterLabel>
+            <translation><!-- ANTONIO JR ALBERTO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARIEL LEONAR</masterLabel>
+            <translation><!-- ARIEL LEONAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARISTOTLE ALZATE</masterLabel>
+            <translation><!-- ARISTOTLE ALZATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARJAY MAURICIO</masterLabel>
+            <translation><!-- ARJAY MAURICIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARNALDO ABAYA</masterLabel>
+            <translation><!-- ARNALDO ABAYA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARNALDO DE LEON</masterLabel>
+            <translation><!-- ARNALDO DE LEON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARNOLD BIEN AGUSTIN</masterLabel>
+            <translation><!-- ARNOLD BIEN AGUSTIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARNOLD CATAPANG</masterLabel>
+            <translation><!-- ARNOLD CATAPANG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARTURO BAQUER</masterLabel>
+            <translation><!-- ARTURO BAQUER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARVIN MANE</masterLabel>
+            <translation><!-- ARVIN MANE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AURELIO DINGLASAN</masterLabel>
+            <translation><!-- AURELIO DINGLASAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BASILIO JR JACINTO</masterLabel>
+            <translation><!-- BASILIO JR JACINTO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BERNARD ROBLES</masterLabel>
+            <translation><!-- BERNARD ROBLES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BERNARDO REYES</masterLabel>
+            <translation><!-- BERNARDO REYES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BONNIE JAY JR MALLARI</masterLabel>
+            <translation><!-- BONNIE JAY JR MALLARI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BRYAN ALIPIO</masterLabel>
+            <translation><!-- BRYAN ALIPIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BRYAN SUIZA</masterLabel>
+            <translation><!-- BRYAN SUIZA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CESAR DEL ROSARIO</masterLabel>
+            <translation><!-- CESAR DEL ROSARIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CESAR DIONISIO</masterLabel>
+            <translation><!-- CESAR DIONISIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CESAR GAVINO</masterLabel>
+            <translation><!-- CESAR GAVINO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHESTER DE BELEN</masterLabel>
+            <translation><!-- CHESTER DE BELEN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHINO GRASPARIL</masterLabel>
+            <translation><!-- CHINO GRASPARIL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHRISTIAN POPO CRUZ</masterLabel>
+            <translation><!-- CHRISTIAN POPO CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CORNELIUS PERIDA</masterLabel>
+            <translation><!-- CORNELIUS PERIDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRISOSTOMO ALCANTARA</masterLabel>
+            <translation><!-- CRISOSTOMO ALCANTARA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DANIEL GONZALES</masterLabel>
+            <translation><!-- DANIEL GONZALES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DANIEL SOLOMON VARGAS</masterLabel>
+            <translation><!-- DANIEL SOLOMON VARGAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DANILO ACUNA</masterLabel>
+            <translation><!-- DANILO ACUNA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DANILO BALBASTRO</masterLabel>
+            <translation><!-- DANILO BALBASTRO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DANILO CARAMILLO</masterLabel>
+            <translation><!-- DANILO CARAMILLO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DANILO MARQUEZ</masterLabel>
+            <translation><!-- DANILO MARQUEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DARIUS CORTEZ</masterLabel>
+            <translation><!-- DARIUS CORTEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DAVID JOSHUA FILOMENO</masterLabel>
+            <translation><!-- DAVID JOSHUA FILOMENO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DENNIS ESTACIO</masterLabel>
+            <translation><!-- DENNIS ESTACIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DENNIS MOLINA</masterLabel>
+            <translation><!-- DENNIS MOLINA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DIOMEDEZ RODRIGUEZ</masterLabel>
+            <translation><!-- DIOMEDEZ RODRIGUEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DIOSDADO VILLANUEVA</masterLabel>
+            <translation><!-- DIOSDADO VILLANUEVA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DONDON REYES</masterLabel>
+            <translation><!-- DONDON REYES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDBRYAN VELASCO</masterLabel>
+            <translation><!-- EDBRYAN VELASCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDGARDO DE GUZMAN</masterLabel>
+            <translation><!-- EDGARDO DE GUZMAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDITO JR ARIZALA</masterLabel>
+            <translation><!-- EDITO JR ARIZALA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDMOND MARASIGAN</masterLabel>
+            <translation><!-- EDMOND MARASIGAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDMUND CALMA</masterLabel>
+            <translation><!-- EDMUND CALMA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDWARD BASANTA</masterLabel>
+            <translation><!-- EDWARD BASANTA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDWARD CORPUZ</masterLabel>
+            <translation><!-- EDWARD CORPUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDWARD SIMON IBARROLA</masterLabel>
+            <translation><!-- EDWARD SIMON IBARROLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDWIN ADAN</masterLabel>
+            <translation><!-- EDWIN ADAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EGIENEL LAZA</masterLabel>
+            <translation><!-- EGIENEL LAZA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ELDEFONSO CARPIO</masterLabel>
+            <translation><!-- ELDEFONSO CARPIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMERITO PATACSIL</masterLabel>
+            <translation><!-- EMERITO PATACSIL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMMANUEL ALAGADAN</masterLabel>
+            <translation><!-- EMMANUEL ALAGADAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMMANUEL RAMOS</masterLabel>
+            <translation><!-- EMMANUEL RAMOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ENMIRANO AUSTRIA</masterLabel>
+            <translation><!-- ENMIRANO AUSTRIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ENRIQUE GESMUNDO</masterLabel>
+            <translation><!-- ENRIQUE GESMUNDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERIC EJUSA</masterLabel>
+            <translation><!-- ERIC EJUSA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERIC GOZUM</masterLabel>
+            <translation><!-- ERIC GOZUM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERNESTO DIMARANAN</masterLabel>
+            <translation><!-- ERNESTO DIMARANAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERNESTO III FERRER</masterLabel>
+            <translation><!-- ERNESTO III FERRER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERWIN GELUZ</masterLabel>
+            <translation><!-- ERWIN GELUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EUGENIO IV ANINO</masterLabel>
+            <translation><!-- EUGENIO IV ANINO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FERDINAND DATA</masterLabel>
+            <translation><!-- FERDINAND DATA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FERNANDO JR ADRIANO</masterLabel>
+            <translation><!-- FERNANDO JR ADRIANO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FIDEL RODRIGUEZ</masterLabel>
+            <translation><!-- FIDEL RODRIGUEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FROILAN PROFUGO</masterLabel>
+            <translation><!-- FROILAN PROFUGO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GENARO CARIAZO</masterLabel>
+            <translation><!-- GENARO CARIAZO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GENARO GUTIERREZ</masterLabel>
+            <translation><!-- GENARO GUTIERREZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GIANNE CARLO ERA</masterLabel>
+            <translation><!-- GIANNE CARLO ERA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GILBERT BALUYOT</masterLabel>
+            <translation><!-- GILBERT BALUYOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GILBERT CUADRA</masterLabel>
+            <translation><!-- GILBERT CUADRA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GILBERT HABAB</masterLabel>
+            <translation><!-- GILBERT HABAB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GILBERT HERRERA</masterLabel>
+            <translation><!-- GILBERT HERRERA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GIOFFREY AGUPITAN</masterLabel>
+            <translation><!-- GIOFFREY AGUPITAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GLENN SUMANG</masterLabel>
+            <translation><!-- GLENN SUMANG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GUILLERMO JR JOCSON</masterLabel>
+            <translation><!-- GUILLERMO JR JOCSON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HERALD GAMBOA</masterLabel>
+            <translation><!-- HERALD GAMBOA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HERMIE BARRIOS</masterLabel>
+            <translation><!-- HERMIE BARRIOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HERMINIO HERNANDEZ</masterLabel>
+            <translation><!-- HERMINIO HERNANDEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HERMINIO SALANDANAN</masterLabel>
+            <translation><!-- HERMINIO SALANDANAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HOMER LADINES</masterLabel>
+            <translation><!-- HOMER LADINES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISAGANI DELA CRUZ</masterLabel>
+            <translation><!-- ISAGANI DELA CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JAIME III CAMINO</masterLabel>
+            <translation><!-- JAIME III CAMINO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JAY AR FRANCISCO</masterLabel>
+            <translation><!-- JAY AR FRANCISCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JAY-JAY LEGASPI</masterLabel>
+            <translation><!-- JAY-JAY LEGASPI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JAYSON HERNANDEZ</masterLabel>
+            <translation><!-- JAYSON HERNANDEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JEFFREY CRUZ</masterLabel>
+            <translation><!-- JEFFREY CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JEMUEL YUMANG</masterLabel>
+            <translation><!-- JEMUEL YUMANG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JER KING BONDOC</masterLabel>
+            <translation><!-- JER KING BONDOC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JEREMIAS MARQUEZ</masterLabel>
+            <translation><!-- JEREMIAS MARQUEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JERMAINE TORIBIO</masterLabel>
+            <translation><!-- JERMAINE TORIBIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JESSIE QUINTANA</masterLabel>
+            <translation><!-- JESSIE QUINTANA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JESUS RICAFORT</masterLabel>
+            <translation><!-- JESUS RICAFORT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JHON BON CRISOSTOMO</masterLabel>
+            <translation><!-- JHON BON CRISOSTOMO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JIEVEN TAN</masterLabel>
+            <translation><!-- JIEVEN TAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JIMMY CONTILLO</masterLabel>
+            <translation><!-- JIMMY CONTILLO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOAQUIN JR CHUA</masterLabel>
+            <translation><!-- JOAQUIN JR CHUA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOEGENE BERANGO</masterLabel>
+            <translation><!-- JOEGENE BERANGO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOEL ALCANTARA</masterLabel>
+            <translation><!-- JOEL ALCANTARA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOEL PUCIO</masterLabel>
+            <translation><!-- JOEL PUCIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOEY NATHAN TAMONDONG</masterLabel>
+            <translation><!-- JOEY NATHAN TAMONDONG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOHN ALLAN BARONIA</masterLabel>
+            <translation><!-- JOHN ALLAN BARONIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOHN BRIAN AGUIRRE</masterLabel>
+            <translation><!-- JOHN BRIAN AGUIRRE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOHN CARLO GONZALES</masterLabel>
+            <translation><!-- JOHN CARLO GONZALES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOHN LORENZO NOYA</masterLabel>
+            <translation><!-- JOHN LORENZO NOYA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOHN PAULO JIMENEZ</masterLabel>
+            <translation><!-- JOHN PAULO JIMENEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JONALD MACARAEG</masterLabel>
+            <translation><!-- JONALD MACARAEG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JONATHAN PASCUAL</masterLabel>
+            <translation><!-- JONATHAN PASCUAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JORGE VASQUEZ</masterLabel>
+            <translation><!-- JORGE VASQUEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOSE ELDWIN NIEVES</masterLabel>
+            <translation><!-- JOSE ELDWIN NIEVES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOSE MARI SONZA</masterLabel>
+            <translation><!-- JOSE MARI SONZA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOSELITO ARCEO</masterLabel>
+            <translation><!-- JOSELITO ARCEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOSELITO BAWI</masterLabel>
+            <translation><!-- JOSELITO BAWI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOSELITO CARABIT</masterLabel>
+            <translation><!-- JOSELITO CARABIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOSELITO FRANCO</masterLabel>
+            <translation><!-- JOSELITO FRANCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOSEPH SAYO</masterLabel>
+            <translation><!-- JOSEPH SAYO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JOVIE MARK CUSTODIO</masterLabel>
+            <translation><!-- JOVIE MARK CUSTODIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JULIAN DE GUZMAN</masterLabel>
+            <translation><!-- JULIAN DE GUZMAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JULITO ANDRES</masterLabel>
+            <translation><!-- JULITO ANDRES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LEOCADIO JR ALCANTARA</masterLabel>
+            <translation><!-- LEOCADIO JR ALCANTARA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LEONARD RENZ LIWANAGAN</masterLabel>
+            <translation><!-- LEONARD RENZ LIWANAGAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LEONARDO JR CRUZ</masterLabel>
+            <translation><!-- LEONARDO JR CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LESTER JR JUAT</masterLabel>
+            <translation><!-- LESTER JR JUAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LLOYD GAMBOA</masterLabel>
+            <translation><!-- LLOYD GAMBOA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOURIEN ATIENZA</masterLabel>
+            <translation><!-- LOURIEN ATIENZA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOWELL CORPUS</masterLabel>
+            <translation><!-- LOWELL CORPUS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARIO CHUA</masterLabel>
+            <translation><!-- MARIO CHUA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK ANGELO MARILIM</masterLabel>
+            <translation><!-- MARK ANGELO MARILIM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK ANTHONY SANTOS</masterLabel>
+            <translation><!-- MARK ANTHONY SANTOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK ARGELO BUSTAMANTE</masterLabel>
+            <translation><!-- MARK ARGELO BUSTAMANTE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK JAMES BESA</masterLabel>
+            <translation><!-- MARK JAMES BESA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK JASON OMNES</masterLabel>
+            <translation><!-- MARK JASON OMNES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK JHUN SOLOMON</masterLabel>
+            <translation><!-- MARK JHUN SOLOMON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK LEO CUADRA</masterLabel>
+            <translation><!-- MARK LEO CUADRA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK LESTER TILA</masterLabel>
+            <translation><!-- MARK LESTER TILA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARK RAY SEBASTIAN</masterLabel>
+            <translation><!-- MARK RAY SEBASTIAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARLON DEL PILAR</masterLabel>
+            <translation><!-- MARLON DEL PILAR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARLON MESINA</masterLabel>
+            <translation><!-- MARLON MESINA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARLON OCAMPO</masterLabel>
+            <translation><!-- MARLON OCAMPO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARNIE EVANGELISTA</masterLabel>
+            <translation><!-- MARNIE EVANGELISTA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARWIN IGNACIO</masterLabel>
+            <translation><!-- MARWIN IGNACIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MELCHOR BONO</masterLabel>
+            <translation><!-- MELCHOR BONO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MELCHOR EPAN</masterLabel>
+            <translation><!-- MELCHOR EPAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MICHAEL BALITAO</masterLabel>
+            <translation><!-- MICHAEL BALITAO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MICHAEL EFREN NOLLORA</masterLabel>
+            <translation><!-- MICHAEL EFREN NOLLORA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MILDRED FERDINAND MACARAIG</masterLabel>
+            <translation><!-- MILDRED FERDINAND MACARAIG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NELSON NAYRE</masterLabel>
+            <translation><!-- NELSON NAYRE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NEMENCIO BORLONGAN</masterLabel>
+            <translation><!-- NEMENCIO BORLONGAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NICANOR PANGAN</masterLabel>
+            <translation><!-- NICANOR PANGAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NICSON MANGUERA</masterLabel>
+            <translation><!-- NICSON MANGUERA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOEH VALEROS</masterLabel>
+            <translation><!-- NOEH VALEROS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOEL AUSTRIA</masterLabel>
+            <translation><!-- NOEL AUSTRIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOEL DELA CRUZ</masterLabel>
+            <translation><!-- NOEL DELA CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOEL MEDINA</masterLabel>
+            <translation><!-- NOEL MEDINA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOEL NOOL</masterLabel>
+            <translation><!-- NOEL NOOL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOEL SULIT</masterLabel>
+            <translation><!-- NOEL SULIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NORBERTO JR SORIANO</masterLabel>
+            <translation><!-- NORBERTO JR SORIANO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OLIVER FELIX RIMANDO</masterLabel>
+            <translation><!-- OLIVER FELIX RIMANDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OLIVER NAVARRO</masterLabel>
+            <translation><!-- OLIVER NAVARRO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OLIVER VALLADA</masterLabel>
+            <translation><!-- OLIVER VALLADA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ORLANDO CAPISTRANO</masterLabel>
+            <translation><!-- ORLANDO CAPISTRANO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ORLANDO FANGON</masterLabel>
+            <translation><!-- ORLANDO FANGON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ORLY GENOBILI</masterLabel>
+            <translation><!-- ORLY GENOBILI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PAULINO DULLER</masterLabel>
+            <translation><!-- PAULINO DULLER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PEPITO SANTOS</masterLabel>
+            <translation><!-- PEPITO SANTOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PERCIVAL ESTRABO</masterLabel>
+            <translation><!-- PERCIVAL ESTRABO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PETER PAUL GARCIA</masterLabel>
+            <translation><!-- PETER PAUL GARCIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAMIR OMBAO</masterLabel>
+            <translation><!-- RAMIR OMBAO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAMON MADRILEJO</masterLabel>
+            <translation><!-- RAMON MADRILEJO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAMON SIMEON CADA</masterLabel>
+            <translation><!-- RAMON SIMEON CADA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RANIL MAGAPAN</masterLabel>
+            <translation><!-- RANIL MAGAPAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAUL ESTIGOY</masterLabel>
+            <translation><!-- RAUL ESTIGOY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAYMUND DOMINGO</masterLabel>
+            <translation><!-- RAYMUND DOMINGO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RAYMUNDO PALENTINOS</masterLabel>
+            <translation><!-- RAYMUNDO PALENTINOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RECEL RONDILLA</masterLabel>
+            <translation><!-- RECEL RONDILLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REDEN RAMOS</masterLabel>
+            <translation><!-- REDEN RAMOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REMIGIO DE GUZMAN</masterLabel>
+            <translation><!-- REMIGIO DE GUZMAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RENATO ESPIRITU</masterLabel>
+            <translation><!-- RENATO ESPIRITU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REY CALDERON</masterLabel>
+            <translation><!-- REY CALDERON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REYNALDO RICAFLANCA</masterLabel>
+            <translation><!-- REYNALDO RICAFLANCA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REYNALDO RIVERA</masterLabel>
+            <translation><!-- REYNALDO RIVERA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REYNALYN REÑON</masterLabel>
+            <translation><!-- REYNALYN REÑON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RICARDO JR ROQUE</masterLabel>
+            <translation><!-- RICARDO JR ROQUE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RICHARD SAN PEDRO</masterLabel>
+            <translation><!-- RICHARD SAN PEDRO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RICKY CRUZ</masterLabel>
+            <translation><!-- RICKY CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RIZALDY LIJAUCO</masterLabel>
+            <translation><!-- RIZALDY LIJAUCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROBERT ARGUELLES</masterLabel>
+            <translation><!-- ROBERT ARGUELLES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROBERTO EUGENIO</masterLabel>
+            <translation><!-- ROBERTO EUGENIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROBERTO JR SOLANO</masterLabel>
+            <translation><!-- ROBERTO JR SOLANO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RODHEL PANGANIBAN</masterLabel>
+            <translation><!-- RODHEL PANGANIBAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RODOLFO BAUTISTA</masterLabel>
+            <translation><!-- RODOLFO BAUTISTA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RODOLFO JR CARPIO</masterLabel>
+            <translation><!-- RODOLFO JR CARPIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RODOLFO JR ESPIRITU</masterLabel>
+            <translation><!-- RODOLFO JR ESPIRITU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RODOLFO LARIOZA</masterLabel>
+            <translation><!-- RODOLFO LARIOZA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROLANDO CAMIA</masterLabel>
+            <translation><!-- ROLANDO CAMIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROLANDO GRIÑO</masterLabel>
+            <translation><!-- ROLANDO GRIÑO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROLANDO MALILLIN</masterLabel>
+            <translation><!-- ROLANDO MALILLIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROMEO JR ENCILA</masterLabel>
+            <translation><!-- ROMEO JR ENCILA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROMEO LUCERO</masterLabel>
+            <translation><!-- ROMEO LUCERO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROMEO OCAMPO</masterLabel>
+            <translation><!-- ROMEO OCAMPO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROMMEL ESTRELLA</masterLabel>
+            <translation><!-- ROMMEL ESTRELLA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROMMEL NATO</masterLabel>
+            <translation><!-- ROMMEL NATO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROMMEL VALDEZ</masterLabel>
+            <translation><!-- ROMMEL VALDEZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RONALD REVELO</masterLabel>
+            <translation><!-- RONALD REVELO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RONALDO BORJA</masterLabel>
+            <translation><!-- RONALDO BORJA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RONALDO FAUSTINO</masterLabel>
+            <translation><!-- RONALDO FAUSTINO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RONALDO JAVIER</masterLabel>
+            <translation><!-- RONALDO JAVIER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RONALDO TADEO</masterLabel>
+            <translation><!-- RONALDO TADEO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RONEL DELA CRUZ</masterLabel>
+            <translation><!-- RONEL DELA CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RONNIE BOY SUAREZ</masterLabel>
+            <translation><!-- RONNIE BOY SUAREZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROWELL PUNZALAN</masterLabel>
+            <translation><!-- ROWELL PUNZALAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROY SIDOCON</masterLabel>
+            <translation><!-- ROY SIDOCON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROYLITO PARDINI</masterLabel>
+            <translation><!-- ROYLITO PARDINI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SHANLIE PATAG</masterLabel>
+            <translation><!-- SHANLIE PATAG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SIDNEY SELDA</masterLabel>
+            <translation><!-- SIDNEY SELDA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOTERO JR MANDAYA</masterLabel>
+            <translation><!-- SOTERO JR MANDAYA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STEVE AVERION</masterLabel>
+            <translation><!-- STEVE AVERION --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SYLVESTER VARGAS</masterLabel>
+            <translation><!-- SYLVESTER VARGAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TEODORO CERVANIA</masterLabel>
+            <translation><!-- TEODORO CERVANIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TRANQUILINO JR SOLOMON</masterLabel>
+            <translation><!-- TRANQUILINO JR SOLOMON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VICTOR PAULO CARDENAS</masterLabel>
+            <translation><!-- VICTOR PAULO CARDENAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VICTOR TAMAYO</masterLabel>
+            <translation><!-- VICTOR TAMAYO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WALTER MANIACUP</masterLabel>
+            <translation><!-- WALTER MANIACUP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WARLITO YAP</masterLabel>
+            <translation><!-- WARLITO YAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WILBERTO PENALBA</masterLabel>
+            <translation><!-- WILBERTO PENALBA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WILFREDO CAURES</masterLabel>
+            <translation><!-- WILFREDO CAURES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WILFREDO GALLANO</masterLabel>
+            <translation><!-- WILFREDO GALLANO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WILFREDO JR FILOMENO</masterLabel>
+            <translation><!-- WILFREDO JR FILOMENO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WINKLE LEBY LEE</masterLabel>
+            <translation><!-- WINKLE LEBY LEE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Executing Personnel BC --></label>
+        <name>Executing_Personnel__c</name>
+        <picklistValues>
+            <masterLabel>ALABANG</masterLabel>
+            <translation><!-- ALABANG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ANGONO</masterLabel>
+            <translation><!-- ANGONO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BACOOR</masterLabel>
+            <translation><!-- BACOOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BALAGTAS</masterLabel>
+            <translation><!-- BALAGTAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BALINTAWAK</masterLabel>
+            <translation><!-- BALINTAWAK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BALIWAG</masterLabel>
+            <translation><!-- BALIWAG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BATANGAS</masterLabel>
+            <translation><!-- BATANGAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAINTA</masterLabel>
+            <translation><!-- CAINTA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CALAMBA</masterLabel>
+            <translation><!-- CALAMBA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CALOOCAN</masterLabel>
+            <translation><!-- CALOOCAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAMARIN</masterLabel>
+            <translation><!-- CAMARIN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COMMONWEALTH</masterLabel>
+            <translation><!-- COMMONWEALTH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DASMARIÑAS</masterLabel>
+            <translation><!-- DASMARIÑAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESPAÑA</masterLabel>
+            <translation><!-- ESPAÑA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KAMUNING</masterLabel>
+            <translation><!-- KAMUNING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LAS PIÑAS</masterLabel>
+            <translation><!-- LAS PIÑAS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LUCENA</masterLabel>
+            <translation><!-- LUCENA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAKATI</masterLabel>
+            <translation><!-- MAKATI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MALABON</masterLabel>
+            <translation><!-- MALABON --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MALATE</masterLabel>
+            <translation><!-- MALATE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MALOLOS</masterLabel>
+            <translation><!-- MALOLOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MANDALUYONG</masterLabel>
+            <translation><!-- MANDALUYONG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MARIKINA</masterLabel>
+            <translation><!-- MARIKINA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MASINAG</masterLabel>
+            <translation><!-- MASINAG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NOVALICHES</masterLabel>
+            <translation><!-- NOVALICHES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PARAÑAQUE</masterLabel>
+            <translation><!-- PARAÑAQUE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PASAY</masterLabel>
+            <translation><!-- PASAY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PASIG</masterLabel>
+            <translation><!-- PASIG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROOSEVELT</masterLabel>
+            <translation><!-- ROOSEVELT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROSARIO</masterLabel>
+            <translation><!-- ROSARIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAN PABLO</masterLabel>
+            <translation><!-- SAN PABLO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAN PEDRO</masterLabel>
+            <translation><!-- SAN PEDRO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STA. CRUZ</masterLabel>
+            <translation><!-- STA. CRUZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STA. MARIA</masterLabel>
+            <translation><!-- STA. MARIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAGAYTAY</masterLabel>
+            <translation><!-- TAGAYTAY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAGUIG</masterLabel>
+            <translation><!-- TAGUIG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TUTUBAN</masterLabel>
+            <translation><!-- TUTUBAN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VALENZUELA</masterLabel>
+            <translation><!-- VALENZUELA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Customer needs major site modifications --></help>
+        <label><!-- Customer needs major site modifications --></label>
+        <name>Extensive_modifications_to_premises_requ__c</name>
+    </fields>
+    <fields>
+        <help><!-- FO Findings in free text for Mail Merge --></help>
+        <label><!-- Findings in Free Text --></label>
+        <name>Findings_in_Free_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- First name --></label>
+        <name>First_name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Meter base for pickup at Business Center --></help>
+        <label><!-- Meter base for pickup at Business Center --></label>
+        <name>For_BC_Pickup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Name --></label>
+        <name>Full_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Info submitted needs further checking --></help>
+        <label><!-- Info submitted needs further checking --></label>
+        <name>Inconsistent_SA_Data_Required__c</name>
+    </fields>
+    <fields>
+        <help><!-- Instructions for inspection --></help>
+        <label><!-- Inspection Instructions --></label>
+        <name>Inspection_Instructions__c</name>
+    </fields>
+    <fields>
+        <help><!-- Result of inspection --></help>
+        <label><!-- Inspection Result --></label>
+        <name>Inspection_Result__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disapproved</masterLabel>
+            <translation><!-- Disapproved --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Landmark --></label>
+        <name>Landmark__c</name>
+    </fields>
+    <fields>
+        <label><!-- Landmarks --></label>
+        <name>Landmarks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Locked Record --></label>
+        <name>Locked_Record__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Material --></label>
+        <name>Material__c</name>
+        <picklistValues>
+            <masterLabel>Aluminum</masterLabel>
+            <translation><!-- Aluminum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copper</masterLabel>
+            <translation><!-- Copper --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Instruction for meter socket delivery --></help>
+        <label><!-- Meter Socket Delivery Instructions --></label>
+        <name>Meter_Socket_Delivery_Instructions__c</name>
+    </fields>
+    <fields>
+        <help><!-- Result of meter socket delivery --></help>
+        <label><!-- Meter Socket Delivery Result --></label>
+        <name>Meter_Socket_Delivery__c</name>
+        <picklistValues>
+            <masterLabel>Delivered</masterLabel>
+            <translation><!-- Delivered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Delivered</masterLabel>
+            <translation><!-- Not Delivered --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Metering Scheme --></label>
+        <name>Metering_Scheme__c</name>
+        <picklistValues>
+            <masterLabel>20 KV</masterLabel>
+            <translation><!-- 20 KV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AMI-NORMAL</masterLabel>
+            <translation><!-- AMI-NORMAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMC</masterLabel>
+            <translation><!-- EMC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICP</masterLabel>
+            <translation><!-- ICP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MULTI-METERING CENTER</masterLabel>
+            <translation><!-- MULTI-METERING CENTER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MULTI-METERING PER FLOOR</masterLabel>
+            <translation><!-- MULTI-METERING PER FLOOR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NORMAL</masterLabel>
+            <translation><!-- NORMAL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRIMARY METERING</masterLabel>
+            <translation><!-- PRIMARY METERING --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SUBSTATION</masterLabel>
+            <translation><!-- SUBSTATION --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Primary Mobile --></label>
+        <name>Mobile_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mode of Retrieval --></label>
+        <name>Mode_of_Retrieval__c</name>
+        <picklistValues>
+            <masterLabel>ONSITE</masterLabel>
+            <translation><!-- ONSITE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>REMOTE</masterLabel>
+            <translation><!-- REMOTE --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Office --></label>
+        <name>Office__c</name>
+        <relationshipLabel><!-- Field Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Document to be picked up --></help>
+        <label><!-- Pick Up Document --></label>
+        <name>Pick_Up_Document__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Pole # --></label>
+        <name>Pole_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- Instructions for pre-survey --></help>
+        <label><!-- Pre-Survey Instructions --></label>
+        <name>Pre_Survey_Instructions__c</name>
+    </fields>
+    <fields>
+        <help><!-- Result of pre-survey --></help>
+        <label><!-- Survey Result --></label>
+        <name>Pre_Survey_Result__c</name>
+        <picklistValues>
+            <masterLabel>Feasible</masterLabel>
+            <translation><!-- Feasible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Feasible</masterLabel>
+            <translation><!-- Not Feasible --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Province --></label>
+        <name>Province__c</name>
+    </fields>
+    <fields>
+        <help><!-- Need to secure Right of Way for SE Pole --></help>
+        <label><!-- Need to secure Right of Way for SE Pole --></label>
+        <name>ROW_Grant_for_SE_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Re-Inspection Result --></label>
+        <name>Re_Inspection_Result__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disapproved</masterLabel>
+            <translation><!-- Disapproved --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Instruction for re-inspection --></help>
+        <label><!-- Re-inspection Instructions --></label>
+        <name>Re_inspection_Instructions__c</name>
+    </fields>
+    <fields>
+        <help><!-- Ready for connection --></help>
+        <label><!-- Ready for Connection --></label>
+        <name>Ready_for_Connection__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type --></label>
+        <name>Record_Type__c</name>
+    </fields>
+    <fields>
+        <help><!-- Date when pre-survey is resolved --></help>
+        <label><!-- Resolution Date --></label>
+        <name>Resolution_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Resolution remark --></help>
+        <label><!-- Resolution Remarks --></label>
+        <name>Resolution_Remarks__c</name>
+    </fields>
+    <fields>
+        <label><!-- Responsible Office --></label>
+        <name>Resp_Office__c</name>
+    </fields>
+    <fields>
+        <label><!-- Responsible Office --></label>
+        <name>Responsible_Office__c</name>
+    </fields>
+    <fields>
+        <help><!-- SE Completion target negotiated --></help>
+        <label><!-- SE Completion Target Negotiated --></label>
+        <name>SE_Completion_Target_Negotiated__c</name>
+    </fields>
+    <fields>
+        <help><!-- Service entrance needs correction --></help>
+        <label><!-- Service entrance needs correction --></label>
+        <name>SE_Not_Compliant__c</name>
+    </fields>
+    <fields>
+        <help><!-- Found no service entrance on site --></help>
+        <label><!-- Found no service entrance on site --></label>
+        <name>SE_Not_Installed_Yet__c</name>
+    </fields>
+    <fields>
+        <label><!-- Schedule Date --></label>
+        <name>Schedule_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Length --></label>
+        <name>Service_Wire_Length__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Size --></label>
+        <name>Service_Wire_Size__c</name>
+        <picklistValues>
+            <masterLabel>#1/0</masterLabel>
+            <translation><!-- #1/0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#2</masterLabel>
+            <translation><!-- #2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#3/0</masterLabel>
+            <translation><!-- #3/0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#4</masterLabel>
+            <translation><!-- #4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#4/0</masterLabel>
+            <translation><!-- #4/0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#6</masterLabel>
+            <translation><!-- #6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#8</masterLabel>
+            <translation><!-- #8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1000 MCM</masterLabel>
+            <translation><!-- 1000 MCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>500 MCM</masterLabel>
+            <translation><!-- 500 MCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>500 MCM &amp; #4/0</masterLabel>
+            <translation><!-- 500 MCM &amp; #4/0 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Type --></label>
+        <name>Service_Wire_Type__c</name>
+        <picklistValues>
+            <masterLabel>Aerial Alum.,Bundled</masterLabel>
+            <translation><!-- Aerial Alum.,Bundled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerial Alum.,Open</masterLabel>
+            <translation><!-- Aerial Alum.,Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerial CU.,Bundled</masterLabel>
+            <translation><!-- Aerial CU.,Bundled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerial Coppen,Open</masterLabel>
+            <translation><!-- Aerial Coppen,Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Alum.,Lateral</masterLabel>
+            <translation><!-- Under Alum.,Lateral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Copper,Lateral</masterLabel>
+            <translation><!-- Under Copper,Lateral --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Executed</masterLabel>
+            <translation><!-- Executed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Generated</masterLabel>
+            <translation><!-- Generated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Execution</masterLabel>
+            <translation><!-- In Execution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Required</masterLabel>
+            <translation><!-- Not Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Street Name --></label>
+        <name>Street_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street No --></label>
+        <name>Street_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subdivision --></label>
+        <name>Subdivision__c</name>
+    </fields>
+    <fields>
+        <help><!-- Instructions for survey FO --></help>
+        <label><!-- Survey Instructions --></label>
+        <name>Survey_Instructions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire TLN --></label>
+        <name>TLN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Telephone --></label>
+        <name>Telephone_No__c</name>
+    </fields>
+    <fields>
+        <help><!-- Cannot locate address during inspection --></help>
+        <label><!-- Cannot locate address during inspection --></label>
+        <name>Unable_to_Locate_Given_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unit No --></label>
+        <name>Unit_No__c</name>
+    </fields>
+    <fields>
+        <help><!-- Service entrance not in agreed location --></help>
+        <label><!-- Service entrance not in agreed location --></label>
+        <name>Wrong_SE_Location__c</name>
+    </fields>
+    <layouts>
+        <layout>CXE Inspection FO Page Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Inspection --></label>
+            <section>Inspection</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CXE Inspection FO Page Layout (Sys Ad)</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Inspection --></label>
+            <section>Inspection</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CXE Meter Socket Delivery FO Page Layout</layout>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Meter Socket Delivery --></label>
+            <section>Meter Socket Delivery</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CXE Meter Socket Delivery FO Page Layout (Sys Ad)</layout>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Meter Socket Delivery --></label>
+            <section>Meter Socket Delivery</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CXE Re-inspection FO Page Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Re-inspection --></label>
+            <section>Re-inspection</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CXE Re-inspection FO Page Layout (Sys Ad)</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Re-inspection --></label>
+            <section>Re-inspection</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CXE Survey FO Layout</layout>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Pre-Survey --></label>
+            <section>Pre-Survey</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CXE Survey FO Layout (Sys Ad)</layout>
+        <sections>
+            <label><!-- Authorized Representative Information --></label>
+            <section>Authorized Representative Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Pre-Survey --></label>
+            <section>Pre-Survey</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Energisation FO Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Energization --></label>
+            <section>Energization</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Field Order Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Inspection FO Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Inspection --></label>
+            <section>Inspection</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Meter Socket Delivery FO Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Meter Socket Delivery --></label>
+            <section>Meter Socket Delivery</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Pre-Survey FO Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Pre-Survey --></label>
+            <section>Pre-Survey</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Re-inspection FO Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Re-inspection --></label>
+            <section>Re-inspection</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Survey FO Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Instructions/Remarks --></label>
+            <section>Instructions/Remarks</section>
+        </sections>
+        <sections>
+            <label><!-- Pre-Survey --></label>
+            <section>Pre-Survey</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Details --></label>
+            <section>Resolution Details</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Inspection FO --></label>
+        <name>CXE_Inspection_FO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Meter Socket Delivery --></label>
+        <name>CXE_Meter_Socket_Delivery</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Re-Inspection FO --></label>
+        <name>CXE_Re_Inspection_FO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Survey FO --></label>
+        <name>CXE_Survey_FO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Energization FO --></label>
+        <name>Energization_FO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Inspection FO (Click) --></label>
+        <name>Inspection_FO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Meter Socket Delivery FO (Click) --></label>
+        <name>Meter_Socket_Delivery_FO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Re-Inspection FO (Click) --></label>
+        <name>Re_Inspection_FO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Survey FO (Click) --></label>
+        <name>Survey_FO</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cannot create &quot;Inspection FO&quot; with this &quot;Case Status&quot; and &quot;AMC Service Package&quot;. --></errorMessage>
+        <name>Allow_generation_of_Inspection_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot create &quot;Inspection FO&quot; with this &quot;Case Status&quot; and &quot;AMC Service Package&quot;. --></errorMessage>
+        <name>Allow_generation_of_RE_Inspection_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure that there is an associated Account on the Case. --></errorMessage>
+        <name>CXE_Account_Required_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure that there is an associated Account on the Case. --></errorMessage>
+        <name>CXE_Account_Required_Survey_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Meter Socket Delivery cannot be created because it is not tagged, &amp; status should be &quot;Application Evaluated&quot; , or &quot;Meter Socket Not Delivered&quot; --></errorMessage>
+        <name>CXE_Check_Application_Tagged_for_MSD</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- There is another FO pending. Cannot create another FO. --></errorMessage>
+        <name>CXE_Check_Pending_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to create Re-Inspection FO due to SA status. --></errorMessage>
+        <name>CXE_Check_Re_Inspection_condition</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Executing Personnel is required when FO is being executed. --></errorMessage>
+        <name>CXE_ExecPersonnel_reqd_when_FO_is_exec</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please make sure that FO Resolution Date, FO Resolution Remarks, and FO Result are all populated. --></errorMessage>
+        <name>CXE_FO_Resolution_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Resolution Date &amp; Remarks are required once FO  is resolved. --></errorMessage>
+        <name>CXE_Fill_Resolution_fields_once_resolved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please check at least one finding. --></errorMessage>
+        <name>CXE_Inspection_Disapproved_Issues</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please make sure that you have filled up the TLN, Pole Code, Service Wire Type, Service Wire Length, Service Wire Size, Material, Metering Scheme, and Mode of Retrieval. --></errorMessage>
+        <name>CXE_Inspection_FO_Approved_Req_Fields</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Request Type should either be Relocation or Remodel --></errorMessage>
+        <name>CXE_Inspection_Generated_Service_Request</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Inspection FO Scheduled&quot; --></errorMessage>
+        <name>CXE_Inspection_Resolved_Only_If_Schedule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- AMC Service Package should be None, &apos;Documentary Bundle&apos; or &apos;Processing Bundle&apos;. --></errorMessage>
+        <name>CXE_Inspection_ServicePackage</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Case status should either be &apos;Meter Socket Issued&apos;, &apos;Meter Socket Delivered&apos;, &apos;Meter Socket Still Installed Onsite&apos; or &apos;Inspection FO Resolved - Disapproved&apos; --></errorMessage>
+        <name>CXE_Inspection_generation_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Meter Socket Delivery FO Scheduled&quot; --></errorMessage>
+        <name>CXE_Meter_Del_Only_If_Scheduled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot;Meter Socket Delivery?&quot; tag should be ticked. --></errorMessage>
+        <name>CXE_Meter_Socket_Delivery_Tag_R2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please check at least one finding. --></errorMessage>
+        <name>CXE_Meter_Socket_Not_Delivered_Issues</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Meter Socket Delivery FO generation is only allowed if service application status is either &quot;Application Evaluated&quot; Or &quot;Meter Socket Not Delivered&quot;. --></errorMessage>
+        <name>CXE_Meter_Socket_generation_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot assign a Field Order to a personnel upon creation. --></errorMessage>
+        <name>CXE_New_FO_Executing_Personnel</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pre-survey FO Not Required is only allowed if service application status is Pre-Survey FO Generated. --></errorMessage>
+        <name>CXE_Pre_Survey_Not_Required_R2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Pre-Survey FO Scheduled&quot; --></errorMessage>
+        <name>CXE_Pre_Survey_Resolved_Only_If_Schedule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pre-survey FO generation is only allowed if service application status is either &quot;Application Validated&quot; Or &quot;Pre-survey FO Resolved - Not Feasible&quot;. --></errorMessage>
+        <name>CXE_Pre_Survey_generation_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Re-inspection FO Scheduled&quot; --></errorMessage>
+        <name>CXE_RE_Inspection_Resolved_Only_If_Sched</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Re-inspection is the only FO allowed if status is &quot;Awaiting Customer Compliance&quot; or &quot;Re-inspection FO Resolved - Disapproved&quot; --></errorMessage>
+        <name>CXE_Reinsp_FO_required_if_Awaiting_CC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please check at least one finding. --></errorMessage>
+        <name>CXE_Reinspection_Disapproved_Issues</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please click Retrieve Outstanding Amount button on case. --></errorMessage>
+        <name>CXE_RequiretoClickRetrieveArrears_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please click Update Bill Deposit Button first on case before resolving this FO. --></errorMessage>
+        <name>CXE_RequiretoClickUpdateBillDeposit_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Resolution Date should not be earlier than Scheduled Date. --></errorMessage>
+        <name>CXE_Resolution_Date_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Resolution Date should either be current or previous date --></errorMessage>
+        <name>CXE_Resolution_Date_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Schedule date cannot be earlier than Creation Date, or earlier than today for new FO. --></errorMessage>
+        <name>CXE_Schedule_Date_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Pre-survey FO generation. --></errorMessage>
+        <name>CXE_Schedule_data_Empty_on_creation1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Meter Socket Delivery FO generation. --></errorMessage>
+        <name>CXE_Schedule_data_Empty_on_creation2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Inspection FO generation. --></errorMessage>
+        <name>CXE_Schedule_data_Empty_on_creation3</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Re-Inspection FO generation. --></errorMessage>
+        <name>CXE_Schedule_data_Empty_on_creation4</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Wire Length should not be null or zero. --></errorMessage>
+        <name>CXE_ServiceWireNOTzero</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please check at least one finding. --></errorMessage>
+        <name>CXE_Survey_Not_Feasible_Issues</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- TLN only accepts numeric values. --></errorMessage>
+        <name>CXE_TLN</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t update FO Record once its resolved --></errorMessage>
+        <name>CXE_can_updated_lock_FO_record</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Meter Socket Delivery cannot be created because it is not tagged, &amp; status should be &quot;Application Evaluated&quot; , or &quot;Meter Socket Not Delivered&quot; --></errorMessage>
+        <name>Check_Application_Tagged_for_Meter_Socke</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- There is another FO pending. Cannot create another FO. --></errorMessage>
+        <name>Check_Pending_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Not allowed to create Re-Inspection FO due to SA status. --></errorMessage>
+        <name>Check_Re_Inspection_condition</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Inspection FO generation is only allowed if Pre-survey with feasible result is already completed, Status is  &quot;Meter Socket Issued&quot;, &quot;Meter Socket Delivered&quot;, OR &quot;Inspection FO Resolved - Disapproved&quot;, And AMC Tag is not checked. --></errorMessage>
+        <name>Check_inspection_FO</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Resolution Date &amp; Remarks can not be empty once FO  is resolved. --></errorMessage>
+        <name>Fill_Resolution_fields_once_resolved</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Resolution Date &amp; Remarks are required once FO  is resolved. --></errorMessage>
+        <name>Fill_Resolution_fields_once_resolved_CXE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Inspection FO Scheduled&quot; --></errorMessage>
+        <name>Inspection_Resolved_Only_If_Scheduled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Meter Socket Delivery FO Scheduled&quot; --></errorMessage>
+        <name>MEter_Del_Only_If_Scheduled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Pre-Survey FO Scheduled&quot; --></errorMessage>
+        <name>Pre_Survey_Resolved_Only_If_Scheduled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Pre-survey FO generation is only allowed if service application status status is either &quot;Application Validated&quot; Or &quot;Pre-survey FO Resolved - Not Feasible&quot;. --></errorMessage>
+        <name>Pre_Survey_generation_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t resolve FO unless current SA status is &quot;Re-inspection FO Scheduled&quot; --></errorMessage>
+        <name>RE_Inspection_Resolved_Only_If_Scheduled</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Re-inspection is the only FO allowed if status is &quot;Awaiting Customer Compliance&quot; or &quot;Re-inspection FO Resolved - Disapproved&quot; --></errorMessage>
+        <name>Reinspection_FO_required_if_Awaiting_CC</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Resolution Date should not be earlier than Scheduled Date. --></errorMessage>
+        <name>Resolution_Date_Rule_CXE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Schedule date cannot be earlier than Creation Date, or earlier than today for new FO. --></errorMessage>
+        <name>Schedule_Date_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Pre-survey FO generation. --></errorMessage>
+        <name>Schedule_data_shld_Be_Empty_on_creation1</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Meter Socket Delivery FO generation. --></errorMessage>
+        <name>Schedule_data_shld_Be_Empty_on_creation2</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Inspection FO generation. --></errorMessage>
+        <name>Schedule_data_shld_Be_Empty_on_creation3</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scheduling/Resolution details must be empty during Re-Inspection FO generation. --></errorMessage>
+        <name>Schedule_data_shld_Be_Empty_on_creation4</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can&apos;t update FO Record once its resolved --></errorMessage>
+        <name>can_updated_lock_FO_record</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Printable_View --></label>
+        <name>Printable_View</name>
+    </webLinks>
+</CustomObjectTranslation>

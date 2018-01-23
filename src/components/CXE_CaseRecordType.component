@@ -1,0 +1,9 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+    <!-- PARAMETERS -->
+    <apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/>
+    <apex:variable var="c" value="{!case}" />
+    <apex:variable var="newService" value="newService" rendered="{!c.RecordType.DeveloperName == 'New_Service_Application'}"> new electric service</apex:variable>
+    <apex:variable var="modify" value="modify" rendered="{!c.RecordType.DeveloperName == 'CXE_Modification_of_Electric_Service'}"> modification of service</apex:variable>
+    <apex:variable var="recontract" value="recontract" rendered="{!c.RecordType.DeveloperName == 'CXE_Recontract_of_Electric_Service'}"> reactivation of service</apex:variable>
+    <!--apex:variable var="terminate" value="terminate" rendered="{!c.RecordType.DeveloperName == 'CXE_Termination_of_Electric_Service'}"> </apex:variable-->
+</apex:component>

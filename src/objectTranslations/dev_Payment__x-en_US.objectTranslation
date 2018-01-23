@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Payment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Payments</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contract --></label>
+        <name>account_number__c</name>
+        <relationshipLabel><!-- Payments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Payment Status --></label>
+        <name>collection_status__c</name>
+        <relationshipLabel><!-- Payments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- document_id --></label>
+        <name>document_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Name --></label>
+        <name>id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Amount (PHP) --></label>
+        <name>paid_amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Date --></label>
+        <name>payment_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Mode --></label>
+        <name>payment_mode__c</name>
+        <relationshipLabel><!-- Payments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Payment Office --></label>
+        <name>payment_office__c</name>
+        <relationshipLabel><!-- Payments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Payment Source --></label>
+        <name>payment_source__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Posting Date --></label>
+        <name>posting_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Reference # --></label>
+        <name>ref_number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for APA Failed Transaction --></label>
+        <name>return_checkreason__c</name>
+    </fields>
+    <fields>
+        <label><!-- reversal_date --></label>
+        <name>reversal_date__c</name>
+    </fields>
+    <layouts>
+        <layout>dev$Payment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

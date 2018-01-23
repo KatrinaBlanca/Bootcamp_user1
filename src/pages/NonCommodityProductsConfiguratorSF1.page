@@ -1,0 +1,166 @@
+<apex:page controller="NonCommProductsConfiguratorController" tabStyle="Opportunity" id="bundlepage" >
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link rel="stylesheet" type="text/css" href="https://meralco--devcxe.cs6.my.salesforce.com/resource/LighteningStyleSheet/assets/styles/salesforce-lightning-design-system-ltng.css" />
+    <!-- Unfortunately dynamic tab styles is not possible. Uing Opportunity as default. -->
+
+   <!-- 
+    <apex:sectionHeader title="{!title}" subtitle="{!subtitle}"/>-->
+
+    <apex:form >
+    <style>
+    .cs{ border-bottom: 1px solid #e5c130;
+       border-top :2px solid #e5c130;
+    }
+    .vertical_line{height:10px; width:1px;background:#FF0000;}
+    span.tab{
+    padding: 0 380px; /* Or desired space*/
+}
+    </style><br/>
+ <div class="slds">
+    <apex:pageMessages />
+    
+   <!-- <div class="slds-media">    
+      <div class="slds-media__figure">
+        <span class="slds-avatar slds-avatar--small">
+          <span class="slds-icon__container slds-icon-standard-opportunity">
+            <svg aria-hidden="true" class="slds-icon">
+              <use xlink:href="{!URLFOR($Resource.LighteningStyleSheet,'assets/icons/standard-sprite/svg/symbols.svg#opportunity')}"></use>        
+            </svg>
+          </span>
+        </span>
+      </div>
+      <div class="slds-media__body">
+        <p class="slds-text-heading--label">{!title}</p>
+        </div>
+      
+    </div>
+     <div class="slds-card">    
+    <p class="cs"><span></span></p> -->
+   <!-- <apex:pageBlock rendered="{!selectMaster}"> -->
+    <!-- <table  class="table" cellspacing="20" width="100%" >
+            <table class="table" cellspacing="20" width="100%" >
+            <apex:outputPanel rendered="{!selectMaster}">
+            <h3 class="slds-section-title section-group--is-open">
+                Select the Master Products<br/>  
+            </h3>
+            
+
+            <apex:dataTable value="{!noncommasprds}" var="mprod" styleClass="slds-table slds-table--bordered">
+            <apex:column >
+                    <apex:inputCheckbox value="{!mprod.mchecked }"/>   
+                </apex:column>       
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:outputField value="{!mprod.mProduct.Name}"/>
+                </apex:column>    
+                <apex:column >
+                    <apex:facet name="header">Product Image</apex:facet>
+                    <apex:outputField value="{!mprod.mProduct.Type_Icon__c}"/>
+                </apex:column>  
+                <apex:column >
+                    <apex:facet name="header">Product Type</apex:facet>
+                    <apex:outputField value="{!mprod.mProduct.Product_Type__c }"/>
+                </apex:column>       
+              </apex:dataTable> <br/>
+              <span class="tab">
+                 
+                <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true" styleclass="slds-button slds-button--neutral"/>
+                <apex:commandButton value="Select" action="{!mSelect}" styleclass="slds-button slds-button--brand"/>   
+               </span> 
+        
+                </apex:outputPanel> -->
+<!--    </table>
+    </div> -->
+ <!--   </apex:pageBlock> -->
+  <!--  <apex:pageBlock rendered="{!selectChild}">-->
+     <!-- <apex:outputPanel rendered="{!selectChild}">    -->
+         <!--    <table  class="table" cellspacing="20" width="100%" > --><!-- <br/> -->
+            <!-- <h3 class="slds-section-title section-group--is-open">
+                Select Non-commodity Products<br/>  
+             --><!-- </h3> -->
+          <!--  <table class="table" cellspacing="20" width="100%" > -->
+
+            <!-- <apex:dataTable value="{!nonCommodityProducts}" var="prod" styleClass="slds-table slds-table--bordered">
+                <apex:column >
+                    <apex:inputCheckbox value="{!prod.checked }"/>                  
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:outputField value="{!prod.product.Name}"/>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Master Product Name</apex:facet>
+                    <apex:outputField value="{!prod.product.Master_Product__c}"/>
+                </apex:column>     
+                <apex:column >
+                    <apex:facet name="header">Image</apex:facet>
+                    <apex:outputField value="{!prod.product.Product_Image__c}"/>
+                </apex:column>            
+                <apex:column >
+                    <apex:facet name="header">Contract Duration</apex:facet>
+                    <apex:outputField value="{!prod.product.Contract_Duration_Years__c}"/>
+                </apex:column> --> <!--
+                <apex:column >
+                    <apex:facet name="header">Fee Type</apex:facet>
+                    <apex:outputField value="{!prod.product.Fee_Type__c}"/>
+                </apex:column> 
+                <apex:column >
+                    <apex:facet name="header">Start Date</apex:facet>
+                    <apex:outputField value="{!prod.product.Start_Date__c}"/>
+                </apex:column>  
+                <apex:column >
+                    <apex:facet name="header">End Date</apex:facet>
+                    <apex:outputField value="{!prod.product.End_Date__c}"/>
+                </apex:column>    -->                
+            <!-- </apex:dataTable>
+            <apex:commandButton value="Select" action="{!addnoncomprod}" styleclass="slds-button slds-button--brand"/>
+
+        <br/>
+            <apex:repeat value="{!ncp}" var="noncomprd" id="Noncomfieldsrep">
+            <br/> 
+           <p><span></span></p><p class="cs"><span></span></p>
+            <br/>
+                        
+                <h3 class="slds-section-title section-group--is-open">
+                     {!noncomprd.name}
+                </h3>
+                 <div class="slds-grid slds-grid--align-spread">
+                     <div class="slds-col--padded">
+                     
+                     
+                    <font color="red"> Quantity </font>
+                      </div>  
+
+
+                             <apex:inputfield value="{!productToOliMap[noncomprd].quantity}" rendered="{!if((oppmode),true,false)}" />
+                             <apex:inputfield value="{!productToqliMap[noncomprd].quantity}" rendered="{!if((quomode),true,false)}" /><br/>
+                             
+            
+                     
+                     <div >    -->                        
+                       <!--  <apex:pageBlock > -->
+                             <!-- <c:CommercialProductOverview prodId="{!noncomprd.id}" /> -->
+                      <!--   </apex:pageBlock> --> 
+                         
+                     <!-- </div> 
+                 </div>
+            </apex:repeat>  
+            <br/>     
+            
+            <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true" styleclass="slds-button slds-button--neutral"/>
+            
+            <apex:commandButton value="Save & Discounts" action="{!saveanddiscount}" styleclass="slds-button slds-button--neutral"/>
+            <apex:commandButton value="Save" action="{!save}" styleclass="slds-button slds-button--brand"/><br/><br/><br/> -->
+
+        <!-- </table>
+         </table> -->
+         <!-- </apex:outputPanel> </table> -->
+<!--</apex:pageBlock> -->
+<!-- </table>
+    </div> -->
+   </div>       
+   
+    </apex:form>  
+  
+</html>
+</apex:page>

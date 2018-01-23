@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="param1" type="Integer"/>
+</aura:event>

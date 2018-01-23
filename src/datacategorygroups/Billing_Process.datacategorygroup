@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCategoryGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <dataCategory>
+        <dataCategory>
+            <label>Meter Reading</label>
+            <name>Meter_Reading</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Billing</label>
+            <name>Billing</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Customer Assistance</label>
+            <name>Customer_Assistance</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Service Irregularity</label>
+            <name>Service_Irregularity</name>
+        </dataCategory>
+        <dataCategory>
+            <label>Billing Adjustment</label>
+            <name>Billing_Adjustment</name>
+        </dataCategory>
+        <label>All</label>
+        <name>All</name>
+    </dataCategory>
+    <label>Billing Process</label>
+    <objectUsage>
+        <object>KnowledgeArticleVersion</object>
+    </objectUsage>
+</DataCategoryGroup>

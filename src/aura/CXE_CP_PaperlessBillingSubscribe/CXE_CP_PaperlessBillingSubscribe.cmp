@@ -1,0 +1,159 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_PaperlessBillingSubscribe">
+    <aura:attribute name="isOpen" type="boolean" default="false" />
+    <aura:attribute name="accountPass" type="String" />
+    <aura:handler name="change" value="{!v.accountPass}" action="{!c.accountChange}"/>
+    
+    <aura:attribute name="changeBox" type="boolean"/>
+    <aura:attribute name="IdPass" type="String" />
+    <aura:attribute name="firstEmail" type="String" />
+    <aura:attribute name="secondEmail" type="String" default="" />
+    <aura:attribute name="reference" type="String" />
+    <aura:handler name="setAttribute" event="c:CXE_CP_PaperlessBillingSubscribe_event" action="{!c.EventFire}"/> 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <c:CXE_CP_Header />
+    
+    <!-- MAIN CONTENT -->
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                            <a href="javascript:void(0);">Account</a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a href="javascript:void(0);">Subscribe to Paperless Billing</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        
+        <div aura:id="MainForm" class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                    <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Paperless Billing</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                        <div class="slds-box mov-box mov-box_margin-bottom_850 mov-element-box-shadow mov-background-color_ffffff">
+                            <p class="mov-text_size-18 mov-text_color-323232 slds-p-top_small mov-text_weight-semi-bold">Subscribe to Paperless Billing.</p>
+                            <div class="mov-form slds-p-bottom_large">
+                                <div class="slds-form slds-form_stacked">
+                                    <div class="slds-form-element slds-m-top_medium">
+                                        <label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-6a6a6a" for="guest-last-name">Select Account Number</label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-select_container mov-select_container mov-select_container-left-align mov-element_max-width-345">
+                                                <ui:inputSelect change="{!c.checkboxChange}" aura:id="myAccountData" class="slds-select inline mov-input">
+                                                </ui:inputSelect>
+                                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- <div class="slds-form-element slds-p-top_large">
+                      <button class="slds-button mov-button-transparent mov-element_max-width-170 mov-button-trackmyapp">SUBMIT</button>
+                  </div> -->
+                                </div>
+                            </div>
+                            <div class="mov-warning-group slds-m-top_large">
+                                <p class="mov-text_size-14 mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i>Note: You must be the Account Holder to subscribe to Paperless Billing. For further assistance, please call us at our 24/7 hotline at 16211 or business hotline at 16210.</p>
+                                
+                            </div>
+                            
+                            <div class="mov-image_box slds-m-top_medium slds-m-bottom_medium">
+                                <img class="img-responsive" src="{! $Resource.CXE_CP_Assets + '/images/image-box-bg.jpg' }"/>
+                                <h3 class="mov-text_weight-semi-bold mov-image_box-text">Lorem ipsum<br/> dolor sit amet</h3>
+                            </div>
+                            
+                            <div class="slds-m-top_medium">
+                                <div class="checkbox cbox-orange cbox-terms">
+                                    <label class="checkbox-container">
+                                        <ui:inputCheckbox value="{!v.changeBox}" aura:id="termCheckMain" change="{!c.changeboxChange}"/>&nbsp;&nbsp;  I have had read and agree to the  <a onclick="{! c.showTerms }" href="javascript:void(0);" class="text-orange" id="modal-toggle">Terms &amp; Conditions</a> and <a  target="_blank" class="text-orange" href="http://www.meralco.com.ph/privacy-policy"> Privacy Policy</a>
+                                        <div class="checkbox-custom"></div>
+                                    </label>
+                                    <ui:button aura:id="proceedButton" press="{! c.showConfirmReadTerms }" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold pull-right" >Proceed</ui:button>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 slds-p-horizontal_x-small">
+                        <div class="mov-dashboard_misc-list">
+                            <c:CXE_CP_WidgetPaperlessTnC />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div aura:id="PaperlessBillingSubscribe" class="slds-hide">
+            <c:CXE_CP_PaperlessBillingSubscribeEmail acctId="{!v.IdPass}" firstEmail="{!v.firstEmail}" secondEmail="{!v.secondEmail}"/>
+        </div>
+         <div aura:id="PaperlessBillingSuccess" class="slds-hide">
+             <c:CXE_CP_PaperlessBillingSubscribeConfirmation reference="{!v.reference}" />
+        </div>
+        <!-- <div class="slds-col">
+            <div class="mov-dashboard-footnotes mov-background-color_ffffff slds-text-align_center">
+                <div class="mov-text-group">
+                    <h3 class="mov-text_size-30 mov-text_weight-semi-bold">Thank you for staying connected</h3>
+                    <h4 class="slds-m-top_medium slds-text-heading_small mov-text_color-a5a5a5">Get the latest news and service advisories from Meralco.</h4>
+                </div>
+                <ul class="slds-list_horizontal mov-dashboard-footnotes_social">
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-youtube-play"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+        
+    </div>
+    <!-- end MAIN CONTENT -->
+    
+    <aura:if isTrue="{!v.isOpen}">
+        <!-- START - CSM-13028 @JRances Update Modal to Use
+        <c:CXE_CP_ModalTermsConditions checkboxChecker="{!v.changeBox}"/>
+		-->
+        <c:CXE_CP_ModalTermsConditionsPaperless checkboxChecker="{!v.changeBox}"/>
+    </aura:if>
+    
+    <!-- PROCEED MODAL -->
+    <div class="mov-modal mov-modal_proceed mov-modal_width-730" id="mov-proceed-modal">
+        <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" id="proceed-modal-background">
+            <div class="slds-modal__container">
+                
+                <div class="slds-modal__content slds-p-around_xx-large mov-background-color_ffffff" id="modal-content-id-1">
+                    <h2 class="text-center">Please read and agree to the Paperless Billing Terms &amp; Conditions
+                        </h2>
+                    <div class="mov-button-group slds-p-top_large text-center">
+                        <button  onclick="{!c.closeModalProceed}" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold" id="close-proceed-modal">PROCEED</button>      
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open mov-backdrop" id="proceed-modal-background"></div>
+    </div>
+    <!-- END PROCEED MODAL -->	
+    
+    <!-- @gibs: To be loaded when proceed button is clicked -->
+    
+    <!-- @gibs: To be loaded when user submitted form -->
+    <!--c:CXE_CP_PaperlessBillingSubscribeConfirmation /-->
+</aura:component>

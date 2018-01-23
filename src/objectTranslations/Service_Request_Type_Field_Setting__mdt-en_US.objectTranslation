@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Service Request Type Field Setting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Service Request Type Field Settings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Additional Load --></label>
+        <name>Additional_Load__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change in Name --></label>
+        <name>Change_in_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reduction in Load --></label>
+        <name>Reduction_in_Load__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relocation --></label>
+        <name>Relocation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Remodel --></label>
+        <name>Remodel__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

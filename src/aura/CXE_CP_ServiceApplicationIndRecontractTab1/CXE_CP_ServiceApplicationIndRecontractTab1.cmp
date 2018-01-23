@@ -1,0 +1,259 @@
+<aura:component >
+    
+    <aura:method name="validateTab1" action="{!c.validateTab1}" access="PUBLIC"/>
+    <aura:registerEvent name="callTabEvent" type="c:SetTabValueEvent"/> 
+  
+    <aura:attribute name="caseApplication" type="Case" default="{'sobjectType': 'Case'}"/>  
+    
+    <style>
+        .sinError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gFirstNameError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gLastNameError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gEmailError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gMobileError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gBirthdayError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gEmailFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gMobileFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gBirthdayFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .gLandlineFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .rFirstNameError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .rLastNameError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .rEmailError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .rMobileError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .rRelationshipError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .rEmailFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .rMobileFormatError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+    </style>
+    
+    <div class="tab-pane active slds" id="request_to_modify" role="tabpanel">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group slds-text-align_center">
+                <div class="mov-form-group slds-m-top_medium">
+                    <div class="mov-form">
+                        <div class="slds-form">
+                            <label class="slds-form-element__label slds-m-vertical_large mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Service Identification Number of the electric service you want to reactivate<span class="mov-text_color-ff5114">*</span></label>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <div class="slds-form-element__control mov-element-position-relative">
+                                        <ui:inputText aura:id="guest_Sin" class="slds-input mov-input"
+                                                      placeholder="" required="true" blur="{!c.onBlurSin}" value="{!v.caseApplication.CXE_Previous_SIN__c}"/>
+                                        <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="assets/images/tooltip.png" />
+                                            <span class="tooltiptext">Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text</span>
+                                        </div>
+                                        <p aura:id="sin-error" class="slds-hide">Please indicate your SIN.</p>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            
+                            <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_xx-large slds-p-top_medium">The electric service will be under:</h3>
+                            
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">First Name <span class="mov-text_color-ff5114">*</span></label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="guest_FirstName" class="slds-input mov-input" blur="{!c.onBlurFirstName}"
+                                                      placeholder="Juan" required="true" value="{!v.caseApplication.CXE_Web_First_Name__c}"/>
+                                    </div>
+                                    <p aura:id="gFirstName-error" class="slds-hide">Please indicate your First Name.</p>                                
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Middle Name</label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="guest_MiddleName" class="slds-input mov-input" 
+                                                      placeholder="Santos"  value="{!v.caseApplication.CXE_Web_Middle_Name__c}"/>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Last Name<span class="mov-text_color-ff5114">*</span></label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputText aura:id="guest_LastName" class="slds-input mov-input" blur="{!c.onBlurLastName}"
+                                                      placeholder="Dela Cruz" required="true" value="{!v.caseApplication.CXE_Web_Last_Name__c}"/>
+                                    </div>
+                                    <p aura:id="gLastName-error" class="slds-hide">Please indicate your Last Name.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Email Address<span class="mov-text_color-ff5114">*</span></label>
+                                    <div class="slds-form-element__control">
+                                       <ui:inputText aura:id="guest_Email" class="slds-input mov-input" blur="{!c.onBlurEmail}"
+                                                      placeholder="juan@sample.com" required="true" value="{!v.caseApplication.CXE_Web_Primary_Email__c}"/>
+                                    </div>
+                                    <p aura:id="gEmail-error" class="slds-hide">Please indicate your Email Address.</p>
+                                    <p aura:id="gEmailFormat-error" class="slds-hide">Email Address incorrect format!.</p>
+                                </div>
+                                
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Mobile Number<span class="mov-text_color-ff5114">*</span></label>
+                                    <div class="slds-form-element__control">
+                                      	<ui:inputText aura:id="guest_Mobile" class="slds-input mov-input" blur="{!c.onBlurMobile}"
+                                                      placeholder="+639268152000" required="true" value="{!v.caseApplication.CXE_Web_Primary_Mobile__c}"/>
+                                    </div>
+                                    <p aura:id="gMobile-error" class="slds-hide">Please indicate your Mobile Number.</p>
+                                    <p aura:id="gMobileFormat-error" class="slds-hide">Mobile Number incorrect format!.</p>
+                                </div>
+                                
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Landline</label>
+                                    <div class="slds-form-element__control">
+                                       <ui:inputText aura:id="guest_Landline" class="slds-input mov-input" blur="{!c.onBlurLandline}"
+                                                      placeholder="+632585000" required="true" value="{!v.caseApplication.CXE_Web_Primary_Phone__c}"/>
+                                    </div>
+									<p aura:id="gLandlineFormat-error" class="slds-hide">Landline incorrect format!.</p>     
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Birthday<span class="mov-text_color-ff5114">*</span></label>
+                                    <div class="slds-form-element__control">
+                                        <ui:inputDate aura:id="guest_Birthday" class="slds-input mov-input"
+                                                      displayDatePicker="true" required="true" value="{!v.caseApplication.CXE_Web_Date_of_Birth__c}"/>
+                                    </div>
+                                    <p aura:id="gBirthday-error" class="slds-hide">Please indicate your Birthday.</p>
+                                </div>	
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="mov-text-group slds-m-vertical_large slds-p-bottom_x-large">
+                                    <span class="mov-text_size-18 mov-text_weight-semi-bold mov-element-position-relative mov-element_display-inline-block_valign-center slds-m-right_large">
+                                        Will someone be applying on your behalf?
+                                    </span>
+                                    <div class="mov-radio-group mov-radio-group_inline">
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_large">
+                                            <input type="radio" id="yes_radio" value="option1" name="iCheck" onclick="{!c.radioClick}"/>
+                                            <span>Yes</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>	
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold">
+                                            <input type="radio" id="no_radio" value="option2" name="iCheck" onclick="{!c.radioClick}"/>
+                                            <span>No&nbsp;</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>	
+                                    </div>
+                                </div>
+                            </div>
+                            <div aura:id="relDiv" class="slds-hide">
+                            
+                                <div  aura:id="yes_someone_apply1" class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                    <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">First Name<span class="mov-text_color-ff5114">*</span></label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="related_FirstName" class="slds-input mov-input" blur="{!c.onBlurRelFirstName}"
+                                                          placeholder="Maria" required="true" />
+                                        </div>
+                                        <p aura:id="rFirstName-error" class="slds-hide">Please indicate your First Name.</p>
+                                    </div>
+                                    <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Middle Name</label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="related_MiddleName" class="slds-input mov-input"
+                                                          placeholder="Canyo" required="true" />
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Last Name<span class="mov-text_color-ff5114">*</span></label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="related_LastName" class="slds-input mov-input" blur="{!c.onBlurRelLastName}"
+                                                          placeholder="Santos" required="true" />
+                                        </div>
+                                        <p aura:id="rLastName-error" class="slds-hide">Please indicate your Last Name.</p>
+                                    </div>
+                                </div>
+                                
+                                <div aura:id="yes_someone_apply2" class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small">		
+                                    <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Email Address<span class="mov-text_color-ff5114">*</span></label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="related_Email" class="slds-input mov-input" blur="{!c.onBlurRelEmail}"
+                                                          placeholder="maria.c@coe.com" required="true" />
+                                        </div>
+                                        <p aura:id="rEmail-error" class="slds-hide">Please indicate your Email Address.</p>
+                                        <p aura:id="rEmailFormat-error" class="slds-hide">Email Address incorrect format!.</p>
+                                    </div>
+                                    <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Mobile Number<span class="mov-text_color-ff5114">*</span></label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="related_Mobile" class="slds-input mov-input" blur="{!c.onBlurRelMobile}"
+                                                          placeholder="+639267728300" required="true" />
+                                        </div>
+                                        <p aura:id="rMobile-error" class="slds-hide">Please indicate your Mobile Number.</p>
+                                        <p aura:id="rMobileFormat-error" class="slds-hide">Mobile Number incorrect format!.</p>
+                                    </div>
+                                    <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Relationship to Customer / Designation<span class="mov-text_color-ff5114">*</span></label>
+                                        <div class="slds-form-element__control">
+                                            <ui:inputText aura:id="related_Relationship" class="slds-input mov-input" blur="{!c.onBlurRelRelationship}"
+                                                          placeholder="Mother" required="true" />
+                                        </div>
+                                        <p aura:id="rRelationship-error" class="slds-hide">Please specify what is your relation to the account holder!.</p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row">
+                                <div class="slds-form-element slds-p-top_xx-large">
+                                    <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.submitContactInfo}">NEXT</ui:button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Included__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Included</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Mandatory__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product_Item__r.Mandatory__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Mandatory</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Percentage_Value_Override__c</fullName>
+        <externalId>false</externalId>
+        <label>Percentage Value Override</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Percentage_Value__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(Product_Item__r.Variable__c, Product_Item__r.Percentage_Value__c,Percentage_Value_Override__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Percentage Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Price_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>Price Group</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Item_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Mandatory__c = FALSE, &quot;(O/&quot;, &quot;(M/&quot;) + 
+IF( Included__c = FALSE, &quot;X) &quot;, &quot;I) &quot;) + 
+Product_Item__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Item Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Item__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Item</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Product_Item__c.Mandatory__c</field>
+                <operation>equals</operation>
+                <value>False</value>
+            </filterItems>
+            <isOptional>true</isOptional>
+        </lookupFilter>
+        <referenceTo>Product_Item__c</referenceTo>
+        <relationshipLabel>Commercial Product Values</relationshipLabel>
+        <relationshipName>Commercial_Product_Values</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Commercial Product Values</relationshipLabel>
+        <relationshipName>Commercial_Product_Values</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rate_Value_Override__c</fullName>
+        <externalId>false</externalId>
+        <label>Rate Value Override</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>8</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Rate_Value__c</fullName>
+        <externalId>false</externalId>
+        <formula>if( Product_Item__r.Variable__c , Product_Item__r.Rate_Value__c, Rate_Value_Override__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rate Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>8</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Value_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Product_Item__r.Value_Type__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Value Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Value__c</fullName>
+        <externalId>false</externalId>
+        <formula>if((Rate_Value__c+Percentage_Value__c)!=0, TEXT(Rate_Value__c)+TEXT( Percentage_Value__c ),&apos;0&apos;)</formula>
+        <label>Value</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Variable__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product_Item__r.Variable__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Variable</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Commercial Product Value</label>
+    <nameField>
+        <displayFormat>CPV-{0000000}</displayFormat>
+        <label>Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Commercial Product Values</pluralLabel>
+    <recordTypes>
+        <fullName>AdjustableMN</fullName>
+        <active>true</active>
+        <description>Adjustable and mandatory , and value type =none</description>
+        <label>AdjustableMN</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>AdjustableMP</fullName>
+        <active>true</active>
+        <description>Adjustable and mandatory , and value type =percentage</description>
+        <label>AdjustableMP</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>AdjustableMR</fullName>
+        <active>true</active>
+        <description>Adjustable and mandatory , and value type =rate value</description>
+        <label>AdjustableMR</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>AdjustableNMN</fullName>
+        <active>true</active>
+        <description>Adjustable and not mandatory , and value type =none</description>
+        <label>AdjustableNMN</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>AdjustableNMP</fullName>
+        <active>true</active>
+        <description>Adjustable and Not mandatory , and value type =percentage</description>
+        <label>AdjustableNMP</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>AdjustableNMR</fullName>
+        <active>true</active>
+        <description>Adjustable and Not mandatory , and value type =ratevalue</description>
+        <label>AdjustableNMR</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NAdjustableMN</fullName>
+        <active>true</active>
+        <description>Not Adjustable and mandatory , and value type =none</description>
+        <label>NAdjustableMN</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NAdjustableMP</fullName>
+        <active>true</active>
+        <description>Not Adjustable and mandatory , and value type =Percentage</description>
+        <label>NAdjustableMP</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NAdjustableMR</fullName>
+        <active>true</active>
+        <description>Not Adjustable and mandatory , and value type =Rate Value</description>
+        <label>NAdjustableMR</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NAdjustableNMN</fullName>
+        <active>true</active>
+        <description>Not Adjustable and not mandatory , and value type =none</description>
+        <label>NAdjustableNMN</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NAdjustableNMP</fullName>
+        <active>true</active>
+        <description>Not Adjustable and not mandatory , and value type =Percentage</description>
+        <label>NAdjustableNMP</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>NAdjustableNMR</fullName>
+        <active>true</active>
+        <description>Not Adjustable and not mandatory , and value type =RateValue</description>
+        <label>NAdjustableNMR</label>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Active_Product_Values_Cantbe_Changed</fullName>
+        <active>true</active>
+        <errorConditionFormula>Product__r.IsActive   = TRUE &amp;&amp; NOT(LastModifiedDate &lt;&gt; LastModifiedDate)</errorConditionFormula>
+        <errorMessage>Can&apos;t change values of a Active Product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Archived_Product_Values_Cantbe_Changed</fullName>
+        <active>true</active>
+        <errorConditionFormula>Product__r.Archived_Product__c   = TRUE &amp;&amp; NOT(LastModifiedDate &lt;&gt; LastModifiedDate)</errorConditionFormula>
+        <errorMessage>Can&apos;t change values of a Archived Product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cant_Add_New_Values_to_Active_Products</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() = TRUE  &amp;&amp;  Product__r.IsActive  = TRUE</errorConditionFormula>
+        <errorMessage>You cannot add new Commercial Product Value to an Active Product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cant_Add_New_Values_to_Archived_Products</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() = TRUE  &amp;&amp;   Product__r.Archived_Product__c   = TRUE</errorConditionFormula>
+        <errorMessage>You cannot add new Commercial Product Value to an Archived Product</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>RatePercentageValueOverridefieldsmustno</fullName>
+        <active>false</active>
+        <errorConditionFormula>Product_Item__r.Variable__c = True &amp;&amp;  (NOT(ISBLANK(Rate_Value_Override__c)) ||  NOT(ISBLANK(Percentage_Value_Override__c)))</errorConditionFormula>
+        <errorMessage>Rate &amp; Percentage Value Override fields must not be filled if related product item is variable</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>RatePercentage_Value_Override_fields</fullName>
+        <active>false</active>
+        <errorConditionFormula>Product_Item__r.Variable__c = false &amp;&amp;  ISBLANK(Rate_Value_Override__c) &amp;&amp;   ISBLANK(Percentage_Value_Override__c)</errorConditionFormula>
+        <errorMessage>Rate &amp; Percentage Value Override fields must be filled if related product item is not variable</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

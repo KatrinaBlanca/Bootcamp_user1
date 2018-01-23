@@ -1,0 +1,22 @@
+<aura:component >
+    <aura:attribute name="getValue" type="boolean"/>
+    <div class="mov-modal mov-modal_timeout mov-element_display-hidden" id="mov-modal_timeout">
+        <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                
+                <div class="slds-modal__content slds-p-around_large mov-background-color_ffffff" id="modal-content-id-1">
+                    <!--Start JAgapito Oct.9,2017 -->
+                    <!--<p class="mov-text_size-18 mov-text_color-323232 slds-m-top_medium">Your Meralco Online account has services that are subscribed to Paperless Billing. Please cancel your subscription before deactivating your portal account.</p><br></br>-->
+                    <!--<p class="mov-text_size-18 mov-text_color-323232 slds-m-top_medium">Your Meralco Online account has services that are subscribed to Paperless Billing. Please cancel your subscriptions before deactivating your account.</p><br></br>-->
+                    <!-- END JAgapito Oct.9,2017 -->
+                    <p class="mov-text_size-18 mov-text_color-323232 slds-m-top_medium">Your Meralco Online account has services that are subscribed to Paperless Billing. Please cancel your subscriptions before deactivating your account.</p><br></br> <!-- CSM-14674 Red 11-24-2017 -->
+                    <div class="slds-align_absolute-center">
+                        <a class="slds-button mov-button-default mov-element_max-width-170" onclick="{!c.OkCloseModal}">OK</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open mov-backdrop"></div>
+    </div>
+</aura:component>

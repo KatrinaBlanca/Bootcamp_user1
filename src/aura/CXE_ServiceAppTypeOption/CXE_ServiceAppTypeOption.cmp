@@ -1,0 +1,273 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_ServiceApplication">
+    <ltng:require styles="{!$Resource.CXE_SLDS + '/salesforce-lightning-design-system.min.css'}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="caseApplication" type="Case" default="{sobjectType: 'Case'}"/>
+    <aura:attribute name="notificationOptions" type="String[]" default="SMS,Email,Both"/>
+    <aura:attribute name="yesNoOptions" type="String[]" default="Yes,No"/>
+    <aura:attribute name="serviceModifications" type="String[]"/>
+    <aura:attribute name="contractModifications" type="String[]"/>
+    <aura:attribute name="requestType" type="String" default="Contractor"/>
+    <aura:attribute name="caseNumber" type="String"/>
+
+
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="slds">
+            <h2 class="slds-text-heading_medium slds-text-align_center">Modify Service</h2>
+            <div class="slds-tabs_scoped slds-m-top--large">
+                <ul class="slds-tabs_scoped__nav CXE_scopeTabLineHeight-fix" role="tablist">
+                    <li class="slds-tabs_scoped__item slds-is-active" title="Item One" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-scoped-1" id="tab-scoped-1__item">1<br />Modify Request</a>
+                    </li>
+                    <li class="slds-tabs_scoped__item" title="Item Two" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-2" id="tab-scoped-2__item">2<br />Contact Info</a>
+                    </li>
+                    <li class="slds-tabs_scoped__item" title="Item Three" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-3" id="tab-scoped-3__item">3<br />Value Added Services</a>
+                    </li>
+                    <li class="slds-tabs_scoped__item" title="Item Four" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-4" id="tab-scoped-4__item">4<br />Terms and Conditions</a>
+                    </li>
+                    <li class="slds-tabs_scoped__item" title="Item Five" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-scoped-5" id="tab-scoped-5__item">5<br />Confirmation</a>
+                    </li>
+                </ul>
+                <div id="tab-scoped-1" class="slds-tabs_scoped__content slds-show" role="tabpanel" aria-labelledby="tab-scoped-1__item">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-1">Please indicate the service number</label>
+
+                        <button aria-describedby="help" class="slds-button slds-button_icon CXE_ServiceAppSINHelpIcon">
+                            <i class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true" style="border-radius: 8px;
+                                                                                                                    padding: 3px;
+                                                                                                                    background-color: #FC7019;
+                                                                                                                    color: white;
+                                                                                                                    width: 16px;
+                                                                                                                    display: inline-block;">!</i>
+                            <span class="slds-assistive-text">Help</span>
+                        </button>
+                        <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" id="help" role="tooltip" style="position: absolute;
+                                                                                                                               top: -255px;
+                                                                                                                               left: 195px;
+                                                                                                                               margin-left: -1rem;">
+                            <div class="slds-popover__body slds-text-longform">
+                                <p>
+                                    <img src="{!$Resource.CXE_SATooltip}"/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__control">
+                            <force:inputField aura:id="SIN" class="dynamic" value="{!v.caseApplication.CXE_Service__c}"/>
+                        </div>
+                    </div>
+
+                    <fieldset class="slds-form-element slds-m-top--large">
+                        <legend class="slds-form-element__legend slds-form-element__label">Please select all modification requests that apply</legend>
+                        <input type="radio" id="radio-300" name="options" checked="" class="CXE_modificationChoice"/>
+                        <label class="slds-radio__label" for="radio-300">
+                          <span class="slds-radio_faux slds-p-left--small"></span>
+                          <span class="slds-form-element__label">Service Modification</span>
+                        </label>
+                        <div class="slds-form-element__control slds-m-left--medium slds-hide CXE_serviceModChoices">
+                            <aura:iteration items="{!v.serviceModifications}" var="serviceModification">
+                                <ui:inputRadio name="serviceOption" change="{!c.onServiceRadio}" />
+                                <label class="slds-p-left--small">{!serviceModification}</label> <br />
+                            </aura:iteration>
+                        </div>
+                        <br />
+                        <input type="radio" id="radio-301" name="options" checked=""  class="CXE_modificationChoice"/>
+                        <label class="slds-radio__label" for="radio-301">
+                          <span class="slds-radio_faux slds-p-left--small"></span>
+                          <span class="slds-form-element__label">Contract Modification</span>
+                        </label>
+                        <div class="slds-form-element__control slds-m-left--medium slds-hide CXE_contractModChoices">
+                          <aura:iteration items="{!v.contractModifications}" var="contractModification">
+                              <ui:inputRadio name="contractOption" change="{!c.onContractRadio}" />
+                              <label class="slds-p-left--small">{!contractModification}</label> <br />
+                          </aura:iteration>
+                        </div>
+                    </fieldset>
+
+                    <div class="slds-form-element slds-m-top--large slds-hide CXE_contractModAddChoice">
+                        <label class="slds-form-element__label" for="text-input-id-1">To new registered customer</label>
+                        <div class="slds-grid slds-wrap slds-grid_pull-padded-small">
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="firstname" placeholder="First name" class="slds-input" value="{!v.caseApplication.CXE_Web_First_Name__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="middlename" placeholder="Middle name" class="slds-input" value="{!v.caseApplication.CXE_Web_Middle_Name__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="lastname" placeholder="Last name" class="slds-input" value="{!v.caseApplication.CXE_Web_Last_Name__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="emailAddress" placeholder="Email Address" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Email__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="mobileNumber" placeholder="Mobile Number" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Mobile__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="landlineNumber" placeholder="Landline" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Phone__c}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slds-text-align--center slds-m-top--large">
+                        <button class="slds-button slds-button_brand CXE_button-toPage2">NEXT</button>
+                    </div>
+                </div>
+
+                <div id="tab-scoped-2" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-2__item">
+                    <div class="slds-form-element slds-m-top--large">
+                        <label class="slds-form-element__label" for="text-input-id-1">Please provide authorized representative information:</label>
+                        <div class="slds-grid slds-wrap slds-grid_pull-padded-small">
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repFirstname" placeholder="First name" class="slds-input" value="{!v.caseApplication.Authorized_Representative_First_Name__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repMiddlename" placeholder="Middle name" class="slds-input" value="{!v.caseApplication.Authorized_Representative_Middle_Name__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repLastname" placeholder="Last name" class="slds-input" value="{!v.caseApplication.Authorized_Representative_Last_Name__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repEmailAddress" placeholder="Email Address" class="slds-input" value="{!v.caseApplication.Authorized_Representative_Email__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repMobileNumber" placeholder="Mobile Number" class="slds-input" value="{!v.caseApplication.Authorized_Rep_Primary_Contact_Number__c}"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <aura:if isTrue="{!v.requestType == 'Individual'}" >
+                                    <force:inputField class="dynamic" aura:id="relationToCustomerIndividual" value="{!v.caseApplication.Relationship__c}"/>
+                                </aura:if>
+                                <aura:if isTrue="{!v.requestType == 'Business'}" >
+                                    <ui:inputText aura:id="designation" placeholder="Designation" class="slds-input" value="{!v.caseApplication.Designation__c}"/>
+                                </aura:if>
+                                <aura:if isTrue="{!v.requestType == 'Contractor'}" >
+                                    <force:inputField class="dynamic" aura:id="relationToCustomerContractor" value="{!v.caseApplication.Relationship__c}"/>
+                                </aura:if>
+                            </div>
+                        </div>
+
+                        <div class="slds-text-align--center">
+                            <!-- <button class="slds-button slds-button_brand CXE_button-toPage1">PREVIOUS</button> -->
+                            <button class="slds-button slds-button_brand CXE_button-toPage3">NEXT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-scoped-3" class="slds-tabs_scoped__content  slds-hide" role="tabpanel" aria-labelledby="tab-scoped-3__item">
+                    <p class="CXE_color--gray slds-m-top--xx-large slds-size--1-of-1">How would you like to be updated about the status of this application?</p>
+                    <aura:iteration items="{!v.notificationOptions}" var="notificationOption">
+                        <ui:inputRadio name="notifications" change="{!c.onNotificationRadio}" />
+                        <label class="slds-p-left--small">{!notificationOption}</label><br />
+                    </aura:iteration>
+
+                    <p class="CXE_color--gray slds-m-top--small slds-large-size--3-of-4 slds-medium-size--3-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1 CXE_text--size-14">Would you like our Accredited Meralco Contractors to process your electric service application?</p>
+                    <div class="slds-m-top--small slds-large-size--1-of-4 slds-medium-size--1-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                        <aura:iteration items="{!v.yesNoOptions}" var="yesNo">
+                            <ui:inputRadio name="yesNo" change="{!c.onYesNoRadio}" />
+                            <label class="slds-p-left--small">{!yesNo}</label> <br />
+                        </aura:iteration>
+                    </div>
+
+                    <div class="slds-text-align--center">
+                        <!-- <button class="slds-button slds-button_brand CXE_button-toPage2">PREVIOUS</button> -->
+                        <button class="slds-button slds-button_brand CXE_button-toPage4">NEXT</button>
+                    </div>
+                </div>
+
+                <div id="tab-scoped-4" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="tab-scoped-4__item">
+                    <div class="slds-p-around--small slds-scrollable--y" style="width: 80%; margin: 0 auto; border: 1px solid black; max-height: 300px;">
+
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra lacus elit, quis interdum ipsum feugiat vitae. Ut sed mi eu nibh hendrerit feugiat. Quisque at massa ipsum. Etiam aliquam sapien quis laoreet pharetra. Maecenas et varius dui. Etiam aliquet massa ut felis varius pretium. Pellentesque et aliquam sapien, eget tincidunt diam. Nunc eget rhoncus diam, ac viverra elit. Nam et erat felis. Sed et euismod odio. Nullam ut pulvinar leo. Nullam pretium est sit amet faucibus tincidunt. Donec in odio congue, cursus justo eu, vehicula nunc. Curabitur volutpat blandit orci, a pretium ipsum vestibulum in. Cras et ligula id diam tempus facilisis commodo sit amet metus. Pellentesque ipsum tellus, blandit vitae nisl a, egestas commodo lacus.
+<br /><br />
+Aenean tincidunt, metus eu accumsan mattis, ante lorem lobortis nisl, a porttitor urna magna non felis. Sed placerat ut arcu ac posuere. Nulla facilisis, enim nec porttitor aliquam, nibh lectus sagittis enim, lobortis tempor quam orci in enim. Donec tincidunt velit ac ante facilisis, non lacinia eros sodales. Ut auctor placerat augue non hendrerit. Quisque finibus quis augue viverra blandit. Duis consectetur massa augue, ac ullamcorper augue consequat hendrerit.
+<br /><br />
+Curabitur ullamcorper vehicula ex quis elementum. Vivamus interdum aliquam nibh eget lobortis. Cras nec quam eget lorem vulputate pulvinar at eu mi. Mauris sit amet ipsum aliquet, malesuada nulla vitae, ornare lacus. In hac habitasse platea dictumst. Integer efficitur ipsum at velit gravida, eu molestie est sollicitudin. Fusce tincidunt orci leo, vel porttitor nibh pharetra sit amet. Curabitur et lorem odio. Nullam magna massa, molestie non dui at, egestas maximus ex. Nullam tortor orci, molestie vitae sapien vel, dictum consectetur sem. Vivamus ipsum sapien, tincidunt at risus vel, elementum tincidunt nisi. Nullam nec urna quis mauris sollicitudin suscipit. Cras gravida aliquam felis ac mattis. Nullam cursus ut libero in vestibulum. Sed rhoncus pellentesque ligula non aliquet.
+                    </div>
+
+                    <div style="width: 80%; margin: 0 auto;">
+                      <span class="CXE_checkBox slds-checkbox">
+                          <input type="checkbox" name="options" id="CXE_serviceApplicationForm--TermsAndCondition" />
+                          <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--TermsAndCondition">
+                              <span class="slds-checkbox--faux"></span>
+                              <span class="slds-form-element__label CXE_color--gray">I Have read</span>
+                          </label>
+
+                      </span>
+                    </div>
+
+                    <div class="slds-text-align--center slds-hide CXE_trueBut">
+                        <ui:button class="CXE_button-submit slds-button_brand" press="{!c.onSubmitModification}" label="SUBMIT" />
+                    </div>
+
+                    <div class="slds-text-align--center CXE_falseBut">
+                        <ui:button class="CXE_button-submit slds-button_brand" press="{!c.onSubmitModification}" label="SUBMIT" disabled="true" />
+                    </div>
+                </div>
+
+                <div id="tab-scoped-5" class="slds-tabs_scoped__content  slds-hide" role="tabpanel" aria-labelledby="tab-scoped-5__item" onclick="return false;">
+                    <p>All done!  We’ve received your application for modification of service.  Your reference number is {!v.caseNumber}. <br />Within 3 working days, an AMC should be getting in touch with you about your application.  We will also be sending you updates via SMS and email.  If you need further help, just email us at ask@meralco.com.ph or call 16211.</p>
+                    <div class="slds-text-align--center">
+                        <button class="slds-button slds-button_brand">COMPLETE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .slds-button_brand {
+        background-color: #FC7019;
+        border-color: #FC7019;
+        }
+
+        .CXE_scopeTabLineHeight-fix .slds-tabs_scoped__link {
+        line-height: 1;
+        padding: 10px;
+        height: auto;
+        text-align: center;
+        }
+
+        .CXE_scopeTabLineHeight-fix li.slds-tabs_scoped__item {
+        width: calc((100% / 5) + 1px);
+        }
+
+        .CXE_scopeTabLineHeight-fix {
+        background-color: white;
+        }
+
+        .CXE_scopeTabLineHeight-fix .slds-is-active> a {
+        background-color: #FC7019;
+        color: white;
+        font-weight: bold;
+        }
+
+        .slds-popover_tooltip {
+        display: none;
+        }
+
+        .CXE_ServiceAppSINHelpIcon:hover + .slds-popover_tooltip {
+        display: block;
+        }
+    </style>
+
+    <c:CXE_TemporaryCSS />
+</aura:component>

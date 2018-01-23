@@ -1,0 +1,32 @@
+<apex:component access="global">
+  <table bgcolor="#E6E7E9" border="0" cellpadding="0" cellspacing="0" width="100%">
+ 
+            <tr>
+                <td style="padding: 0" width="70%"><font color="#3F3F3F" face="arial" size="2px">&nbsp;&nbsp;<br/>
+                <span style="font-size:10px;">&nbsp; &nbsp; &nbsp;Copyright &copy; 2017 Meralco | <a href="http://www.meralco.com.ph/contact/category/business-centers" style="text-decoration: none; color: #3F3F3F; font-size:10px"><u>Contact Us</u></a></span></font><br/>
+                &nbsp;
+                </td>
+                <td align="left" width="30%"><br/>
+                    <span style="background-color: rgb(230, 231, 233); font-size: 10px;"><font face="arial">Connect with us.</font></span><br style="background-color: rgb(230, 231, 233); "/>
+                    <a href="http://facebook.com/meralco" style="text-decoration: none; color: #3F3F3F; font-size:10px">
+                        <img data-assetid="20" height="25" src="http://image.S7.exacttarget.com/lib/fe9213727c62077f75/m/1/467d6fcc-69e6-4e80-94bb-a4d1a3aff158.png" style="height:25px;width:25;;padding-top: 5px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;background-color: rgb(230, 231, 233);" width="25;"/>
+                    </a>
+                    <span style="background-color: rgb(230, 231, 233);">&nbsp;</span>
+                    
+                    <a href="https://twitter.com/meralco" style="text-decoration: none; color: #3F3F3F; font-size:10px">
+                        <img data-assetid="20" height="25" src="http://image.S7.exacttarget.com/lib/fe9213727c62077f75/m/1/32861e4d-4273-4e1e-b745-05af363dd8d1.png" style="height:25px;width:25px;padding-top: 5px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;background-color: rgb(230, 231, 233);" width="25"/>
+                    </a>
+                    <span style="background-color: rgb(230, 231, 233);">&nbsp;</span>
+                    
+                    <a href="http://instagram.com/meralcoph" style="text-decoration: none; color: #3F3F3F; font-size:10px">
+                        <img data-assetid="20" height="25" src="http://image.S7.exacttarget.com/lib/fe9213727c62077f75/m/1/fd2bfe1f-ebbd-4639-943e-9f6cb342ddd1.png" style="height:25px;width:25px;padding-top: 5px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;background-color: rgb(230, 231, 233);" width="25"/>
+                    </a>
+                    
+                    <span style="background-color: rgb(230, 231, 233);">&nbsp;</span>
+                        <a href="http://www.youtube.com/channel/UCykLu5F8RyxSchZ37KeH2Mw" style="text-decoration: none; color: #3F3F3F; font-size:10px"><img data-assetid="20" height="25" src="http://image.S7.exacttarget.com/lib/fe9213727c62077f75/m/1/dcac9c40-a4b1-4650-8967-aa9405272a86.png" style="height:25px;width:25px;padding-top: 5px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;background-color: rgb(230, 231, 233);" width="25"/>
+                    </a><br/>
+                    &nbsp;
+              </td>
+            </tr>
+        </table>
+</apex:component>

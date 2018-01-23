@@ -1,0 +1,17 @@
+<apex:page tabStyle="Opportunity" sidebar="false">
+    <apex:includeLightning />
+	
+    <div id="lightning" />
+
+    <script>
+        $Lightning.use("c:Lightning_CommodityProductsConfiguratorApplication", function() {
+          $Lightning.createComponent("c:Lightning_Commodity",
+          {opptyid:'{!$CurrentPage.parameters.id}'},
+          "lightning",
+          function(cmp) {
+          
+            // do some stuff
+          });
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,1728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Service</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Services</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Services (Account Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active Agreement --></label>
+        <name>Active_Agreement__c</name>
+    </fields>
+    <fields>
+        <label><!-- Adv Amount Start Date --></label>
+        <name>Adv_Amount_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Advance Frequency (months) --></label>
+        <name>Advance_Frequency_months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Advance Amount --></label>
+        <name>Advance_amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agreement Term (months) --></label>
+        <name>Agreement_Duration_Months__c</name>
+    </fields>
+    <fields>
+        <help><!-- End Date of the agreement --></help>
+        <label><!-- End Date --></label>
+        <name>Agreement_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Start Date of the agreement --></help>
+        <label><!-- Start Date --></label>
+        <name>Agreement_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Applied Load --></label>
+        <name>Applied_Load__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bill Amount --></label>
+        <name>Bill_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Class --></label>
+        <name>Billing_Class__c</name>
+        <picklistValues>
+            <masterLabel>GS-B Industrial Service (IS)</masterLabel>
+            <translation><!-- GS-B Industrial Service (IS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GS-B Non-industrial Service (NIS)</masterLabel>
+            <translation><!-- GS-B Non-industrial Service (NIS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Service A (GSA)</masterLabel>
+            <translation><!-- General Service A (GSA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government Hospitals, Metered Streetlights &amp; Charitable Institutions (GHMSCI)</masterLabel>
+            <translation><!-- Government Hospitals, Metered Streetlights &amp; Charitable Institutions (GHMSCI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Service (IS)</masterLabel>
+            <translation><!-- Industrial Service (IS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Industrial Service(NIS)</masterLabel>
+            <translation><!-- Non-Industrial Service(NIS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Residential Service(RS)</masterLabel>
+            <translation><!-- Residential Service(RS) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Discount Program --></label>
+        <name>CXE_Discount_Program__c</name>
+        <picklistValues>
+            <masterLabel>Senior Citizen Household Discount</masterLabel>
+            <translation><!-- Senior Citizen Household Discount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Senior Citizen Institution Discount</masterLabel>
+            <translation><!-- Senior Citizen Institution Discount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Special Discount</masterLabel>
+            <translation><!-- Special Discount --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Payment Profile --></label>
+        <name>CXE_Payment_Profile__c</name>
+        <picklistValues>
+            <masterLabel>Delinquent</masterLabel>
+            <translation><!-- Delinquent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Good</masterLabel>
+            <translation><!-- Good --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Late</masterLabel>
+            <translation><!-- Late --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Number --></label>
+        <name>CXE_Service_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Socio-Economic Profile --></label>
+        <name>CXE_Socio_Economic_Profile__c</name>
+        <picklistValues>
+            <masterLabel>Biz GP</masterLabel>
+            <translation><!-- Biz GP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biz Non-GP</masterLabel>
+            <translation><!-- Biz Non-GP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CBG</masterLabel>
+            <translation><!-- CBG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Microbiz</masterLabel>
+            <translation><!-- Microbiz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resi High</masterLabel>
+            <translation><!-- Resi High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resi Low</masterLabel>
+            <translation><!-- Resi Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resi Mid</masterLabel>
+            <translation><!-- Resi Mid --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Case Email --></label>
+        <name>Case_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Charges for Breach of Contract --></label>
+        <name>Charges_for_breach_of_contract__c</name>
+    </fields>
+    <fields>
+        <label><!-- Charges for breach of Contract --></label>
+        <name>Charges_of_Breach__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Billing Class --></label>
+        <name>Code_Billing_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code PSIC --></label>
+        <name>Code_PSIC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Phase --></label>
+        <name>Code_Phase__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Premises Type --></label>
+        <name>Code_Premises_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Program --></label>
+        <name>Code_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Rate --></label>
+        <name>Code_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Segment --></label>
+        <name>Code_Segment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Rate Type --></label>
+        <name>Code_Service_Rate_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Status --></label>
+        <name>Code_Service_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Supply Phase --></label>
+        <name>Code_Service_Supply_Phase__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Supply Type --></label>
+        <name>Code_Service_Supply_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Wire Material --></label>
+        <name>Code_Service_Wire_Material__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Wire Phase --></label>
+        <name>Code_Service_Wire_Phase__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Wire Size --></label>
+        <name>Code_Service_Wire_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Wire Type --></label>
+        <name>Code_Service_Wire_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Service Wire Voltage --></label>
+        <name>Code_Service_Wire_Voltage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Voltage Level --></label>
+        <name>Code_Voltage_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commercial Product --></label>
+        <name>Commercial_Product__c</name>
+        <relationshipLabel><!-- Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Connection --></label>
+        <name>Connection__c</name>
+        <relationshipLabel><!-- Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contract &apos;s Account --></label>
+        <name>Contract_AccountId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract &apos;s V10 # --></label>
+        <name>Contract_V10_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contract --></label>
+        <name>Contract__c</name>
+        <relationshipLabel><!-- Services (Contract) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contracted Capacity --></label>
+        <name>Contracted_Capacity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Customer Signed By --></label>
+        <name>CustomerSignedBy__c</name>
+        <relationshipLabel><!-- Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Deloading Capacity (kW) --></label>
+        <name>Deloading_Capacity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Demand Factor --></label>
+        <name>Demand_Factor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deposit Amount --></label>
+        <name>Deposit_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deposit Schedule --></label>
+        <name>Deposit_Schedule__c</name>
+        <relationshipLabel><!-- Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ERP Agreement ID --></label>
+        <name>ERP_Agreement_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- GMBD (kW) --></label>
+        <name>GMBD_kW__c</name>
+    </fields>
+    <fields>
+        <label><!-- ILP --></label>
+        <name>ILP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration Successfull Cont Termination --></label>
+        <name>Integration_Successfull_Cont_Termination__c</name>
+    </fields>
+    <fields>
+        <label><!-- Integration Successfull Adv Amount --></label>
+        <name>Integration_Successfull__c</name>
+    </fields>
+    <fields>
+        <label><!-- Load Factor --></label>
+        <name>Load_Factor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Override Auto Deposit Amount? --></label>
+        <name>Override_Auto_Deposit_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- PSIC --></label>
+        <name>PSIC__c</name>
+        <relationshipLabel><!-- Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Parent Tag --></label>
+        <name>Parent_Tag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payor --></label>
+        <name>Payor__c</name>
+        <relationshipLabel><!-- Services (Payor) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Phase --></label>
+        <name>Phase__c</name>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Network</masterLabel>
+            <translation><!-- Single Phase (1Ø), Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Three (3)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Three (3)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Two (2)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Two (2)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Three (3)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Three (3)-Wire (Delta) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Preferred Schedule --></label>
+        <name>Preferred_Schedule__c</name>
+        <picklistValues>
+            <masterLabel>Afternoon</masterLabel>
+            <translation><!-- Afternoon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Flexible</masterLabel>
+            <translation><!-- Flexible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morning</masterLabel>
+            <translation><!-- Morning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Whole Day</masterLabel>
+            <translation><!-- Whole Day --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Premises Direction --></label>
+        <name>Premise_Direction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premises Type --></label>
+        <name>Premises_Type__c</name>
+        <picklistValues>
+            <masterLabel>Billboard</masterLabel>
+            <translation><!-- Billboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cemetery</masterLabel>
+            <translation><!-- Cemetery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial Building</masterLabel>
+            <translation><!-- Commercial Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compound Residential</masterLabel>
+            <translation><!-- Compound Residential --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Condominium</masterLabel>
+            <translation><!-- Condominium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government Building</masterLabel>
+            <translation><!-- Government Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Groups of Industry</masterLabel>
+            <translation><!-- Groups of Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High-rise Building</masterLabel>
+            <translation><!-- High-rise Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meralco Use Substation</masterLabel>
+            <translation><!-- Meralco Use Substation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offices</masterLabel>
+            <translation><!-- Offices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pole</masterLabel>
+            <translation><!-- Pole --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Commercial</masterLabel>
+            <translation><!-- Single Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Industry</masterLabel>
+            <translation><!-- Single Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single-Detached Residential</masterLabel>
+            <translation><!-- Single-Detached Residential --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Streetlights</masterLabel>
+            <translation><!-- Streetlights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecom Cabinet</masterLabel>
+            <translation><!-- Telecom Cabinet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Traffic Lights</masterLabel>
+            <translation><!-- Traffic Lights --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Premises # --></label>
+        <name>Premises__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- RES --></label>
+        <name>RES__c</name>
+        <relationshipLabel><!-- Services (RES) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rate Program --></label>
+        <name>Rate_Program__c</name>
+        <picklistValues>
+            <masterLabel>ILP</masterLabel>
+            <translation><!-- ILP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MECO-TOU Rate Program</masterLabel>
+            <translation><!-- MECO-TOU Rate Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net Metering</masterLabel>
+            <translation><!-- Net Metering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net Metering with TOU</masterLabel>
+            <translation><!-- Net Metering with TOU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Peak Off-Peak</masterLabel>
+            <translation><!-- Peak Off-Peak --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regular</masterLabel>
+            <translation><!-- Regular --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rate --></label>
+        <name>Rate__c</name>
+        <picklistValues>
+            <masterLabel>General Power (GP)</masterLabel>
+            <translation><!-- General Power (GP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Service A (GSA)</masterLabel>
+            <translation><!-- General Service A (GSA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Service B (GSB)</masterLabel>
+            <translation><!-- General Service B (GSB) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government Hospitals, Metered Streetlights &amp; Charitable Institutions (GHMSCI)</masterLabel>
+            <translation><!-- Government Hospitals, Metered Streetlights &amp; Charitable Institutions (GHMSCI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Residential Service (RS)</masterLabel>
+            <translation><!-- Residential Service (RS) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RES --></label>
+        <name>Related_Account__c</name>
+        <relationshipLabel><!-- RES End - Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SIN --></label>
+        <name>SIN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Segment --></label>
+        <name>Segment__c</name>
+        <picklistValues>
+            <masterLabel>Corporate Business Group</masterLabel>
+            <translation><!-- Corporate Business Group --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Home and Micro Business</masterLabel>
+            <translation><!-- Home and Micro Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SME Business Group</masterLabel>
+            <translation><!-- SME Business Group --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Barangay --></label>
+        <name>Service_Barangay__c</name>
+        <picklistValues>
+            <masterLabel>Addition Hills</masterLabel>
+            <translation><!-- Addition Hills --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aguho</masterLabel>
+            <translation><!-- Aguho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ato</masterLabel>
+            <translation><!-- Ato --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bagong Ilog</masterLabel>
+            <translation><!-- Bagong Ilog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bagong Katipunan</masterLabel>
+            <translation><!-- Bagong Katipunan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bagong Lipunan Ng Crame/Cubao</masterLabel>
+            <translation><!-- Bagong Lipunan Ng Crame/Cubao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bagong Silang</masterLabel>
+            <translation><!-- Bagong Silang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bagumbayan</masterLabel>
+            <translation><!-- Bagumbayan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balong-Bato</masterLabel>
+            <translation><!-- Balong-Bato --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bambang</masterLabel>
+            <translation><!-- Bambang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangkal</masterLabel>
+            <translation><!-- Bangkal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangka Drive</masterLabel>
+            <translation><!-- Barangka Drive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangka Ibaba</masterLabel>
+            <translation><!-- Barangka Ibaba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangka Ilaya</masterLabel>
+            <translation><!-- Barangka Ilaya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barangka Itaas</masterLabel>
+            <translation><!-- Barangka Itaas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Batis</masterLabel>
+            <translation><!-- Batis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bel-Air</masterLabel>
+            <translation><!-- Bel-Air --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Buayang Bato</masterLabel>
+            <translation><!-- Buayang Bato --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burol</masterLabel>
+            <translation><!-- Burol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Buting</masterLabel>
+            <translation><!-- Buting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cainta (Isolated)</masterLabel>
+            <translation><!-- Cainta (Isolated) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Calzada</masterLabel>
+            <translation><!-- Calzada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Caniogan</masterLabel>
+            <translation><!-- Caniogan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Carmona</masterLabel>
+            <translation><!-- Carmona --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cembo</masterLabel>
+            <translation><!-- Cembo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comembo</masterLabel>
+            <translation><!-- Comembo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corazon De Jesus</masterLabel>
+            <translation><!-- Corazon De Jesus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Daang Bakal</masterLabel>
+            <translation><!-- Daang Bakal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dasmarinas</masterLabel>
+            <translation><!-- Dasmarinas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dela Paz</masterLabel>
+            <translation><!-- Dela Paz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>East Rembo</masterLabel>
+            <translation><!-- East Rembo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ermitano</masterLabel>
+            <translation><!-- Ermitano --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Forbes Park</masterLabel>
+            <translation><!-- Forbes Park --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fort Bonifacio</masterLabel>
+            <translation><!-- Fort Bonifacio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greenhills</masterLabel>
+            <translation><!-- Greenhills --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guadalupe Nuevo</masterLabel>
+            <translation><!-- Guadalupe Nuevo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guadalupe Viejo</masterLabel>
+            <translation><!-- Guadalupe Viejo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hagdang Bato Itaas</masterLabel>
+            <translation><!-- Hagdang Bato Itaas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hagdang Bato Libis</masterLabel>
+            <translation><!-- Hagdang Bato Libis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hagonoy</masterLabel>
+            <translation><!-- Hagonoy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Harapin Ang Bukas</masterLabel>
+            <translation><!-- Harapin Ang Bukas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Highway Hills</masterLabel>
+            <translation><!-- Highway Hills --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hulo</masterLabel>
+            <translation><!-- Hulo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ibayo-Tipas</masterLabel>
+            <translation><!-- Ibayo-Tipas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Isabelita</masterLabel>
+            <translation><!-- Isabelita --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kabayanan</masterLabel>
+            <translation><!-- Kabayanan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kalawaan</masterLabel>
+            <translation><!-- Kalawaan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kapasigan</masterLabel>
+            <translation><!-- Kapasigan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kapitolyo</masterLabel>
+            <translation><!-- Kapitolyo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kasilawan</masterLabel>
+            <translation><!-- Kasilawan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La Paz</masterLabel>
+            <translation><!-- La Paz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ligid-Tipas</masterLabel>
+            <translation><!-- Ligid-Tipas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Little Baguio</masterLabel>
+            <translation><!-- Little Baguio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mabini-J. Rizal</masterLabel>
+            <translation><!-- Mabini-J. Rizal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magallanes</masterLabel>
+            <translation><!-- Magallanes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magtanggol</masterLabel>
+            <translation><!-- Magtanggol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Makati (Isolated)</masterLabel>
+            <translation><!-- Makati (Isolated) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Makati City</masterLabel>
+            <translation><!-- Makati City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malamig</masterLabel>
+            <translation><!-- Malamig --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malinao</masterLabel>
+            <translation><!-- Malinao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manggahan</masterLabel>
+            <translation><!-- Manggahan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Martires Del 96</masterLabel>
+            <translation><!-- Martires Del 96 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mauway</masterLabel>
+            <translation><!-- Mauway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maybunga</masterLabel>
+            <translation><!-- Maybunga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maytunas</masterLabel>
+            <translation><!-- Maytunas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N Aquino Pilot Com (Napico)</masterLabel>
+            <translation><!-- N Aquino Pilot Com (Napico) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Namayan</masterLabel>
+            <translation><!-- Namayan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Napindan</masterLabel>
+            <translation><!-- Napindan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Zaniga</masterLabel>
+            <translation><!-- New Zaniga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old Zaniga</masterLabel>
+            <translation><!-- Old Zaniga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Olympia</masterLabel>
+            <translation><!-- Olympia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onse</masterLabel>
+            <translation><!-- Onse --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oranbo</masterLabel>
+            <translation><!-- Oranbo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pag-Asa</masterLabel>
+            <translation><!-- Pag-Asa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palanan</masterLabel>
+            <translation><!-- Palanan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palatiw</masterLabel>
+            <translation><!-- Palatiw --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palingon</masterLabel>
+            <translation><!-- Palingon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pasadena</masterLabel>
+            <translation><!-- Pasadena --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pasig City (Isolated)</masterLabel>
+            <translation><!-- Pasig City (Isolated) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pedro Cruz</masterLabel>
+            <translation><!-- Pedro Cruz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pembo</masterLabel>
+            <translation><!-- Pembo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist (Pinagbuhatan</masterLabel>
+            <translation><!-- Picklist (Pinagbuhatan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pinagkaisahan</masterLabel>
+            <translation><!-- Pinagkaisahan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pinagsama</masterLabel>
+            <translation><!-- Pinagsama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pineda</masterLabel>
+            <translation><!-- Pineda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pio Del Pilar</masterLabel>
+            <translation><!-- Pio Del Pilar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pitogo</masterLabel>
+            <translation><!-- Pitogo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plainview</masterLabel>
+            <translation><!-- Plainview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pleasant Hills</masterLabel>
+            <translation><!-- Pleasant Hills --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poblacion</masterLabel>
+            <translation><!-- Poblacion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Post Proper Northside</masterLabel>
+            <translation><!-- Post Proper Northside --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Post Proper Southside</masterLabel>
+            <translation><!-- Post Proper Southside --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Progreso</masterLabel>
+            <translation><!-- Progreso --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rivera</masterLabel>
+            <translation><!-- Rivera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rizal</masterLabel>
+            <translation><!-- Rizal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rosario</masterLabel>
+            <translation><!-- Rosario --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sagad</masterLabel>
+            <translation><!-- Sagad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salapan</masterLabel>
+            <translation><!-- Salapan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Andres</masterLabel>
+            <translation><!-- San Andres --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Antonio</masterLabel>
+            <translation><!-- San Antonio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Isidro</masterLabel>
+            <translation><!-- San Isidro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Joaquin</masterLabel>
+            <translation><!-- San Joaquin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Jose</masterLabel>
+            <translation><!-- San Jose --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Juan</masterLabel>
+            <translation><!-- San Juan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Lorenzo</masterLabel>
+            <translation><!-- San Lorenzo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Miguel</masterLabel>
+            <translation><!-- San Miguel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Nicolas</masterLabel>
+            <translation><!-- San Nicolas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Pedro</masterLabel>
+            <translation><!-- San Pedro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Perfecto</masterLabel>
+            <translation><!-- San Perfecto --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Roque</masterLabel>
+            <translation><!-- San Roque --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Santolan</masterLabel>
+            <translation><!-- Santolan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singkamas</masterLabel>
+            <translation><!-- Singkamas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Cembo</masterLabel>
+            <translation><!-- South Cembo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>St. Joseph</masterLabel>
+            <translation><!-- St. Joseph --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sta. Ana</masterLabel>
+            <translation><!-- Sta. Ana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sta. Cruz</masterLabel>
+            <translation><!-- Sta. Cruz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sta. Lucia</masterLabel>
+            <translation><!-- Sta. Lucia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sta. Rosa</masterLabel>
+            <translation><!-- Sta. Rosa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sto Rosario-Kanluran</masterLabel>
+            <translation><!-- Sto Rosario-Kanluran --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sto Rosario-Silangan</masterLabel>
+            <translation><!-- Sto Rosario-Silangan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sto. Tomas</masterLabel>
+            <translation><!-- Sto. Tomas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sumilang</masterLabel>
+            <translation><!-- Sumilang --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tabacalera</masterLabel>
+            <translation><!-- Tabacalera --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taguig (Isolated)</masterLabel>
+            <translation><!-- Taguig (Isolated) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tejeros</masterLabel>
+            <translation><!-- Tejeros --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tibagan</masterLabel>
+            <translation><!-- Tibagan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tuktukan</masterLabel>
+            <translation><!-- Tuktukan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ugong</masterLabel>
+            <translation><!-- Ugong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Urdaneta</masterLabel>
+            <translation><!-- Urdaneta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ususan</masterLabel>
+            <translation><!-- Ususan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Valenzuela</masterLabel>
+            <translation><!-- Valenzuela --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vergara</masterLabel>
+            <translation><!-- Vergara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wack-Wack Greenhills East</masterLabel>
+            <translation><!-- Wack-Wack Greenhills East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wawa</masterLabel>
+            <translation><!-- Wawa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West Crame</masterLabel>
+            <translation><!-- West Crame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West Rembo</masterLabel>
+            <translation><!-- West Rembo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Western Bicutan</masterLabel>
+            <translation><!-- Western Bicutan --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- City / Municipality --></label>
+        <name>Service_City_Municipality__c</name>
+        <picklistValues>
+            <masterLabel>Cainta</masterLabel>
+            <translation><!-- Cainta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Makati City</masterLabel>
+            <translation><!-- Makati City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mandaluyong</masterLabel>
+            <translation><!-- Mandaluyong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manila City</masterLabel>
+            <translation><!-- Manila City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pasig City</masterLabel>
+            <translation><!-- Pasig City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pateros</masterLabel>
+            <translation><!-- Pateros --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q. C.-Kaunlaran Dist 4</masterLabel>
+            <translation><!-- Q. C.-Kaunlaran Dist 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Juan</masterLabel>
+            <translation><!-- San Juan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taguig City</masterLabel>
+            <translation><!-- Taguig City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taytay</masterLabel>
+            <translation><!-- Taytay --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Description --></label>
+        <name>Service_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Documents Submitted --></label>
+        <name>Service_Documents_Submitted__c</name>
+        <picklistValues>
+            <masterLabel>Agreement for Extension of Lines and/or Additional Facilities (CA Agreement)</masterLabel>
+            <translation><!-- Agreement for Extension of Lines and/or Additional Facilities (CA Agreement) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRB Switch Approval</masterLabel>
+            <translation><!-- CRB Switch Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Compliance</masterLabel>
+            <translation><!-- Certificate of Compliance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Contestability</masterLabel>
+            <translation><!-- Certificate of Contestability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certificate of Final Electrical Inspection (CFEI)</masterLabel>
+            <translation><!-- Certificate of Final Electrical Inspection (CFEI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Certification Issued to CRB for Termination of Service</masterLabel>
+            <translation><!-- Certification Issued to CRB for Termination of Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connection Agreement</masterLabel>
+            <translation><!-- Connection Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract for Electric Service</masterLabel>
+            <translation><!-- Contract for Electric Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract of Lease</masterLabel>
+            <translation><!-- Contract of Lease --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy of Cover Memo to CRB of MIRF Submission</masterLabel>
+            <translation><!-- Copy of Cover Memo to CRB of MIRF Submission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy of Cover Memo to RAO on the MIRF Submission of MERALCO</masterLabel>
+            <translation><!-- Copy of Cover Memo to RAO on the MIRF Submission of MERALCO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disconnection Waiver</masterLabel>
+            <translation><!-- Disconnection Waiver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Asset Study Fees / Receipts*</masterLabel>
+            <translation><!-- Distribution Asset Study Fees / Receipts* --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Impact Study Fee / Receipt</masterLabel>
+            <translation><!-- Distribution Impact Study Fee / Receipt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distribution Wheeling Service Agreement (DWSA) for Embedded Generators</masterLabel>
+            <translation><!-- Distribution Wheeling Service Agreement (DWSA) for Embedded Generators --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed Assest Boundary Document (FABD)</masterLabel>
+            <translation><!-- Fixed Assest Boundary Document (FABD) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inter-Connection Agreement (ICA)</masterLabel>
+            <translation><!-- Inter-Connection Agreement (ICA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Interruptible Load Program (ILP) Tripartite Agreement</masterLabel>
+            <translation><!-- Interruptible Load Program (ILP) Tripartite Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Metering Installation Registration Form (MIRF) and other attachments</masterLabel>
+            <translation><!-- Metering Installation Registration Form (MIRF) and other attachments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Net-metering Agreement</masterLabel>
+            <translation><!-- Net-metering Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Notarized Undertaking for Leased Properties</masterLabel>
+            <translation><!-- Notarized Undertaking for Leased Properties --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Power Accounts Data Sheet</masterLabel>
+            <translation><!-- Power Accounts Data Sheet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ramp-up Agreement</masterLabel>
+            <translation><!-- Ramp-up Agreement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Signed and Sealed Electrical Plan (Single line + Load Schedule)</masterLabel>
+            <translation><!-- Signed and Sealed Electrical Plan (Single line + Load Schedule) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplemental Agreement for Multi Metering per Floor</masterLabel>
+            <translation><!-- Supplemental Agreement for Multi Metering per Floor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Supplier of Last Resort (SoLR) contract</masterLabel>
+            <translation><!-- Supplier of Last Resort (SoLR) contract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transfer Certificate of Title (TCT)</masterLabel>
+            <translation><!-- Transfer Certificate of Title (TCT) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zero Vat Certification</masterLabel>
+            <translation><!-- Zero Vat Certification --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Province --></label>
+        <name>Service_Province__c</name>
+        <picklistValues>
+            <masterLabel>Metro Manila</masterLabel>
+            <translation><!-- Metro Manila --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Status --></label>
+        <name>Service_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Active - Disconnected</masterLabel>
+            <translation><!-- Active - Disconnected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Active - Pending to Disconnect</masterLabel>
+            <translation><!-- Active - Pending to Disconnect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drop with service providing</masterLabel>
+            <translation><!-- Drop with service providing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending to Terminate</masterLabel>
+            <translation><!-- Pending to Terminate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sleep</masterLabel>
+            <translation><!-- Sleep --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Terminated</masterLabel>
+            <translation><!-- Terminated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Street Name --></label>
+        <name>Service_Street_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street # --></label>
+        <name>Service_Street_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Subdivision / Building --></label>
+        <name>Service_Subdivision__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Supply Phase --></label>
+        <name>Service_Supply_Phase__c</name>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Network</masterLabel>
+            <translation><!-- Single Phase (1Ø), Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Three (3)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Three (3)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Two (2)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Two (2)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Three (3)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Three (3)-Wire (Delta) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Supply Type --></label>
+        <name>Service_Supply_Type__c</name>
+        <picklistValues>
+            <masterLabel>Normal with meter</masterLabel>
+            <translation><!-- Normal with meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Normal without meter</masterLabel>
+            <translation><!-- Normal without meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Streetlight with meter</masterLabel>
+            <translation><!-- Streetlight with meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Streetlight without meter</masterLabel>
+            <translation><!-- Streetlight without meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Temporary with meter</masterLabel>
+            <translation><!-- Temporary with meter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Supply Voltage --></label>
+        <name>Service_Supply_Voltage__c</name>
+        <picklistValues>
+            <masterLabel>115/66 kV</masterLabel>
+            <translation><!-- 115/66 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.2/7.62 kV</masterLabel>
+            <translation><!-- 13.2/7.62 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.8/7.97 kV</masterLabel>
+            <translation><!-- 13.8/7.97 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>216 V</masterLabel>
+            <translation><!-- 216 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>230 V</masterLabel>
+            <translation><!-- 230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>34.5/19.92 kV</masterLabel>
+            <translation><!-- 34.5/19.92 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4.8 kV</masterLabel>
+            <translation><!-- 4.8 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>400/230 V</masterLabel>
+            <translation><!-- 400/230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>460/265 V</masterLabel>
+            <translation><!-- 460/265 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6.24/3.60 kV</masterLabel>
+            <translation><!-- 6.24/3.60 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>69/39 kV</masterLabel>
+            <translation><!-- 69/39 kV --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Supply # --></label>
+        <name>Service_Supply__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unit # --></label>
+        <name>Service_Unit_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Length --></label>
+        <name>Service_Wire_Length__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Material --></label>
+        <name>Service_Wire_Material__c</name>
+        <picklistValues>
+            <masterLabel>Aluminum</masterLabel>
+            <translation><!-- Aluminum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copper</masterLabel>
+            <translation><!-- Copper --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Maximum Capacity --></label>
+        <name>Service_Wire_Maximum_Capacity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Phase --></label>
+        <name>Service_Wire_Phase__c</name>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Network</masterLabel>
+            <translation><!-- Single Phase (1Ø), Network --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Three (3)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Three (3)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Phase (1Ø), Two (2)-Wire</masterLabel>
+            <translation><!-- Single Phase (1Ø), Two (2)-Wire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Four (4)-Wire (Grounded Wye/Delta) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three Phase (3Ø), Three (3)-Wire (Delta)</masterLabel>
+            <translation><!-- Three Phase (3Ø), Three (3)-Wire (Delta) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Pole Number --></label>
+        <name>Service_Wire_Pole_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Size --></label>
+        <name>Service_Wire_Size__c</name>
+        <picklistValues>
+            <masterLabel>#1/0</masterLabel>
+            <translation><!-- #1/0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#2</masterLabel>
+            <translation><!-- #2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#3/0</masterLabel>
+            <translation><!-- #3/0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#4</masterLabel>
+            <translation><!-- #4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#4/0</masterLabel>
+            <translation><!-- #4/0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#6</masterLabel>
+            <translation><!-- #6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>#8</masterLabel>
+            <translation><!-- #8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1000 MCM</masterLabel>
+            <translation><!-- 1000 MCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>500 MCM</masterLabel>
+            <translation><!-- 500 MCM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>500 MCM &amp; #4/0</masterLabel>
+            <translation><!-- 500 MCM &amp; #4/0 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Wire TLN --></label>
+        <name>Service_Wire_TLN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Type --></label>
+        <name>Service_Wire_Type__c</name>
+        <picklistValues>
+            <masterLabel>Aerial Alum.,Bundled</masterLabel>
+            <translation><!-- Aerial Alum.,Bundled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerial Alum.,Open</masterLabel>
+            <translation><!-- Aerial Alum.,Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerial CU.,Bundled</masterLabel>
+            <translation><!-- Aerial CU.,Bundled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aerial Coppen,Open</masterLabel>
+            <translation><!-- Aerial Coppen,Open --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Alum.,Lateral</masterLabel>
+            <translation><!-- Under Alum.,Lateral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Under Copper,Lateral</masterLabel>
+            <translation><!-- Under Copper,Lateral --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Wire Voltage --></label>
+        <name>Service_Wire_Voltage__c</name>
+        <picklistValues>
+            <masterLabel>115/66 kV</masterLabel>
+            <translation><!-- 115/66 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.2/7.62 kV</masterLabel>
+            <translation><!-- 13.2/7.62 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>13.8/7.97 kV</masterLabel>
+            <translation><!-- 13.8/7.97 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>216 V</masterLabel>
+            <translation><!-- 216 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>230 V</masterLabel>
+            <translation><!-- 230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>34.5/19.92 kV</masterLabel>
+            <translation><!-- 34.5/19.92 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4.8 kV</masterLabel>
+            <translation><!-- 4.8 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>400/230 V</masterLabel>
+            <translation><!-- 400/230 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>460/265 V</masterLabel>
+            <translation><!-- 460/265 V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6.24/3.60 kV</masterLabel>
+            <translation><!-- 6.24/3.60 kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>69/39 kV</masterLabel>
+            <translation><!-- 69/39 kV --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- V10 Account # --></label>
+        <name>V10_Account_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Business Unit --></label>
+        <name>V10_Business_Unit__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Payor Account # --></label>
+        <name>V10_Payor_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Payor Name --></label>
+        <name>V10_Payor_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Voltage Level --></label>
+        <name>Voltage_Level__c</name>
+        <picklistValues>
+            <masterLabel>Secondary</masterLabel>
+            <translation><!-- Secondary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Type A - 115kV</masterLabel>
+            <translation><!-- Type A - 115kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Type B - 69kV</masterLabel>
+            <translation><!-- Type B - 69kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Type C - 34.5kV</masterLabel>
+            <translation><!-- Type C - 34.5kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Type D - 13.8/13.2kV</masterLabel>
+            <translation><!-- Type D - 13.8/13.2kV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Type E - below 13.2kV</masterLabel>
+            <translation><!-- Type E - below 13.2kV --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>CXE Service Page Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Document Uploader --></label>
+            <section>Customer Document Uploader</section>
+        </sections>
+        <sections>
+            <label><!-- Global Parameter --></label>
+            <section>Global Parameter</section>
+        </sections>
+        <sections>
+            <label><!-- Interruptible Load Program --></label>
+            <section>Interruptible Load Program</section>
+        </sections>
+        <sections>
+            <label><!-- Premise Information --></label>
+            <section>Premise Information</section>
+        </sections>
+        <sections>
+            <label><!-- Service Wire and Supply Information --></label>
+            <section>Service Wire and Supply Information</section>
+        </sections>
+    </layouts>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Service Rate &quot;Government Hospitals, Metered Streetlights &amp; Charitable Insitutions (GHMSCI)&quot; is only applicable if Service Supply Type is not Streetlight without meter and PSIC is non-residential. --></errorMessage>
+        <name>CXE_Service_Rate_Type_GHMSCI</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Rate &quot;General Power (GP)&quot; is only applicable if Service Supply Type is not Streetlight without meter, PSIC is non-residential, and Contracted Capacity &gt;= 40.00kW. --></errorMessage>
+        <name>CXE_Service_Rate_Type_General_Power</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Rate &quot;General Service A (GSA)&quot; is only applicable if Service Supply Type is not Streetlight without meter, PSIC is non-residential, and Contracted Capacity &lt; 5.00kW. --></errorMessage>
+        <name>CXE_Service_Rate_Type_General_Service_A</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Rate &quot;General Service B (GSB)&quot; is only applicable if Service Supply Type is not Streetlight without meter, PSIC is non-residential, and Contracted Capacity between 5.00kW - 40.00kW --></errorMessage>
+        <name>CXE_Service_Rate_Type_General_Service_B</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Rate &quot;Residential Service (RS)&quot; is only applicable if Service Supply Type is not Streetlight without meter and PSIC is residential. --></errorMessage>
+        <name>CXE_Service_Rate_Type_Resi_Service</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Service Wire TLN only accepts numeric values. --></errorMessage>
+        <name>CXE_TLN</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Related Contract must have an address. --></errorMessage>
+        <name>Validate_Contract_Address</name>
+    </validationRules>
+</CustomObjectTranslation>

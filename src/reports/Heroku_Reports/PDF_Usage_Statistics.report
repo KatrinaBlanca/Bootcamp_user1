@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>PDF_Usage_Statistics__x.usage_date__c</field>
+    </columns>
+    <columns>
+        <field>PDF_Usage_Statistics__x.view__c</field>
+    </columns>
+    <columns>
+        <field>PDF_Usage_Statistics__x.download__c</field>
+    </columns>
+    <columns>
+        <field>PDF_Usage_Statistics__x.print__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>PDF Usage Statistics</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$PDF_Usage_Statistics__x</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>PDF_Usage_Statistics__x.usage_date__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>PDF_Usage_Statistics__x.usage_date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

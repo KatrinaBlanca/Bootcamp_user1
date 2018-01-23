@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Address</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Addresses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Addresses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Barangay --></label>
+        <name>Address_Barangay__c</name>
+        <relationshipLabel><!-- Addresses (Barangay) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- City / Municipality --></label>
+        <name>Address_City_Municipality__c</name>
+        <relationshipLabel><!-- Addresses (City / Municipality) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Province --></label>
+        <name>Address_Province__c</name>
+        <relationshipLabel><!-- Addresses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Street Name --></label>
+        <name>Address_Street_Name__c</name>
+        <relationshipLabel><!-- Addresses (Street Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Street # --></label>
+        <name>Address_Street_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subdivision / Bldg --></label>
+        <name>Address_Subdivision__c</name>
+        <relationshipLabel><!-- Addresses (Subdivision) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Unit # --></label>
+        <name>Address_Unit_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Address --></label>
+        <name>Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Addresses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Code Barangay --></label>
+        <name>Code_Address_Barangay__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code City / Municipality --></label>
+        <name>Code_Address_City_Municipality__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Province --></label>
+        <name>Code_Address_Province__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Street Name --></label>
+        <name>Code_Address_Street_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Subdivision --></label>
+        <name>Code_Address_Subdivision__c</name>
+    </fields>
+    <fields>
+        <label><!-- Code Premises Type --></label>
+        <name>Code_Premises_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Connection --></label>
+        <name>Connection__c</name>
+        <relationshipLabel><!-- Addresses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Addresses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contract --></label>
+        <name>Contract__c</name>
+        <relationshipLabel><!-- Addresses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- External ID --></label>
+        <name>External_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Create Status Datetime --></label>
+        <name>Integ_V10_Create_Status_Datetime__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Create Status Description --></label>
+        <name>Integ_V10_Create_Status_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Create Status --></label>
+        <name>Integ_V10_Create_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Outbound Message Send Date --></label>
+        <name>Integ_V10_Outbound_Message_Send_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- V10 Retrigger time 5min --></label>
+        <name>Integ_V10_Retrigger_time_5min__c</name>
+    </fields>
+    <fields>
+        <label><!-- Landmarks Directions --></label>
+        <name>Landmarks_Directions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Premises Type --></label>
+        <name>Premise_Type__c</name>
+        <picklistValues>
+            <masterLabel>Billboard</masterLabel>
+            <translation><!-- Billboard --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cemetery</masterLabel>
+            <translation><!-- Cemetery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commercial Building</masterLabel>
+            <translation><!-- Commercial Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compound Residential</masterLabel>
+            <translation><!-- Compound Residential --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Condominium</masterLabel>
+            <translation><!-- Condominium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government Building</masterLabel>
+            <translation><!-- Government Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Groups of Industry</masterLabel>
+            <translation><!-- Groups of Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High-rise Building</masterLabel>
+            <translation><!-- High-rise Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meralco Use Substation</masterLabel>
+            <translation><!-- Meralco Use Substation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offices</masterLabel>
+            <translation><!-- Offices --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Others</masterLabel>
+            <translation><!-- Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pole</masterLabel>
+            <translation><!-- Pole --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Commercial</masterLabel>
+            <translation><!-- Single Commercial --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Industry</masterLabel>
+            <translation><!-- Single Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single-Detached Residential</masterLabel>
+            <translation><!-- Single-Detached Residential --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Streetlights</masterLabel>
+            <translation><!-- Streetlights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecom Cabinet</masterLabel>
+            <translation><!-- Telecom Cabinet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Traffic Lights</masterLabel>
+            <translation><!-- Traffic Lights --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service --></label>
+        <name>Service__c</name>
+        <relationshipLabel><!-- Addresses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Billing</masterLabel>
+            <translation><!-- Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meter</masterLabel>
+            <translation><!-- Meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service</masterLabel>
+            <translation><!-- Service --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>CXE Billing Address Page Layout</layout>
+        <sections>
+            <label><!-- Address Key Information --></label>
+            <section>Address Key Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You must select Premise Type --></errorMessage>
+        <name>CXE_Require_Premise_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Type invalid, Contact Address should be Customer, Contract Address should be Billing, Service Address should be Service and Connection Address should be Meter. --></errorMessage>
+        <name>CXE_Validate_Address_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Type, Connection Address should be Meter. --></errorMessage>
+        <name>CXE_Validate_Connection_Address_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Type, Contact Address should be Customer. --></errorMessage>
+        <name>CXE_Validate_Contact_Address_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Type, Contract Address should be Billing. --></errorMessage>
+        <name>CXE_Validate_Contract_Address_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Type, Service Address should be Service. --></errorMessage>
+        <name>CXE_Validate_Service_Address_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You must enter a Street # --></errorMessage>
+        <name>CXE_Validate_Street_Number</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" >
+	<aura:attribute name="hasRecord" type="Boolean"/>
+</aura:event>

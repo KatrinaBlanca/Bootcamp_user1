@@ -1,0 +1,55 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="CXE_CP_ConglomerateViewCtrl">
+	<!--START CSM-15023 Shayne  removed $Resource.CXE_CP_Assets + '/library/bootstrap/bootstrap.min.css', -->
+    <ltng:require styles="{!join(',', 
+                          $Resource.CXE_CP_Assets + '/library/slds/salesforce-lightning-design-system.min.css', 
+                          $Resource.CXE_CP_Assets + '/css/custom.css',
+                          $Resource.CXE_CP_Assets + '/css/custom-jilles.css',
+                          $Resource.CXE_CP_Assets + '/css/custom-bryfil.css',
+                          $Resource.CXE_CP_Assets + '/css/custom-zjabines.css')}"
+                  scripts="{!join(',',
+                           $Resource.CXE_CP_Assets + '/library/icheck/icheck.min.js',
+                           $Resource.CXE_CP_Assets + '/js/custom.js')}"
+                  />
+    <!--END CSM-15023 Shayne -->
+    <c:CXE_CP_TempCSS />
+    
+    
+    <!-- LOOKUP RECORD ID -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+	<aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="isConglomerate" type="boolean"/>
+    <!-- VIEW CONGLOMERATE BUTTON -->
+    	<button class="slds-button slds-button--neutral" onclick="{!c.displayViewConglomerateModal}" disabled="{!v.isConglomerate == false}">View Conglomerate</button>
+     
+        <!-- SEARCH ACCOUNT MODAL BEGIN -->
+    <div aria-hidden="false" aura:id="conglomerateDisplay" role="dialog" class="slds-modal slds-modal--large slds-fade-in-hide">
+		<div class="slds-modal__container">
+
+			<!-- SEARCH ACCOUNT HEADER -->
+			<div class="slds-modal__header">
+				<h2 class="slds-text-heading--medium">Conglomerate</h2>
+				<button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeAccountSearchModal}">
+                    <c:svgIcon svgPath="/assets/icons/utility-sprite/svg/symbols.svg#close" category="utility" size="small" name="Close" />
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+			</div>
+
+			<!-- SEARCH ACCOUNT FORM -->
+			<div class="slds-modal__content slds-p-around--medium">
+                <c:CXE_CP_ConglomerateTable AccountId="{!v.recordId}" AccountName="Account" /> 
+			</div>
+
+			<!-- SEARCH ACCOUNT MODAL BUTTONS -->
+			<div class="slds-modal__footer">
+				<div class="slds-x-small-buttons--horizontal">
+					<button class="slds-button slds-button--neutral" onclick="{!c.closeViewConglomerate}">Cancel</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+    	<!-- MODAL OVERLAY -->
+	<div class="slds-backdrop slds-fade-in-hide" aura:id="backGroundSectionId"></div>
+    
+</aura:component>

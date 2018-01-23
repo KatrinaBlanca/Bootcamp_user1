@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Stores Component Name">
+	<aura:attribute name="showCmpTarget" type="String" description="Stores Component Name"/>
+</aura:event>

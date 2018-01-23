@@ -1,0 +1,10 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="ccCardNumber" type="String"/>
+    <!--
+    <aura:attribute name="ccCardName" type="String"/>
+    <aura:attribute name="ccBillingAddress" type="String"/>
+    <aura:attribute name="ccMonth" type="String"/>
+    <aura:attribute name="ccYear" type="String"/>
+    <aura:attribute name="ccSecCode" type="String"/>
+    -->
+</aura:event>

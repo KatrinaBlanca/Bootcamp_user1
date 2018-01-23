@@ -1,0 +1,42 @@
+<aura:component >
+    <aura:attribute name="modalPopUpChild" type="String" required="false" description="" access="public"/>
+    <!-- START CSM-12629 RReyes OCT-01-17-->
+    <aura:registerEvent name="setTotalAmount" type="c:CXE_CP_MyBillsEvent"/>
+    <aura:attribute name="sourcePage" type="String" default=""/>
+    <aura:attribute name="totalAmount" type="Decimal" default="0.0"/>
+    <aura:attribute name="filteredBillingSummary" type="Object[]"/>
+    <aura:attribute name="subTotalMap" type="Object[]" default="[]"/>
+    <!-- END CSM-12629 RReyes OCT-01-17-->
+    <!-- PROCEED MODAL1 -->
+    <div class="mov-modal mov-modal_proceed mov-modal_width-650" id="mov-proceed-modal1">
+        <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open modal-bg-close">
+            <div class="slds-modal__container">
+                
+                <div class="slds-modal__content slds-p-around_xx-large mov-background-color_ffffff" id="modal-content-id-1">
+                    <h2 class="text-center">
+                        We’ll reconnect your service within 24 hours from the time your payment is posted.
+                        <br /><br /> <!-- START/END CSM-14102 RReyes OCT-26-17 -->
+                        For payments made on holidays and weekends, reconnection services will be for immediate scheduling the next business day.
+                        <br /><br /> <!-- START/END CSM-14102 RReyes OCT-26-17 -->
+                        <!-- START CSM-12629 RReyes OCT-01-17-->
+                        <!--Please note that reconnection fees will be reflected in your next bill.
+                        <br /-->
+                        <!-- END CSM-12629 RReyes OCT-01-17-->
+                        Reconnection fees will be reflected on your next bill.
+                        <br /><br /> <!-- START/END CSM-14102 RReyes OCT-26-17 -->
+                    	For further assistance, please call us at our 24/7 hotline at 16211 or business hotline at 16210.
+                    </h2>
+                    <div class="mov-button-group slds-p-top_large ok-cancel">
+                        <!-- START CSM-12629 RReyes OCT-01-17-->
+                        <a onclick="{! c.hideModal }" class="slds-button mov-button-transparent mov-button-transparent_gray mov-element_max-width-170 close-modal">Cancel</a>
+                        <a onclick="{! c.proceedModal }" class="slds-button mov-button mov-element_max-width-170 close-modal">I Agree</a>
+                        <!-- END CSM-12629 RReyes OCT-01-17-->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open mov-backdrop"></div>
+    </div>
+    <!-- END PROCEED MODAL1 -->	
+</aura:component>

@@ -1,0 +1,6 @@
+<apex:page >
+      URLFOR($Resource.jQueryMobile, 'vfimagetest.zip') }"/>
+
+   
+
+</apex:page>

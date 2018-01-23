@@ -1,0 +1,9 @@
+<apex:component access="global">
+  <table cellspacing="0" cellpadding="0" style="width: 100%; margin: 0 auto;">
+        <tr>
+            <td>
+                <img data-assetid="44" src="http://image.S7.exacttarget.com/lib/fe9213727c62077f75/m/1/059f2e8f-5974-4aa3-b4c8-8f61ca47bef8.jpg" height="auto" width="100%"/>
+            </td>
+        </tr>
+    </table> 
+</apex:component>

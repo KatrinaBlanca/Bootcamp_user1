@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Bundle__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Bundle</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Product2.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Bundle</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Bundle Line Items</relationshipLabel>
+        <relationshipName>Bundle_Line_Items</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>EAV__c</fullName>
+        <externalId>false</externalId>
+        <label>EAV</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Product2.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Discount, Commercial Product</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Bundles</relationshipLabel>
+        <relationshipName>Bundle_Line_Items1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Bundle Line Item</label>
+    <nameField>
+        <displayFormat>BLI-{0000000}</displayFormat>
+        <label>Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Bundle Line Items</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Active_Product_Values_Cantbe_Changed</fullName>
+        <active>true</active>
+        <errorConditionFormula>Bundle__r.IsActive = TRUE &amp;&amp; NOT(LastModifiedDate &lt;&gt; LastModifiedDate)</errorConditionFormula>
+        <errorMessage>Active product details cannot be edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Archived_Product_Values_Cantbe_Changed</fullName>
+        <active>true</active>
+        <errorConditionFormula>Bundle__r.Archived_Product__c  = TRUE &amp;&amp; NOT(LastModifiedDate &lt;&gt; LastModifiedDate)</errorConditionFormula>
+        <errorMessage>Archived product details cannot be edited</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cant_Add_New_Values_to_Active_Products</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() = TRUE  &amp;&amp; Bundle__r.IsActive = TRUE</errorConditionFormula>
+        <errorMessage>You cannot add new Bundle Line Items to an Active Bundle</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cant_Add_New_Values_to_Archived_Products</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() = TRUE  &amp;&amp;  Bundle__r.Archived_Product__c = TRUE</errorConditionFormula>
+        <errorMessage>You cannot add new Bundle Line Items to an Archived Bundle</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

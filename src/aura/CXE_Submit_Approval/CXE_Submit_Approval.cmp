@@ -1,0 +1,51 @@
+<!-- Description: Submit for approval custom -->
+<!-- Author: Jerson Poblete -->
+<!-- Date Created:  MAR-20-2017-->
+
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="CXE_SubmitApproval_CC">
+    <!-- CASE RECORD ID -->
+    <aura:attribute name="recordId" type="String"/>
+    <!-- COMMENTS -->
+    <aura:attribute name="comments" type="String"/>
+     <!-- SUBMIT APPROVAL BUTTON -->
+    <!-- START RReyes - 05/17/17 - changed onclick value to checkUser -->
+    <button class="slds-button slds-button--neutral" onclick="{!c.checkUser}">Submit for Approval</button>
+    <!-- END RReyes - 05/17/17 - changed onclick value to checkUser -->
+    <!-- SUBMIT APPROVAL MODAL BEGIN -->
+    <div aria-hidden="false" aura:id="setCommentDiv" role="dialog" class="slds-modal slds-fade-in-hide"> 
+    	 <div class="slds-modal__container">
+          	 <!-- SET COMMENT HEADER -->
+            <div class="slds-modal__header" style="margin-top: 90px;">
+                <h2 class="slds-text-heading--medium">Submit for Approval</h2>
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeCommentModal}">
+                    <c:svgIcon svgPath="/assets/icons/utility-sprite/svg/symbols.svg#close" category="utility" size="small" name="Close" />
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
+
+             <!-- SET COMMENT FORM -->
+            <div class="slds-modal__content slds-p-around--medium">
+                <h3 class="slds-section-title--divider"/>
+                <fieldset class="slds-form--compound">
+                    <div class="slds-form-element__group">
+                        <div class="slds-form-element__row">
+                            <!-- COMMENTS -->
+                            <div class="slds-form-element slds-size--1-of-2">
+                            <ui:inputTextArea label="Comment" class="dynamic" aura:id="comments"  value="{!v.comments}" maxlength="32000" rows="7"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <h4>Once you submit this record for approval, you might not be able to edit it or recall it from the approval process depending on your settings. Continue?</h4>
+             </div>
+             <!-- APPROVAL MODAL BUTTONS -->
+        <div class="slds-modal__footer">
+            <div class="slds-x-small-buttons--horizontal">
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeCommentModal}" >Cancel</button>
+                <!--lightning:button label="Submit" aura:id="submitApprovalProcess" onclick="{!c.submitApprovalController}"/-->
+                <lightning:button label="Submit" aura:id="submitApprovalProcessR2" onclick="{!c.submitApprovalControllerR2}"/>
+            </div>
+        </div>
+        </div>
+    </div>
+</aura:component>

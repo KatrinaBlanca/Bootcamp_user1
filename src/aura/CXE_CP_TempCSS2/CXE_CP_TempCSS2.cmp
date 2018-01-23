@@ -1,0 +1,24 @@
+<aura:component >
+	<style>
+        /* merged to tempCSS
+        .uiInput--checkbox input[type=checkbox]:checked, input.uiInput--checkbox[type=checkbox]:checked {
+            border-color: transparent;
+            box-shadow: none;
+            background-color: transparent;
+        }
+        */
+        
+        @media (max-device-width: 1024px) {
+        	.login-page {background: url('https://i.imgur.com/t7jFdrn.jpg') top center no-repeat #6b6c70; background-attachment: fixed;}
+        }
+        
+        @media (max-device-width: 768px) {
+        	.login-page {background: url('https://i.imgur.com/iwGbwSa.jpg') top center no-repeat #6b6c70; background-attachment: fixed;}
+        }
+        
+        @media (max-device-width: 420px) {
+        	.login-page {background: url('https://i.imgur.com/bL0ypEV.jpg') top center no-repeat #6b6c70; background-attachment: fixed;}
+        }
+        
+    </style>	
+</aura:component>

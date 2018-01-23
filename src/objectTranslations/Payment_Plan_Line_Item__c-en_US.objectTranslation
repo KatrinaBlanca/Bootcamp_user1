@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Payment Plan Line Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Payment Plan Line Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invoice Date --></label>
+        <name>Invoice_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Plan --></label>
+        <name>Payment_Plan__c</name>
+        <relationshipLabel><!-- Payment Plan Line Items --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

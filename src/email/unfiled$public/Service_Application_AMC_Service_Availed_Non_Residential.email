@@ -1,0 +1,17 @@
+Dear {!Case.Addressing_Customer__c},
+
+You have chosen our Accredited Meralco Contractor (AMC) to handle the installation of your service entrance. They will inform you when you can visit the business center to submit your documents, pay for your bill deposit amounting to {!Case.Deposit_Amount__c}, and sign your electric service contract.
+
+You are receiving this notification for your service application with the following details:  
+
+Application Reference Number: {!Case.CaseNumber} 
+Customer Name: {!Case.Full_Name__c}
+Service Type:  {!Case.Res_Non_Res_Description__c} 
+Service Address: {!Case.Service_Address_Unit_No__c}, {!Case.Service_Address_Street_No__c} {!Case.Service_Address_Street_Name__c}, {!Case.Service_Address_Subdivision__c}, {!Case.Service_Address_Barangay__c}, {!Case.Service_Address_City_Municiple__c}
+
+Should you need further assistance, our {!Case.OwnerTitle} {!Case.OwnerFirstName} {!Case.OwnerLastName} will be happy to assist you. Just log-in to your MERALCO Community account at https://meralco.force.com/customers.
+
+Thank you for allowing us to be of service to you.
+
+Sincerely,
+MERALCO

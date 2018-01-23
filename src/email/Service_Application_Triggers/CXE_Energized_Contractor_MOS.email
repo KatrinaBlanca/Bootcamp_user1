@@ -1,0 +1,43 @@
+<messaging:emailTemplate subject="MERALCO – Welcome to MERALCO!" recipientType="Contact" relatedToType="Case">
+    <messaging:htmlEmailBody >
+    <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Dear <b>{!relatedTo.Authorized_Representative_First_Name__c}</b>, <br/>
+        <br></br>
+        <br></br>
+        This is a confirmation on the completion of the application for modification of service with reference no. {!relatedTo.CaseNumber}.<br/>
+        <br></br>
+        Allow us to summarize the details of the electric service: <br/>
+        <br></br>
+        <b> 
+        Service Request/s: {!relatedTo.CXE_Service_Request_s__c} <br/>
+        Account Number: {!relatedTo.Account.Account_ID__c} <br/>
+        Service Identification No.: {!relatedTo.CXE_Service__r.SIN__c} <br/>
+        Registered Customer Name: {!relatedTo.Full_Name_Concatenated__c} <br/>
+        Service Address: {!relatedTo.CXE_Service_Address__c} <br/>
+        Billing Address: {!relatedTo.CXE_Service_Address__c} <br/>
+        Mobile No.: {!relatedTo.Mobile_No__c} <br/>
+        Email: {!relatedTo.Email_Address__c} <br/>
+        <br></br>
+        Contractor’s Business Name: {!relatedTo.CXE_Contractor_Name__c}<br/>
+        Representative’s Name: {!relatedTo.Authorized_Representative_First_Name__c +" "+ relatedTo.Authorized_Representative_Middle_Name__c +" "+ relatedTo.Authorized_Representative_Last_Name__c}<br/>
+        Designation: {!relatedTo.CXE_Authorized_Rep_Designation__c}<br/>
+        Mobile No. of Representative: {!relatedTo.Authorized_Rep_Primary_Contact_Number__c}<br/>
+        </b>
+        <br></br>
+        Should there be discrepancies with the above information, please call our 24-hour customer care hotline or email us at ask@meralco.com.ph.<br/>
+        <br></br>
+        We hope that we were able to make applying for electric service fast, easy, and convenient.<br/>
+        <br></br>
+        Thank you for allowing us to be of service. <br/>
+         <br></br>
+        <br></br>
+        <b>MERALCO </b><br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

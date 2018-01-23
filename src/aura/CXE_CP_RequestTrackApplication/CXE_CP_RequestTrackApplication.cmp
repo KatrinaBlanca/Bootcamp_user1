@@ -1,0 +1,182 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_RequestTrackApplication_CC">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="response" type="CXE_CP_PortalUtility.PortalData" />
+    <aura:attribute name="caseHistoryList" type="CXE_CaseHistoryWrapper[]"/>
+    <aura:attribute name="caseRecord" type="Case" default="{sobjectType: 'Case'}"/>
+    <aura:attribute name="isTerminate" type="Boolean" default="false"/>
+    <aura:attribute name="statusJourney" type="String" default=""/>
+    <aura:attribute name="isConglomerate" type="boolean" default="false"/> <!-- START/END R2C CSM-13274 Shayne 10/13/2017 -->
+    <c:CXE_CP_Header />
+    <!-- <c:CXE_CP_HeaderNavigation /> -->
+    <aura:handler name="setAttribute" event="c:CXE_CP_CXE_CP_MyBillsBillSummary_event" 
+            action="{!c.redirectToPBPage}"/> <!-- //CSM-14015 GGrandea 10.20.2017 -->
+    
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main mov-background-color_f7f7f7">
+        <div class="mov-breadcrumbs mov-breadcrumbs_modified slds-show" aura:id="myRequestTab">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <!--//START Breadcrumb-task GSerrano SEPT-25-17-->
+                            <!--<a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>-->
+                            <a onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <!-- <a href="javascript:void(0);">Requests</a>-->
+                            <a onclick="{!c.redirectToRequests}">Requests</a>
+                            <!--//END Breadcrumb-task GSerrano SEPT-25-17-->
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="mov-application-history">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                    <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small slds-show" aura:id="myRequest">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Requests</h3>
+                        </div>
+                        
+                        <!-- <ul class="slds-tabs_default__nav mov-nav-tabs mov-nav-tabs_aftersales mov-nav-tabs_requests mov-nav-tabs_aftersales__change-details" role="tablist">
+                            <li class="slds-tabs_default__item tablinks" role="presentation" onclick="openTab(event, this)">
+                                <a role="tab" data-aura-id="1" onclick="{! c.onClickTab }">
+                                    <span>1</span>
+                                    APPLY
+                                </a>
+                            </li>
+                            <li class="slds-tabs_default__item tablinks" role="presentation" onclick="openTab(event, this)">
+                                <a role="tab" data-aura-id="2" onclick="{! c.onClickTab }">
+                                    <span>2</span>
+                                    EVALUATE
+                                </a>
+                            </li>
+                            <li class="slds-tabs_default__item tablinks" role="presentation" onclick="openTab(event, this)">
+                                <a role="tab" data-aura-id="3" onclick="{! c.onClickTab }">
+                                    <span>3</span>
+                                    INSPECT
+                                </a>
+                            </li>
+                            <li class="slds-tabs_default__item tablinks" role="presentation" onclick="openTab(event, this)">
+                                <a role="tab" data-aura-id="4" onclick="{! c.onClickTab }">
+                                    <span>4</span>
+                                    COMPLETE
+                                </a>
+                            </li>
+                            <li class="slds-tabs_default__item tablinks" role="presentation" onclick="openTab(event, this)">
+                                <a role="tab" data-aura-id="5" onclick="{! c.onClickTab }">
+                                    <span>5</span>
+                                    ENERGIZE
+                                </a>
+                            </li>
+                        </ul> -->
+                        
+                        <div class="mov-table-group mov-background-color_ffffff mov-element-box-shadow slds-m-vertical_large mov-table-group_custom a">
+                            <table class="slds-table slds-table_col-bordered slds-table_cell-buffer mov-table mov-background-color_ffffff mov-table-striped">
+                                <thead>
+                                    <tr class="slds-text-title_caps">
+                                        <th scope="col">
+                                            <div class="slds-truncate">
+                                                REFERENCE NO.
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">
+                                                REQUEST TYPE
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">
+                                                DATE RECEIVED
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">
+                                                ADDRESS
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">
+                                                STATUS
+                                            </div>
+                                        </th>
+                                        <th scope="col">
+                                            <div class="slds-truncate">
+                                                REMARKS
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                    
+                                    <!-- //response -->
+                                    <aura:iteration items="{!v.response.caseList}" var="caseRecord">
+                                        <tr>
+                                            <td data-label="Ref #" scope="row">
+                                                <div class="slds-truncate">
+                                                    <ui:outputURL value="" label="{!caseRecord.CaseNumber}" alt="{!caseRecord.Last_Name__c}" click="{!c.onClickCaseNumber}"/>
+                                                </div>
+                                            </td>
+                                            <td data-label="Request Type">
+                                                <div class="slds-truncate">
+                                                    {!caseRecord.RecordType.Name}
+                                                </div>
+                                            </td>
+                                            <td data-label="Received Date">
+                                                <div class="slds-truncate">
+                                                    <ui:outputDate format="MM/dd/YYYY" value="{!caseRecord.CreatedDate}"/>
+                                                </div>
+                                            </td>
+                                            <td data-label="Address">
+                                                <div class="slds-truncate">
+                                                    {!caseRecord.CXE_Service_Address__c}
+                                                </div>
+                                            </td>
+                                            <td data-label="Status">
+                                                <div class="slds-truncate">
+                                                    {!caseRecord.Status}
+                                                </div>
+                                            </td>
+                                            <td data-label="Remarks">
+                                                <div class="slds-truncate">
+                                                    {!v.response.caseStatusMap.caseRecord.Id}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- Right Side Nav (Helper Nav) -->
+                    <div aura:id="caseHistory" class="slds-size_1-of-1 mov-xs slds-p-horizontal_x-small slds-hide">
+                        <c:CXE_CP_RequestTrackApplicationDetail aura:id="caseHistoryDetail" caseHistoryList="{!v.caseHistoryList}" caseRecord="{!v.caseRecord}" isTerminate="{!v.isTerminate}" statusJourney="{!v.statusJourney}"/>
+                    </div>
+                    <!-- CSM 13713 @gibs -->
+                    <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 slds-p-horizontal_x-small CXE_marginCentralizer slds-show" aura:id="hideMainWidget">
+                        <!-- START CSM-13944 JRances / UAT, 'Request for a New Service' link in the Requests page is not working. -->
+                        <!-- <a class="slds-button mov-button-transparent mov-element_max-width-295" href="javascript:void(0);">Request for an Electric Service</a> -->                     
+                        <ui:button aura:id="reqElecServ" class="slds-button mov-button-transparent mov-element_max-width-295" press="{!c.redirectToStartServiceForm}">Request for an Electric Service</ui:button>
+                        <!-- END CSM-13944 JRances -->
+                        <div class="mov-dashboard_misc-list">
+                            <c:CXE_CP_WidgetPaperlessSubscription />
+                            <c:CXE_CP_WidgetEBills isConglomerate="{!v.isConglomerate}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- @gibs: should be loaded when user clicks a link from the list of request -->
+    <!-- <c:CXE_CP_RequestTrackApplicationDetail /> -->
+    
+</aura:component>

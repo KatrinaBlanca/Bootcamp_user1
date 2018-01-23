@@ -1,0 +1,21 @@
+<apex:page standardController="case" extensions="ContractTermination">
+<!-- <apex:sectionHeader title="{!title}" subtitle="{!subtitle}"/>
+<apex:pagemessages />
+<apex:form >
+<apex:pageBlock title="Active Agreements" >
+<apex:pageBlockTable value="{!agreementWrap}" var="act"> 
+<apex:column headerValue="Select" ><apex:inputCheckbox value="{!act.Sel}" /></apex:column>
+<apex:column headervalue="Agreement Number" value="{!act.agreement.name}"/>
+<apex:column headervalue="Commercial Product" value="{!act.agreement.Commercial_Product__c}"/>
+<apex:column headervalue="Advance Amount" value="{!act.agreement.Advance_amount__c}"/>
+<apex:column headervalue="Agreement Start Date" value="{!act.agreement.Agreement_Start_Date__c}"/>
+<apex:column headervalue="Agreement End Date" value="{!act.agreement.Agreement_End_Date__c}"/>
+<apex:column headervalue="Charges for breach of contract" value="{!act.agreement.Charges_for_breach_of_contract__c}"/>
+</apex:pageBlockTable><br/><br/>
+<apex:pageblockSection columns="2">
+</apex:pageblockSection>
+</apex:pageBlock>
+<apex:commandButton value="Save" action="{!save}"/>
+<apex:commandButton value="Cancel" action="{!Cancel}"/>
+</apex:form> -->  
+</apex:page>

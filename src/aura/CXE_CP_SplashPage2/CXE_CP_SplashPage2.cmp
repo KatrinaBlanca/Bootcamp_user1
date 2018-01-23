@@ -1,0 +1,51 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="caseNumber" type="String" default=""/>
+    <aura:attribute name="tabToShow" type="String" required="false" description="" access="private"/>
+    
+    <c:CXE_CP_Header />
+    <div class="login-page">
+        <div class="main-wrapper">
+            <div class="slds-grid slds-wrap">
+                
+                <aura:renderIf isTrue="{! v.tabToShow=='tab-default-1' || empty(v.tabToShow) }">
+                    <c:CXE_CP_SplashPageHeader />
+                </aura:renderIf>
+                
+                <aura:renderIf isTrue="{! v.tabToShow=='tab-default-2'}">
+                    <c:CXE_CP_SplashPageHeader2 />
+                </aura:renderIf>
+                
+                
+                <div class="slds-large-size_1-of-2 slds-max-large-size_2-of-2">
+                    
+                    <div class="login-page__tabs">
+                        <div class="slds-tabs_default">
+                            
+                            <!-- tabs -->
+                            <ul class="slds-tabs_default__nav mov-tabs_default__nav_splash" role="tablist">
+                                <li aura:id="tabpage" class="slds-tabs_default__item mov-tabs_default__item mov-tabs_default__item_login slds-has-focus" title="Item One" role="presentation"><a onclick="{!c.changeTab}" class="slds-tabs_default__link mov-tabs_default__link tablinks" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item" data-tab="tab-default-1">Log in</a></li>
+                                <li aura:id="tabpage" class="slds-tabs_default__item mov-tabs_default__item mov-tabs_default__item_signup" title="Item Two" role="presentation"><a onclick="{!c.changeTab}" class="slds-tabs_default__link mov-tabs_default__link tablinks active" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item" data-tab="tab-default-2">Sign up</a></li>
+                            </ul>
+                            
+                            <!-- tab 1 content -->
+                          <div aura:id="tab-default-1" class="slds-tabs_default__content mov-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-1__item">
+
+                                  <c:CXE_CP_SplashPageLoginForm />
+
+                            </div>
+                            
+                            <!-- tab 2 content -->
+                            <div aura:id="tab-default-2" class="slds-tabs_default__content mov-tabs_default__content mov-register slds-show" role="tabpanel" aria-labelledby="tab-default-2__item">            
+
+                                <c:CXE_CP_SplashPageSelfRegistrationComponent caseNumber="{!v.caseNumber}"/>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,470 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_ServiceApplication">
+    <ltng:require styles="{!$Resource.CXE_SLDS + '/salesforce-lightning-design-system.min.css'}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="caseApplication" type="Case" default="{sobjectType: 'Case'}"/>
+    <!-- <aura:attribute name="notificationOptions" type="String[]" default="SMS,Email,Both"/> -->
+    <aura:attribute name="notificationOptions" type="String[]" default="Email"/>
+    <aura:attribute name="yesNoOptions" type="String[]" default="Yes,No"/>
+    <aura:attribute name="serviceModifications" type="String[]"/>
+    <aura:attribute name="contractModifications" type="String[]"/>
+    <aura:attribute name="persona" type="String" default="Business"/>
+    <aura:attribute name="caseNumber" type="String"/>
+    <aura:attribute name="serviceRequest" type="String" default=""/>
+    <aura:attribute name="activeTab" type="String" default="One"/>
+    <aura:attribute name="selectedModification" type="String"/>
+    <aura:attribute name="hasSubmitted" type="Boolean" default="false"/>
+    <aura:attribute name="relationToCustomerPicklist" type="String[]"/>
+    <aura:attribute name="hasPreferredNotification" type="Boolean" default="false"/>
+    <aura:attribute name="caseId" type="Id"/>
+    <aura:attribute name="isValidFileSize" type="Boolean"/>
+
+    <aura:handler event="c:CXE_CheckFileEvent" action="{!c.checkFile}" />
+
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="slds">
+            <h2 class="slds-text-heading_medium slds-text-align_center">Modify Service</h2>
+            <div class="slds-tabs_scoped slds-m-top--large">
+                <ul class="slds-tabs_scoped__nav CXE_scopeTabLineHeight-fix" role="tablist">
+                    <li aura:id="One" class="slds-tabs_scoped__item slds-is-active" title="Request to Modify" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="0" aria-selected="true" aria-controls="modify-tab-scoped-1" id="modify-tab-scoped-1__item" onclick="{!c.goToTab1}">1<br />Request to Modify</a>
+                    </li>
+                    <li aura:id="Two" class="slds-tabs_scoped__item" title="Contact Info" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="1" aria-selected="false" aria-controls="modify-tab-scoped-2" id="modify-tab-scoped-2__item" onclick="{!c.goToTab2}">2<br />Contact Info</a>                    
+                    </li>                    
+                    <li aura:id="Three" class="slds-tabs_scoped__item" title="Value Added Services" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="1" aria-selected="false" aria-controls="modify-tab-scoped-3" id="modify-tab-scoped-3__item" onclick="{!c.goToTab3}">3<br />Value Added Services</a>
+                    </li>
+                    <li aura:id="Four" class="slds-tabs_scoped__item" title="Terms and Conditions" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="1" aria-selected="false" aria-controls="modify-tab-scoped-4" id="modify-tab-scoped-4__item" onclick="{!c.goToTab4}">4<br />Terms and Conditions</a>
+                    </li>
+                    <li aura:id="Five" class="slds-tabs_scoped__item" title="Confirmation" role="presentation">
+                        <a class="slds-tabs_scoped__link" role="tab" tabindex="1" aria-selected="false" aria-controls="modify-tab-scoped-5" id="modify-tab-scoped-5__item" >5<br />Confirmation</a>
+                    </li>
+                </ul>
+                <div aura:id="contentOne" id="modify-tab-scoped-1" class="slds-tabs_scoped__content slds-show" role="tabpanel" aria-labelledby="modify-tab-scoped-1__item">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="text-input-id-1">Please indicate the Service No. *</label>
+                        <button aria-describedby="help" class="slds-button slds-button_icon CXE_ServiceAppSINHelpIcon">
+                            <i class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true" style="border-radius: 8px;
+                                padding: 3px;
+                                background-color: #FC7019;
+                                color: white;
+                                width: 16px;
+                                display: inline-block;">!</i>
+                            <span class="slds-assistive-text">Help</span>
+                        </button>
+                        <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" id="help" role="tooltip" style="position: absolute;
+                             top: -255px;
+                             left: 195px;
+                             margin-left: -1rem;">
+                            <div class="slds-popover__body slds-text-longform">
+                            <p>
+                                <img src="{!$Resource.CXE_SINTooltip}" />
+                            </p>
+                            </div>
+                        </div>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="modifySIN" placeholder="123456789000" class="slds-input" value="{!v.caseApplication.Account_No__c}"  required="true"/>
+                        </div>
+                    </div>
+
+                    <div class="slds-form-element slds-m-top--large">
+                        <label class="slds-form-element__label" for="text-input-id-1">What do you want to do?</label>
+                        <fieldset class="slds-form-element slds-m-top--small">   
+                            <div class="slds-form-element">                         
+                                <ui:inputRadio aura:id="serviceMod" name="serviceRequestOption" change="{!c.onServiceRequestRadio}" text="Service Modification"/>
+                                <label class="slds-form-element__label slds-p-left--small">Service Modification</label>                            
+                                <button aria-describedby="help" class="slds-button slds-button_icon CXE_ServiceAppSINHelpIcon">
+                                        <i class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true" style="border-radius: 8px;
+                                                                                                                                padding: 3px;
+                                                                                                                                background-color: #FC7019;
+                                                                                                                                color: white;
+                                                                                                                                width: 16px;
+                                                                                                                                display: inline-block;">!</i>
+                                    <span class="slds-assistive-text">Help</span>
+                                </button>
+                                <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" id="help" role="tooltip" style="position: absolute; top: -50px;">
+                                    <div class="slds-popover__body slds-text-longform">
+                                        These are  requests about your electricity load or meters.
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="slds-form-element">   
+                            <div aura:id="serviceRequestServiceOption" class="slds-form-element__control slds-m-left--medium slds-hide">
+                                <aura:iteration items="{!v.serviceModifications}" var="serviceModification">
+                                    <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="{!serviceModification}"/>
+                                    <label class="slds-form-element__label slds-p-left--small">{!serviceModification}</label> <br />
+                                </aura:iteration>
+                            </div>
+                            <ui:inputRadio aura:id="contractMod" name="serviceRequestOption" change="{!c.onServiceRequestRadio}" text="Contract Modification"/>
+                            <label class="slds-form-element__label slds-p-left--small">Contract Modification</label>
+                            <button aria-describedby="help" class="slds-button slds-button_icon CXE_ServiceAppSINHelpIcon">
+                                        <i class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true" style="border-radius: 8px;
+                                                                                                                                padding: 3px;
+                                                                                                                                background-color: #FC7019;
+                                                                                                                                color: white;
+                                                                                                                                width: 16px;
+                                                                                                                                display: inline-block;">!</i>
+                                    <span class="slds-assistive-text">Help</span>
+                                </button>
+                                <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" id="help" role="tooltip" style="position: absolute; top: -70px;">
+                                    <div class="slds-popover__body slds-text-longform">
+                                        These are requests about changes in your contract information e.g. changing from single name to married name, transfer of bill ownership, etc.
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div aura:id="serviceRequestContractOption" class="slds-form-element__control slds-m-left--medium slds-hide">
+                                <aura:iteration items="{!v.contractModifications}" var="contractModification">
+                                    <ui:inputRadio aura:id="serviceReqForContract" name="serviceOption" change="{!c.onContractRadio}" text="{!contractModification}"/>
+                                    <label class="slds-form-element__label slds-p-left--small">{!contractModification}</label> <br />
+                                </aura:iteration>
+                                <div class="slds-form-element slds-m-top--large">
+                                    <label class="slds-form-element__label" for="text-input-id-1">To new registered customer</label>
+
+                                    <aura:if isTrue="{!v.persona == 'Business'}" >
+                                        <div class="slds-grid slds-wrap slds-grid_pull-padded-small">
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-1 slds-medium-size--1-of-1 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="businessName" placeholder="Meralco" class="slds-input" value="{!v.caseApplication.CXE_Web_Business_Name__c}" label="Company Name" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-1 slds-medium-size--1-of-1 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="doingBusinessAs" placeholder="Meralco" class="slds-input" value="{!v.caseApplication.CXE_Web_Doing_Business_As__c}" label="Doing Business As" labelClass="slds-form-element__label"/>
+                                            </div>
+                                            
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-1 slds-medium-size--1-of-1 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="businessEmail" placeholder="cxe_business@meralco.com" class="slds-input" value="{!v.caseApplication.CXE_Web_Business_Primary_Email__c}" label="Business Email Address" labelClass="slds-form-element__label"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-2 slds-medium-size--1-of-2 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="businessLandline" placeholder="+6321234567" class="slds-input" value="{!v.caseApplication.CXE_Web_Business_Landline__c}" label="Business Landline" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-2 slds-medium-size--1-of-2 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-2 slds-medium-size--1-of-2 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="modifyBusinessFirstname" placeholder="Juan" class="slds-input" value="{!v.caseApplication.CXE_Web_First_Name__c}" label="First Name" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-2 slds-medium-size--1-of-2 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="modifyBusinessLastname" placeholder="Dela Cruz" class="slds-input" value="{!v.caseApplication.CXE_Web_Last_Name__c}" label="Last Name" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-1 slds-medium-size--1-of-1 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="modifyBusinessEmailAddress" placeholder="cxe_user@meralco.com" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Email__c}" label="Email Address" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-2 slds-medium-size--1-of-2 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="modifyBusinessMobileNumber" placeholder="+631234567890" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Mobile__c}" label="Mobile Number" labelClass="slds-form-element__label" required="true"/>
+                                            </div>                              
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                                <ui:inputText aura:id="businessDesignation" placeholder="Manager" class="slds-input" value="{!v.caseApplication.CXE_Authorized_Rep_Designation__c}" label="Designation" labelClass="slds-form-element__label" required="true"/>                                    
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.persona == 'Individual'}" >
+                                        <div class="slds-grid slds-wrap slds-grid_pull-padded-small">
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                                <ui:inputText aura:id="modifyFirstname" placeholder="Juan" class="slds-input" value="{!v.caseApplication.CXE_Web_First_Name__c}" label="First Name" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                                <ui:inputText aura:id="modifyMiddlename" placeholder="Pedro" class="slds-input" value="{!v.caseApplication.CXE_Web_Middle_Name__c}" label="Middle Name" labelClass="slds-form-element__label"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                                <ui:inputText aura:id="modifyLastname" placeholder="Dela Cruz" class="slds-input" value="{!v.caseApplication.CXE_Web_Last_Name__c}" label="Last Name" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-1 slds-medium-size--1-of-1 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                                <ui:inputText aura:id="modifyEmailAddress" placeholder="cxe_user@meralco.com" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Email__c}" label="Email Address" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-2 slds-medium-size--1-of-2 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                                <ui:inputText aura:id="modifyMobileNumber" placeholder="+631234567890" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Mobile__c}" label="Mobile #" labelClass="slds-form-element__label" required="true"/>
+                                            </div>
+
+                                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-2 slds-medium-size--1-of-2 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                                <ui:inputText aura:id="modifyLandlineNumber" placeholder="021234567" class="slds-input" value="{!v.caseApplication.CXE_Web_Primary_Phone__c}" label="Landline" labelClass="slds-form-element__label"/>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>                    
+                    <br />
+                    <div class="slds-text-align--center">                        
+                        <ui:button aura:id="modifyGoToTab2" class="slds-button slds-button_brand" press="{!c.goToTab2}" label="NEXT"/>
+                    </div>
+                </div>
+                
+                <div aura:id="contentTwo" id="modify-tab-scoped-2" class="slds-tabs_scoped__content  slds-hide" role="tabpanel" aria-labelledby="modify-tab-scoped-2__item">
+                    <div class="slds-form-element slds-m-top--large">
+                        <label class="slds-form-element__label" for="text-input-id-1">Who will be processing the request for modification?</label>
+                        <div class="slds-grid slds-wrap slds-grid_pull-padded-small">
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repFirstname" placeholder="Juan" class="slds-input" value="{!v.caseApplication.Authorized_Representative_First_Name__c}" label="First Name" labelClass="slds-form-element__label" required="true"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="RepMiddlename" placeholder="Pedro" class="slds-input" value="{!v.caseApplication.Authorized_Representative_Middle_Name__c}" label="Middle Name" labelClass="slds-form-element__label"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repLastname" placeholder="Dela Cruz" class="slds-input" value="{!v.caseApplication.Authorized_Representative_Last_Name__c}" label="Last Name" labelClass="slds-form-element__label" required="true"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repEmailAddress" placeholder="cxe_user@meralco.com" class="slds-input" value="{!v.caseApplication.Authorized_Representative_Email__c}" label="Email Address" labelClass="slds-form-element__label" required="true"/>
+                            </div>
+
+                            <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                <ui:inputText aura:id="repMobileNumber" placeholder="+631234567890" class="slds-input" value="{!v.caseApplication.Authorized_Rep_Primary_Contact_Number__c}" label="Mobile Number" labelClass="slds-form-element__label" required="true"/>
+                            </div>
+                            <aura:if isTrue="{!or(v.persona == 'Individual', v.persona == 'Contractor')}" >  
+                                <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1of-1">
+                                    <!-- <label class="slds-form-element__label">Relationship</label>
+                                    <force:inputField class="dynamic" aura:id="RelationToCustomer" value="{!v.caseApplication.Relationship__c}"/> -->
+                                    <ui:inputSelect aura:id="selectedRelationToOwner" labelClass="slds-form-element__label" label="Relation to Customer" change="{!c.onChangeRelationToOwner}">
+                                        <aura:iteration items="{!v.relationToCustomerPicklist}" var="relationToOwner">
+                                             <ui:inputSelectOption text="{!relationToOwner}" label="{!relationToOwner}"/>
+                                        </aura:iteration>
+                                    </ui:inputSelect>                                    
+                                </div>
+                            </aura:if>
+                            <aura:if isTrue="{!and(v.persona == 'Business',v.selectedModification == 'Service Modification')}" >  
+                                <div class="slds-p-top--small slds-p-horizontal_small slds-form-element__control slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                                    <ui:inputText aura:id="designation" placeholder="Manager" class="slds-input" value="{!v.caseApplication.CXE_Authorized_Rep_Designation__c}" label="Designation" labelClass="slds-form-element__label"/>                                    
+                                </div>
+                            </aura:if>
+                            
+                        </div>
+                        <br />
+
+                        
+                        
+                        <br />
+                        <div class="slds-text-align--center">
+                            <!-- <button class="slds-button slds-button_brand CXE_button-toPage1">PREVIOUS</button> -->
+                            <!-- <button class="slds-button slds-button_brand CXE_button-toPage3">NEXT</button> -->
+                            <ui:button aura:id="modifyGoToTab3" class="slds-button slds-button_brand" press="{!c.goToTab3}" label="NEXT"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div aura:id="contentThree" id="modify-tab-scoped-3" class="slds-tabs_scoped__content  slds-hide" role="tabpanel" aria-labelledby="modify-tab-scoped-3__item">
+                    <!-- <div class="slds-hide"> -->
+                        <div class="CXE_color--gray slds-m-top--small slds-large-size--3-of-4 slds-medium-size--3-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1 CXE_text--size-14">How would you like to be updated about the status of this application?</div>
+                        <div class="slds-m-top--small slds-large-size--1-of-4 slds-medium-size--1-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                            <aura:iteration items="{!v.notificationOptions}" var="notificationOption">
+                                <ui:inputRadio name="notifications" change="{!c.onNotificationRadio}" text="{!notificationOption}"/>
+                                <label class="slds-p-left--small">{!notificationOption}</label><br />
+                            </aura:iteration>
+                        </div>
+                        <br />
+                    <!-- </div> -->
+                    <div class="slds-form-element"> 
+                        <label class="CXE_color--gray slds-m-top--small slds-large-size--3-of-4 slds-medium-size--3-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1 CXE_text--size-14">Would you like our Accredited Meralco Contractors to process your electric service application? </label>
+                        <button aria-describedby="help" class="slds-button slds-button_icon CXE_ServiceAppSINHelpIcon">
+                                <i class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true" style="border-radius: 8px;
+                                                                                                                        padding: 3px;
+                                                                                                                        background-color: #FC7019;
+                                                                                                                        color: white;
+                                                                                                                        width: 16px;
+                                                                                                                        display: inline-block;">!</i>
+                            <span class="slds-assistive-text">Help</span>
+                        </button>
+                        <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" id="help" role="tooltip" style="position: absolute;
+                                                                                                                               top: -165px;">
+                            <div class="slds-popover__body slds-text-longform">
+                                <p>Accredited Meralco Contractors are third party electricians or contractors who specialize in constructing service entrances that is required for your electricity service. They also specialize in processing service applications and getting necessary permits from local governments. They are not representatives or agents of Meralco. For more information, please visit <a href="https://www.amc.org.ph">www.amc.org.ph</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-m-top--small slds-large-size--1-of-4 slds-medium-size--1-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1">
+                        <aura:iteration items="{!v.yesNoOptions}" var="yesNo">
+                            <ui:inputRadio name="yesNoAMC" change="{!c.onYesNoAMC}" text="{!yesNo}"/>
+                            <label class="slds-p-left--small">{!yesNo}</label> <br />
+                        </aura:iteration>
+                    </div>
+                    <br />
+                    <p aura:id="yesAMCNotif" class="slds-size--1-of-1 slds-p-around--small slds-hide" style="background-color: palegreen;
+    border: 1px solid green;">Great! An AMC will get in touch with you within 3 days. They will be assisting you with the application process making it hassle-free! They can take care of all the needed documents up to the technical requirements.</p>
+                    <br />
+
+                    <br/>
+                    <p class="CXE_color--gray slds-m-top--small slds-large-size--3-of-4 slds-medium-size--3-of-4 slds-small-size--1-of-1 slds-max-small-size--1-of-1 CXE_text--size-12">Attach documents</p>
+                    <br/>
+                    <c:CXE_FileUpload parentId="{!v.caseId}" aura:id="fileUploadCmp" />
+                    <br/>
+
+                    <div class="slds-text-align--center">
+                        <ui:button aura:id="modifyGoToTab4" class="slds-button slds-button_brand" press="{!c.goToTab4}" label="NEXT"/>
+                    </div>
+                </div>
+
+                <div aura:id="contentFour" id="modify-tab-scoped-4" class="slds-tabs_scoped__content slds-hide" role="tabpanel" aria-labelledby="modify-tab-scoped-4__item">
+                    <div class="slds-p-around--small slds-scrollable--y" style="width: 80%; margin: 0 auto; border: 1px solid black; max-height: 300px;">
+<!---->
+                      
+                        <article> <!--<h2>Privacy Policy</h2>--><h1>Privacy Policy</h1>This Privacy Policy covers your personal information when transacting or doing business with Manila Electric Company (individually and collectively known as “MERALCO”, “we”, “us” or “our”).<br /><br />MERALCO cares for your personal information and takes your privacy seriously.&nbsp; We are committed to ensuring that your personal information is protected from collection to disposal.&nbsp;<br /><br />This Privacy Policy is effective 22 May 2017.<br />&nbsp;<br /><strong>WHAT WE COLLECT</strong><br />&nbsp;<br /><strong>A.&nbsp;&nbsp; </strong><strong>From prospective and existing customers, including customers with terminated services</strong><br />&nbsp;
+<ol> <li>Information you provide to us when you apply for service, such as your name, address, phone number, email address, Tax Identification Number (TIN), evidence of authority to occupy (e.g., contract of lease, Transfer Certificate of Title, Special Power of Attorney (SPA), Undertaking / Authorization from owner of the premises) and, if applicable, details of your authorized representative;</li>
+</ol> <ol> <li value="2">Billing and payment information used to pay your electric consumption, such as your banking (for auto debit arrangement) and credit card (for auto charge arrangement) information. However, details of the payment instrument (like prepaid card, debit card, credit card) used to pay your bills via the Meralco Customer Portal are captured and processed by the payment gateway service provider;Information to determine eligibility to participate in certain energy programs or services, such as peak-off-peak rates (POP), net metering, Interruptible Load Program (ILP), demand side management (DSM), etc.;</li>
+</ol> <ol> <li value="3">Information you fill out in any form on our website, such as, when you wish to contact us to lodge your concerns, to register at our customer portal, to avail of our on-line application, outage notifications, and billing and/or payment services;</li>
+</ol> <ol> <li value="4">Information you give us when you communicate with MERALCO and/or any of our representatives (e.g., Call Center Representatives, Relationship Managers, etc.), such as with respect to inquiries and complaint details on the quality and reliability of electric service;</li>
+</ol> <ol> <li value="5">Responses you or your representative provide when you participate in our customer surveys;</li>
+</ol> <ol> <li value="6">Information you provide for verification purposes (e.g., to facilitate refunds or to avail of zero-rated VAT transactions), such as photocopy of a valid / government-issued identification card or foreign passport;</li>
+</ol> <ol> <li value="7">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                            </ol><br /><strong>B.&nbsp;&nbsp; </strong><strong>From prospective, active and separated employees</strong><br />&nbsp;
+<ol> <li>Information you submit when you apply at MERALCO for work, including what is contained in your resume or curriculum vitae and application form (e.g., work references);</li>
+</ol> <ol> <li value="2">Information we collect during the processing of your application, such as testing results, employment offer, results of character investigation, and pre-employment medical assessment;</li>
+</ol> <ol> <li value="3">Information we collect and maintain about you during your employment, such as your payroll information, including but not limited to government mandated and third party remittances like SSS, Philhealth, and Pag-ibig contributions, taxes, bank account information; wages; entitlements and benefits ; health and welfare benefits; medical and dental care records; beneficiary and emergency contact information; training and certifications, performance evaluation; sanctions; employment changes / work history;</li>
+</ol> <ol> <li value="4">Information we retain about you even after your separation from service, such as beneficiaries, and contact information;</li>
+</ol> <ol> <li value="5">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                            </ol><br /><strong>C.&nbsp;&nbsp; </strong><strong>From Vendors, Suppliers or Contractors</strong><br />&nbsp;
+<ol> <li>Information you submit to MERALCO in your application for accreditation, use of supply chain application system, and/or processing of payments, such as, your name, tax identification number, address, contact details, educational attainment, work experience and banking information;</li>
+</ol> <ol> <li value="2">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+</ol>
+                            &nbsp;<br /><strong>D.&nbsp;&nbsp; </strong><strong>From Shareholders</strong><br />&nbsp;
+<ol> <li>The information you submit to us when you become a shareholder of or in the course of being a shareholder of MERALCO like your name, address, contact details, marital status, government issued identification, and if applicable, details of your authorized representative and heir/s;</li>
+</ol> <ol> <li value="2">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                            </ol><br /><strong>E.&nbsp;&nbsp; </strong><strong>From Guests / Visitors </strong><br />&nbsp;
+<ol> <li>The information you provide when you enter our premises such as your name, address, vehicle type and plate number or conduction sticker number;</li>
+</ol> <ol> <li value="2">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                            </ol><br /><strong>WHAT WE DO WITH THE INFORMATION WE GATHER</strong><br /><br />MERALCO stores, processes, and analyzes the information that you provide to us for purposes, including, but not limited to:<br /><br /><strong>A.&nbsp;&nbsp; </strong><strong>For our customers</strong><br />&nbsp;
+<ol> <li>providing and continuously improving our electric services, as well as managing your account</li>
+</ol> <ol> <li value="2">responding to your inquiry, concern or complaint</li>
+</ol> <ol> <li value="3">sending information about our programs (POP, ILP) and service offerings (DSM, etc) that may be of interest to you</li>
+</ol> <ol> <li value="4">sending messages related to your services such as outage notifications, updates, alerts, and other information that you request</li>
+</ol> <ol> <li value="5">enabling us to accept bill payments according to your enrolled payment mode &nbsp;(i.e., automatic debit from your bank account)</li>
+</ol> <ol> <li value="6">verifying your identity when you access your account through the various customer engagement channels (e.g., e-mail, website, mobile application, via phone call, walk-in)</li>
+</ol> <ol> <li value="7">verifying your identity and eligibility to claim refunds</li>
+</ol>
+                            &nbsp;<br /><strong>B.&nbsp;&nbsp; </strong><strong>For our prospective, active and separated employees</strong><br />&nbsp;
+<ol> <li>evaluating your eligibility for initial employment, including the verification of your qualifications and character references (background checking)</li>
+</ol> <ol> <li value="2">administering your pay, statutory deductions, entitlements, and benefits</li>
+</ol> <ol> <li value="3">complying with applicable statutory and regulatory requirements and submissions</li>
+</ol> <ol> <li value="4">conducting performance reviews and rewards</li>
+</ol> <ol> <li value="5">establishing appropriate training and/or developmental interventions</li>
+</ol> <ol> <li value="6">administering disciplinary action and sanction</li>
+</ol> <ol> <li value="7">collecting and maintaining contact information</li>
+</ol> <ol> <li value="8">maintaining your employment records</li>
+</ol> <ol> <li value="9">processing employee work-related claims (e.g. worker compensation, insurance claims, etc.)</li>
+</ol> <ol> <li value="10">developing health and wellness programs</li>
+                            </ol><br /><strong>C.&nbsp;&nbsp; </strong><strong>For our Vendors, Suppliers or Contractors</strong><br />&nbsp;
+<ol> <li>verifying and confirming your identity as a vendor as part of your accreditation</li>
+</ol> <ol> <li value="2">conducting business with you</li>
+</ol> <ol> <li value="3">establishing and managing business relationships with you</li>
+</ol> <ol> <li value="4">facilitating the payment of your invoices for any goods or services you have delivered/rendered</li>
+</ol> <ol> <li value="5">complying with statutory, legal and regulatory requirements</li>
+</ol> <ol> <li value="6">updating or maintaining your vendor account information</li>
+</ol> <ol> <li value="7">establishing details of your authorized contact persons for the goods and/or services you supply</li>
+</ol> <ol> <li value="8">responding to your questions, comments, and feedback or informing you about our requirements, programs, or advisories by letter, e-mail, telephone or other media for internal administrative purposes, such as auditing, data analysis, database records management</li>
+</ol><br /><strong>D.&nbsp;&nbsp; </strong><strong>For our Shareholders</strong>&nbsp;<br />&nbsp;
+<ol> <li>maintaining our shareholder register</li>
+</ol> <ol> <li value="2">managing your account and our relationship with you</li>
+</ol> <ol> <li value="3">handling dividend or any other payments</li>
+</ol> <ol> <li value="4">facilitating communications with you, including responding to your queries and requests, sending notices of general meetings, annual reports and shareholder circulars to you, registering shareholders at general meetings and shareholders’ events including without limitation to, verification of your identity and/or your proxy</li>
+</ol> <ol> <li value="5">for legal and investor relations purposes</li>
+</ol><br /><strong>E.&nbsp;&nbsp; </strong><strong>For our visitors / guests</strong><br />&nbsp;
+<ol> <li>establishing your identity</li>
+</ol> <ol> <li value="2">recording the purpose of your visit</li>
+</ol> <ol> <li value="3">monitoring visitor’s activities inside the company premises, including ingress and egress of equipment, vehicle, etc.</li>
+                            </ol><h3><br /><strong style="font-size: 13px;">DATA DISCLOSURE AND SHARING</strong></h3><br />Access to your personal information is restricted to MERALCO employees and contractors on a need to know basis to carry out their responsibilities with regard to the conduct of our business such as meter reading, bill delivery, field inspection, energization, and restoration of your electric service.&nbsp; We require our contractors, through a Non-Disclosure Agreement (NDA), to secure and keep your information confidential and we do not allow them to disclose your information to others, or to use it for their own purposes. &nbsp;<br />&nbsp;<br />Your information may also be disclosed to government entities pursuant to and in compliance with applicable laws and regulations, subpoena or court order.<br />&nbsp;<br />&nbsp;<br /><strong>INFORMATION SECURITY</strong><br /><br />We are committed to ensure that your information is secure. MERALCO shall undertake and implement reasonable organizational, physical, and technical security measures in collecting, receiving, transmitting, storing, and disposing your personal information.<br />For an enhanced online experience, our services are available through compatible devices, such as laptops, PCs, tablets and mobile phones.&nbsp;&nbsp; For your added security, we recommend that you install anti-virus software on any such device before accessing the internet.<br />You are responsible for the security of your information once it reaches you or your representative in any medium, including but not limited to written correspondences, bills, emails, system applications, and on-line accounts.&nbsp; You should take appropriate measures to ensure that any medium or device you use to monitor or manage your account is secure and not accessible to anyone without permission.<br /><br />&nbsp;<h3><strong style="font-size: 13px;">AUTOMATIC COLLECTION OF INFORMATION AND HOW WE USE COOKIES</strong></h3><br />By using our website and /or using services through it, you agree to the use of cookies, either via the MERALCO website, email or SMS communications. You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can modify your browser setting to decline cookies if you prefer. However, this may prevent you from taking full advantage of our website.<br />&nbsp;<br />A cookie is a small file, which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyze web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.<br /><br />We use traffic log cookies to identify which pages are being used. This helps us analyze data about web page traffic and improve our website to enhance your browsing experience. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.<br /><br />We receive and store certain types of information (such as the amount of time you spend on the site and the number of views you made on each page, the IP address of your device, and the browser and operating system that you are using) when you interact with our website, mobile website, emails and online advertising to monitor proper functionality, determine areas for continuous improvement and to support website requirements. This information is gathered automatically, temporarily stored in log files and removed from the system at a certain point.&nbsp;<br />&nbsp;<br />&nbsp;<br /><strong>LINKS TO OTHER WEBSITES</strong><br /><br />Our website contains links, which may lead you to other websites beyond our control and not covered by this Privacy Policy.&nbsp; If you access other sites using the links provided, the operators of those sites may collect information from you, which may be used by them in accordance with their own privacy policy. We are not responsible for the protection and privacy of any personal information that third parties may collect, store and use through their website.&nbsp; Therefore, you should exercise caution and carefully study the privacy policy of each website you visit.<br />&nbsp;<br /><br /><strong>LOGS COLLECTION</strong><br /><br />Your personal information may be collected by our logging processes in case of logical and physical access to our systems and/or premises.&nbsp; When necessary, personal information may be retrieved for security purposes.<br />&nbsp;<br /><br /><strong>PERSONAL DATA RETENTION AND DISPOSAL</strong><br />&nbsp;<br />We keep your personal data only for as long as necessary:<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for the fulfillment of the declared, specified, and legitimate purposes provided above, or when the processing relevant to the purpose has been completed &nbsp; &nbsp;<span style="font-size: 13px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; &nbsp; or terminated;<br />&nbsp;<br />&nbsp; &nbsp; &nbsp; &nbsp; b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for the establishment, exercise or defense of legal claims; or<br />&nbsp;<br />&nbsp; &nbsp; &nbsp; &nbsp; c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for other business purposes, that are consistent with standards established or approved by regulatory agencies governing MERALCO<br />&nbsp;<br />Thereafter, your personal data shall be disposed or discarded in a secure manner that would prevent further processing, unauthorized access, or disclosure to any other party or the public.<br />&nbsp;<br /><br /><strong>CONTROLLING YOUR PERSONAL INFORMATION</strong><br /><br />You may request for a copy of your personal information in our possession, or have it corrected if you believe that it is inaccurate or incomplete.<br />If you wish to request for a copy of your personal data, or have it corrected or deleted, please reach out to us through our contact information found below. We will promptly respond to your request.<br />&nbsp;<br />Chief Data Privacy Officer<br />Tel. No.:&nbsp; 631-2222<br />e-mail:&nbsp; <a href="mailto:cdpo@meralco.com.ph">cdpo@meralco.com.ph</a><br />Office: Lopez Building, Meralco Center, Ortigas Avenue, Brgy. Ugong, Pasig City, 1600<br />&nbsp;<br /><strong><u>FEEDBACK ON OUR PRIVACY POLICY<br />&#8203;</u></strong><br />For questions or feedback about our Privacy Policy, please contact us through this email: <a href="mailto:cdpo@meralco.com.ph">cdpo@meralco.com.ph</a><br />&nbsp;<br /><strong>CHANGES TO POLICY</strong><br />&nbsp;<br />MERALCO reserves the right to revise or modify this Privacy Policy, as necessary.&nbsp;&nbsp; </article>
+                        
+                        
+                        
+                        
+                        
+                    <!---->
+                    </div>
+                    
+                    <div style="width: 80%; margin: 0 auto;">
+                        <span class="CXE_checkBox slds-checkbox">
+                            <label class="slds-checkbox__label">
+                                <ui:inputCheckbox aura:id="termsAndConditions" change="{!c.onCheck}"/>
+                                <span class="slds-checkbox--faux"></span>
+                                <span class="slds-form-element__label CXE_color--gray">I have read and agree to the Terms &amp; Conditions and Privacy Policy</span>
+                            </label>
+                        </span>
+                    </div>
+                    <br />
+                <div class="slds-text-align--center">
+                    <ui:button aura:id="modifySubmitBtn" class="CXE_button-submit slds-button_brand" press="{!c.onSubmit}" label="SUBMIT" disabled="true"/>
+                </div>
+            </div>
+
+            <div aura:id="contentFive" id="modify-tab-scoped-5" class="slds-tabs_scoped__content  slds-hide" role="tabpanel" aria-labelledby="modify-tab-scoped-5__item" onclick="return false;">
+                <p>All done!  We’ve received your application for modification of service.  Your reference number is {!v.caseNumber}. <br />
+                <aura:if isTrue="{!v.caseApplication.AMC_Service_Tag__c}">
+                Within 3 working days, an AMC should be getting in touch with you about your application.
+                </aura:if>  <aura:if isTrue="{!v.hasPreferredNotification}">We will also be sending you updates via {!v.caseApplication.Preferred_Mode_of_Notification__c}.</aura:if>  If you need further help, just email us at ask@meralco.com.ph or call 16211.</p>
+                <div class="slds-text-align--center">
+                    <ui:button aura:id="completeBtn" class="CXE_button-submit slds-button_brand" press="{!c.onComplete}" label="Back to Home" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .slds-button_brand {
+    background-color: #FC7019;
+    border-color: #FC7019;
+    }
+
+    .CXE_scopeTabLineHeight-fix .slds-tabs_scoped__link {
+    line-height: 1;
+    padding: 10px;
+    height: auto;
+    text-align: center;
+    }
+
+    .CXE_scopeTabLineHeight-fix li.slds-tabs_scoped__item {
+    width: calc((100% / 5) + 1px);
+    }
+
+    .CXE_scopeTabLineHeight-fix {
+    background-color: white;
+    }
+
+    .CXE_scopeTabLineHeight-fix .slds-is-active> a {
+    background-color: #FC7019;
+    color: white;
+    font-weight: bold;
+    }
+
+    .slds-popover_tooltip {
+    display: none;
+    }
+
+    .CXE_ServiceAppSINHelpIcon:hover + .slds-popover_tooltip {
+    display: block;
+    }
+
+    .THIS input.error, .THIS select.error {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(194, 57, 52);
+    box-shadow: rgb(194, 57, 52) 0 0 0 1px inset;
+    background-clip: padding-box;
+    }
+
+    .THIS span.required{
+    color:#c23934;
+    }
+</style>
+
+<c:CXE_TemporaryCSS />
+</aura:component>

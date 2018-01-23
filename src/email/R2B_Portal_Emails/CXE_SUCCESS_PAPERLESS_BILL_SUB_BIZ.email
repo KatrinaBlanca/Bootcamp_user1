@@ -1,0 +1,39 @@
+<messaging:emailTemplate subject="Successful Subscription to Paperless Billing for Account No. {!relatedTo.CXE_V10AccountNumber__c}" recipientType="User" relatedToType="Case">
+    <messaging:htmlEmailBody >
+        
+        <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Dear {!relatedTo.CXE_PayorAccountName__c}, <br/>
+        <br></br>
+        <br></br>
+        Welcome to Paperless Billing! Now you can access your bills anytime anywhere. Starting with your next billing, we’ll send you your monthly bill via email instead of a printed copy.<br/> 
+        <br></br>
+        For your reference, below are the details of your subscription:<br/>
+         <br></br>
+        Account No.: {!relatedTo.CXE_V10AccountNumber__c} <br/>
+        Username: {!recipient.Username} <br/>
+        Date of Subscription: <apex:outputText value="{0,date, dd MMMM yyyy}">
+           <apex:param value="{!Today()}" />
+        </apex:outputText><br/>
+        <br></br>
+        <br></br>
+        Thank you for helping save the environment!
+        <br></br>
+        <br></br>
+        For further assistance, please call us at our 24/7 business hotline at 16210, or email us at customercare@meralco.com.ph.
+        <br></br>
+        <br></br>
+        ** This is a system-generated message and does not require a signature.  Please do not reply to this email. **
+        <br></br>
+        <br></br>
+        DISCLAIMER:<br/>
+        The information contained in this email message is intended only for the individual or entity to which it is addressed, and such information may be privileged or confidential and protected under applicable laws.  If you are not the intended recipient, you must not disseminate, distribute, store, print, copy or deliver this message.  Email transmission cannot be guaranteed to be error-free owing to the nature of the internet.  Therefore, you fully understand that MERALCO shall not be liable for any omission or error in this message which may arise as a result of email transmission.  Further MERALCO does not warrant against, and will not be liable and/or responsible for, any loss or damage that the receipt, use or other disposition of this e-mail and/or its attachments may cause to the recipient's computer or network. <br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

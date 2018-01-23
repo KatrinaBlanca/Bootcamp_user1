@@ -1,0 +1,43 @@
+<aura:component >
+    <div class="slds-large-size_1-of-2 slds-max-large-size_2-of-2">
+        <div class="slds-box_small">
+            
+            <div class="login-page__logo">
+                <img src="{! $Resource.CXE_CP_Assets + '/images/meralco-logo-white.png' }" />
+            </div>
+            
+            <!-- login welcome text -->
+            <div id="welcome-login">
+                <h2 class="welcome">Welcome to Meralco Online</h2>
+                <!-- Start CSM-13534 JAgapito Oct.5,2017 -->
+                <!-- <p class="medium">Log in for a complete online experience anytime, anywhere, from any device:</p> -->
+                <p class="medium">You can now perform the following services online anytime, anywhere:</p>
+                <!--p>The portal provides you with a single access point to perform the following services online anytime, anywhere:</p-->
+                <!--
+                <ul class="online-services">
+                    <li>Access and manage your accounts</li>
+                    <li>View and pay your bills</li>
+                    <li>Apply for electric service and track your application status</li>
+                    <li>Access an interactive outage map and get real-time information on outages</li>
+                    <li>Manage your billing, payment and outage notifications</li>
+                </ul> 
+				-->
+                <ul class="online-services">
+                    <li>Apply for electric service and track your application status</li>
+                    <li>View and pay your bills</li>
+                    <li>Access an interactive outage map and get real-time information on outages</li>
+                    <li>Request for additional services and submit requirements</li>
+                    <li>View your consumption history</li>
+                    <li>Manage your billing, payment and outage notifications</li>
+                </ul>
+                <!-- End JAgapito Oct.5,2017 -->
+                <!--div class="login-page__menu">
+                    <a href="#"><img src="{! $Resource.CXE_CP_Assets + '/images/icon-login.png' }"/></a>
+                    <a href="#"><img src="{! $Resource.CXE_CP_Assets + '/images/icon-credit.png' }"/></a>
+                    <a href="#"><img src="{! $Resource.CXE_CP_Assets + '/images/icon-paper.png' }" /></a>
+                </div-->
+                
+            </div>
+        </div>
+    </div>
+</aura:component>

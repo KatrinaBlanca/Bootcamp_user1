@@ -1,0 +1,253 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_Dashboard">
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="LastLogin" type="Date" />
+    <aura:attribute name="FirstName" type="string" />
+    <aura:attribute name="AccountNumber" type="string" />
+    <aura:attribute name="TotalOutstandingBalance" type="string" />
+    <aura:attribute name="DueDate" type="string" />
+    
+    <aura:attribute name="dropdownNavi" type="boolean" />
+    <aura:attribute name="isConglomerate" type="boolean" default="false"/> <!-- START R2C CSM-13274 Shayne 10/13/2017 -->
+    <aura:attribute name="isShowModal" type="boolean" default="false" /> <!-- CSM-14455 JSarion 11/22/2017 -->
+    <aura:handler name="CXE_CP_LandingModalEvent" event="c:CXE_CP_LandingModalEvent" action="{!c.hideModalHandler}" /> <!-- CSM-14455 JSarion 11/22/2017 -->
+    
+    <!--<aura:attribute name="showMultipleSinDetectedModal" type="boolean" default="false" />-->
+    
+    <c:CXE_CP_Header /> 
+    <!-- <c:CXE_CP_HeaderNavigation /> -->
+    <!--
+    <aura:renderIf isTrue="{!v.showMultipleSinDetectedModal}" >
+        <c:CXE_CP_ModalMultipleSINDetected getValue="{!v.showMultipleSinDetectedModal}"/>
+    </aura:renderIf>
+    -->
+    <div class="main">
+        <!-- <div class="mov-welcome-bar mov-welcome-bar-custom">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col">
+                        <div class="slds-media slds-p-top_x-small slds-p-bottom_large">
+                            <div class="slds-media__figure">
+                                <span class="slds-avatar slds-avatar_large"><img alt="Person name" src="{! $Resource.CXE_CP_Assets + '/images/user-icon2.png' }" title="User avatar" /></span>
+                            </div>
+                            <div class="slds-media__body slds-p-left_medium">
+                                <h3 class="mov-text_size-24 mov-text_weight-bold">Hello, <span class="mov-text_color-ff5114">{!v.FirstName}</span></h3>
+                                <h4 class="slds-text-heading_small slds-m-top_x-small mov-text_color-6a6a6a">Welcome to your Meralco Customer Portal. What would you like to do today?</h4>
+                                <p class="slds-text-body_small slds-m-top_xxx-small mov-text_color-a5a5a5">Your last login date was <ui:outputDateTime value="{!v.LastLogin}"/></p> -->
+        <!--<ui:button class="slds-button mov-button-inverse mov-element_max-width-170 mov-text_weight-bold" label="Logout" press="{!c.logout}"/> 
+                                <button class="slds-button mov-button-inverse mov-element_max-width-170 mov-text_weight-bold" onclick="{!c.logout}">Logout</button>-->
+        <!-- </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div aura:id="incProfNotif" class="slds-hide">
+            <div class="mov-alert">
+                <div class="main-wrapper">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_info slds-m-top_x-large mov-notify-custom slds-p-vertical_medium slds-m-horizontal_none" role="alert" aura:id ="remove">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <div class="slds-notify__content slds-p-top--none">
+                                <!-- START CSM-14554 Jerome To Prompt that the user can edit the profile information but it doesn’t tell where the user can edit it. -->
+                                <!-- <h2 class="mov-text_size-14 mov-notify__content-custom slds-m-left_small">Your profile information is incomplete. To engage better with Meralco, please input all required fields.</h2> -->
+                                <!--h2 class="mov-text_size-14 mov-notify__content-custom slds-m-left_small">To engage better with Meralco, please complete your profile information under My Profile.</h2-->
+                                <h2 class="mov-text_size-14 mov-notify__content-custom slds-m-left_small">To engage better with Meralco, please complete your profile information under <a href="" onclick="{!c.onClickMyProfile}">My Profile</a>.</h2>
+                                <!-- END CSM-14554 Jerome To Prompt that the user can edit the profile information but it doesn’t tell where the user can edit it. -->
+                            </div><button aura:id = "noteButton" class="slds-button slds-button_icon slds-notify__close slds-m-top_x-small " onclick="{!c.hideCmp}" title="Close"><i class="fa fa-times"></i></button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div aura:id="mulSINNotif" class="slds-hide">
+            <div class="mov-alert">
+                <div class="main-wrapper">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_info slds-m-top_x-large mov-notify-custom slds-p-vertical_medium slds-m-horizontal_none" role="alert" aura:id ="removeNotif">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <div class="slds-notify__content slds-p-top--none">
+                                <!-- Start JAgapito Oct.6,2017 CSM- -->
+                               <!-- <h2 class="mov-text_size-14 mov-notify__content-custom slds-m-left_small">You have multiple SINs under your Meralco account. These have been automatically enrolled under your Meralco Customer Portal account. Please click on <a onclick="{!c.redirectToMyAccounts}">My Accounts</a> to view your enrolled services.</h2> -->
+                                <h2 class="mov-text_size-14 mov-notify__content-custom slds-m-left_small">You have multiple Service ID Numbers under your Meralco account. These have been automatically enrolled under your Meralco Online account. Please visit <a onclick="{!c.redirectToMyAccounts}">Accounts</a> to view your enrolled services.</h2>
+                           <!-- End JAgapito -->
+                            </div><button aura:id = "noteButton" class="slds-button slds-button_icon slds-notify__close slds-m-top_x-small" onclick="{!c.hideMultipleSINCmp}" title="Close"><i class="fa fa-times"></i></button> 
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <!-- START JAgapito CSM-13809 Oct.10,2017 -->    
+        <div aura:id="cService" class="slds-hide">
+            <div class="mov-alert">
+                <div class="main-wrapper">
+                    <div class="slds-notify_container slds-is-relative">
+                        <div class="slds-notify slds-notify_toast slds-theme_info slds-m-top_x-large mov-notify-custom slds-p-vertical_medium slds-m-horizontal_none" role="alert" aura:id ="remove">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <div class="slds-notify__content slds-p-top--none">
+                                
+                                <h2 class="mov-text_size-14 mov-notify__content-custom slds-m-left_small ">There are no current services enrolled under your Meralco Online account. Please call us at our 24/7 business hotline at 16210 for assistance.</h2>
+                                
+                            </div><button aura:id = "noteButton" class="slds-button slds-button_icon slds-notify__close slds-m-top_x-small " onclick="{!c.hideCmp}" title="Close"><i class="fa fa-times"></i></button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END JAgapito Oct.10,2017 -->
+        <br></br>
+        <div class="mov-dashboard">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap">
+                    <!-- Left Side Nav (Account Nav) -->
+                    <div class="CXE_dashboardOverviewFix slds-large-size_3-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs">
+                        <div class="mov-dashboard-sidebar">
+                            <div class="slds-p-bottom_x-large slds-p-top_x-large mov-dashboard_account-info">
+                                <div class="mov-text-group slds-p-bottom_medium slds-text-align--center">
+                                    <h3 class="mov-text_size-18 mov-text_weight-semi-bold">Account Overview</h3>
+                                    <h4 aura:id="accountHide" class="mov-text_size-14 mov-text_color-6a6a6a slds-m-top_medium mov-text_weight-semi-bold">MERALCO ACCOUNT NUMBER</h4>
+                                    <!-- start CSM15016 @gibs -->
+                                    <span class="mov-text_size-48 mov-text_weight-semi-bold">{!v.AccountNumber}</span>
+                                    <!-- end CSM15016 @gibs -->
+                                    
+                                    <!--h4 class="mov-text_size-14 mov-text_color-6a6a6a slds-m-top_medium mov-text_weight-semi-bold">TOTAL OUTSTANDING BALANCE</h4>
+                                    <h4 class="mov-text_size-14 mov-text_color-6a6a6a slds-m-top_medium mov-text_weight-semi-bold">Due Date:</h4><span class="mov-text_size-60 mov-text_weight-semi-bold">{!v.DueDate}</span-->
+                                </div>
+                                <!--@13677 gibs-->
+                                <a class="slds-button mov-button-inverse mov-element_max-width-170 mov-text_weight-bold CXE_marginCentralizer"
+                                         onclick="{!c.redirectToBills}" title="Bills"><span>Pay <br class="mov-element_display-hidden mov-md-show " /> Bills</span></a>
+                            </div>     
+                            
+                            <!--div class="slds-p-bottom_x-large slds-p-top_x-large mov-dashboard_account-info">
+                                <div class="mov-text-group slds-p-bottom_medium">
+                                    <h3 class="mov-text_size-18 mov-text_weight-semi-bold">Account Overview</h3>
+                                    <h4 class="mov-text_size-14 mov-text_color-6a6a6a slds-m-top_medium mov-text_weight-semi-bold">MERALCO ACCOUNT NUMBER</h4><span class="mov-text_size-60 mov-text_weight-semi-bold">{!v.AccountNumber}</span>
+                                </div>
+                                <a class="slds-button mov-button-inverse mov-element_max-width-170 mov-text_weight-bold" href="javascript:void(0);" title="Dashboard">
+                                    <span>Pay <br class="mov-element_display-hidden mov-md-show " /> Bills</span>
+                                </a>
+                            </div-->
+                            
+                            <div class="mov-dashboard_payment-details slds-p-vertical_large">
+                                <!--
+                                <div class="mov-text-group slds-p-bottom_large slds-text-align_center">
+                                    <p class="mov-text_size-14 mov-text_weight-semi-bold mov-text_color-a5a5a5">Previous Balance: 
+                                        <span class="mov-text_color-323232">P 732.42</span></p>
+                                    <p class="mov-text_size-14 mov-text_weight-semi-bold mov-text_color-a5a5a5">Current Balance: 
+                                        <span class="mov-text_color-323232">P 961.19</span></p>
+                                </div>
+        -->
+                                <div class="mov-text-group slds-p-bottom_medium slds-text-align_center">
+                                    <h3 class="mov-text_weight-semi-bold mov-text_size-14">TOTAL AMOUNT DUE:</h3>
+                                    <!--h4 class="">P 690.13</h4-->
+                                    <!-- start CSM-15016 @gibs -->
+                                    <ui:outputCurrency aura:id="amount" class="{! if(v.TotalOutstandingBalance>100000000, 'mov-text_size-30', 'mov-text_size-48') + ' mov-text_weight-semi-bold' }" value="{!v.TotalOutstandingBalance}" />
+                                	<!-- end CSM-15016 @gibs -->
+                                </div>
+                                <div class="mov-text-group slds-text-align_center">
+                                    <p class="mov-text_size-14 mov-text_weight-semi-bold mov-text_color-a5a5a5">Due Date: 
+                                        <span class="mov-text_color-323232">{!v.DueDate}</span></p>
+                                </div>
+                            </div>
+                            
+							<!-- START CSM-14682 Edgar Eisma – retrofit from R2B -->
+                            <!--@13677 gibs-->
+                            <div class="mov-dashboard_dropdown">
+                                <div class="mov-dashboard_dropdown-selector" onclick="{! c.dropNav }">
+                                    <div class="mov-select-aftersales">
+                                        <span>Key Links</span>
+                                    </div>
+                                </div>
+                                <div class="mov-dashboard_dropdown-content">
+                                    <div class=" slds-p-bottom_xx-large">
+                                        <ul class="slds-has-block-links_space mov-dashboard_account-options__list">
+                                           <li>
+                                                <a onclick="{!c.redirectToBills}">View Bills</a>
+                                            </li>
+                                            <li>
+                                                <a onclick="{!c.redirectToPaperlessBilling}">Paperless Billing</a>
+                                            </li>
+                                            <li>
+                                                <a onclick="{!c.redirectToAPA}">Auto Payment Enrollment</a> <!--R2C CSM-14812 Shayne 12/06/2017 -->
+                                            </li>
+                                            <li>
+                                                <a onclick="{!c.redirectToPaymentHistory}">Payment History</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="mov-dashboard_quick-links">
+                                        <h4 class="mov-text_size-14 slds-m-bottom_large">QUICK LINKS</h4>
+                                        <ul class="slds-has-block-links mov-dashboard_quick-links__list">
+                                            <li>
+                                                <a href="javascript:void(0);">Read Articles</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">Save Tips</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">How To Apply</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0);">Staying Safe</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END CSM-14682 Edgar Eisma – retrofit from R2B -->
+                            
+                        </div>
+                    </div>
+                    <!-- Center Nav (Square Grid Nav) -->
+                    <div class="CXE_dashboardTilesFix slds-large-size_6-of-12 slds-medium-size_8-of-12 slds-small-size_2-of-2">
+                        <div class="mov-dashboard_navigation">
+                            <a class="mov-dashboard_navigation__item slds-text-align_center" onclick="{!c.redirectToBills}"><img src="{! $Resource.CXE_CP_Assets + '/images/dboard-b1.png' }" />
+                                <div>
+                                    <div class="mov-image-group"><img src="{! $Resource.CXE_CP_Assets + '/images/icon-pay.png' }" /> <img src="{! $Resource.CXE_CP_Assets + '/images/icon-pay_active.png' }" /></div>
+                                    <h3>PAY BILLS</h3>
+                                </div>
+                            </a>
+                            <a class="mov-dashboard_navigation__item slds-text-align_center" onclick="{!c.redirectToProfile}"><img src="{! $Resource.CXE_CP_Assets + '/images/dboard-b2.png' }" />
+                                <div>
+                                    <div class="mov-image-group"><img src="{! $Resource.CXE_CP_Assets + '/images/icon-profile.png' }" /> <img src="{! $Resource.CXE_CP_Assets + '/images/icon-profile_active.png' }" /></div>
+                                    <h3>UPDATE PROFILE</h3>
+                                </div>
+                            </a>
+                            <a class="mov-dashboard_navigation__item slds-text-align_center" onclick="{!c.redirectToMyAccounts}"><img src="{! $Resource.CXE_CP_Assets + '/images/dboard-b3.png' }" />
+                                <div>
+                                    <div class="mov-image-group"><img src="{! $Resource.CXE_CP_Assets + '/images/icon-account.png' }" /> <img src="{! $Resource.CXE_CP_Assets + '/images/icon-account_active.png' }" /></div>
+                                    <h3>VIEW ACCOUNT DETAILS</h3>
+                                </div>
+                            </a>
+                            <a class="mov-dashboard_navigation__item slds-text-align_center" onclick="{!c.redirectToStartService}"><img src="{! $Resource.CXE_CP_Assets + '/images/dboard-b4.png' }" />
+                                <div>
+                                    <div class="mov-image-group"><img src="{! $Resource.CXE_CP_Assets + '/images/icon-pay.png' }" /> <img src="{! $Resource.CXE_CP_Assets + '/images/icon-pay_active.png' }" /></div>
+                                    <h3>REQUEST FOR A SERVICE</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Right Side Nav (Helper Nav) -->
+                    <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 CXE_marginCentralizer">
+                        <div class="mov-dashboard_misc-list">
+                            <c:CXE_CP_WidgetFAQ />
+                            <c:CXE_CP_WidgetMobileNotification />
+                        </div>
+                    </div>
+                    <!-- Footnote: Thank you -->
+                    
+                </div>
+            </div>
+        </div>
+		
+		<!-- START CSM-14455 JSarion 11/22/2017 prompt: ask user if to continue in modal -->
+		<div aura:id="mobilePrompt" class="slds-hide">
+			<c:CXE_CP_LandingModal />
+		</div>
+		<!-- END CSM-14455 JSarion 11/22/2017 prompt: ask user if to continue in modal -->
+    </div>
+    
+    <!-- <c:CXE_CP_Footer /> -->
+</aura:component>

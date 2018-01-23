@@ -1,0 +1,19 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="totalAmountToPay" type="Decimal" default="0.0"/>
+    <aura:attribute name="filteredBillingSummary" type="Object[]"/>
+    <aura:attribute name="tabToNavigate" type="String"/>
+    <aura:attribute name="promptType" type="String" default=""/><!-- START/END CSM-12629 RReyes OCT-01-17 -->
+    <aura:attribute name="totalAmountToPay" type="Decimal" default="0.00"/>
+    <aura:attribute name="convenienceFee" type="Decimal" default="0.00"/>
+    <aura:attribute name="totalAmountForSettlement" type="Decimal" default="0.00"/>
+    <aura:attribute name="referenceNumber" type="string"/>
+    <aura:attribute name="ccCardName" type="String"/>
+    <aura:attribute name="ccBillingAddress" type="String"/>
+    <aura:attribute name="ccMonth" type="String"/>
+    <aura:attribute name="ccYear" type="String"/>
+    <aura:attribute name="ccSecCode" type="String"/>
+    <aura:attribute name="paymentTokenId" type="String"/>
+    <aura:attribute name="subTotalMap" type="Object[]"/>
+    <aura:attribute name="overpaymentList" type="Object[]"/>
+    <aura:attribute name="paymentOptionCode" type="String"/>
+</aura:event>

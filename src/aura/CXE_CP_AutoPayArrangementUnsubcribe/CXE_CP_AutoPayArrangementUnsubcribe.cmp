@@ -1,0 +1,206 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_AutoPaymentArrangement_CC">
+    <aura:attribute name="popUpModal" type="String" required="false" description="" />
+    <aura:attribute name="popUpMessageProceed" type="String" required="false" 
+                    default="{!$Label.c.APA_CANCELLATION_PROMPT}" />
+    <!-- START CSM-13209 RReyes OCT-04-17 -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="acctOptions" type="String[]" default="[]"/>
+    <aura:attribute name="reasonOptions" type="String[]" default="[]"/>
+    <aura:attribute name="selectedAcct" type="String" default="Select Account Number"/>
+    <aura:attribute name="selectedReason" type="String" default="{!$Label.c.RFC_PLEASE_SPECIFY}"/>
+    <aura:attribute name="isProceedClicked" type="Boolean" default="false"/>
+    <aura:attribute name="caseNum" type="String" default=""/>
+    <aura:handler name="change" value="{!v.isProceedClicked}" action="{!c.proceedChange}"/>
+    <aura:handler name="setLoader" event="c:CXE_CP_Loader" action="{!c.eventFireLoader}"/>
+    <!-- START CSM-13219 RReyes OCT-12-17 -->
+    <aura:attribute name="noAcctErrorMsg" type="String" default=""/>
+    <!-- END CSM-13219 RReyes OCT-12-17 -->
+    
+    <!-- START R2C CSM-14773 Shayne 12/05/2017 -->
+    <aura:attribute name="isLoaded" type="Boolean" default="false"/>
+    <!-- END R2C CSM-14773 Shayne 12/05/2017 -->
+   
+    <!-- START CSM-13224 RReyes OCT-12-17 -->
+    <aura:attribute name="noReasonErrorMsg" type="String" default=""/>
+    <c:CXE_CP2c_Header />
+    <!--c:CXE_CP_Header /-->
+    <!-- END CSM-13224 RReyes OCT-12-17 -->
+    <!-- END CSM-13209 RReyes OCT-04-17 r2c-->
+
+    <!-- MAIN CONTENT -->
+    <aura:renderIf isTrue="{!v.isLoaded}"> <!--START R2C CSM-14773 Shayne 12/05/2017 -->
+    <!-- START CSM-13209 RReyes OCT-05-17 -->
+    <aura:renderIf isTrue="{!or(v.caseNum == '', v.caseNum == null)}">
+    <!-- END CSM-13209 RReyes OCT-05-17 -->	
+	    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+	        <div role="status" class="slds-spinner slds-spinner--medium">
+	            <span class="slds-assistive-text">Loading</span>
+	            <div class="slds-spinner__dot-a"></div>
+	            <div class="slds-spinner__dot-b"></div>
+	        </div>
+	    </div> 
+		<div class="main mov-background-color_f7f7f7 mov-js-window-height">
+			<div class="mov-breadcrumbs mov-breadcrumbs_modified">
+				<div class="main-wrapper">
+					<nav data-reactroot="">
+						<ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+							<li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+								<a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>
+							</li>
+							<!-- START CSM-13209 RReyes OCT-04-17 -->
+							<li class="slds-breadcrumb__item mov-breadcrumb__item">
+								<a href="javascript:void(0);" onclick="{!c.goToMyAccts}">Accounts</a>
+							</li>
+							<!-- START CSM-14481 Jerome To 10/27/2017 [R2B Regression] Page is not redirected to List of Accounts when "List of Accounts" breadcrumbs is clicked -->
+							<!-- <li class="slds-breadcrumb__item mov-breadcrumb__item "> -->
+								<!-- <a href="javascript:void(0);" onclick="{!c.goToMyAccts}">List of Accounts</a> -->
+							<!-- </li> -->
+							<!-- END CSM-14481 Jerome To 10/27/2017 [R2B Regression] Page is not redirected to List of Accounts when "List of Accounts" breadcrumbs is clicked -->
+							<!-- END CSM-13209 RReyes OCT-04-17 -->
+							<li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+								<a href="javascript:void(0);">Cancel Auto-Payment</a>
+							</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+			<div class="mov-track-my-application_guest">
+				<div class="main-wrapper">
+					<div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+						<div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+							<div class="mov-text-group slds-p-top_small">
+								<h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Automatic Payment Arrangement (APA) </h3>
+							</div>
+						</div>
+						<div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+							<div class="slds-box mov-box mov-element-box-shadow mov-background-color_ffffff mov-box_apa">
+								<p class="mov-text_size-21 mov-text_color-323232 slds-p-top_small mov-text_weight-semi-bold">Cancellation of APA</p>
+
+								<div class="mov-form-group">
+									<div class="mov-form mov-form_apa">
+										<div class="slds-form slds-form_stacked">
+
+											<div class="slds-form-element">
+												<label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-323232" for="guest-last-name">Account Number for Cancellation</label>
+												<div class="slds-form-element__control">
+													<div class="slds-select_container mov-select_container mov-element_max-width-345 mov-select_container-left-align">
+														<!-- START CSM-13209 RReyes OCT-04-17 -->
+														<ui:inputSelect aura:id="accountSelected" change="{!c.accountPicklistChanged}" class="slds-select mov-select-aftersales" updateOn="change" value="{!v.selectedAcct}">
+															<ui:inputSelectOption disabled="true" text="Select Account Number" label="Select Account Number" />
+						                                    <aura:iteration items="{!v.acctOptions}" var="acct" >
+						                                    	<ui:inputSelectOption text="{!acct}" label="{!acct}" />
+						                                    </aura:iteration>
+						                                </ui:inputSelect>
+						                                <!-- START CSM-13219 RReyes OCT-12-17 -->
+						                                <p class="mov-text_size-11 slds-large-size_6-of-12 error-apa">{!v.noAcctErrorMsg}</p>
+						                                <!-- END CSM-13219 RReyes OCT-12-17 -->
+						                                <!--div class="mov-tooltip mov-tooltip_apa"><i class="ion-ios-information"></i>
+															<span class="tooltiptext">{!$Label.c.APA_CANCELLATION_TOOLTIP}</span>
+														</div-->
+														<!--select class="slds-select mov-select-aftersales" id="select-01">
+															<option>
+																Select Account Number
+															</option>
+															<option>
+																Option Two
+															</option>
+															<option>
+																Option Three
+															</option>
+														</select-->
+														<!-- END CSM-13209 RReyes OCT-04-17 -->
+														<!--<div class="mov-tooltip mov-tooltip_apa"><i class="ion-ios-information"></i>
+															<span class="tooltiptext">Cancellation of Automatic Payment Arrangement (APA) enrollment is subject to bank approval and will be applied to your account/bills once successfully processed.</span>
+														</div>-->
+													</div>
+
+
+												</div>
+											</div>
+
+											<div class="slds-form-element">
+												<label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-6a6a6a" for="guest-last-name">We’re sorry to see you go. Please let us know why you want to unenroll.</label>
+												<div class="slds-form-element__control">
+													<div class="slds-select_container mov-select_container mov-select_container-left-align">
+														<!-- START CSM-13209 RReyes OCT-04-17 -->
+														<ui:inputSelect aura:id="reasonForCancelSelected" change="{!c.reasonPicklistChanged}" class="slds-select mov-select-aftersales" updateOn="change" value="{!v.selectedReason}">
+															<ui:inputSelectOption disabled="true" text="{!$Label.c.RFC_PLEASE_SPECIFY}" label="{!$Label.c.RFC_PLEASE_SPECIFY}" />
+															<ui:inputSelectOption text="{!$Label.c.RFC_CHANGE_IN_NUMBER}" label="{!$Label.c.RFC_CHANGE_IN_NUMBER}" />
+															<ui:inputSelectOption text="{!$Label.c.RFC_CHANGE_IN_PAYMENT_METHOD}" label="{!$Label.c.RFC_CHANGE_IN_PAYMENT_METHOD}" />
+															<ui:inputSelectOption text="{!$Label.c.RFC_CHANGE_IN_ADDRESS}" label="{!$Label.c.RFC_CHANGE_IN_ADDRESS}"/>
+															<ui:inputSelectOption text="{!$Label.c.RFC_CHANGE_IN_PAYOR}" label="{!$Label.c.RFC_CHANGE_IN_PAYOR}" />
+						                                </ui:inputSelect>
+						                                <!-- START CSM-13224 RReyes OCT-12-17 -->
+														<p class="mov-text_size-11 slds-large-size_6-of-12 error-apa">{!v.noReasonErrorMsg}</p>
+						                                <!-- END CSM-13224 RReyes OCT-12-17 -->
+						                                <!--select class="slds-select mov-select-aftersales" id="select-01">
+															<option>
+																Please specify
+															</option>
+															<option>
+																Change in bank account or card number
+															</option>
+															<option>
+																Change in payment method
+															</option>
+															<option>
+																Change in address
+															</option>
+															<option>
+																Change in payor
+															</option>
+														</select-->
+														<!-- END CSM-13209 RReyes OCT-04-17 -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="slds-m-top_medium">
+									<div class="mov-button-group slds-large-size_6-of-12 center-block">
+										<!-- START CSM-13209 RReyes OCT-04-17 -->
+										<a href="javascript:void(0);" class="slds-button mov-button-default mov-element_max-width-170 mov-text_weight-semi-bold" onclick="{!c.goToMyAccts}">Back</a>
+										<a href="javascript:void(0);" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold" id="modal-toggle" onclick="{!c.validateFields}">Submit</a>
+										<!-- END CSM-13209 RReyes OCT-04-17 -->
+									</div>
+									<div class="clearfix"></div>
+								</div>
+
+							</div>
+						</div>
+
+
+
+						<div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 slds-p-horizontal_x-small slds-align_absolute-center slds-m-top--none">
+							<div class="mov-dashboard_misc-list">
+								<c:CXE_CP_WidgetFAQPaperless />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <!-- START CSM-13209 RReyes OCT-05-17 -->
+    	<aura:set attribute="else">
+    		<c:CXE_CP_AutoPayArrangementUnsubcribeConfirmation caseNumber="{!v.caseNum}"/>
+    	</aura:set>
+	</aura:renderIf>
+	<!-- END CSM-13209 RReyes OCT-05-17 -->
+	</aura:renderIf> <!--END R2C CSM-14773 Shayne 12/05/2017 -->
+	
+    <aura:renderIf isTrue="{! v.popUpModal=='proceed' }">
+    	<!-- START CSM-13209 RReyes OCT-05-17 -->
+    	<!-- START CSM-14705 RReyes NOV-27-17 - changed from Proceed to OK -->
+        <c:CXE_CP_ModalTemplateOk popUpMessageToShow="{! v.popUpMessageProceed }"
+                                  popUpModalChild="{! v.popUpModal }"
+                                  confirmText="OK" 
+                                  sourcePage="autopayunsub"
+                                  isClickProceed="{!v.isProceedClicked}"/>
+        <!-- END CSM-14705 RReyes NOV-27-17 - changed from Proceed to OK -->
+        <!-- END CSM-13209 RReyes OCT-05-17 -->
+    </aura:renderIf>
+    <!-- end MAIN CONTENT -->
+</aura:component>
