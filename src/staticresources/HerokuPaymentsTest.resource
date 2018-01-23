@@ -1,1 +1,0 @@
-[{"payment":{"payment_office":"CORPORATE OFFICE","ref_number":"234561234561","account_number":"584950609109","collection_status":"Paid","payment_mode":"Credit Card","payment_allocation":[{"bill_note":[{"service_number":"293028374839"}],"paid_amount":2000}],"paid_amount":2000,"payment_source":null,"posting_date":"2017-10-11","document_id":"SOA|1.pdf","payment_date":"2017-10-11"}}]

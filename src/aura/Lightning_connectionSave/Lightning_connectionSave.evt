@@ -1,3 +1,0 @@
-<aura:event type="COMPONENT" description="Event to save the records">
-    <aura:attribute name="currentConnection" type="Lightning_CommodityProductsConfigCntrl.connectionWrapper1"/>
-</aura:event>

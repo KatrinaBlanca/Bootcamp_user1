@@ -1,3 +1,0 @@
-<design:component label="ProfilePicture">
-	<design:attribute name="message" label="Message"/>
-</design:component>

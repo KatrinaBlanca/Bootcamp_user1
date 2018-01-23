@@ -1,3 +1,0 @@
-<apex:page standardController="opportunity" extensions="MoveHomeOpportunity"> <!-- action="{!SaveOpportunity}" -->
-  <!-- <apex:detail subject="{!opp}" /> -->
-</apex:page>

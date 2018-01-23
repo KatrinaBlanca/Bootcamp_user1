@@ -1,3 +1,0 @@
-<aura:event type="COMPONENT" description="Fires everytime input file changes.">
-    <aura:attribute name="invalid" type="Boolean"/>
-</aura:event>

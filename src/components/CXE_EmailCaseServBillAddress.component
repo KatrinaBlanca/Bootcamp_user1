@@ -1,8 +1,0 @@
-<apex:component controller="CXE_EmailHelper_CC" access="global">
-<!-- PARAMETERS -->
-<apex:attribute name="serId" type="Id" description="Service Id" assignTo="{!serviceId}"/>
-<apex:attribute name="contrId" type="Id" description="Contract Id" assignTo="{!contractId}"/>
-<apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/>
-        Service Address: {!ServiceAddressFromService} <br/>
-        Billing Address: {!BillingAddressFromServiceContract}     
-</apex:component>

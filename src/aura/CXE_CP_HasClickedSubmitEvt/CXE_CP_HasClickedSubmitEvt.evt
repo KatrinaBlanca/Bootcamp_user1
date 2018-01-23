@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="returns true if button is clicked">
-	<aura:attribute name="hasClickedSubmit" type="Boolean" description="returns true if button is clicked"/>
-</aura:event>

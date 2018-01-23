@@ -1,5 +1,0 @@
-<aura:event type="COMPONENT" description="Event template">
-	<aura:attribute name="attributeValue" type="boolean"/>
-    <aura:attribute name="successValue" type="boolean"/>
-    <aura:attribute name="reference" type="string"/>
-</aura:event>

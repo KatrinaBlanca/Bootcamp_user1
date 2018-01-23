@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="Stores case number">
-	<aura:attribute name="caseNumber" type="String" description="Stores case number"/>
-</aura:event>

@@ -1,3 +1,0 @@
-<apex:page controller="ElecGasProductController" action="{!AddProd}" showHeader="false" sidebar="false">
- 
-</apex:page>

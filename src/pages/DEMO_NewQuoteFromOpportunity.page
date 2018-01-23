@@ -1,2 +1,0 @@
-<apex:page standardController="Opportunity" extensions="NewQuoteFromOppControllerExt" action="{!createQuote}">
-</apex:page>

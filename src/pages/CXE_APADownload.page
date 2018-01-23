@@ -1,4 +1,0 @@
-<apex:page showHeader="true" sidebar="true" controller="CXE_APADownloadController" action="{!redirectToDownloadURL}">
-	<apex:pageMessages ></apex:pageMessages>
-
-</apex:page>

@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION">
-    <aura:attribute name="isValid" type="Boolean" default="false"/>
-</aura:event>

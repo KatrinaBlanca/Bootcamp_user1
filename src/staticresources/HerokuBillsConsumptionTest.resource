@@ -1,2 +1,0 @@
-[{"account_number":"584950609109","last_bill_date":"2017-09-16","bill_date":"2017-10-15","bill_usage":300,"service_number":"293028374839"}
-,{"account_number":"584950609109","last_bill_date":"2017-08-16","bill_date":"2017-09-15","bill_usage":250,"service_number":"293028374839"}]

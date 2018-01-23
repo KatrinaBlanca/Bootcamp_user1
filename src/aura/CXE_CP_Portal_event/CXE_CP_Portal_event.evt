@@ -1,5 +1,0 @@
-<aura:event type="APPLICATION" description="Event template">
-       <aura:attribute name="returnDetails" type="CXE_CP_PaymentPayAsGuest.ReturnData"/>
-       <aura:attribute name="advanceLoader" type="string" />
-   	   <aura:attribute name="advanceState" type="string" />
-</aura:event>

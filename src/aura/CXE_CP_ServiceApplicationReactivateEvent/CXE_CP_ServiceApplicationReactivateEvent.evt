@@ -1,3 +1,0 @@
-<aura:event type="Component" description="Access Tab">
-    <aura:attribute name="ChangeTab" type="String" />
-</aura:event>

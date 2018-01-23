@@ -1,9 +1,0 @@
-<aura:component >
-	<style>
-    	.CXE_mobileView {
-        	max-width: 768px;
-        	width: 100%;
-        	margin: 0 auto;
-        }
-    </style>
-</aura:component>

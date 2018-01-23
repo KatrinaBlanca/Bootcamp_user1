@@ -1,3 +1,0 @@
-<apex:page controller="MobileChangePwdController" action="{!init}" sidebar="false" showHeader="false" showChat="false" contentType="text/plain">
-<apex:outputText escape="false">{!message}</apex:outputText>
-</apex:page>
