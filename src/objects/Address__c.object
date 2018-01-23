@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Address_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>default</fullName>
+        <fields>Name</fields>
+        <fields>Address__c</fields>
+        <fields>Address_Barangay__c</fields>
+        <fields>Address_City_Municipality__c</fields>
+        <fields>Type__c</fields>
+        <label>default</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>Billing_Preferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_Barangay__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Barangay</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Reference__c.Field__c</field>
+                <operation>equals</operation>
+                <value>Barangay</value>
+            </filterItems>
+            <filterItems>
+                <field>Reference__c.Parent__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Address_City_Municipality__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Reference__c</referenceTo>
+        <relationshipLabel>Addresses (Barangay)</relationshipLabel>
+        <relationshipName>Addresses2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_City_Municipality__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>City / Municipality</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Reference__c.Field__c</field>
+                <operation>equals</operation>
+                <value>City</value>
+            </filterItems>
+            <filterItems>
+                <field>Reference__c.Parent__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Address_Province__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Reference__c</referenceTo>
+        <relationshipLabel>Addresses (City / Municipality)</relationshipLabel>
+        <relationshipName>Addresses1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_Province__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Province</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Reference__c.Field__c</field>
+                <operation>equals</operation>
+                <value>Province</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Reference__c</referenceTo>
+        <relationshipLabel>Addresses</relationshipLabel>
+        <relationshipName>Addresses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_Street_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Street Name</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Reference__c.Field__c</field>
+                <operation>equals</operation>
+                <value>Street</value>
+            </filterItems>
+            <filterItems>
+                <field>Reference__c.Parent__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Address_Subdivision__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Reference__c</referenceTo>
+        <relationshipLabel>Addresses (Street Name)</relationshipLabel>
+        <relationshipName>Addresses4</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_Street_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Street #</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_Subdivision__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Subdivision / Bldg</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Reference__c.Field__c</field>
+                <operation>equals</operation>
+                <value>Subdivision</value>
+            </filterItems>
+            <filterItems>
+                <field>Reference__c.Parent__c</field>
+                <operation>equals</operation>
+                <valueField>$Source.Address_Barangay__c</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Reference__c</referenceTo>
+        <relationshipLabel>Addresses (Subdivision)</relationshipLabel>
+        <relationshipName>Addresses3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Address_Unit_No__c</fullName>
+        <externalId>false</externalId>
+        <label>Unit #</label>
+        <length>30</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Address_Unit_No__c &amp; &quot; &quot; &amp;  Address_Street_No__c &amp; &quot; &quot; &amp; Address_Street_Name__r.Name &amp; &quot;, &quot; &amp; Address_Subdivision__r.Name &amp; &quot; &quot; &amp;  Address_Barangay__r.Name &amp; &quot;, &quot; &amp; Address_City_Municipality__r.Name &amp; &quot;, &quot; &amp;  Address_Province__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipName>Billing_Preferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Code_Address_Barangay__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Barangay</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Address_City_Municipality__c</fullName>
+        <externalId>false</externalId>
+        <label>Code City / Municipality</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Address_Province__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Province</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Address_Street_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Street Name</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Address_Subdivision__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Subdivision</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Premises_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Premises Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Connection__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Connection</label>
+        <referenceTo>Connection__c</referenceTo>
+        <relationshipName>Billing_Preferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Addresses</relationshipLabel>
+        <relationshipName>Addresses</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contract__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contract</label>
+        <referenceTo>Contract</referenceTo>
+        <relationshipName>Billing_Preferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>External_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>External ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Integ_V10_Create_Status_Datetime__c</fullName>
+        <externalId>false</externalId>
+        <label>V10 Create Status Datetime</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Integ_V10_Create_Status_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>V10 Create Status Description</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Integ_V10_Create_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>V10 Create Status</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Integ_V10_Outbound_Message_Send_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>V10 Outbound Message Send Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Integ_V10_Retrigger_time_5min__c</fullName>
+        <externalId>false</externalId>
+        <formula>Integ_V10_Create_Status_Datetime__c - 0.038</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>V10 Retrigger time 5min</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Landmarks_Directions__c</fullName>
+        <externalId>false</externalId>
+        <label>Landmarks Directions</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Premise_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Premises Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Billboard</fullName>
+                    <default>false</default>
+                    <label>Billboard</label>
+                </value>
+                <value>
+                    <fullName>Cemetery</fullName>
+                    <default>false</default>
+                    <label>Cemetery</label>
+                </value>
+                <value>
+                    <fullName>Commercial Building</fullName>
+                    <default>false</default>
+                    <label>Commercial Building</label>
+                </value>
+                <value>
+                    <fullName>Compound Residential</fullName>
+                    <default>false</default>
+                    <label>Compound Residential</label>
+                </value>
+                <value>
+                    <fullName>Government Building</fullName>
+                    <default>false</default>
+                    <label>Government Building</label>
+                </value>
+                <value>
+                    <fullName>Groups of Industry</fullName>
+                    <default>false</default>
+                    <label>Groups of Industry</label>
+                </value>
+                <value>
+                    <fullName>High-rise Building</fullName>
+                    <default>false</default>
+                    <label>High-rise Building</label>
+                </value>
+                <value>
+                    <fullName>Meralco Use Substation</fullName>
+                    <default>false</default>
+                    <label>Meralco Use Substation</label>
+                </value>
+                <value>
+                    <fullName>Offices</fullName>
+                    <default>false</default>
+                    <label>Offices</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+                <value>
+                    <fullName>Pole</fullName>
+                    <default>false</default>
+                    <label>Pole</label>
+                </value>
+                <value>
+                    <fullName>Single Commercial</fullName>
+                    <default>false</default>
+                    <label>Single Commercial</label>
+                </value>
+                <value>
+                    <fullName>Single-Detached Residential</fullName>
+                    <default>false</default>
+                    <label>Single-Detached Residential</label>
+                </value>
+                <value>
+                    <fullName>Single Industry</fullName>
+                    <default>false</default>
+                    <label>Single Industry</label>
+                </value>
+                <value>
+                    <fullName>Streetlights</fullName>
+                    <default>false</default>
+                    <label>Streetlights</label>
+                </value>
+                <value>
+                    <fullName>Telecom Cabinet</fullName>
+                    <default>false</default>
+                    <label>Telecom Cabinet</label>
+                </value>
+                <value>
+                    <fullName>Traffic Lights</fullName>
+                    <default>false</default>
+                    <label>Traffic Lights</label>
+                </value>
+                <value>
+                    <fullName>Condominium</fullName>
+                    <default>false</default>
+                    <label>Condominium</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Service__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service</label>
+        <referenceTo>Agreement__c</referenceTo>
+        <relationshipName>Billing_Preferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Service</fullName>
+                    <default>false</default>
+                    <label>Service</label>
+                </value>
+                <value>
+                    <fullName>Billing</fullName>
+                    <default>false</default>
+                    <label>Billing</label>
+                </value>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                    <label>Customer</label>
+                </value>
+                <value>
+                    <fullName>Meter</fullName>
+                    <default>false</default>
+                    <label>Meter</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Address</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Type__c</columns>
+        <columns>Address__c</columns>
+        <columns>Account__c</columns>
+        <columns>Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ADD-{000000}</displayFormat>
+        <label>Address Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Addresses</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Address_Unit_No__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Address_Street_No__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>CXE_Require_Premise_Type</fullName>
+        <active>true</active>
+        <description>Require Premise Type if address is service</description>
+        <errorConditionFormula>AND ( ISPICKVAL(Type__c , &quot;Service&quot;), ISBLANK( TEXT(Premise_Type__c))
+,$User.By_Pass_Validation__c = FALSE)</errorConditionFormula>
+        <errorDisplayField>Premise_Type__c</errorDisplayField>
+        <errorMessage>You must select Premise Type</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CXE_Validate_Address_Type</fullName>
+        <active>false</active>
+        <description>Validate Type based on lookup values.
+1. Account and Case, no validation
+2. Contact, Type = Customer
+3. Contract, Type = Billing
+4. Service, Type = Service
+5. Connection, Type = Meter</description>
+        <errorConditionFormula>IF(
+   OR(
+      AND(NOT(ISBLANK(Contact__c)), NOT(ISPICKVAL(Type__c, &apos;Customer&apos;))), 
+      AND(NOT(ISBLANK(Contract__c)), NOT(ISPICKVAL(Type__c, &apos;Billing&apos;))), 
+      AND(NOT(ISBLANK(Service__c)), NOT(ISPICKVAL(Type__c, &apos;Service&apos;))), 
+	  AND(NOT(ISBLANK(Connection__c)), NOT(ISPICKVAL(Type__c, &apos;Meter&apos;)))
+   ), 
+   true, 
+   false
+)</errorConditionFormula>
+        <errorMessage>Type invalid, Contact Address should be Customer, Contract Address should be Billing, Service Address should be Service and Connection Address should be Meter.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CXE_Validate_Connection_Address_Type</fullName>
+        <active>true</active>
+        <description>Validate Type based on lookup values.
+1. Account and Case, no validation
+2. Contact, Type = Customer
+3. Contract, Type = Billing
+4. Service, Type = Service
+5. Connection, Type = Meter</description>
+        <errorConditionFormula>AND(NOT(ISBLANK(Connection__c)), NOT(ISPICKVAL(Type__c, &apos;Meter&apos;)))</errorConditionFormula>
+        <errorMessage>Invalid Type, Connection Address should be Meter.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CXE_Validate_Contact_Address_Type</fullName>
+        <active>true</active>
+        <description>Validate Type based on lookup values.
+1. Account and Case, no validation
+2. Contact, Type = Customer
+3. Contract, Type = Billing
+4. Service, Type = Service
+5. Connection, Type = Meter</description>
+        <errorConditionFormula>AND(NOT(ISBLANK(Contact__c)), NOT(ISPICKVAL(Type__c, &apos;Customer&apos;)))</errorConditionFormula>
+        <errorMessage>Invalid Type, Contact Address should be Customer.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CXE_Validate_Contract_Address_Type</fullName>
+        <active>true</active>
+        <description>Validate Type based on lookup values.
+1. Account and Case, no validation
+2. Contact, Type = Customer
+3. Contract, Type = Billing
+4. Service, Type = Service
+5. Connection, Type = Meter</description>
+        <errorConditionFormula>AND(NOT(ISBLANK(Contract__c)), NOT(ISPICKVAL(Type__c, &apos;Billing&apos;)))</errorConditionFormula>
+        <errorMessage>Invalid Type, Contract Address should be Billing.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CXE_Validate_Service_Address_Type</fullName>
+        <active>true</active>
+        <description>Validate Type based on lookup values.
+1. Account and Case, no validation
+2. Contact, Type = Customer
+3. Contract, Type = Billing
+4. Service, Type = Service
+5. Connection, Type = Meter</description>
+        <errorConditionFormula>AND(NOT(ISBLANK(Service__c)), NOT(ISPICKVAL(Type__c, &apos;Service&apos;)))</errorConditionFormula>
+        <errorMessage>Invalid Type, Service Address should be Service.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CXE_Validate_Street_Number</fullName>
+        <active>false</active>
+        <description>Street number is required for service, billing and customer type of address</description>
+        <errorConditionFormula>AND(ISBLANK(Address_Street_No__c), OR(ISPICKVAL(Type__c, &apos;Billing&apos;), ISPICKVAL(Type__c, &apos;Service&apos;), ISPICKVAL(Type__c, &apos;Customer&apos;)))</errorConditionFormula>
+        <errorDisplayField>Address_Street_No__c</errorDisplayField>
+        <errorMessage>You must enter a Street #</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

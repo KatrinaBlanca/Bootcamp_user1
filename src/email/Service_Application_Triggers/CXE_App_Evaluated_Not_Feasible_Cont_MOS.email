@@ -1,0 +1,28 @@
+<messaging:emailTemplate subject="MERALCO – We found some issues with your application." recipientType="Contact" relatedToType="Case" >
+<messaging:htmlEmailBody >
+<c:CXE_Header />
+        <br></br>
+        <br></br>
+        Dear <b>{!relatedTo.Authorized_Representative_First_Name__c}</b>, <br/>
+        <br></br>
+        <br></br>
+        The following issues needed to be addressed following our evaluation of the application for modification of service with reference no. {!relatedTo.CaseNumber}:<br/>
+        <c:CXE_EmailCaseSurveyFOIssue caseRecord="{!relatedTo.Id}"/> <br/>
+        <br></br>
+        Kindly advise us once these issues have been resolved, so that we can proceed with the re-evaluation of the application.<br/>
+        <br></br>
+        For more information on the service application process and requirements, you may visit www.meralco.com.ph.<br/>
+        <br></br>
+        For other questions, clarifications, and immediate assistance, please call our 24-hour customer care hotline 16211 or email us at ask@meralco.com.ph.<br/>
+        <br></br>
+        Thank you and we look forward in serving you. <br/>
+        <br></br>
+        <br></br>
+        <b>MERALCO </b><br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

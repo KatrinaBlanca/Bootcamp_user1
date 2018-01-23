@@ -1,0 +1,35 @@
+<messaging:emailTemplate subject="MERALCO – You may now install your service entrance!" recipientType="Contact" relatedToType="Case" >
+<messaging:htmlEmailBody >
+<c:CXE_Header />
+        <br></br>
+        <br></br>
+Dear <b><c:CXE_AuthRepOrFirstName caseRecord="{!relatedTo.Id}"/></b>, <br/>
+<br></br>
+<br></br>
+Your application for <c:CXE_CaseRecordType caseRecord="{!relatedTo.Id}"/>  for business with reference no. {!relatedTo.CaseNumber} has progressed to “Application Evaluated”, which is step 2 of 5 of the service application process. <br/>
+<br></br>
+As requested, the meter socket will be delivered on-site within the next 3 business days.  You will use this as part of the construction of your service entrance.  Please ensure that the installation of service entrance follows the technical and safety standards.  Following this, we request for your notification for us to proceed with the next steps in energizing your business.  <br/>
+<br></br>
+You may also opt to avail of Accredited Meralco Contractor (AMC) services.  AMCs are experts in the construction of customer loadside facilities, including the installation of service entrance, following industry-accepted technical and safety standards. <br/>
+<br></br>
+We would also like to inform you to prepare the bill deposit amount of Php  <apex:outputText value="{0, number, #,##0.00}">
+<apex:param value="{!if(relatedTo.RecordType.DeveloperName == "New_Service_Application", relatedTo.Deposit_Amount__c, relatedTo.CXE_Required_Deposit_Amount__c)}" />
+</apex:outputText>, which will be settled at any Meralco business center.  The bill deposit is computed based on your provided electricity load requirement, which is equivalent to your estimated 1-month billing. <br/>
+<br></br>
+Additionally, you will need to prepare the following documents to be presented at any Meralco business center: <br/>
+<c:CXE_EmailCaseRequirement caseRecord="{!relatedTo.Id}"/> <br/>
+<br></br>
+For more information on the service application process, bill deposit, service entrance standards, or availment of AMC services, you may visit www.meralco.com.ph. <br/>
+ <br></br>
+For other questions, clarifications, and immediate assistance, please call our 24-hour customer care hotline 16211 or email us at ask@meralco.com.ph. <br/>
+<br></br>
+Thank you and we look forward in serving you. <br/>
+<br></br>
+<br></br>
+<b>MERALCO</b> <br/>
+<br></br>
+<br></br>
+<br></br>
+<c:CXE_Footer_R2 />
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

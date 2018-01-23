@@ -1,0 +1,10 @@
+<apex:page standardController="Account">
+    
+
+    <apex:slds />
+    
+    <c:CXE_DMS_Upload account_id="{!Account.Id}" 
+    	type="account" 
+    	account_name="{!Account.Name}"></c:CXE_DMS_Upload>
+
+</apex:page>

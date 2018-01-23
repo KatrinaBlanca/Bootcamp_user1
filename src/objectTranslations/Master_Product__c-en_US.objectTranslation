@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Master Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Master Products</value>
+    </caseValues>
+    <fields>
+        <label><!-- B2B product --></label>
+        <name>B2B_product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Type --></label>
+        <name>Product_Type__c</name>
+        <picklistValues>
+            <masterLabel>Boiler</masterLabel>
+            <translation><!-- Boiler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electricity</masterLabel>
+            <translation><!-- Electricity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy Saving Lightbulb</masterLabel>
+            <translation><!-- Energy Saving Lightbulb --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gas</masterLabel>
+            <translation><!-- Gas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Heating / Cooling</masterLabel>
+            <translation><!-- Heating / Cooling --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insulation</masterLabel>
+            <translation><!-- Insulation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lightbulb</masterLabel>
+            <translation><!-- Lightbulb --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Contract</masterLabel>
+            <translation><!-- Service Contract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solar Panels</masterLabel>
+            <translation><!-- Solar Panels --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thermostat</masterLabel>
+            <translation><!-- Thermostat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Water Saving Equipment</masterLabel>
+            <translation><!-- Water Saving Equipment --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type Icon --></label>
+        <name>Type_Icon__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Electricity</masterLabel>
+            <translation><!-- Electricity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-commodity</masterLabel>
+            <translation><!-- Non-commodity --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Master Product Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

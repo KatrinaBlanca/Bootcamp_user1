@@ -1,0 +1,38 @@
+<messaging:emailTemplate subject="MERALCO – We've received your application!" recipientType="Contact" relatedToType="Case">
+ <messaging:htmlEmailBody >
+ <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Dear <b>{!relatedTo.Authorized_Representative_First_Name__c}</b>, <br/>
+        <br></br>
+        <br></br>
+        We’ve received your request for reactivation of service with reference no.  {!relatedTo.CaseNumber}.  Please keep this handy in tracking the progress of the service application.<br/>
+        <br></br>
+        Below are the details of the application: <br/>
+        <br></br>
+        <b> 
+        Service Identification No.: {!relatedTo.CXE_Previous_SIN__c} <br/>
+        Customer Type: {!IF(relatedTo.Last_Name_Business_Name__c == null, 'Residential', 'Business')}<br/>
+        Registered Customer: {!IF(relatedTo.Last_Name_Business_Name__c == null, relatedTo.Full_Name_Concatenated__c, relatedTo.Last_Name_Business_Name__c)}<br/>
+        <c:CXE_EmailCaseServBillAddress serId="{!relatedTo.CXE_Service__c}" contrId="{!relatedTo.CXE_Service__r.Contract__c}"/><br/>
+        {!IF((relatedTo.Email_Address__c != null ), "Email Address: " + relatedTo.Email_Address__c, null)} <br/>
+       {!IF((relatedTo.Mobile_No__c != null ), "Mobile No.: " + relatedTo.Mobile_No__c, null)} <br/>
+        <br/><br/>
+        Contractor’s Business Name: {!relatedTo.CXE_Contractor_Name__c} <br/>
+        Representative’s Name: {!relatedTo.Authorized_Representative_First_Name__c + " " + relatedTo.Authorized_Representative_Middle_Name__c + " " + relatedTo.Authorized_Representative_Last_Name__c}<br/>
+        Designation: {!relatedTo.CXE_Authorized_Rep_Designation__c} <br/>
+        Mobile No. of Representative: {!relatedTo.Authorized_Rep_Primary_Contact_Number__c} <br/>
+        </b> <br/>
+        
+        Please expect a MERALCO field personnel to conduct an on-site inspection of your facilities within 3 working days.  Our customer care officer may also get in touch with you for additional information on the application. <br/>
+        <br></br>
+        Thank you and we look forward in serving you. <br/>
+         <br></br>
+        <br></br>
+        <b>MERALCO </b><br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

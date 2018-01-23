@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Services Offered</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Services Offered</value>
+    </caseValues>
+    <fields>
+        <label><!-- Available in Case --></label>
+        <name>Available_in_Case__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available in Opportunities --></label>
+        <name>Available_in_Opportunities__c</name>
+    </fields>
+    <layouts>
+        <layout>Services Offered Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

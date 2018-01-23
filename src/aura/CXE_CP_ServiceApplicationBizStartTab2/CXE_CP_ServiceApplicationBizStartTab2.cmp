@@ -1,0 +1,153 @@
+<aura:component >
+    
+    <aura:attribute name="caseVar" type="Case"/> 
+    <!-- <aura:attribute name="yesNoOptions" type="String[]" default="Yes,No"/>     -->
+    <aura:method name="submitTab" action="{!c.submitTab}" access="PUBLIC"/>
+    <aura:registerEvent name="callTabEvent" type="c:SetTabValueEvent"/>
+    <aura:attribute name="isSame" type="Boolean" default="true"/>
+    <aura:attribute name="persona" type="String" default=""/> 
+
+    <aura:handler event="c:CXE_selectControllingPicklistEvent" action="{!c.getControllingPicklistService}" />
+    <aura:handler event="c:CXE_selectDependentPicklistEvent" action="{!c.getDependentPicklistService}" />
+
+    <aura:handler event="c:CXE_selectBusinessProvinceEvent" action="{!c.getControllingPicklistBusiness}" />
+    <aura:handler event="c:CXE_selectBusinessCityEvent" action="{!c.getDependentPicklistBusiness}" />
+
+    <div class="slds-tabs_default__content tabcontent" id="tab-2" >
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group slds-text-align_center">
+                <div class="mov-form-group slds-m-top_medium">
+                    <div class="mov-form mov-form_input__placeholder-revised">
+                        <div class="slds-form">
+                            <h3 class="slds-form-element__label slds-m-bottom_large mov-text_size-21 mov-text_color-323232">Where will the electric service be used?</h3>
+                            
+                            <aura:if isTrue="{!v.persona == 'Ind'}">
+                                <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_medium">Home Address</h3>
+                                <aura:set attribute="else">
+                                <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_medium">Service Address</h3>
+                                </aura:set>
+                            </aura:if>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="slds-form-element slds-large-size_9-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <div class="slds-form-element__control mov-element-position-relative slds-m-bottom_large">
+                                        <ui:inputText aura:id="newBusinessServiceAddress" placeholder="{!if(v.persona == 'Ind', 'Home Address', 'Service Address')}" class="slds-input mov-input-trackmyapp" value="{!v.caseVar.address_1__c}"/>
+                                        <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                            <span class="tooltiptext">Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slds-form-element slds-large-size_9-of-12 mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">   
+                                <c:CXE_CP_DependentPicklist objInfo="Case" controllingFieldEvt="CXE_selectControllingPicklistEvent" controllingFieldApi="Service_Address_Province__c" controllingFieldLabel="Province" dependentFieldEvt="CXE_selectDependentPicklistEvent"  dependentFieldApi="Service_Address_City_Municiple__c" dependentFieldLabel="City / Municipality" />
+                            </div>
+                            
+                            <aura:if isTrue="{!v.persona == 'Ind'}">
+                                <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                    <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_1-of-2 mov-xs slds-p-horizontal_small">
+                                        <div class="slds-form-element__control mov-element-position-relative slds-m-bottom_large">
+                                            <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_medium">Home Ownership</h3>
+                                            <ui:inputSelect class="slds-input mov-input" aura:id="ind_homeowneship" value="{!v.caseVar.Home_Ownership__c}" label="Home Ownership" labelClass="hidden">
+                                                    <ui:inputSelectOption text="Owned"/>
+                                                    <ui:inputSelectOption text="Rented"/>
+                                                    <ui:inputSelectOption text="Living with Relatives"/>
+                                            </ui:inputSelect>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aura:if>
+                            
+                            <!-- <div class="slds-form-element slds-large-size_9-of-12 mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">	
+                                
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                    <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_medium">Province</h3>
+                                    <div class="slds-form-element__control">
+                                        <input class="slds-input mov-input-trackmyapp" type="text" />
+                                    </div>
+                                </div>
+                                
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_medium">City/Municipality</h3>
+                                    <div class="slds-form-element__control">
+                                    </div>
+                                </div>
+                            </div> -->
+                            
+                            <!-- <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_medium">Home Address</h3>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                    <div class="slds-form-element__control mov-element-position-relative slds-m-bottom_large">
+                                        <input class="slds-input mov-input-trackmyapp" type="text" />
+                                        <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                            <span class="tooltiptext">Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="mov-text-group slds-m-vertical_large slds-p-bottom_large">
+                                    <span class="mov-text_size-18 mov-text_weight-semi-bold mov-element-position-relative mov-element_display-inline-block_valign-center slds-m-right_large">
+                                        Will this be the same billing address?
+                                    </span>
+                                    <div class="mov-radio-group mov-radio-group_inline">
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_large">
+                                            <!--<input type="radio" id="new-radio" value="option1" name="iCheck" /> -->
+                                            <input aura:id="isSameAsService" type="radio" id="yes_radio" value="option1" name="iCheck" onclick="{!c.onClickSameAsService}"/>
+                                            <span>Yes</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>    
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold">
+                                            <!--<input type="radio" id="new-radio" value="option1" name="iCheck" /> -->
+                                            <input type="radio" id="no_radio" value="option1" name="iCheck" onclick="{!c.onClickSameAsService}"/>
+                                            <span>No&nbsp;</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center slds-p-top_medium slds-p-bottom_medium">
+                                <h3 class="mov-text_size-16">Will this be the same billing address?</h3>
+                                <label class="radio-inline radio-container ns-radio slds-m-bottom_medium">
+                                    <input type="radio" id="new-radio" value="option1" />Yes
+                                    <div class="radio-custom"></div>
+                                </label>
+                                
+                                <label class="radio-inline radio-container ns-radio slds-m-bottom_medium">
+                                    <input type="radio" id="new-radio" value="option1" />No
+                                    <div class="radio-custom"></div>
+                                </label>                                
+                            </div> -->
+                            <aura:if isTrue="{!not(v.isSame)}">
+                                <h3 class="mov-text_size-18 mov-text_weight-semi-bold slds-m-vertical_medium">Billing Address</h3>
+                                <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                    <div class="slds-form-element slds-large-size_9-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                                        <div class="slds-form-element__control mov-element-position-relative slds-m-bottom_large">
+                                            <ui:inputText aura:id="newBusinessBillingAddress" placeholder="Billing Address" class="slds-input mov-input-trackmyapp" value="{!v.caseVar.Address_2__c}"/>
+                                            <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                                <span class="tooltiptext">Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text Tooltip text</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="slds-form-element slds-large-size_9-of-12 mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">	
+                                    <c:CXE_CP_DependentPicklist objInfo="Case" controllingFieldEvt="CXE_selectBusinessProvinceEvent" controllingFieldApi="Billing_Address_Province__c" controllingFieldLabel="Province" dependentFieldEvt="CXE_selectBusinessCityEvent"  dependentFieldApi="Billing_Address_City_Municipal__c" dependentFieldLabel="City / Municipality" />
+                                </div>
+                            </aura:if>
+                            
+                            <div class="mov-form-row">
+                                <div class="slds-form-element slds-p-top_xx-large">
+                                    <!-- <button class="slds-button mov-button-default mov-element_max-width-170">Next</button> -->
+                                    <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.onClickNext}">NEXT</ui:button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,19 @@
+Dear {!Case.Addressing_Customer__c}, 
+
+We surveyed your premises for your service application with reference number {!Case.CaseNumber} and found issues that need to be addressed:
+
+Customer Name: {!Case.Full_Name__c} 
+Service Type: {!Case.Res_Non_Res_Description__c} 
+Service Address: {!Case.Service_Address_Unit_No__c}, {!Case.Service_Address_Street_No__c} {!Case.Service_Address_Street_Name__c}, {!Case.Service_Address_Subdivision__c}, {!Case.Service_Address_Barangay__c}, {!Case.Service_Address_City_Municiple__c} 
+
+Field Findings:
+{!Field_Order__c.Findings_in_Free_Text__c}
+
+Please understand that in order for us to proceed with the service application, the items above need to be addressed.  We hope that our Field Representative who conducted the survey has been helpful in assisting you on the corrective measures.
+
+We appreciate receiving notice once the constraints have been addressed. You may email our {!Case.OwnerTitle} {!Case.OwnerFirstName} {!Case.OwnerLastName} at {!Case.OwnerEmail}. You may also reach him/her at Meralco, {!Case.Responsible_Office__c} Business Center at tel. no. {!Case.Responsible_Office_Tel_No__c}. 
+
+Thank you for allowing us to be of service to you.
+
+Sincerely,
+MERALCO

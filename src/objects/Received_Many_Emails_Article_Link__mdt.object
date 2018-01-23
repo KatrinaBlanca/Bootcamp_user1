@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>7.I received too many e-mails/notifications/promotions. 
+a.	How do I manage my notifications?</description>
+    <fields>
+        <fullName>Article__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Article</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manage_Notifications_Link__c</fullName>
+        <description>a.	How do I manage my notifications?</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Manage_Notifications_Link</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <label>Received_Many_Emails_Article_Link</label>
+    <pluralLabel>Received_Many_Emails_Article_Links</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

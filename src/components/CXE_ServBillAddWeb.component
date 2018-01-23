@@ -1,0 +1,6 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+    <!-- PARAMETERS -->
+    <apex:attribute name="serv" type="String" description="Service Address from Web" assignTo="{!servAddWeb}"/>
+    <apex:attribute name="bill" type="String" description="Billing Address from Web" assignTo="{!billAddWeb}"/>
+    Billing Address: {!WebBillingAddress}<br/>
+</apex:component>

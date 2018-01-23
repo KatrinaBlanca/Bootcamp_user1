@@ -1,0 +1,13 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+<!-- PARAMETERS -->
+<apex:attribute name="serId" type="Id" description="Service Id" assignTo="{!serviceId}"/>
+<apex:attribute name="recType" type="String" description="Case Record Type" assignTo="{!caseRType}"/>
+<apex:variable var="c" value="{!CaseFromService}" />
+
+<apex:variable var="withAuthRepName" value="withAuthRepName" rendered="{!AND(c.Authorized_Representative_First_Name__c != '', c.Authorized_Representative_First_Name__c != null)}">
+{!c.Authorized_Representative_First_Name__c}
+</apex:variable>
+<apex:variable var="withoutAuthRepName" value="withoutAuthRepDetails" rendered="{!OR(c.Authorized_Representative_First_Name__c == '', c.Authorized_Representative_First_Name__c == null)}">
+{!c.First_Name__c}
+</apex:variable>
+</apex:component>

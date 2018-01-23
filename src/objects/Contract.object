@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Activate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChangeStatus</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Terminate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Contract_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>CXE_Contract_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CXE_Contract_Compact_Layout</fullName>
+        <fields>AccountId</fields>
+        <fields>Type__c</fields>
+        <fields>Status</fields>
+        <fields>Bill_Print_Mode__c</fields>
+        <fields>V10_Account_No__c</fields>
+        <label>CXE Contract Compact Layout</label>
+    </compactLayouts>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_No__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Salesforce Account ID of the Account related to Contract</inlineHelpText>
+        <label>Account #</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Rep__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account Rep</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ActivatedById</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ActivatedDate</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Advance_amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Advance amount</label>
+        <summarizedField>Agreement__c.Advance_amount__c</summarizedField>
+        <summaryFilterItems>
+            <field>Agreement__c.Active_Agreement__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Agreement__c.Contract__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Bank_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bill_Print_Mode__c</fullName>
+        <externalId>false</externalId>
+        <label>Bill Print Mode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BILPRNT001</fullName>
+                    <default>true</default>
+                    <label>Paper</label>
+                </value>
+                <value>
+                    <fullName>BILPRNT003</fullName>
+                    <default>false</default>
+                    <label>Paperless</label>
+                </value>
+                <value>
+                    <fullName>BILPRNT002</fullName>
+                    <default>false</default>
+                    <label>Paperplus</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Bill_Print_Mode_v10__c</fullName>
+        <externalId>false</externalId>
+        <label>Bill Print Mode v10</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Paper</fullName>
+                    <default>false</default>
+                    <label>Paper</label>
+                </value>
+                <value>
+                    <fullName>Paperless</fullName>
+                    <default>false</default>
+                    <label>Paperless</label>
+                </value>
+                <value>
+                    <fullName>Paperplus</fullName>
+                    <default>false</default>
+                    <label>Paperplus</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>BillingAddress</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Billing_Preference__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Billing Address</label>
+        <referenceTo>Address__c</referenceTo>
+        <relationshipLabel>Contracts</relationshipLabel>
+        <relationshipName>Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CXE_6_Months_Paperless_Lock_in__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF (TODAY() &lt; DATE( Year( CXE_PaperlessBIllingEnrollment_Effective__c )+floor((MONTH(CXE_PaperlessBIllingEnrollment_Effective__c) + 6 - 1) / 12) , 
+    mod(MONTH(CXE_PaperlessBIllingEnrollment_Effective__c) + 6 -1, 12) + 1 , 
+     day(CXE_PaperlessBIllingEnrollment_Effective__c)
+), TRUE,FALSE)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>6 Months Paperless Lock-in</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_APA_Agent__c</fullName>
+        <description>APA Agent</description>
+        <externalId>false</externalId>
+        <label>APA Agent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>076006</fullName>
+                    <default>false</default>
+                    <label>AUB</label>
+                </value>
+                <value>
+                    <fullName>003006</fullName>
+                    <default>false</default>
+                    <label>BDO</label>
+                </value>
+                <value>
+                    <fullName>002006</fullName>
+                    <default>false</default>
+                    <label>BPI</label>
+                </value>
+                <value>
+                    <fullName>010206</fullName>
+                    <default>false</default>
+                    <label>Chinabank</label>
+                </value>
+                <value>
+                    <fullName>010506</fullName>
+                    <default>false</default>
+                    <label>Citibank</label>
+                </value>
+                <value>
+                    <fullName>001106</fullName>
+                    <default>false</default>
+                    <label>PBCOM</label>
+                </value>
+                <value>
+                    <fullName>026506</fullName>
+                    <default>false</default>
+                    <label>PNB</label>
+                </value>
+                <value>
+                    <fullName>031306</fullName>
+                    <default>false</default>
+                    <label>RCBC</label>
+                </value>
+                <value>
+                    <fullName>031806</fullName>
+                    <default>false</default>
+                    <label>Robinsons Bank</label>
+                </value>
+                <value>
+                    <fullName>032406</fullName>
+                    <default>false</default>
+                    <label>Security Bank</label>
+                </value>
+                <value>
+                    <fullName>035506</fullName>
+                    <default>false</default>
+                    <label>UCPB</label>
+                </value>
+                <value>
+                    <fullName>035006</fullName>
+                    <default>false</default>
+                    <label>UnionBank</label>
+                </value>
+                <value>
+                    <fullName>097006</fullName>
+                    <default>false</default>
+                    <label>PNB Card</label>
+                </value>
+                <value>
+                    <fullName>109006</fullName>
+                    <default>false</default>
+                    <label>BDO Card</label>
+                </value>
+                <value>
+                    <fullName>108006</fullName>
+                    <default>false</default>
+                    <label>BPI Card</label>
+                </value>
+                <value>
+                    <fullName>107006</fullName>
+                    <default>false</default>
+                    <label>Citibank Card</label>
+                </value>
+                <value>
+                    <fullName>074006</fullName>
+                    <default>false</default>
+                    <label>Equicom Card</label>
+                </value>
+                <value>
+                    <fullName>000606</fullName>
+                    <default>false</default>
+                    <label>East West Card</label>
+                </value>
+                <value>
+                    <fullName>019406</fullName>
+                    <default>false</default>
+                    <label>Metrobank Card</label>
+                </value>
+                <value>
+                    <fullName>031206</fullName>
+                    <default>false</default>
+                    <label>RCBC Bankard</label>
+                </value>
+                <value>
+                    <fullName>032606</fullName>
+                    <default>false</default>
+                    <label>Security Bank MasterCard</label>
+                </value>
+                <value>
+                    <fullName>035406</fullName>
+                    <default>false</default>
+                    <label>Unionbank Visa</label>
+                </value>
+                <value>
+                    <fullName>101006</fullName>
+                    <default>false</default>
+                    <label>DINER&apos;S CLUB CARD</label>
+                </value>
+                <value>
+                    <fullName>104006</fullName>
+                    <default>false</default>
+                    <label>EQUITABLE CARD NETWORK</label>
+                </value>
+                <value>
+                    <fullName>099006</fullName>
+                    <default>false</default>
+                    <label>HSBC Card</label>
+                </value>
+                <value>
+                    <fullName>033606</fullName>
+                    <default>false</default>
+                    <label>Standard Chartered Credit</label>
+                </value>
+                <value>
+                    <fullName>000106</fullName>
+                    <default>false</default>
+                    <label>PNB (Allied)</label>
+                </value>
+                <value>
+                    <fullName>002806</fullName>
+                    <default>false</default>
+                    <label>BDO (Filinvest)</label>
+                </value>
+                <value>
+                    <fullName>002906</fullName>
+                    <default>false</default>
+                    <label>BDO (SMDC)</label>
+                </value>
+                <value>
+                    <fullName>003206</fullName>
+                    <default>false</default>
+                    <label>BDO (St. Francis Hotels)</label>
+                </value>
+                <value>
+                    <fullName>023506</fullName>
+                    <default>false</default>
+                    <label>EQUITABLE-PCI BANK ADA</label>
+                </value>
+                <value>
+                    <fullName>018006</fullName>
+                    <default>false</default>
+                    <label>Land Bank</label>
+                </value>
+                <value>
+                    <fullName>031106</fullName>
+                    <default>false</default>
+                    <label>RCBC Savings</label>
+                </value>
+                <value>
+                    <fullName>090006</fullName>
+                    <default>false</default>
+                    <label>GENERAL PAYROLL</label>
+                </value>
+                <value>
+                    <fullName>090506</fullName>
+                    <default>false</default>
+                    <label>MANAGERIAL PAYROLL</label>
+                </value>
+                <value>
+                    <fullName>091006</fullName>
+                    <default>false</default>
+                    <label>PAYROLL - RETIREES</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CXE_APA_BL_Expiry_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>APA Blacklist Expiry Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Bypass_Validation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This indicate that the record was created without going through the validation</description>
+        <externalId>false</externalId>
+        <label>Bypass Validation</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Date6monthfromNOWPlus1__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATE( Year( CXE_PaperlessBIllingEnrollment_Effective__c )+floor((MONTH(CXE_PaperlessBIllingEnrollment_Effective__c) + 6 - 1) / 12) , 
+mod(MONTH(CXE_PaperlessBIllingEnrollment_Effective__c) + 6 -1, 12) + 1 , 
+day(CXE_PaperlessBIllingEnrollment_Effective__c)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_Date6monthfromNOWPlus1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Date6monthfromNOW__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATE( Year( CXE_PaperlessBIllingEnrollment_Effective__c )+floor((MONTH(CXE_PaperlessBIllingEnrollment_Effective__c) + 6 - 1) / 12) , 
+    mod(MONTH(CXE_PaperlessBIllingEnrollment_Effective__c) + 6 -1, 12) + 1 , 
+     day(CXE_PaperlessBIllingEnrollment_Effective__c)
+)-1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>CXE_Date6monthfromNOW</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Enrolled_to_APA_formula__c</fullName>
+        <description>Set Enrolled to APA? to true if Method of Payment is ADA (Bank).</description>
+        <externalId>false</externalId>
+        <formula>ISPICKVAL(Method_of_Payment__c, &quot;ADA (Bank)&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Enrolled to APA?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Enrolled_to_Paperless_Billing__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Enrolled to Paperless Billing?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Is_APA_Blacklisted__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(NOT(ISNULL(CXE_APA_BL_Expiry_Date__c))  &amp;&amp; CXE_APA_BL_Expiry_Date__c &gt;= TODAY(), TRUE, FALSE)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is APA Blacklisted?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_PaperlessBIllingCancelEffective__c</fullName>
+        <externalId>false</externalId>
+        <label>Paperless Billing Cancellation Effective</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_PaperlessBIllingEnrollment_Effective__c</fullName>
+        <externalId>false</externalId>
+        <label>Paperless Billing Enrollment Effective</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Pay_Mthd_Effective_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Method Effective Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Pending_APA_Cancellation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Pending APA Cancellation?</description>
+        <externalId>false</externalId>
+        <label>Pending APA Cancellation?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Pending_APA_Enrollment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Pending APA Enrollment?</description>
+        <externalId>false</externalId>
+        <label>Pending APA Enrollment?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CXE_Reason_for_Cancellation_APA__c</fullName>
+        <description>Reason for Cancellation APA</description>
+        <externalId>false</externalId>
+        <label>Reason for Cancellation APA</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Change in bank account or card number</fullName>
+                    <default>false</default>
+                    <label>Change in bank account or card number</label>
+                </value>
+                <value>
+                    <fullName>Change in payment method</fullName>
+                    <default>false</default>
+                    <label>Change in payment method</label>
+                </value>
+                <value>
+                    <fullName>Change in address</fullName>
+                    <default>false</default>
+                    <label>Change in address</label>
+                </value>
+                <value>
+                    <fullName>Change in payor</fullName>
+                    <default>false</default>
+                    <label>Change in payor</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>CXE_ReasonsforCancellationPaperlessBill__c</fullName>
+        <externalId>false</externalId>
+        <label>Reasons for Cancellation Paperless Bill</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Care_Of__c</fullName>
+        <externalId>false</externalId>
+        <label>Care Of</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Contracts</relationshipLabel>
+        <relationshipName>Contracts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Code_Account_Rep__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Account Rep</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Statement_Production_Trigger_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Statement Production Trigger Type</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Status</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Code_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Code Type</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Collecting_Office__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Collecting Office</label>
+        <referenceTo>Office__c</referenceTo>
+        <relationshipLabel>Contracts</relationshipLabel>
+        <relationshipName>Collecting_Office</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CompanySignedDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CompanySignedId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContractTerm</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Contract_External_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Contract External ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CustomerSignedDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>CustomerSignedId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CustomerSignedTitle</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Data_Quality_Score__c =100,&quot;All Contract Details Captured&quot;, &quot;Missing: &quot;&amp;IF( LEN( TEXT(MONTH( StartDate ))) = 0, &quot;Contract Start Date, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF(LEN(  TEXT(ContractTerm)) = 0, &quot;Contract Term, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF( LEN( BillingCity ) = 0, &quot;Complete Contract Address, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF(LEN( CustomerSignedId ) = 0, &quot;Customer Signature, &quot;,&quot;&quot;)&amp;&quot;&quot;&amp;IF( ISPICKVAL(  OwnerExpirationNotice ,&quot;&quot;), &quot;Owner Expiration Notice&quot;,&quot;&quot;))</formula>
+        <label>Data Quality Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Data_Quality_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( LEN(TEXT(MONTH(StartDate)))=0, 0,20) + IF( LEN(TEXT( ContractTerm ))=0, 0,20) + IF( LEN( BillingCity ) = 0, 0,20) + IF( LEN( CustomerSignedId) = 0, 0,20) + IF( ISPICKVAL(  OwnerExpirationNotice ,&quot;&quot;), 0,20)</formula>
+        <label>Data Quality Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>ERP_Account_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.ERPAccountID__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ERP Account Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ERP_Contract_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>ERP Contract Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EndDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Form_of_Payment_Sub__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Mode Sub-type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CWT</fullName>
+                    <default>false</default>
+                    <label>CWT</label>
+                </value>
+                <value>
+                    <fullName>FWV</fullName>
+                    <default>false</default>
+                    <label>FWV</label>
+                </value>
+                <value>
+                    <fullName>Fund Transfer</fullName>
+                    <default>false</default>
+                    <label>Fund Transfer</label>
+                </value>
+                <value>
+                    <fullName>Direct Deposit to bank account</fullName>
+                    <default>false</default>
+                    <label>Direct Deposit to bank account</label>
+                </value>
+                <value>
+                    <fullName>Applied Credit</fullName>
+                    <default>false</default>
+                    <label>Applied Credit</label>
+                </value>
+                <value>
+                    <fullName>Offsetting</fullName>
+                    <default>false</default>
+                    <label>Offsetting</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Form_of_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Mode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cash</fullName>
+                    <default>false</default>
+                    <label>Cash</label>
+                </value>
+                <value>
+                    <fullName>Check</fullName>
+                    <default>false</default>
+                    <label>Check</label>
+                </value>
+                <value>
+                    <fullName>Certificate of Tax Withheld at Source (BIR Forms)</fullName>
+                    <default>false</default>
+                    <label>Certificate of Tax Withheld at Source (BIR Forms)</label>
+                </value>
+                <value>
+                    <fullName>Fund Transfer</fullName>
+                    <default>false</default>
+                    <label>Fund Transfer</label>
+                </value>
+                <value>
+                    <fullName>Meralco Internal</fullName>
+                    <default>false</default>
+                    <label>Meralco Internal</label>
+                </value>
+                <value>
+                    <fullName>Credit card</fullName>
+                    <default>false</default>
+                    <label>Credit card</label>
+                </value>
+                <value>
+                    <fullName>Debit card</fullName>
+                    <default>false</default>
+                    <label>Debit card</label>
+                </value>
+                <value>
+                    <fullName>E-wallet</fullName>
+                    <default>false</default>
+                    <label>E-wallet</label>
+                </value>
+                <value>
+                    <fullName>Prepaid Card</fullName>
+                    <default>false</default>
+                    <label>Prepaid Card</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IBAN__c</fullName>
+        <externalId>false</externalId>
+        <label>IBAN</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Method_of_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Method of Payment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ADA (Bank)</fullName>
+                    <default>false</default>
+                    <label>ADA (Bank)</label>
+                </value>
+                <value>
+                    <fullName>ADA (Credit Card)</fullName>
+                    <default>false</default>
+                    <label>ADA (Credit Card)</label>
+                </value>
+                <value>
+                    <fullName>Over the Counter</fullName>
+                    <default>false</default>
+                    <label>Over the Counter</label>
+                </value>
+                <value>
+                    <fullName>Company Expenses</fullName>
+                    <default>false</default>
+                    <label>Company Expenses</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>New_Bill_Print_Mode__c</fullName>
+        <description>New Bill Print Mode to be updated</description>
+        <externalId>false</externalId>
+        <label>New Bill Print Mode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BILPRNT001</fullName>
+                    <default>false</default>
+                    <label>Paper</label>
+                </value>
+                <value>
+                    <fullName>BILPRNT003</fullName>
+                    <default>false</default>
+                    <label>Paperless</label>
+                </value>
+                <value>
+                    <fullName>BILPRNT002</fullName>
+                    <default>false</default>
+                    <label>Paperplus</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Non_Disconnectable_End__c</fullName>
+        <externalId>false</externalId>
+        <label>Non-Disconnectable End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Non_Disconnectable_Start__c</fullName>
+        <externalId>false</externalId>
+        <label>Non-Disconnectable Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Non_Disconnectable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Non-Disconnectable</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>OwnerExpirationNotice</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Day__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Day</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1st of month</fullName>
+                    <default>false</default>
+                    <label>1st of month</label>
+                </value>
+                <value>
+                    <fullName>Last day of month</fullName>
+                    <default>false</default>
+                    <label>Last day of month</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pending_BP_Update__c</fullName>
+        <description>Indicate if this contract has a pending Bill Print Mode update</description>
+        <externalId>false</externalId>
+        <formula>NOT(ISBLANK(Text(New_Bill_Print_Mode__c))) 
+&amp;&amp;
+(TEXT(Bill_Print_Mode__c) !=  TEXT(New_Bill_Print_Mode__c))</formula>
+        <label>Pending Bill Print Mode Update?</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricebook2Id</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Recipient_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Recipient Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Related Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>RES Customers - Contract</relationshipLabel>
+        <relationshipName>Contracts_RES_Account</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ShippingAddress</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>SpecialTerms</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>StartDate</fullName>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Statement_Production_Trigger_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Statement Production Trigger Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>Bill Note Emission Date</fullName>
+                    <default>false</default>
+                    <label>Bill Note Emission Date</label>
+                </value>
+                <value>
+                    <fullName>Preferred Statement Date</fullName>
+                    <default>false</default>
+                    <label>Preferred Statement Date</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Terms_of_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Terms of Payment</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>14d end of month</fullName>
+                    <default>false</default>
+                    <label>14d end of month</label>
+                </value>
+                <value>
+                    <fullName>14d net</fullName>
+                    <default>false</default>
+                    <label>14d net</label>
+                </value>
+                <value>
+                    <fullName>30d end of month</fullName>
+                    <default>false</default>
+                    <label>30d end of month</label>
+                </value>
+                <value>
+                    <fullName>30d net</fullName>
+                    <default>false</default>
+                    <label>30d net</label>
+                </value>
+                <value>
+                    <fullName>60d end of month</fullName>
+                    <default>false</default>
+                    <label>60d end of month</label>
+                </value>
+                <value>
+                    <fullName>60d net</fullName>
+                    <default>false</default>
+                    <label>60d net</label>
+                </value>
+                <value>
+                    <fullName>Cash on delivery</fullName>
+                    <default>false</default>
+                    <label>Cash on delivery</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Total_Outstanding_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Outstanding Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Regular</fullName>
+                    <default>false</default>
+                    <label>Regular</label>
+                </value>
+                <value>
+                    <fullName>Prepaid</fullName>
+                    <default>false</default>
+                    <label>Prepaid</label>
+                </value>
+                <value>
+                    <fullName>SOLR</fullName>
+                    <default>false</default>
+                    <label>SOLR</label>
+                </value>
+                <value>
+                    <fullName>Retailer</fullName>
+                    <default>false</default>
+                    <label>Retailer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>V10_Account_No__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Legacy Account Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <listViews>
+        <fullName>AllActivatedContracts</fullName>
+        <columns>CONTRACT.CONTRACT_NUMBER</columns>
+        <columns>SALES.ACCOUNT.NAME</columns>
+        <columns>CONTRACT.STATUS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>A</value>
+        </filters>
+        <label>All Activated Contracts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllContracts</fullName>
+        <columns>CONTRACT.CONTRACT_NUMBER</columns>
+        <columns>SALES.ACCOUNT.NAME</columns>
+        <columns>V10_Account_No__c</columns>
+        <columns>CONTRACT.STATUS</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Contracts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllDraftContracts</fullName>
+        <columns>CONTRACT.CONTRACT_NUMBER</columns>
+        <columns>SALES.ACCOUNT.NAME</columns>
+        <columns>V10_Account_No__c</columns>
+        <columns>CONTRACT.STATUS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>D</value>
+        </filters>
+        <label>All Draft Contracts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AllInApprovalContracts</fullName>
+        <columns>CONTRACT.CONTRACT_NUMBER</columns>
+        <columns>SALES.ACCOUNT.NAME</columns>
+        <columns>V10_Account_No__c</columns>
+        <columns>CONTRACT.STATUS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>P</value>
+        </filters>
+        <label>All In Approval Contracts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MyActivatedContracts</fullName>
+        <columns>CONTRACT.CONTRACT_NUMBER</columns>
+        <columns>SALES.ACCOUNT.NAME</columns>
+        <columns>V10_Account_No__c</columns>
+        <columns>CONTRACT.STATUS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>A</value>
+        </filters>
+        <label>My Activated Contracts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MyDraftContracts</fullName>
+        <columns>CONTRACT.CONTRACT_NUMBER</columns>
+        <columns>SALES.ACCOUNT.NAME</columns>
+        <columns>V10_Account_No__c</columns>
+        <columns>CONTRACT.STATUS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>D</value>
+        </filters>
+        <label>My Draft Contracts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MyInApprovalContracts</fullName>
+        <columns>CONTRACT.CONTRACT_NUMBER</columns>
+        <columns>SALES.ACCOUNT.NAME</columns>
+        <columns>CONTRACT.STATUS</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CONTRACT.STATUS_CODE</field>
+            <operation>equals</operation>
+            <value>P</value>
+        </filters>
+        <label>My In Approval Contracts</label>
+        <language>en_US</language>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>CONTRACT.CONTRACT_NUMBER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SALES.ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CONTRACT.STATUS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CORE.USERS.ALIAS</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTRACT.CONTRACT_NUMBER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SALES.ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Advance_amount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Method_of_Payment__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTRACT.STATUS</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTRACT.START_DATE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTRACT.END_DATE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTRACT.CONTRACT_NUMBER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTRACT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CORE.USERS.ALIAS</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>CONTRACT.CONTRACT_NUMBER</searchFilterFields>
+        <searchFilterFields>SALES.ACCOUNT.NAME</searchFilterFields>
+        <searchFilterFields>Advance_amount__c</searchFilterFields>
+        <searchFilterFields>Method_of_Payment__c</searchFilterFields>
+        <searchFilterFields>CONTRACT.STATUS</searchFilterFields>
+        <searchFilterFields>CONTRACT.START_DATE</searchFilterFields>
+        <searchFilterFields>CONTRACT.END_DATE</searchFilterFields>
+        <searchResultsAdditionalFields>CONTRACT.CONTRACT_NUMBER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SALES.ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTRACT.STATUS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+</CustomObject>

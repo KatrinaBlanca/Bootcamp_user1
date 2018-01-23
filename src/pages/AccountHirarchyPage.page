@@ -1,0 +1,5 @@
+<apex:page standardcontroller="Account">
+<apex:iframe src="http://www.salesforce.com" scrolling="true" id="theIframe"/>
+
+
+</apex:page>

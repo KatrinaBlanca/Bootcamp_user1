@@ -1,0 +1,142 @@
+<apex:page controller="BundleConfiguratorController" tabStyle="Opportunity" id="bundlepage" >
+<style type="text/css">
+ .width-33-pct { 
+            width: 33%; 
+        }  
+   </style>
+    <apex:pageMessages /> 
+      
+    <apex:sectionHeader title="Opportunity - Configure Bundle" subtitle="my opportunity"/>
+    <!-- <apex:form >
+        <apex:commandbutton value="Get New Connection" action="{!NewCon}"/>
+    </apex:form>
+    <br/>
+    <c:ConnectionSearchComponent listener="{!this}" autoSearch="true" accountId="{!Acc.id}" defaultCity="{!acc.BillingCity}" defaultStreet="{!acc.BillingStreet}" defaultPostalcode="{!acc.BillingPostalcode}"></c:ConnectionSearchComponent>    
+   
+   <apex:form >  
+   <apex:pageblock rendered="{!listProduct.size>0}" id="bundleSelect" >
+   <apex:panelGrid columns="3" width="100%" columnClasses="width-33-pct" >
+    <apex:selectRadio value="{!Selbundle}"  layout="pageDirection" >
+    <apex:selectOptions value="{!listProduct}"/>
+     <apex:actionSupport event="onchange" action="{!bundleProducts}" ReRender="{!$Component.bundleprods},{!$Component.bundleSelect}"  status="{!$Component.filter},{!$Component.proddet}" />                                                 
+    </apex:selectRadio>
+    <apex:pageBlockSection rendered="{!if(selbundle!=null,true,false)}" columns="1">
+      <apex:outputPanel >
+    <apex:actionStatus id="proddet">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image url="/img/loading.gif"/>
+                                    <br/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            </apex:actionstatus>
+                            </apex:outputPanel>
+     <apex:outputfield label="Description" value="{!productDetail.description}"/>
+        <apex:outputfield label="Duration" value="{!productDetail.Contract_Duration_Years__c}"/>        
+        <apex:outputfield label="Product Rating" value="{!productDetail.Product_Rating__c}"/> 
+        <apex:outputfield label="Brand's Logo" value="{!productDetail.Brand_s_Logo__c}"/>
+       </apex:pageBlockSection>
+       <apex:pageBlockSection rendered="{!if(selbundle!=null,true,false)}" columns="1">
+    <apex:pageBlockTable value="{!productToPriceMap}" var="price">
+    <apex:column value="{!price}" headerValue="Products" style="{!IF(price == 'Total','font-size: 150%', '')}"/>
+    <apex:column value="{!productToPriceMap[price]}" headerValue="Unit Price" style="{!IF(price == 'Total','font-size: 150%', '')}"/>
+    </apex:pageBlockTable>
+    </apex:pageBlockSection>
+    </apex:panelGrid> 
+     
+    </apex:pageblock>
+    
+    <apex:pageBlock rendered="{!listProduct.size>0}" id="bundleprods">  
+        <apex:pageblockButtons location="top" rendered = "{!if(myMapSize > 0,true,false)}">
+             <apex:commandButton value="Estimate EAV" action="{!showpopup}" immediate="True">
+             </apex:commandbutton>    
+         </apex:pageblockButtons>
+                       
+    <apex:Repeat value="{!bundlelineitems}" var="bundle"  >
+    
+    <apex:pageBlockSection rendered="{!producttobooleanMap[bundle]}" title="{!productconnectionMap[bundle]}" columns="1">
+    
+                            <apex:inputField value="{!bundlelineitems[bundle].quantity}" rendered="{!if(productidtoproductmap[bundle].Master_Product_Type__c=="Non-commodity",true,false)}"/> 
+                   
+     </apex:pageBlockSection>
+
+    <apex:pageBlockSection title="{!productconnectionMap[bundle]}" rendered="{!!producttobooleanMap[bundle]}" columns="1" id="EAV" >
+    <apex:outputPanel >
+    <apex:actionStatus id="filter">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image url="/img/loading.gif"/>
+                                    <br/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            </apex:actionstatus>
+                            </apex:outputPanel>
+     <apex:inputfield label="EAV" value="{!bundlelineitems[bundle].EAV__c}"  rendered="{!!producttobooleanMap[bundle]}"  ><apex:actionSupport event="onchange" ReRender="{!$Component.CPO}"/></apex:inputField> 
+     </apex:pageBlockSection>
+    <apex:pageBlockSection collapsible="false" columns="1"  id="CPO" >
+    <c:CommercialProductOverview prodId="{!bundle}"  eav="{!bundlelineitems[bundle].EAV__c}"></c:CommercialProductOverview>
+    </apex:pageBlockSection> 
+   
+    </apex:repeat>       
+    
+    
+    <apex:commandButton value="Save" action="{!save}" />
+    <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+    
+    </apex:pageBlock>
+    
+    <apex:outputPanel id="popup">
+        <apex:pageblock >
+            <apex:outputpanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}" />
+                <apex:outputPanel styleClass="customPopup" layout="block" rendered="{!displayPopUp}">
+                    <apex:pageblocksection title="EAV Estimate Details" collapsible="false">
+                       
+                         <apex:repeat value="{!labeltovaluemap}" var="Question">
+                        <apex:outputlabel style="font-weight:bold" value="{!Question}"/>
+                            <apex:selectList id="picklist" styleclass="std" size="1" value="{!labeltoanswermap[Question]}">
+                               
+                                <apex:selectOptions value="{!labeltovaluemap[Question]}"/>
+                            </apex:selectList>
+                            
+                        </apex:repeat>&nbsp;
+                    
+                    </apex:pageblocksection>
+                    
+                    
+                    
+                    <apex:outputPanel >
+                        <div align="center">
+                            <apex:commandButton value="Generate EAV" action="{!calculateeav}" immediate="true" />
+                            <apex:commandButton value="Cancel" action="{!closePopup}" rerender="popup" immediate="true"/>
+                        </div>
+                    </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:pageblock>    
+        </apex:outputPanel>
+    </apex:form> -->
+    
+    <style type="text/css">
+       .popupBackground{
+             background-color:black;
+             opacity: 0.60;
+             position:fixed;
+             width: 100%;
+             height: 100%;
+             top: 0;
+             left: 0;
+             z-index: 9998;
+         }     
+       .customPopup{
+            background-color: white;
+            left: 50%;
+            padding:10px;
+            position: fixed;
+            z-index: 9999;           
+            width: 550px;          /* Please adjust according to the screen */
+            height:250px;          /* Please adjust according to the screen */
+            margin-left:-275px;    /* Please adjust according to the screen */
+            top:100px;
+            
+        }
+    </style>
+</apex:page>

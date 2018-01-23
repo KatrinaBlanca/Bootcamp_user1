@@ -1,0 +1,164 @@
+<aura:component >
+    <aura:attribute name="modalPopUpChild" type="string" required="false" description="" access="public"/>
+    <aura:attribute name="checkboxChecker" type="boolean"/>
+    
+    <aura:attribute name="getValue" type="boolean"/>
+    <aura:registerEvent name="setAttribute" type="c:CXE_CP_PaperlessBillingSubscribe_event"/>
+    <!-- TERMS MODAL -->
+    <div class="mov-modal mov-modal_terms mov-modal_width-1200" id="mov-modal_lboxTerms">
+        <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" id="modal-background">
+            <div class="slds-modal__container">
+                
+                <div class="slds-modal__content slds-p-around_xx-large mov-background-color_ffffff " id="modal-content-id-1">
+                    <h4 class="text-center">
+                        TERMS AND CONDITIONS AND PRIVACY POLICY <br />
+                    </h4>
+                    
+                    
+                    <div class="mov-scroll-container slds-m-vertical_large">
+                        <!--div class="mov-text_size-16 mov-text_line-height-30 mov-text_color-6a6a6a">
+                            <article><strong>Privacy Policy</strong><br /><br />This Privacy Policy covers your personal information when transacting or doing business with Manila Electric Company (individually and collectively known as “MERALCO”, “we”, “us” or “our”).<br /><br />MERALCO cares for your personal information and takes your privacy seriously.&nbsp; We are committed to ensuring that your personal information is protected from collection to disposal.&nbsp;<br /><br />This Privacy Policy is effective 22 May 2017.<br />&nbsp;<br /><strong>WHAT WE COLLECT</strong><br />&nbsp;<br /><strong>A.&nbsp;&nbsp; </strong><strong>From prospective and existing customers, including customers with terminated services</strong><br />&nbsp;
+                                <ol> <li>Information you provide to us when you apply for service, such as your name, address, phone number, email address, Tax Identification Number (TIN), evidence of authority to occupy (e.g., contract of lease, Transfer Certificate of Title, Special Power of Attorney (SPA), Undertaking / Authorization from owner of the premises) and, if applicable, details of your authorized representative;</li>
+                                </ol> <ol> <li value="2">Billing and payment information used to pay your electric consumption, such as your banking (for auto debit arrangement) and credit card (for auto charge arrangement) information. However, details of the payment instrument (like prepaid card, debit card, credit card) used to pay your bills via the Meralco Customer Portal are captured and processed by the payment gateway service provider;Information to determine eligibility to participate in certain energy programs or services, such as peak-off-peak rates (POP), net metering, Interruptible Load Program (ILP), demand side management (DSM), etc.;</li>
+                                </ol> <ol> <li value="3">Information you fill out in any form on our website, such as, when you wish to contact us to lodge your concerns, to register at our customer portal, to avail of our on-line application, outage notifications, and billing and/or payment services;</li>
+                                </ol> <ol> <li value="4">Information you give us when you communicate with MERALCO and/or any of our representatives (e.g., Call Center Representatives, Relationship Managers, etc.), such as with respect to inquiries and complaint details on the quality and reliability of electric service;</li>
+                                </ol> <ol> <li value="5">Responses you or your representative provide when you participate in our customer surveys;</li>
+                                </ol> <ol> <li value="6">Information you provide for verification purposes (e.g., to facilitate refunds or to avail of zero-rated VAT transactions), such as photocopy of a valid / government-issued identification card or foreign passport;</li>
+                                </ol> <ol> <li value="7">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                                </ol><br /><strong>B.&nbsp;&nbsp; </strong><strong>From prospective, active and separated employees</strong><br />&nbsp;
+                                <ol> <li>Information you submit when you apply at MERALCO for work, including what is contained in your resume or curriculum vitae and application form (e.g., work references);</li>
+                                </ol> <ol> <li value="2">Information we collect during the processing of your application, such as testing results, employment offer, results of character investigation, and pre-employment medical assessment;</li>
+                                </ol> <ol> <li value="3">Information we collect and maintain about you during your employment, such as your payroll information, including but not limited to government mandated and third party remittances like SSS, Philhealth, and Pag-ibig contributions, taxes, bank account information; wages; entitlements and benefits ; health and welfare benefits; medical and dental care records; beneficiary and emergency contact information; training and certifications, performance evaluation; sanctions; employment changes / work history;</li>
+                                </ol> <ol> <li value="4">Information we retain about you even after your separation from service, such as beneficiaries, and contact information;</li>
+                                </ol> <ol> <li value="5">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                                </ol><br /><strong>C.&nbsp;&nbsp; </strong><strong>From Vendors, Suppliers or Contractors</strong><br />&nbsp;
+                                <ol> <li>Information you submit to MERALCO in your application for accreditation, use of supply chain application system, and/or processing of payments, such as, your name, tax identification number, address, contact details, educational attainment, work experience and banking information;</li>
+                                </ol> <ol> <li value="2">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                                </ol>
+                                &nbsp;<br /><strong>D.&nbsp;&nbsp; </strong><strong>From Shareholders</strong><br />&nbsp;
+                                <ol> <li>The information you submit to us when you become a shareholder of or in the course of being a shareholder of MERALCO like your name, address, contact details, marital status, government issued identification, and if applicable, details of your authorized representative and heir/s;</li>
+                                </ol> <ol> <li value="2">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                                </ol><br /><strong>E.&nbsp;&nbsp; </strong><strong>From Guests / Visitors </strong><br />&nbsp;
+                                <ol> <li>The information you provide when you enter our premises such as your name, address, vehicle type and plate number or conduction sticker number;</li>
+                                </ol> <ol> <li value="2">Any other information you voluntarily provide for any legitimate purpose declared at point of collection of such information.</li>
+                                </ol><br /><strong>WHAT WE DO WITH THE INFORMATION WE GATHER</strong><br /><br />MERALCO stores, processes, and analyzes the information that you provide to us for purposes, including, but not limited to:<br /><br /><strong>A.&nbsp;&nbsp; </strong><strong>For our customers</strong><br />&nbsp;
+                                <ol> <li>providing and continuously improving our electric services, as well as managing your account</li>
+                                </ol> <ol> <li value="2">responding to your inquiry, concern or complaint</li>
+                                </ol> <ol> <li value="3">sending information about our programs (POP, ILP) and service offerings (DSM, etc) that may be of interest to you</li>
+                                </ol> <ol> <li value="4">sending messages related to your services such as outage notifications, updates, alerts, and other information that you request</li>
+                                </ol> <ol> <li value="5">enabling us to accept bill payments according to your enrolled payment mode &nbsp;(i.e., automatic debit from your bank account)</li>
+                                </ol> <ol> <li value="6">verifying your identity when you access your account through the various customer engagement channels (e.g., e-mail, website, mobile application, via phone call, walk-in)</li>
+                                </ol> <ol> <li value="7">verifying your identity and eligibility to claim refunds</li>
+                                </ol>
+                                &nbsp;<br /><strong>B.&nbsp;&nbsp; </strong><strong>For our prospective, active and separated employees</strong><br />&nbsp;
+                                <ol> <li>evaluating your eligibility for initial employment, including the verification of your qualifications and character references (background checking)</li>
+                                </ol> <ol> <li value="2">administering your pay, statutory deductions, entitlements, and benefits</li>
+                                </ol> <ol> <li value="3">complying with applicable statutory and regulatory requirements and submissions</li>
+                                </ol> <ol> <li value="4">conducting performance reviews and rewards</li>
+                                </ol> <ol> <li value="5">establishing appropriate training and/or developmental interventions</li>
+                                </ol> <ol> <li value="6">administering disciplinary action and sanction</li>
+                                </ol> <ol> <li value="7">collecting and maintaining contact information</li>
+                                </ol> <ol> <li value="8">maintaining your employment records</li>
+                                </ol> <ol> <li value="9">processing employee work-related claims (e.g. worker compensation, insurance claims, etc.)</li>
+                                </ol> <ol> <li value="10">developing health and wellness programs</li>
+                                </ol><br /><strong>C.&nbsp;&nbsp; </strong><strong>For our Vendors, Suppliers or Contractors</strong><br />&nbsp;
+                                <ol> <li>verifying and confirming your identity as a vendor as part of your accreditation</li>
+                                </ol> <ol> <li value="2">conducting business with you</li>
+                                </ol> <ol> <li value="3">establishing and managing business relationships with you</li>
+                                </ol> <ol> <li value="4">facilitating the payment of your invoices for any goods or services you have delivered/rendered</li>
+                                </ol> <ol> <li value="5">complying with statutory, legal and regulatory requirements</li>
+                                </ol> <ol> <li value="6">updating or maintaining your vendor account information</li>
+                                </ol> <ol> <li value="7">establishing details of your authorized contact persons for the goods and/or services you supply</li>
+                                </ol> <ol> <li value="8">responding to your questions, comments, and feedback or informing you about our requirements, programs, or advisories by letter, e-mail, telephone or other media for internal administrative purposes, such as auditing, data analysis, database records management</li>
+                                </ol><br /><strong>D.&nbsp;&nbsp; </strong><strong>For our Shareholders</strong>&nbsp;<br />&nbsp;
+                                <ol> <li>maintaining our shareholder register</li>
+                                </ol> <ol> <li value="2">managing your account and our relationship with you</li>
+                                </ol> <ol> <li value="3">handling dividend or any other payments</li>
+                                </ol> <ol> <li value="4">facilitating communications with you, including responding to your queries and requests, sending notices of general meetings, annual reports and shareholder circulars to you, registering shareholders at general meetings and shareholders’ events including without limitation to, verification of your identity and/or your proxy</li>
+                                </ol> <ol> <li value="5">for legal and investor relations purposes</li>
+                                </ol><br /><strong>E.&nbsp;&nbsp; </strong><strong>For our visitors / guests</strong><br />&nbsp;
+                                <ol> <li>establishing your identity</li>
+                                </ol> <ol> <li value="2">recording the purpose of your visit</li>
+                                </ol> <ol> <li value="3">monitoring visitor’s activities inside the company premises, including ingress and egress of equipment, vehicle, etc.</li>
+                                </ol><h3><br /><strong style="font-size: 13px;">DATA DISCLOSURE AND SHARING</strong></h3><br />Access to your personal information is restricted to MERALCO employees and contractors on a need to know basis to carry out their responsibilities with regard to the conduct of our business such as meter reading, bill delivery, field inspection, energization, and restoration of your electric service.&nbsp; We require our contractors, through a Non-Disclosure Agreement (NDA), to secure and keep your information confidential and we do not allow them to disclose your information to others, or to use it for their own purposes. &nbsp;<br />&nbsp;<br />Your information may also be disclosed to government entities pursuant to and in compliance with applicable laws and regulations, subpoena or court order.<br />&nbsp;<br />&nbsp;<br /><strong>INFORMATION SECURITY</strong><br /><br />We are committed to ensure that your information is secure. MERALCO shall undertake and implement reasonable organizational, physical, and technical security measures in collecting, receiving, transmitting, storing, and disposing your personal information.<br />For an enhanced online experience, our services are available through compatible devices, such as laptops, PCs, tablets and mobile phones.&nbsp;&nbsp; For your added security, we recommend that you install anti-virus software on any such device before accessing the internet.<br />You are responsible for the security of your information once it reaches you or your representative in any medium, including but not limited to written correspondences, bills, emails, system applications, and on-line accounts.&nbsp; You should take appropriate measures to ensure that any medium or device you use to monitor or manage your account is secure and not accessible to anyone without permission.<br /><br />&nbsp;<h3><strong style="font-size: 13px;">AUTOMATIC COLLECTION OF INFORMATION AND HOW WE USE COOKIES</strong></h3><br />By using our website and /or using services through it, you agree to the use of cookies, either via the MERALCO website, email or SMS communications. You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can modify your browser setting to decline cookies if you prefer. However, this may prevent you from taking full advantage of our website.<br />&nbsp;<br />A cookie is a small file, which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyze web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.<br /><br />We use traffic log cookies to identify which pages are being used. This helps us analyze data about web page traffic and improve our website to enhance your browsing experience. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.<br /><br />We receive and store certain types of information (such as the amount of time you spend on the site and the number of views you made on each page, the IP address of your device, and the browser and operating system that you are using) when you interact with our website, mobile website, emails and online advertising to monitor proper functionality, determine areas for continuous improvement and to support website requirements. This information is gathered automatically, temporarily stored in log files and removed from the system at a certain point.&nbsp;<br />&nbsp;<br />&nbsp;<br /><strong>LINKS TO OTHER WEBSITES</strong><br /><br />Our website contains links, which may lead you to other websites beyond our control and not covered by this Privacy Policy.&nbsp; If you access other sites using the links provided, the operators of those sites may collect information from you, which may be used by them in accordance with their own privacy policy. We are not responsible for the protection and privacy of any personal information that third parties may collect, store and use through their website.&nbsp; Therefore, you should exercise caution and carefully study the privacy policy of each website you visit.<br />&nbsp;<br /><br /><strong>LOGS COLLECTION</strong><br /><br />Your personal information may be collected by our logging processes in case of logical and physical access to our systems and/or premises.&nbsp; When necessary, personal information may be retrieved for security purposes.<br />&nbsp;<br /><br /><strong>PERSONAL DATA RETENTION AND DISPOSAL</strong><br />&nbsp;<br />We keep your personal data only for as long as necessary:<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for the fulfillment of the declared, specified, and legitimate purposes provided above, or when the processing relevant to the purpose has been completed &nbsp; &nbsp;<span style="font-size: 13px;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>&nbsp; &nbsp; &nbsp; or terminated;<br />&nbsp;<br />&nbsp; &nbsp; &nbsp; &nbsp; b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for the establishment, exercise or defense of legal claims; or<br />&nbsp;<br />&nbsp; &nbsp; &nbsp; &nbsp; c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for other business purposes, that are consistent with standards established or approved by regulatory agencies governing MERALCO<br />&nbsp;<br />Thereafter, your personal data shall be disposed or discarded in a secure manner that would prevent further processing, unauthorized access, or disclosure to any other party or the public.<br />&nbsp;<br /><br /><strong>CONTROLLING YOUR PERSONAL INFORMATION</strong><br /><br />You may request for a copy of your personal information in our possession, or have it corrected if you believe that it is inaccurate or incomplete.<br />If you wish to request for a copy of your personal data, or have it corrected or deleted, please reach out to us through our contact information found below. We will promptly respond to your request.<br />&nbsp;<br />Chief Data Privacy Officer<br />Tel. No.:&nbsp; 631-2222<br />e-mail:&nbsp; <a href="mailto:cdpo@meralco.com.ph">cdpo@meralco.com.ph</a><br />Office: Lopez Building, Meralco Center, Ortigas Avenue, Brgy. Ugong, Pasig City, 1600<br />&nbsp;<br /><strong><u>FEEDBACK ON OUR PRIVACY POLICY<br />&#8203;</u></strong><br />For questions or feedback about our Privacy Policy, please contact us through this email: <a href="mailto:cdpo@meralco.com.ph">cdpo@meralco.com.ph</a><br />&nbsp;<br /><strong>CHANGES TO POLICY</strong><br />&nbsp;<br />MERALCO reserves the right to revise or modify this Privacy Policy, as necessary.&nbsp;&nbsp; </article>
+                            
+                        </div-->
+                        
+                        <p class="mov-text_size-16 mov-text_line-height-30 mov-text_color-6a6a6a mov-text_weight-semi-bold">
+                            1.	<b>PAPERLESS BILLING OVERVIEW.</b>  Paperless Billing is a free service of Meralco wherein a customer may opt to receive his monthly electric bills electronically instead of paper bills. The electronic copy of the bill may be accessed through a link in the bill notification sent to the customer’s enrolled primary email address, or directly through the customer’s Meralco Online account. This billing facility is subject to ERC’s Rules on Electronic Billing and Communications for Electricity Consumers. 
+                            <br/><br/>
+                            2.	<b>MERALCO Online Account.</b>  Prior to subscription to Paperless Billing, enrolment in the Meralco Online account, which is free of charge, is required, subject to compliance with the requirements of Meralco Online enrollment. Enrollment in Meralco Online shall require a Service Identification Number (SIN). The customer will be required to nominate a password to ensure the security of the information within the Meralco Online account. This password will be used to log in to the online account and to access his electronic bill.
+                            <br/><br/>
+                            3.	<b>MERALCO ACCOUNT SUBSCRIPTION TO PAPERLESS BILLING.</b> Only the account holder (registered customer or actual user), with all SINs associated with him, enrolled in Meralco Online is eligible for subscription to Paperless Billing.  If new SINs are associated with the account holder after subscription to Paperless Billing, these new SINs shall automatically be subscribed to Paperless Billing. If SINs are disassociated from the account holder, they will automatically be unsubscribed from Paperless Billing. All Paperless Billing applications are subject to validation and internal processing. 
+                            <br/><br/>
+                            4.	<b>CUSTOMER REPRESENTATIONS AND WARRANTIES.</b> If the customer intending to subscribe to Paperless Billing is not the registered customer but has been previously named as the person authorized to receive the bill and whose name currently appears on the paper bill, subscription to Paperless Billing and all activities related thereto shall be subject to the following representation and warranties: (a) The customer represents and warrants that he has all rights and permissions necessary to provide Meralco with information in connection with subscription to Paperless Billing and all activities related thereto; and (b) The customer represents and warrants that he has obtained consent and authorization from the registered customer to subscribe to Paperless Billing or to cancel his subscription thereof. The customer further agrees that Meralco reserves the right to cancel his subscription to Paperless Billing at any time in order to protect its contract with the registered customer, with no liability on the part of Meralco.
+                            <br/><br/>
+                            5.	<b>ACCESS TO ELECTRONIC BILLS.</b> The customer will automatically receive his bill notifications via email. Thus, he is required to provide a current and valid email address which will be used by Meralco for sending bill notifications. A back-up or secondary email address may also be provided. The customer will receive emails with a link to a copy of his monthly bill. Access to the link is password-protected – the customer needs to input his Meralco Online account password when accessing electronic bills.   
+                            <br/><br/>
+                            6.	<b>CUSTOMER’S OBLIGATIONS. </b> It shall be the responsibility of the customer to:
+                            <br/>
+                            a.	regularly check and monitor the monthly bill notifications sent via email or the online bill via the Meralco Customer Portal. 
+                            <br/>
+                            b.	ensure that there is always available space in his email inbox to allow receipt of new bill notifications.
+                            <br/>
+                            c.	ensure that the downloaded copy of the electronic bill is stored securely to avoid unauthorized access to the confidential information.
+                            <br/>
+                            d.	keep his portal username and password strictly confidential to avoid unauthorized log-in and be fully responsible for any unauthorized access or use of his log-in and security credentials.
+                            <br/>
+                            e.	update his contact details, including, but not limited to, his primary email address, secondary email address and SMS number, whenever necessary, and the name of the actual user. In the event that the customer’s contact details and the name of the actual user are not updated, Meralco shall not be liable for the non-payment of bills due to non-receipt of electronic bills sent to the registered email address.
+                            <br/>
+                            f.	pay the amount due on or before the due date. Non-receipt of the electronic bill notification due to non-compliance to the customer’s obligations shall not suspend the running of the prescribed period to pay. 
+                            <br/>
+                            g.	cancel his subscription to Paperless Billing if he is no longer authorized to receive the bills or the actual user of the electric service.  
+                            <br/><br/>
+                            7.	<b>PRESUMPTION OF RECEIPT OF MONTHLY BILL SUBSCRIBED TO PAPERLESS BILLING.</b>  Meralco shall email the bill notification within a day after the meter reading date, unless the bill was subjected to further internal validation by Meralco. Customers under group billing will receive their bill notification within a day after the preferred statement date. The customer is presumed to have received the electronic bill if he does not inform Meralco of the non-receipt thereof within five (5) days from the scheduled delivery of such bill.  Proof of delivery of the electronic bill through the customer-provided email address shall be considered as receipt of said bill. In case of delivery failure, Meralco will resend the same to the customer’s secondary email address, if any. Alternatively, the electronic bill may be accessed by the customer through Meralco Online. 
+                            <br/><br/>
+                            8.	<b>EFFECTIVITY.</b> Paperless Billing subscription shall be effective upon signing of this Terms and Conditions. Paper bills will no longer be delivered starting next billing period.   
+                            <br/><br/>
+                            9.	<b>CANCELLATION OF PAPERLESS BILLING SUBSCRIPTION.</b> The customer can cancel his subscription to Paperless Billing after six (6) months from the effectivity of their subscription. Requests for paperless billing cancellation may be processed earlier than the said period for reasons deemed valid by Meralco. 
+                            <br/><br/>
+                            10.	<b>YEARLY PAPERLESS BILLING INFORMATION VERIFICATION.</b> An annual reminder to confirm the authorization of receipt and to update customer contact details shall be sent to the customer’s registered email address. If no update was made by the customer, the existing subscription details shall be deemed correct and accurate by Meralco.  
+                            <br/><br/>
+                            11.	<b>OTHER COMMUNICATION.</b> Meralco may also send the customer other forms of account-related communication via email.
+                            <br/><br/>
+                            12.	<b>CONSENT.</b>  By signing this Terms and Conditions, the customer understands that his personal information is necessary for the provision by Meralco of Paperless Billing, and he hereby gives his direct and full consent to Meralco to process and store all information provided by him, personal, sensitive, privileged or otherwise, in relation to his subscription to Paperless Billing, subject to the requirements of the Data Privacy Act of 2012 (the “Act”). The customer acknowledges further that any information provided by him has been publicly available or accessible before the enactment of the Act and continues to be public. The customer likewise acknowledges that all information provided by him shall be stored by Meralco until the he cancels his subscription to Paperless Billing.     <br/><br/>
+                           
+                            13.	<b>ACCURATE AND COMPLETE INFORMATION.</b>  The customer guarantees that all information provided to Meralco are accurate and complete to the best of his knowledge and holds Meralco, its directors, officers, employees and agents free from any liability should the inaccuracy and incompleteness of the provided information be due to the action of the customer.
+                                   <br/><br/>
+                            14.	<b>NO LIABILITY FOR DISCLOSURE BY THIRD PARTIES.</b> The customer hereby holds Meralco, its directors, officers, employees and agents free from any liability for any disclosure made by other persons or entities other than Meralco of the personal information provided by him to Meralco. 
+                            <br/><br/>
+                            15. <b>PRIVACY POLICY.</b> Any data and information collected from the customer is subject to Meralco’s <a  target="_blank" class="text-orange" href="http://www.meralco.com.ph/privacy-policy"> Privacy Policy</a>.
+                            <br></br><br></br>
+     
+                           
+                            
+                        </p>
+                    </div>
+                    
+                    
+                    <div class="slds-m-top_medium">
+                        <div class="checkbox cbox-orange cbox-terms">
+                            <label class="checkbox-container">
+                                <!-- SEP-28-2017 CSM-13028 @JRances: Updated Display Message beside the checkbox
+									<ui:inputCheckbox aura:id="termCheck" value="{!v.checkboxChecker}"/>&nbsp;&nbsp;  I have read and agree to the Meralco Online Terms &amp; Conditions and Privacy Policy.
+                                --> 
+								<ui:inputCheckbox aura:id="termCheck" value="{!v.checkboxChecker}"/>&nbsp;&nbsp;  I have read and agree to the Paperless Billing Terms &amp; Conditions and Privacy Policy.
+                                <div class="checkbox-custom"></div>
+                            </label>
+                            <!-- START CSM-13661 JRances - Change button text from "Next" to "Back"-->
+                            <button onclick="{! c.hideModal }" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold pull-right close-modal">Back</button>
+                            <div class="clearfix"></div>
+                            <!--<button onclick="{! c.hideModal }" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold pull-right close-modal">Next</button>
+                            <div class="clearfix"></div>-->
+                            <!-- END CSM-13661 JRances -->
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open mov-backdrop" id="modal-background"></div>
+    </div>
+    <!-- END TERMS MODAL -->
+</aura:component>

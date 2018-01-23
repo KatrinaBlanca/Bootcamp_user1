@@ -1,0 +1,248 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global" controller="CXE_CP_MyProfileTab4CTRL">
+    
+    <!--<aura:attribute name="modalPopUp" type="String" required="false" description="" access="private" /> -->
+    <aura:attribute name="recordId" type="String"/>
+    
+    <aura:attribute name="contactDetails"  type="CXE_CP_MyProfileCTRL.UserData" />
+
+    <aura:attribute name="response" type="CXE_CP_MyProfileTab4CTRL.ProfileResponse"/>
+    
+    <aura:attribute name="pictureSrc" type="String" 
+                    default="https://s3-us-west-1.amazonaws.com/sfdc-demo/image-placeholder.png"/>
+    
+    <aura:attribute name="message" type="String" default="Drag profile picture here"/>
+    <aura:attribute name="message2" type="String" default="Sharing your social media accounts with us will help us better reach out to you with the latest updates!"/>
+
+    <aura:attribute name="salutationList" type="String[]" />
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />    
+
+    <aura:attribute name="imageFile"   type="sObject" />
+    <aura:attribute name="userEmail"   type="string" />
+    <aura:attribute name="FirstName"   type="string" /> 
+    <aura:attribute name="LastName"    type="string" />
+    <aura:attribute name="MiddleName"  type="string" />
+    <aura:attribute name="Suffix"      type="string" />
+    <aura:attribute name="MobilePhone" type="string" />
+    <aura:attribute name="Mobile2"     type="string" />
+    <aura:attribute name="saveValue"   type="boolean" />    
+    <aura:attribute name="Phone"       type="string" />
+    <aura:attribute name="Birthdate"   type="date" />
+    <aura:attribute name="DropImg"   type="boolean" default="false" />
+    <aura:attribute name="bDate" type="Date"    default=""/>
+    
+    <aura:attribute name="showCancelModal" type="boolean" default="false" />
+    
+    <aura:handler name="change" value="{!v.contactDetails.Birthdate}" action="{!c.removePlaceholder}"/>
+
+    <aura:renderIf isTrue="{!v.showCancelModal}" >
+        <c:CXE_CP_ModalMyProfileEditDiscardChange getValue="{!v.showCancelModal}"/>
+    </aura:renderIf>
+    
+    <aura:method name="cancelEdit" action="{!c.editProfileCancel}" access="PUBLIC"/>
+
+    <!-- Start CSM-12986 Mike Verdad 09/27/2017 -->
+    <style>
+        .hideSuccessMessage {
+        display: none !important;        
+        }
+    </style> 
+    <!-- End CSM-12986 Mike Verdad 09/27/2017 -->
+    
+    <div id="tab-1" class="slds-tabs_default__content " role="tabpanel">
+        <div class="slds-grid slds-wrap">
+           <!-- START CSM-14681, CSM-14557 Edgar Eisma – retrofit from R2B -->         
+            <!--div class="slds-size_1-of-3 slds-max-large-size_3-of-3 slds-p-right_large">
+                <div class="upload-photo"-->
+            
+            
+            <!-- <img src="{! $Resource.CXE_CP_Assets + '/images/upload-photo.png' }" />
+                    <p class="text-orange text-center upload-text">Upload new photo</p>
+                    
+                    <p>Knowing your social media accounts will help us reach out to you more and update you with the latest from meralco</p>
+                    -->
+            
+            <!--div ondragover="{!c.onDragOver}" ondrop="{!c.onDrop}" class="slds-text-align_center">
+                        <img src="{!v.pictureSrc}"/ -->
+            
+            <!-- <p>{!v.message}</p> -->
+            
+            <!-- //START CSM-14163 UPLOAD PHOTO for Mobile 10.29.2017-->
+            <!--label class="slds-file-selector__body slds-size_1-of-1">
+                                <input aura:id="profile_photo" type="file" style="display:none;" onchange="{!c.onProfilePhotoDrop}" accept="image/*" aria-describedby="file-selector-id" />
+                                
+                                <span class="slds-file-selector__button slds-button slds-button_neutral mov-element-border-none slds-p-left_none">
+                                    <span class="slds-file-selector__text mov-text_color-ff5114 mov-text_weight-normal mov-text_size-16 slds-m-left_none">
+                                        <i class="fa fa-plus">&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                                        Upload Photo Here
+                                    </span>
+                                </span>
+                            </label-->
+            <!-- //END CSM-14163 -->
+            
+
+            <!--/div>
+                    <br></br>
+                    <div class="slds-grid slds-wrap social-media">
+                        <div class="slds-size_1-of-2 slds-p-vertical_x-small">
+                            <i class="fa fa-facebook" style="color: #061a42;"></i>
+                            <ui:inputText class="slds-input" placeholder="Facebook" value="{!v.contactDetails.fbAcct}" />
+                        </div>
+                        <div class="slds-size_1-of-2 slds-p-vertical_x-small">
+                            <i class="fa fa-instagram" style="color: #e376d9;"></i>
+                            <ui:inputText class="slds-input" placeholder="Instagram" value="{!v.contactDetails.instagramAcct}" />
+                        </div>
+                        <div class="slds-size_1-of-2 slds-p-vertical_x-small">
+                            <i class="fa fa-twitter" style="color: #00bfe8;"></i>
+                            <ui:inputText class="slds-input" placeholder="Twitter" value="{!v.contactDetails.twitterAcct}" />
+                        </div>
+                        <div class="slds-size_1-of-2 slds-p-vertical_x-small">
+                            <i class="fa fa-google" style="color: #b30a0a;"></i>
+                            <ui:inputText class="slds-input" placeholder="Google" value="{!v.contactDetails.googleAcct}" />
+                        </div>
+                        <p>{!v.message2}</p>
+                    </div>
+                </div>
+            </div-->
+            <!-- END CSM-14681, CSM-14557 Edgar Eisma – retrofit from R2B -->
+            
+            <!-- START CSM-14564, CSM-14568 Gibs Teodosio – retrofit from R2B -->
+            <div class="slds-size_1-of-1">
+                <div class="slds-grid slds-wrap">
+                    <!--
+                    <div class="slds-form-element slds-size_2-of-12 slds-max-medium-size_7-of-7">
+                        <div class="slds-p-vertical_x-small slds-p-left_xx-small slds-p-right_x-small">
+                            <ui:inputSelect class="mov-input CXE_fieldHeight" change="{!c.onChangeSalutation}" disabled="true">
+                                <aura:iteration items="{!v.salutationList}" var="salutation">                                    
+                                    <ui:inputSelectOption text="{!salutation}" value="{!v.contactDetails.Salutation == salutation}" label="{!salutation}" />
+                                </aura:iteration>
+                            </ui:inputSelect>
+                        </div>
+                    </div>
+                    -->
+                    
+                    <div class="slds-form-element slds-size_4-of-12 slds-max-medium-size_7-of-7 ">
+                        <div class="slds-box_x-small">
+                            <!-- <input type="text" id="input-01" class="slds-input mov-input" placeholder="First Names *" /> -->
+                            <ui:inputText label="First Name" labelClass="hidden" aura:id="cmp_firstName" class="slds-input mov-input" placeholder="First Name *" value="{!v.contactDetails.FirstName}" disabled="true"/>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-size_4-of-12 slds-max-medium-size_7-of-7">
+                        <div class="slds-box_x-small">
+                            <!--<input type="text" id="input-02" class="slds-input mov-input" placeholder="Middle Name *" /> -->
+                            <ui:inputText label="Middle Name" labelClass="hidden" aura:id="cmp_midName" class="slds-input mov-input" placeholder="Middle Name" value="{!v.contactDetails.MiddleName}" disabled="true"/>
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-size_4-of-12 slds-max-medium-size_7-of-7">
+                        <div class="slds-box_x-small">
+                            <!-- <input type="text" id="input-02" class="slds-input mov-input" placeholder="Last Name *" /> -->
+                            <ui:inputText label="Last Name" labelClass="hidden" aura:id="cmp_lastName" class="slds-input mov-input" placeholder="Last Name *" value="{!v.contactDetails.LastName}" disabled="true"/>
+                        </div>
+                    </div>
+                    
+                    <!--
+                    <div class="slds-form-element slds-size_2-of-12 slds-max-medium-size_2-of-7">
+                        <div class="slds-box_x-small">
+                            <!- <input type="text" id="input-02" class="slds-input mov-input" placeholder="Suffix *" /> ->
+                            <ui:inputText label="Suffix" labelClass="hidden" aura:id="cmp_suffix" class="slds-input mov-input" placeholder="Suffix " value="{!v.contactDetails.Suffix}" disabled="true"/>
+                        </div>
+                    </div>
+					-->
+                    
+                    <div class="slds-form-element slds-size_7-of-7">
+                        <div class="slds-box_xx-small">
+                            <!-- <input type="text" id="input-unique-id" class="slds-input mov-input" placeholder="Email" /> -->
+                            <ui:inputEmail label="Email" labelClass="hidden" aura:id="cmp_email" class="slds-input mov-input" placeholder="Email Address *" value="{!v.contactDetails.Email}" disabled="true"/>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-form-element slds-size_7-of-7">
+                        <div class="slds-box_xx-small">
+                            <ui:inputEmail label="Secondary Email" labelClass="hidden" aura:id="cmp_email2" class="slds-input mov-input" placeholder="Secondary Email Address" value="{!v.contactDetails.Email2}"/>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-form-element slds-size_3-of-6 slds-max-medium-size_6-of-6">
+                        <div class="slds-box_x-small">
+                            <!-- <input type="text" id="input-02" class="slds-input mov-input" placeholder="Mobile Number * (+63 XXX XXXXXXX) *" /> -->
+                            <ui:inputText maxlength="13" label="Mobile Number" labelClass="hidden" aura:id="cmp_MobileNum" class="slds-input mov-input" placeholder="Mobile Number * (+63XXXXXXXXXX)" value="{!v.contactDetails.MobilePhone}" blur="{!c.hidePriNumError}" keypress="{!c.removeMessageSuccess}"/>
+                            
+                        </div>
+                    </div>
+            <!-- END CSM-14564, CSM-14568 Gibs Teodosio – retrofit from R2B --> 
+                    
+                    
+                    <div class="slds-form-element slds-size_3-of-6 slds-max-medium-size_6-of-6">
+                        <div class="slds-box_x-small">
+                            <ui:inputText maxlength="13" label="Mobile Number" labelClass="hidden" aura:id="cmp_MobileNum2" class="slds-input mov-input" placeholder="Secondary Mobile Number (+63XXXXXXXXXX)" value="{!v.contactDetails.Mobile2}" blur="{!c.hideSecNumError}"/>
+                            <!--<span aura:id="secNum" class="error-Show slds-hide">Please input your mobile number in the format +639XXXXXXXXX.</span> -->
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="slds-form-element slds-size_1-of-2 slds-max-medium-size_2-of-2 existing-formgroup" >
+                        <div class="slds-box_x-small">
+                            <!-- START CSM-14566 Edgar Eisma – retrofit from R2B -->
+                            <!-- START CSM-13668 JRances - Update maxlength to 12 -->
+                            <ui:inputText maxlength="12" label="Landline Number" labelClass="hidden" aura:id="cmp_landlineNum" class="slds-input mov-input" placeholder="Landline Number +63(area code)XXXXXXX" value="{!v.contactDetails.Phone}" blur="{!c.hideLandNumError}"/> 
+                            <!--<ui:inputText maxlength="11" label="Landline Number" labelClass="hidden" aura:id="cmp_landlineNum" class="slds-input mov-input" placeholder="Landline Number " value="{!v.contactDetails.Phone}" blur="{!c.hideLandNumError}"/>-->
+                            <!-- END CSM-13668 JRances -->
+                            <!-- END CSM-14566 Edgar Eisma – retrofit from R2B -->
+                            
+                            <!--<span aura:id="landNum"   class="error-Show slds-hide">Phone should start with +632 then followed by 7 digit number.</span> -->
+                        </div>
+                    </div>
+                    <div class="slds-form-element slds-size_1-of-2 slds-max-medium-size_2-of-2 existing-formgroup CXE_myProfileDatePHolder" aura:id="birthDateDiv">
+                        <div class="slds-box_x-small" >
+                            <!-- <input type="date" id="input-02" class="slds-input mov-input mov-input_date" placeholder="Birthday *" /> -->
+                            <!-- START CSM-14506 Edgar Eisma – retrofit from R2B -->
+                            <ui:inputDate aura:id="cmp_bDate" class="slds-input mov-input mov-input_date" value="{!v.contactDetails.Birthdate}" labelClass="slds-hide"  keypress="{!c.removePlaceholder}" keyup="{!c.removePlaceholder}" keydown="{!c.removePlaceholder}" updateOn="keypress, keyup, keydown" label="Birth date (mm/dd/yyyy)" format="MM/DD/YYYY" displayDatePicker="true"/>
+                            <!-- END CSM-14506 Edgar Eisma – retrofit from R2B -->
+                        </div>
+                    </div>
+                    <span aura:id="Notif" class="setting-saved hideSuccessMessage">Your changes have been saved.</span> <!-- CSM-12986 Mike Verdad 09/27/2017 -->
+                </div>
+            </div>
+            
+            <!-- START CSM-14681 Edgar Eisma – retrofit from R2B -->
+            <div class="slds-form-element slds-size_2-of-2 slds-max-medium-size_2-of-2">
+                <p class="slds-m-top_medium slds-box_x-small"><strong>{!v.message2}</strong></p>
+            </div>
+            
+            <div class="slds-size_1-of-1 slds-grid slds-wrap social-media slds-m-bottom_large slds-box_x-small">
+                <div class="slds-size_1-of-5 slds-max-medium-size_2-of-2 slds-p-vertical_x-small">
+                    <i class="fa fa-facebook" style="color: #061a42;"></i>
+                    <ui:inputText class="slds-input" placeholder="Facebook" value="{!v.contactDetails.fbAcct}" />
+                </div>
+                <div class="slds-size_1-of-5 slds-max-medium-size_2-of-2 slds-p-vertical_x-small">
+                    <i class="fa fa-instagram" style="color: #e376d9;"></i>
+                    <ui:inputText class="slds-input" placeholder="Instagram" value="{!v.contactDetails.instagramAcct}" />
+                </div>
+                <div class="slds-size_1-of-5 slds-max-medium-size_2-of-2 slds-p-vertical_x-small">
+                    <i class="fa fa-twitter" style="color: #00bfe8;"></i>
+                    <ui:inputText class="slds-input" placeholder="Twitter" value="{!v.contactDetails.twitterAcct}" />
+                </div>
+                <div class="slds-size_1-of-5 slds-max-medium-size_2-of-2 slds-p-vertical_x-small">
+                    <i class="fa fa-google" style="color: #b30a0a;"></i>
+                    <ui:inputText class="slds-input" placeholder="Google" value="{!v.contactDetails.googleAcct}" />
+                </div>
+            </div>
+            <!-- END CSM-14681 Edgar Eisma – retrofit from R2B -->
+            
+            <div class="slds-form-element slds-size_2-of-2 slds-max-medium-size_2-of-2 existing-formgroup">
+                
+                <div class="slds-box_x-small">
+                    
+                    <!-- <button data-desc="cancel" class="slds-button mov-button mov-button_cancel mov-button_250" id="modal-toggle">Cancel</button> -->
+                    <ui:button class="slds-button mov-button mov-button_cancel mov-button_250" press="{!c.editProfileCancel}">Cancel</ui:button>
+                    <!--<button class="slds-button mov-button mov-button_orange mov-button_250">Save</button> -->
+                    <ui:button class="slds-button mov-button mov-button_orange mov-button_250" press="{!c.onClickUpdate}" >Save</ui:button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    <aura:renderIf isTrue="{! v.modalPopUp=='cancel'}">
+        <c:CXE_CP_ModalMyProfileEditDiscardChange modalPopUpChild="{! v.modalPopUp }" />
+    </aura:renderIf> -->
+</aura:component>

@@ -1,0 +1,71 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" docType="html-5.0" showChat="FALSE" applyBodyTag="False" applyHtmlTag="False">
+    <head>
+        <title>Service Application</title>
+        <apex:stylesheet value="{!URLFOR($Resource.LDSAssets, 'assets/styles/salesforce-lightning-design-system.min.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.LDSCustom, 'custom/css/ExDesign.css')}"/>
+        <meta name="viewport" content="width=device-width,initial-scale=0.25" />
+        
+    </head>
+    <body>
+        <script type="text/javascript">
+        function proceedApplication(){
+            var theRadioButtonSet = document.getElementsByName('options');
+            for (var x = 0; x < theRadioButtonSet.length; x++)
+            {
+                if (theRadioButtonSet[x].checked) {
+                    switch(theRadioButtonSet[x].value) {
+                        case 'Residential':
+                            window.location = 'SAT02';
+                            break;
+                        case 'Business':
+                            window.location = 'SAT02B';
+                            break;
+                    }        
+                }
+            }
+        }
+                   
+            function resize() {
+              var height = document.getElementsByTagName("html")[0].scrollHeight;
+              window.parent.postMessage(["setHeight", height], "*"); 
+            }
+            
+            window.onload = resize;
+        </script>
+        <div class="slds">
+            <div class="slds-grid slds-wrap CXE_mainContainer">
+                <div class="slds-size--1-of-1">
+                    <div class="slds-grid slds-wrap">
+                        <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+                            <h1 class="CXE_color--orange CXE_text--h1"><b>Start an Electric Service</b></h1>
+                            
+                            <fieldset class="slds-form-element slds-m-top--small slds-p-left--small">
+                                <p class="CXE_color--gray">I am applying for</p>
+                                <div class="slds-form-element__control slds-m-top--small">
+                                    <span class="slds-radio CXE_radioButton">
+                                        <input type="radio" id="radio-25" name="options" checked="" value="Residential" />
+                                        <label class="slds-radio__label" for="radio-25">
+                                            <span class="slds-radio--faux"></span>
+                                            <span class="slds-form-element__label CXE_color--gray">My Home</span>
+                                        </label>
+                                    </span>
+                                    <span class="slds-radio CXE_radioButton">
+                                        <input type="radio" id="radio-26" name="options" value="Business" />
+                                        <label class="slds-radio__label" for="radio-26" >
+                                            <span class="slds-radio--faux"></span>
+                                            <span class="slds-form-element__label CXE_color--gray">My Business</span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </fieldset>
+                            
+                            <div class="slds-text-align--right slds-m-top--large">
+                                <button class="CXE_button" onClick="proceedApplication()">LET'S BEGIN</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</apex:page>

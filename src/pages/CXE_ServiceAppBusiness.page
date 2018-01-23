@@ -1,0 +1,232 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" docType="html-5.0" showChat="FALSE" applyBodyTag="False" applyHtmlTag="False" controller="CXE_WebToCaseController">
+<head>
+  <title>Service Application</title>
+      <apex:stylesheet value="{!URLFOR($Resource.LDSAssets, 'assets/styles/salesforce-lightning-design-system.min.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.LDSCustom, 'custom/css/ExDesign.css')}"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1"> </meta>
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+ <body id="CXE_body">
+    <apex:form styleClass="CXE_ServiceAppSubmit">
+    <div class="CXE_ErrorMessage">
+        <apex:pageMessages escape="false"/>
+    </div>
+
+
+    <div class="slds">
+    <div class="slds-grid slds-wrap CXE_mainContainer">
+        <div class="slds-size--1-of-1">
+          <div class="slds-grid slds-wrap">
+            <div class="CXE_serviceApplication--formContainer slds-size--1-of-1 slds-p-around--small">
+              <h1 class="CXE_color--orange CXE_text--h1"><b>Start an Electric Service</b></h1>
+              <div class="CXE_form CXE_serviceApplication--residentialForm slds-m-top--small slds-grid slds-wrap">
+                <p class="slds-p-vertical--xx-small CXE_color--orange"><b>* REQUIRED FIELDS</b></p>
+                <p class="CXE_color--gray slds-size--1-of-1"><b>COMPLETE THE FORM BELOW AND WE'LL GET IN TOUCH TO DISCUSS FINDING SOLUTIONS FOR YOUR BUSINESS</b></p>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-6 slds-medium-size--1-of-6 slds-small-size--1-of-6 slds-max-small-size--1-of-1 slds-p-left--small slds-p-left--small">
+                  <div class="CXE_field--neutralizer CXE_field--comboBox slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Salutation</label>
+                    <br />
+                      <apex:selectList size="1" multiselect="false" id="salutation" value="{!caseRecord.Salutation__c}">
+                          <apex:selectOptions value="{!Salutations}"></apex:selectOptions>
+                      </apex:selectList>
+                  </div>
+                </div>
+                <div class="slds-large-size--5-of-6 slds-medium-size--5-of-6 slds-small-size--5-of-6"></div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">First Name<span class="CXE_requiredField">*</span></label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.First_Name__c}" id="firstname" html-placeholder="" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Middle Name</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.Middle_Name__c}" id="middlename" html-placeholder="" styleClass="slds-input slds-size--1-of-1"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Last Name<span class="CXE_requiredField">*</span></label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.Last_Name__c}" id="lastname" html-placeholder="" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Telephone Number</label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.Telephone_No__c}" id="phone" html-placeholder="Ex. +63 2 999 9999" styleClass="slds-input slds-size--1-of-1" onkeypress="return inputLimiter(event,'Numbers');"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Mobile Number<span class="CXE_requiredField">*</span></label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.Mobile_No__c}" id="mobile" html-placeholder="Ex. +63 999 999 9999" onkeypress="return inputLimiter(event,'Numbers');" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Email Address<span class="CXE_requiredField">*</span></label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.Email_Address__c}" id="email" html-placeholder="Ex. juan.p.delacruz@email.com" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Company Name<span class="CXE_requiredField">*</span></label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.Last_Name_Business_Name__c}" id="companyname" html-placeholder="Ex. Meralco" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small"> -->
+                  <!-- <div class="CXE_field--neutralizer slds-form-element"> -->
+                    <!-- <label class="slds-form-element__label CXE_color--gray">TIN<span class="CXE_requiredField">*</span></label> -->
+                    <!-- <br /> -->
+                    <!-- <div class="slds-form-element__control"> -->
+
+                        <!-- <apex:inputText value="{!caseRecord.Tax_Identification_No__c}" maxlength="12" id="tin" html-placeholder="Ex. 0000-0000-0000-0000-0000" onkeypress="return inputLimiter(event,'Numbers');" styleClass="slds-input slds-size--1-of-1" required="true"/> -->
+                        <!--input type="text" placeholder="" class="slds-input slds-size--1-of-1" /-->
+                    <!-- </div> -->
+                  <!-- </div> -->
+                <!-- </div>       -->
+
+
+                <div class="CXE_form-sectionFields slds-m-top--x-small slds-large-size--1-of-3 slds-medium-size--1-of-3 slds-small-size--1-of-3 slds-max-small-size--1-of-1 slds-p-left--small">
+                  <div class="CXE_field--neutralizer slds-form-element">
+                    <label class="slds-form-element__label CXE_color--gray">Designation<span class="CXE_requiredField">*</span></label>
+                    <br />
+                    <div class="slds-form-element__control">
+                      <apex:inputText value="{!caseRecord.Designation__c}" id="designation" html-placeholder="Technical Manager" styleClass="slds-input slds-size--1-of-1" required="true"/>
+                    </div>
+                  </div>
+                </div>
+
+                <!--CSM Rhyan Cruz hide this area-->
+                      <p class="CXE_color--gray slds-m-top--large slds-size--1-of-1" style="display:none"><b>HOW WOULD YOU LIKE TO GET UPDATES ABOUT YOUR APPLICATION?</b> (Select all that apply)</p>
+                <!--CSM Rhyan Cruz hide this area-->   
+                <span class="CXE_checkBox slds-checkbox" style="display:none">
+                  <apex:inputHidden value="{!emailCb}" id="emailCbId"/>
+                  <input type="checkbox" id="CXE_serviceApplicationForm--UpdateViaEmail" onchange="document.getElementById('{!$Component.emailCbId}').value = this.checked;" />
+                  <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaEmail">
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label CXE_color--gray">Via Email</span>
+                  </label>
+                </span>
+
+                <!--CSM Rhyan Cruz hide this area-->
+                <span class="CXE_checkBox slds-checkbox" style="display:none">
+                  <apex:inputHidden value="{!smsCb}" id="smsCbId"/>
+                  <input type="checkbox" disabled="true" id="CXE_serviceApplicationForm--UpdateViaSMS" onchange="document.getElementById('{!$Component.smsCbId}').value = this.checked;" />
+                  <label class="slds-checkbox__label" for="CXE_serviceApplicationForm--UpdateViaSMS">
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label CXE_color--gray">Via SMS</span>
+                  </label>
+                </span>
+              </div>
+
+              <!-- <div class="slds-m-top--large g-recaptcha" data-sitekey="6Lc6HRgUAAAAADfc3XGIOQcDmwziExux6q74I_nY"></div> -->
+              <div class="g-recaptcha slds-m-top--large" data-sitekey="{!sitekey}"></div>
+              <script src='https://www.google.com/recaptcha/api.js'></script>
+
+                <script type="text/javascript">
+                function resize() {
+
+                    var height = document.getElementsByTagName("html")[0].scrollHeight ;
+                    if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 )
+                    {
+                        //alert('1');
+                         height = document.getElementsByTagName("html")[0].scrollHeight;
+                    }
+                    else if(navigator.userAgent.indexOf("Chrome") != -1 )
+                    {
+                         //alert('2');
+                         height = document.getElementsByTagName("html")[0].scrollHeight;
+                    }
+                    else if(navigator.userAgent.indexOf("Safari") != -1)
+                    {
+                         //alert('3');
+                         height = document.getElementsByTagName("html")[0].scrollHeight;
+                    }
+                    else if(navigator.userAgent.indexOf("Firefox") != -1 )
+                    {
+                        // alert('4');
+                          height = document.getElementById("CXE_body").scrollHeight;
+                    }
+                    else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+                    {
+                         //alert('5');
+                         height = document.getElementById("CXE_body").scrollHeight;
+                    }
+                    else
+                    {
+                        // alert('6');
+                        height = document.getElementsByTagName("html")[0].scrollHeight;
+                    }
+
+                    //var height = document.getElementsByTagName("html")[0].scrollHeight;
+                    window.parent.postMessage(["setHeight", height], "*");
+                    //alert(height);
+                }
+
+                // window.onload = resize;
+                window.onload=function() {
+    //$(window).load(function() {
+                    resize();
+                    //alert({!smsCb});
+                    if({!smsCb}) {
+                        $('#CXE_serviceApplicationForm--UpdateViaSMS').attr("checked", "checked");
+                    } else {
+                        $('#CXE_serviceApplicationForm--UpdateViaSMS').removeAttr("checked");
+                    }
+
+                    if({!emailCb}) {
+                        $('#CXE_serviceApplicationForm--UpdateViaEmail').attr("checked", "checked");
+                    } else {
+                        $('#CXE_serviceApplicationForm--UpdateViaEmail').removeAttr("checked");
+                    }
+                    
+        };
+
+        //});</script>
+                <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+
+              <div class="slds-text-align--right slds-m-top--large">
+                <apex:commandButton styleClass="CXE_button" action="{!submitBusiness}" value="SUBMIT" id="submit"  />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </apex:form>
+  </body>
+  <c:CXE_VFTemporaryCSS />
+</apex:page>

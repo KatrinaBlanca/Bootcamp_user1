@@ -1,0 +1,148 @@
+<aura:component >
+    
+    <aura:registerEvent name="callTabEvent" type="c:SetTabValueEvent"/>
+    <aura:method name="submitTab" action="{!c.submitTab}" access="PUBLIC"/>
+    
+    <aura:attribute name="caseRecord" type="Case" default="{'sobjectType': 'Case'}"/>
+    <aura:attribute name="changeService" type="boolean" />
+    <aura:attribute name="showRequestOptions" type="boolean" default="false" />
+    
+    <aura:attribute name="persona" type="String" default=""/>
+
+    <div class="slds-p-around_x-large">
+
+        <aura:if isTrue="{!empty(v.persona)}">
+            <div class="mov-text-group">
+                <aura:renderIf isTrue="{! v.changeService }">
+                    <h3 class="mov-text_size-21 mov-text_weight-semi-bold">Change Service Details</h3>
+                </aura:renderIf>
+                <aura:renderIf isTrue="{! v.changeService==false }">
+                    <h3 class="mov-text_size-21 mov-text_weight-semi-bold">Change Contract Details</h3>
+                </aura:renderIf>
+                <ul class="mov-list-arrow slds-m-vertical_large">
+                    <aura:renderIf isTrue="{! v.changeService }">
+                        <li>
+                            <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Upgrade the kWh"/>
+                            <label class="slds-form-element__label slds-p-left--small">Upgrade the kWh</label> <br />
+                            <!-- <a href="javascript:void(0)">
+                                Upgrade the kWh
+                            </a> -->
+                        </li>
+                        <li>
+                            <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Downgrade the kWh"/>
+                            <label class="slds-form-element__label slds-p-left--small">Downgrade the kWh</label> <br />
+                            <!-- <a href="javascript:void(0)">
+                                Downgrade the kWh
+                            </a> -->
+                        </li>
+                        <li>
+                            <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Relocate the Meter"/>
+                            <label class="slds-form-element__label slds-p-left--small">Relocate the Meter</label> <br />
+                            <!-- <a href="javascript:void(0)">
+                                Relocate the Meter
+                            </a> -->
+                        </li>
+                        <li>
+                            <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Remodel the Meter"/>
+                            <label class="slds-form-element__label slds-p-left--small">Remodel the Meter</label> <br />
+                            <!-- <a href="javascript:void(0)">
+                                Remodel the Meter
+                            </a> -->
+                        </li>
+                    </aura:renderIf>
+                    <aura:renderIf isTrue="{! v.changeService==false }">
+                        <li>
+                            <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" 
+                                text="Change in Contract Name"/>
+                            <label class="slds-form-element__label slds-p-left--small">Change in Contract Name</label> <br />
+                        </li>
+                        <li>
+                            <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" 
+                                text="Transfer of Service"/>
+                            <label class="slds-form-element__label slds-p-left--small">Transfer of Service</label> <br />
+                        </li>
+                    </aura:renderIf>
+                </ul>
+            </div>
+
+            <aura:set attribute="else">
+
+                <div class="mov-text-group">
+                    <div class="mov-radio-group mov-radio-group_inline">
+                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_large">
+                            <input type="radio" id="yes_radio" value="option1" name="iCheck2" onclick="{!c.onSelectRequestType}" aura:id="isServiceModification"/>
+                            <span>Change Service Details</span>
+                            <div class="radio-custom mov-radio-custom"></div>
+                        </label>    
+                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold">
+                            <input type="radio" id="no_radio" value="option1" name="iCheck2" onclick="{!c.onSelectRequestType}"/>
+                            <span>Change Contract Details&nbsp;</span>
+                            <div class="radio-custom mov-radio-custom"></div>
+                        </label>
+                        <br></br><br></br>
+                    </div>
+                </div>  
+
+                <div class="mov-text-group">
+                    <aura:renderIf isTrue="{! and(v.changeService, v.showRequestOptions) }">
+                        <h3 class="mov-text_size-21 mov-text_weight-semi-bold">Change Service Details</h3>
+                    </aura:renderIf>
+                    <aura:renderIf isTrue="{! and(not(v.changeService), v.showRequestOptions) }">
+                        <h3 class="mov-text_size-21 mov-text_weight-semi-bold">Change Contract Details</h3>
+                    </aura:renderIf>
+                    <ul class="mov-list-arrow slds-m-vertical_large">
+                        <aura:renderIf isTrue="{! and(v.changeService, v.showRequestOptions) }">
+                            <li>
+                                <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Upgrade the kWh"/>
+                                <label class="slds-form-element__label slds-p-left--small">Upgrade the kWh</label> <br />
+                                <!-- <a href="javascript:void(0)">
+                                    Upgrade the kWh
+                                </a> -->
+                            </li>
+                            <li>
+                                <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Downgrade the kWh"/>
+                                <label class="slds-form-element__label slds-p-left--small">Downgrade the kWh</label> <br />
+                                <!-- <a href="javascript:void(0)">
+                                    Downgrade the kWh
+                                </a> -->
+                            </li>
+                            <li>
+                                <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Relocate the Meter"/>
+                                <label class="slds-form-element__label slds-p-left--small">Relocate the Meter</label> <br />
+                                <!-- <a href="javascript:void(0)">
+                                    Relocate the Meter
+                                </a> -->
+                            </li>
+                            <li>
+                                <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" text="Remodel the Meter"/>
+                                <label class="slds-form-element__label slds-p-left--small">Remodel the Meter</label> <br />
+                                <!-- <a href="javascript:void(0)">
+                                    Remodel the Meter
+                                </a> -->
+                            </li>
+                        </aura:renderIf>
+                        <aura:renderIf isTrue="{! and(not(v.changeService), v.showRequestOptions) }">
+                            <li>
+                                <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" 
+                                    text="Change in Contract Name"/>
+                                <label class="slds-form-element__label slds-p-left--small">Change in Contract Name</label> <br />
+                            </li>
+                            <li>
+                                <ui:inputRadio aura:id="serviceReqForService" name="serviceOption" change="{!c.onServiceRadio}" 
+                                    text="Transfer of Service"/>
+                                <label class="slds-form-element__label slds-p-left--small">Transfer of Service</label> <br />
+                            </li>
+                        </aura:renderIf>
+                    </ul>
+                </div>
+            </aura:set>
+
+        </aura:if>
+        <div class="mov-button-group mov-element_max-width-400">
+            <!-- <a class="slds-button mov-button-transparent slds-m-bottom_none slds-m-left_none mov-element_max-width-170" href="javascript:void(0)">Submit</a> -->
+                    <ui:button label="Submit" 
+                        class="slds-button mov-button-transparent slds-m-bottom_none slds-m-left_none mov-element_max-width-170"
+                        press="{!c.submitTab}"/>
+        </div>
+    </div>
+</aura:component>

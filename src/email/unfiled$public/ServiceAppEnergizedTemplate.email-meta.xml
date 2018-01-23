@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification upon Service Application is Energized</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Service Application: Energized</name>
+    <style>none</style>
+    <subject>MERALCO: Your service application is now complete! (SA Ref: {!Case.CaseNumber})</subject>
+    <type>text</type>
+</EmailTemplate>

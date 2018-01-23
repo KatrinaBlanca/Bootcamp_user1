@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>39.0</apiVersion>
+    <available>true</available>
+    <description>Pre-Survey is feasible and customer chose an AMC</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>CXE_BC_PreSurvey_Feasible_AMC</name>
+    <style>none</style>
+    <subject>MERALCO – You can now construct your service entrance! (with AMC)</subject>
+    <type>visualforce</type>
+</EmailTemplate>

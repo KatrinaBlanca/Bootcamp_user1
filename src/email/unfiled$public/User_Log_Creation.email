@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style="color: rgb(0, 0, 0);"><font size="2" face="Verdana, Helvetica, sans-serif">Dear Project Click Pioneers,&nbsp;</font></div><div style="color: rgb(0, 0, 0);"><font size="2" face="Verdana, Helvetica, sans-serif"><br></font></div><div style="color: rgb(0, 0, 0);"><font size="2" face="Verdana, Helvetica, sans-serif">A new User Log entry was created. Please validate and if possible, resolve within the day:&nbsp;</font></div><div style="color: rgb(0, 0, 0);"><font size="2" face="Verdana, Helvetica, sans-serif"><br></font></div><div><font face="Verdana, Helvetica, sans-serif"><font size="2" style="color: rgb(0, 0, 0);"><b>User Log ID:</b>&nbsp;</font><font size="2">{!User_Logs__c.Name}</font></font></div><div style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><font size="2" style="color: rgb(0, 0, 0);"><b>Date Created:</b>&nbsp;</font><font size="2">{!User_Logs__c.CreatedDate}</font></font></div><div style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif"><font size="2" style="color: rgb(0, 0, 0);"><b>Created by:</b>&nbsp;</font><font size="2">{!User_Logs__c.CreatedBy}</font></font></div><div style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif" size="2"><b>Link:</b>&nbsp;{!User_Logs__c.Link}</font></div><div style="color: rgb(0, 0, 0);"><font size="2" style="color: rgb(0, 0, 0);" face="Verdana, Helvetica, sans-serif"><b>Details:</b>&nbsp;</font></div><div style="color: rgb(0, 0, 0);"><font size="2" face="Verdana, Helvetica, sans-serif"><br></font></div><div style="color: rgb(0, 0, 0);"><font size="2" face="Verdana, Helvetica, sans-serif">{!User_Logs__c.Issue_Log__c}</font></div><div style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><br></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

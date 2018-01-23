@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="BIZ Customer Enrollment in Meralco Customer Portal" recipientType="User" relatedToType="Case">
+    <messaging:htmlEmailBody >
+        
+        <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Hi, <b>{!relatedTo.CXE_AccountOwnerName__c}!</b> <br/>
+        <br></br>
+        <br></br>
+        <b>{!relatedTo.Full_Name_Concatenated__c}</b> of <b>{!relatedTo.CXE_PayorAccountName__c}</b> with Service ID Number <b>{!relatedTo.CXE_SIN_of_RelatedService__c}</b> is attempting to register on Meralco Online now. Please guide them through the process of updating their information and completing their registration. <br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

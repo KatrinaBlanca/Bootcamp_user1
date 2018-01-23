@@ -1,0 +1,140 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_CP_MYBILLSCONSUMPTIONREPORT" access="global">
+    <aura:attribute name="billsInformations" type="CXE_CP_MYBILLSCONSUMPTIONREPORT.Bills"/>
+    <aura:attribute name="totalUsage" type="String" default="0" />  
+    <aura:attribute name="dateMonth" type="String" default="" />  
+    
+    <aura:attribute name="Enrollments" type="CXE_Service_Enrollment__c[]"/>
+    <aura:attribute name="UserDataHolder" type="CXE_CP_PortalUtility.PortalData"/>
+    <c:CXE_CP_Header />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="accountPass" type="string" />
+    <aura:attribute name="sinPass" type="string" />
+    <aura:handler name="change" value="{!v.sinPass}" action="{!c.itemsChange}"/> 
+    <ltng:require scripts="{!join(',',$Resource.CXE_CP_Assets + '/js/Chart.bundle.js')}"
+                  afterScriptsLoaded="{!c.initChart }" />
+    
+    <!-- MAIN CONTENT -->
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+            <div class="main-wrapper">
+                <nav data-reactroot="">
+                    <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                            <!--<a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>-->
+                            <a onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                            <!--<a href="javascript:void(0);">Bills &amp; Payments</a>-->
+                            <a onclick="{!c.redirectToMybills}">Bills &amp; Payments</a>
+                        </li>
+                        <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                            <a href="javascript:void(0);">Consumption Report </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="mov-track-my-application_guest">
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                    <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Bills &amp; Payments</h3>
+                        </div>
+                    </div>
+                    <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                        <div class="slds-box mov-box mov-box_margin-bottom_850 mov-element-box-shadow mov-background-color_ffffff">
+                            <p class="mov-text_size-18 mov-text_color-323232 slds-p-top_small mov-text_weight-semi-bold">Consumption Report</p>
+                            <div class="mov-form slds-p-bottom_large">
+                                <div class="slds-form slds-form_stacked">
+                                    <div class="slds-form-element slds-m-top_medium slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-323232" for="guest-last-name">Account Number</label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-select_container mov-select_container mov-select_container-left-align mov-element_max-width-345">
+                                                <ui:inputSelect aura:id="accountSelected" class="slds-select inline mov-input mov-select-aftersales" change="{!c.handleAccountChange}" >  
+                                                </ui:inputSelect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element slds-m-top_medium slds-m-bottom_large">
+                                        <label class="slds-form-element__label slds-m-bottom_small mov-text_size-14 mov-text_color-323232" for="guest-last-name">Service ID Number</label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-select_container mov-select_container mov-select_container-left-align mov-element_max-width-345">
+                                                <ui:inputSelect aura:id="sinPopulated" class="slds-select inline mov-input mov-select-aftersales" change="{!c.handleSinChange}">
+                                                </ui:inputSelect>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div aura:id="myChart" class="slds-hide">
+                                <div class="mov-rate-details_container">
+                                    <div class="mov-rate-details">
+                                        <div class="mov-element_display-flex slds-m-bottom_medium ">
+                                            <label>CONSUMPTION REPORT AS OF</label>
+                                            <h3>{!v.dateMonth}</h3>
+                                        </div>
+                                        <div class="mov-element_display-flex slds-m-bottom_medium">
+                                            <label>AVERAGE USAGE FOR 13 MONTHS</label>
+                                            <h3>{!v.totalUsage} kWh</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="chartDiv" class="mov-chart-container center-block slds-m-bottom_medium">
+                                    <label>kWh</label>
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-form-element slds-p-top_large">
+                                <button class="slds-button mov-button center-block mov-element_max-width-170 mov-text_weight-semi-bold" onclick="{!c.redirectToMybills}">Back</button>
+                            </div>
+                            
+                            <div class="mov-chart-container center-block slds-m-bottom_xx-large ">&nbsp;</div>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Right Side Nav (Helper Nav) -->
+                    <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2  slds-p-horizontal_x-small slds-align_absolute-center slds-m-top--none">
+                        <div class="mov-dashboard_misc-list">
+                            <c:CXE_CP_WidgetPaperlessSubscription />
+                            <c:CXE_CP_WidgetAutoPayArrangement />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="slds-col">
+            <div class="mov-dashboard-footnotes mov-background-color_ffffff slds-text-align_center">
+                <div class="mov-text-group">
+                    <h3 class="mov-text_size-30 mov-text_weight-semi-bold">Thank you for staying connected</h3>
+                    <h4 class="slds-m-top_medium slds-text-heading_small mov-text_color-a5a5a5">Get the latest news and service advisories from Meralco.</h4>
+                </div>
+                <ul class="slds-list_horizontal mov-dashboard-footnotes_social">
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-youtube-play"></i></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+        
+    </div>
+    <!-- end MAIN CONTENT -->
+</aura:component>

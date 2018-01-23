@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>A table that will holds  the article links for 
+a.	How do I create a customer portal account?</description>
+    <fields>
+        <fullName>Article__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Article</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Create_Customer_Portal_Accnts__c</fullName>
+        <description>a.How do I create a customer portal account?</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Create_Customer_Portal_Accnt</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <label>Different_Email_Article_Link</label>
+    <pluralLabel>Different_Email_Article_Links</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

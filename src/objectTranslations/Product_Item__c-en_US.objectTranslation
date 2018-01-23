@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Adjustable --></label>
+        <name>Adjustable__c</name>
+    </fields>
+    <fields>
+        <label><!-- Calculation Order --></label>
+        <name>Calculation_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Criterium --></label>
+        <name>Criterium__c</name>
+        <picklistValues>
+            <masterLabel>Always</masterLabel>
+            <translation><!-- Always --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Double Meter</masterLabel>
+            <translation><!-- Double Meter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclusive Night</masterLabel>
+            <translation><!-- Exclusive Night --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Never</masterLabel>
+            <translation><!-- Never --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Meter</masterLabel>
+            <translation><!-- Single Meter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Field --></label>
+        <name>Field__c</name>
+        <picklistValues>
+            <masterLabel>EAV</masterLabel>
+            <translation><!-- EAV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EAV (Exclusive Night)</masterLabel>
+            <translation><!-- EAV (Exclusive Night) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EAV High (Day)</masterLabel>
+            <translation><!-- EAV High (Day) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EAV Low (Night)</masterLabel>
+            <translation><!-- EAV Low (Night) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Mandatory --></label>
+        <name>Mandatory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Master Product --></label>
+        <name>Master_Product__c</name>
+        <relationshipLabel><!-- Product Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Operation --></label>
+        <name>Operation__c</name>
+        <picklistValues>
+            <masterLabel>* (1 - Value)</masterLabel>
+            <translation><!-- * (1 - Value) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>* Value</masterLabel>
+            <translation><!-- * Value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>+ (12 * Value)</masterLabel>
+            <translation><!-- + (12 * Value) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>+ (Value * Field)</masterLabel>
+            <translation><!-- + (Value * Field) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>+ Value</masterLabel>
+            <translation><!-- + Value --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Percentage Value --></label>
+        <name>Percentage_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price Group --></label>
+        <name>Price_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rate Value --></label>
+        <name>Rate_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value Type --></label>
+        <name>Value_Type__c</name>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rate</masterLabel>
+            <translation><!-- Rate --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Variable --></label>
+        <name>Variable__c</name>
+    </fields>
+    <layouts>
+        <layout>Product Item Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Unit Price Calculation Rule --></label>
+            <section>Unit Price Calculation Rule</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- If &quot;Variable&quot; is checked, then “Adjustable&quot; must be false. --></errorMessage>
+        <name>If_Variable_true_Adjustable_is_false</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Percentage Value Must be filled if Value type is Percentage --></errorMessage>
+        <name>Percentage_Value_Must_Be_Entered</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Rate Value Must be filled if Value type is Rate --></errorMessage>
+        <name>Rate_Value_Must_Be_Entered</name>
+    </validationRules>
+</CustomObjectTranslation>

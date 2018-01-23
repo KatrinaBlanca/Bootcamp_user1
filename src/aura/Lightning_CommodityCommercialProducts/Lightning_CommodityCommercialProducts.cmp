@@ -1,0 +1,120 @@
+<aura:component controller="Lightning_CommercialProductOverviewCntrl">
+    <style>
+        .proddetailheader{
+        background-color: rgb(244, 246, 249);
+        padding: 1.5rem;
+        z-index: 2;
+        text-align:left;    
+        }
+        
+        .detaillabel{
+        font-size: .75rem;
+        line-height: 1rem;
+        color:#4F6A92;
+        }
+        .detailvalue{
+        font-size: .875rem;
+        line-height: 1.5rem;
+        color:#003968;
+        margin-top: .5rem;
+        font-weight: 500;
+        }
+        .detailtitle{
+        font-size: 1rem;
+        line-height: 2rem;
+        color:#003968;
+        }
+        .tablelabel{
+        font-size: .875rem;
+        color:#003968;
+        }
+        .proddetailbody{
+        border-left:1px solid #d8dde6;
+        border-right:1px solid #d8dde6;
+        }
+    </style>
+    <ltng:require styles="/resource/SLDS/assets/styles/salesforce-lightning-design-system-ltng.css"/>
+    <aura:attribute name="productId" type="String"/>
+    <aura:attribute name="eavParam" type="String"/>
+    <aura:attribute name="view" type="String" default="complete"/>
+    <aura:attribute name="isReadOnly" type="Boolean"/>
+    <aura:attribute name="oldProductId" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="commProdWrap" type="Lightning_CommercialProductOverviewCntrl.commProdWrapper"/>
+	<aura:registerEvent name="Lightning_UpdateSelectedProduct" type="c:Lightning_UpdateSelectedProduct"/>    
+    <aura:if isTrue="{!v.view == 'complete'}">
+        <div class="proddetailheader">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size--12-of-12 slds-small-size--12-of-12 slds-medium-size--12-of-12 slds-large-size--12-of-12">
+                    <div class="detailtitle">{!v.commProdWrap.product.Name} </div>  
+                </div>                                
+            </div>
+        </div>
+        <div class="proddetailbody">
+            <table class="slds-table slds-table--bordered">
+                <thead>
+                    <tr class="slds-text-heading--label">
+                        
+                        <th class="slds-is-sortable" scope="col">
+                            <div class="slds-truncate detaillabel">NAME</div>
+                        </th>
+                        <th class="slds-is-sortable" scope="col">
+                            <div class="slds-truncate detaillabel">RATE</div>
+                        </th>
+                        
+                        <th class="slds-is-sortable" scope="col">
+                            <div class="slds-truncate detaillabel">EAV</div>
+                        </th>
+                        
+                        <th class="slds-is-sortable" scope="col">
+                            <div class="slds-truncate detaillabel">PRICE</div>
+                        </th>                                		
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.commProdWrap.lines}" var="line">
+                        <tr class="slds-hint-parent">
+                            
+                            <td class="slds-truncate" >
+                                <ui:outputText value="{!line.name}" class="detailvalue"/>
+                            </td>                                        
+                            <td class="slds-truncate" >
+                                <ui:outputText value="{!line.rate}" class="detailvalue" />
+                            </td>
+                            
+                            <td class="slds-truncate" >
+                                <!--<aura:if isTrue="{!line.name == 'Total'}">
+                                    <aura:if isTrue="{!line.eav == 'NULL'}">
+                                        <ui:outputText value="0" class="detailvalue" />
+                                    </aura:if>
+                                </aura:if> -->
+                                <ui:outputText value="{!line.eav}" class="detailvalue" />
+                            </td>
+                            
+                            <td class="slds-truncate" >
+                                <ui:outputText value="{!line.delta}" class="detailvalue" />
+                            </td>                                    
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.view == 'mini'}">
+        <div class="productlabel">DESCRIPTION</div>
+        <div class="productitem">
+            {!v.commProdWrap.product.Description}
+        </div>
+        <div>
+            <aura:unescapedHtml value="{!v.commProdWrap.product.Product_Rating__c}"></aura:unescapedHtml>
+        </div>
+        <div class="productpricelabel">TOTAL PRICE</div>
+        <div class="productpricevalue">
+            <aura:iteration items="{!v.commProdWrap.lines}" var="line">
+                <aura:if isTrue="{!line.name == 'Total'}">
+                    {!line.delta}
+                </aura:if>
+            </aura:iteration>
+        </div>
+    </aura:if>
+</aura:component>

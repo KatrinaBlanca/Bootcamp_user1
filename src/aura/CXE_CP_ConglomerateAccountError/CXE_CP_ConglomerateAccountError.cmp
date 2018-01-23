@@ -1,0 +1,14 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+     <!--START R2C CSM-13274 Shayne 10/16/2017 -->
+    <aura:attribute name="message" type="String"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" /> 
+     <!--END R2C CSM-13274 Shayne 10/16/2017 -->
+	<c:CXE_CP2c_Header />    
+    <div class="main-wrapper">
+    	<h1 style="height: calc(100vh - 358px);
+    			   padding-top: calc(100vh - 50%);
+                   font-size: 20px;">
+            {!v.message}
+        </h1>
+    </div>
+</aura:component>

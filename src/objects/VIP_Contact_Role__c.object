@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>High Profile Contact Role which can link High Profile Contact to multiple Accounts</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <errorMessage>You can only associate High Profile Contact to Business or Individual Account</errorMessage>
+            <filterItems>
+                <field>Account.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Business Account, Individual Account</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Related High Profile Contacts</relationshipLabel>
+        <relationshipName>High_Profile_Contact_Roles</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>High_Profile_Contact__c</fullName>
+        <externalId>false</externalId>
+        <label>High Profile Contact</label>
+        <referenceTo>VIP_Contact__c</referenceTo>
+        <relationshipLabel>Related Accounts</relationshipLabel>
+        <relationshipName>High_Profile_Contact_Roles</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>High_Profile_Contact__r.Name__c</formula>
+        <label>Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business User</fullName>
+                    <default>false</default>
+                    <label>Business User</label>
+                </value>
+                <value>
+                    <fullName>Decision Maker</fullName>
+                    <default>false</default>
+                    <label>Decision Maker</label>
+                </value>
+                <value>
+                    <fullName>Economic Buyer</fullName>
+                    <default>false</default>
+                    <label>Economic Buyer</label>
+                </value>
+                <value>
+                    <fullName>Economic Decision Maker</fullName>
+                    <default>false</default>
+                    <label>Economic Decision Maker</label>
+                </value>
+                <value>
+                    <fullName>Evaluator</fullName>
+                    <default>false</default>
+                    <label>Evaluator</label>
+                </value>
+                <value>
+                    <fullName>Executive Sponsor</fullName>
+                    <default>false</default>
+                    <label>Executive Sponsor</label>
+                </value>
+                <value>
+                    <fullName>Influencer</fullName>
+                    <default>false</default>
+                    <label>Influencer</label>
+                </value>
+                <value>
+                    <fullName>Technical Buyer</fullName>
+                    <default>false</default>
+                    <label>Technical Buyer</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Controller</fullName>
+                    <default>false</default>
+                    <label>Controller</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>High Profile Contact Role</label>
+    <nameField>
+        <displayFormat>HPCR-{000000}</displayFormat>
+        <label>Record Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>High Profile Contact Roles</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

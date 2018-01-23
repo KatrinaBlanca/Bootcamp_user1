@@ -1,0 +1,56 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" access="global" controller="CXE_MessageHandler_CC">
+<aura:attribute name="caseRecord" type="Case" default="{sobjectType: 'Case'}"/>
+<aura:attribute name="retrieveAmount" type="Boolean" default="false"/>
+<aura:attribute name="updateBillDeposit" type="Boolean" default="false"/>
+
+ <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+ <aura:dependency resource="markup://force:editRecord" type="EVENT" />
+ <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    
+ <aura:if isTrue="{!and(v.retrieveAmount, v.updateBillDeposit)}">
+ <div class="slds-path-coach" style="height: 4rem;">
+ 	<div class="slds-grid">
+        <div class="slds-notify slds-notify_toast slds-theme_error" role="alert" style="width:98%">
+          <span class="slds-assistive-text">error</span>
+          <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Warning">
+            <lightning:icon iconName="utility:warning" variant="inverse"/>
+          </span>
+          <div class="slds-notify__content">
+            <h2 class="slds-text-heading_small ">-   Check for arrears by clicking on Retrieve Outstanding Amount</h2>
+            <h2 class="slds-text-heading_small ">-   Compute for the required Bill Deposit by clicking on Update Bill Deposit</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+ </aura:if>
+ <aura:if isTrue="{!and(v.retrieveAmount, not(v.updateBillDeposit))}">
+ <div class="slds-path-coach" style="height: 4rem;">
+ <div class="slds-grid">
+    <div class="slds-notify slds-notify_toast slds-theme_error" role="alert" style="width:98%">
+      <span class="slds-assistive-text">error</span>
+      <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+        <lightning:icon iconName="utility:warning" variant="inverse"/>
+      </span>
+      <div class="slds-notify__content">
+        <h2 class="slds-text-heading_small ">Check for arrears by clicking on Retrieve Outstanding Amount</h2>
+      </div>
+    </div>
+  </div>
+</div>
+ </aura:if>
+ <aura:if isTrue="{!and(not(v.retrieveAmount), v.updateBillDeposit)}">
+<div class="slds-path-coach" style="height: 4rem;">
+ <div class="slds-grid">
+    <div class="slds-notify slds-notify_toast slds-theme_error" role="alert" style="width:98%">
+      <span class="slds-assistive-text">error</span>
+      <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+        <lightning:icon iconName="utility:warning" variant="inverse"/>
+      </span>
+      <div class="slds-notify__content">
+        <h2 class="slds-text-heading_small ">Compute for the required Bill Deposit by clicking on Update Bill Deposit</h2>
+      </div>
+    </div>
+  </div>
+</div>
+ </aura:if>
+</aura:component>

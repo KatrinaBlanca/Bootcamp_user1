@@ -1,0 +1,7 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+    
+    <!-- SERVICE ID -->
+    <apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/>
+    {!ConnectionInstallationDate}
+    
+</apex:component>

@@ -1,0 +1,9 @@
+<apex:page standardController="Case" rendered="true">
+  <flow:interview name="Trigger_Approval_Process" finishLocation="/{!Case.Id}" rendered="true">
+        <apex:param name="var_CaseId" value="{!Case}"/>
+        <apex:param name="GLSDate" value="{!Case.New_GSL4_Target_Date__c}"/>
+        <apex:param name="IsArrears" value="{!Case.Arrears_Check__c}"/>
+        <apex:param name="ArrearsTag" value="{!Case.Arrears_Tag__c}"/>
+        <apex:param name="ArrearsJustification" value="{!Case.Arrears_Lifting_Justification__c}"/>
+	</flow:interview>
+</apex:page>

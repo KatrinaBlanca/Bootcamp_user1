@@ -1,0 +1,95 @@
+<apex:page standardController="case" extensions="MovingHomeController">
+    <style type="text/css">
+        .width-33-pct { 
+            width: 33%; 
+        }
+    </style>
+    <!-- <apex:sectionHeader title="{!title}" subtitle="{!subtitle}"/> -->
+    <apex:pagemessages />
+    <apex:form >
+        <apex:pageBlock title="Active Agreements" >
+            <!-- <apex:pageBlockTable value="{!agreementWrap}" var="act"> 
+                <apex:column headerValue="Select" ><apex:inputCheckbox value="{!act.Sel}" /></apex:column>
+                <apex:column headervalue="Agreement Number" value="{!act.agreement.name}"/>
+                <apex:column headervalue="Commercial Product" value="{!act.agreement.Commercial_Product__c}"/>
+                <apex:column headervalue="Advance Amount" value="{!act.agreement.Advance_amount__c}"/>
+                <apex:column headervalue="Agreement Start Date" value="{!act.agreement.Agreement_Start_Date__c}"/>
+                <apex:column headervalue="Agreement End Date" value="{!act.agreement.Agreement_End_Date__c}"/>
+                <apex:column headervalue="Charges for breach of contract" value="{!act.agreement.Charges_for_breach_of_contract__c}"/>
+            </apex:pageBlockTable><br/>
+            <apex:commandButton value="Select" action="{!getpreviousmeterreadings}"/> -->
+            <apex:pageblockSection columns="2">
+            </apex:pageblockSection>
+        </apex:pageBlock>
+                       
+           <!-- <apex:repeat value="{!ConnectionIdtoResponsemap}" var="connectionId">
+               <apex:pageBlock title="{!connectionIdToConnectionMap[connectionId].Utility_Type__c} - {!connectionIdToConnectionMap[connectionId].Name}" id="block">
+                                    
+                   <apex:panelGrid columns="3" width="100%" columnClasses="width-33-pct,width-33-pct,width-33-pct">
+                       <apex:outputpanel styleClass="width-100-pct">
+                           <apex:pageBlockSection columns="1">
+                                <apex:inputField value="{!connectionIdToCaseConnectionMap[connectionId].Meter_Read_Date__c}">
+                                    <apex:actionSupport event="onchange" 
+                                                        rerender="{!$Component.meterReadsGraph}"
+                                                        status="{!$Component.mroLoading}"> 
+                                        <apex:param value="{!connectionIdToConnectionMap[connectionId].Id}" assignTo="{!Cid}"/>
+                                    </apex:actionsupport>                            
+                                </apex:inputField>
+                                <apex:inputField value="{!connectionIdToCaseConnectionMap[connectionId].Meter_Read_Value__c}">
+                                    <apex:actionSupport event="onchange"
+                                                        action="{!updategraph}" 
+                                                        rerender="{!$Component.meterReadsGraph}"   
+                                                        status="{!$Component.mroLoading}"> 
+                                        <apex:param value="{!connectionIdToConnectionMap[connectionId].Id}" assignTo="{!Cid}"/>
+                                    </apex:actionsupport>                       
+                                </apex:inputField>
+                           </apex:pageBlockSection>
+                       </apex:outputpanel>
+                       
+                       <apex:outputpanel styleClass="width-100-pct">
+                           <apex:pageblock >
+                           <apex:pageBlockTable value="{!ConnectionIdtoResponsemap[connectionId]}" var="meterReading" width="80%">
+                               <apex:column value="{!meterReading.ReadingDateTime1}" headerValue="Reading Date"/>
+                               <apex:column value="{!meterReading.utiltarriflabel1}" headerValue="Utility Tariff Label"/>
+                               <apex:column value="{!meterReading.Value1}" headerValue="Reading"/>
+                               <apex:column value="{!meterReading.ReadingOrigin1}" headerValue="Reading Origin"/>
+                               <apex:column value="{!meterReading.unitofmeasure1}" headerValue="Unit Of Measurement"/>
+                               
+                           </apex:pageBlockTable>
+                           </apex:pageblock>
+                       </apex:outputpanel>    
+                       
+                       <apex:outputPanel id="meterReadsGraph" styleClass="width-100-pct">
+                           
+                           <apex:actionStatus id="mroLoading">
+                            <apex:facet name="start">
+                                <apex:outputPanel >
+                                    <apex:image url="/img/loading.gif"/>
+                                    <br/>
+                                </apex:outputPanel>
+                            </apex:facet>
+                            </apex:actionStatus>
+                            
+                            <script type="text/javascript" src="https://www.google.com/jsapi"/> 
+                            <script type="text/javascript">
+                                google.load('visualization', '1', {callback: 'drawVisualization{!connectionIdToConnectionMap[connectionId].Id}'}); 
+                                  
+                                function drawVisualization{!connectionIdToConnectionMap[connectionId].Id}() {
+                                var wrapper = new google.visualization.ChartWrapper({
+                                chartType: 'LineChart',
+                                dataTable: <apex:outputText value="{!connectionidtographmap[connectionId]}" escape="false"/>,
+                                containerId: '{!$Component.meterReadsGraph}',
+                                options: {legend: 'none', pointSize: 5}
+                                    });
+                                wrapper.draw();
+                                }
+                            </script>
+
+                       </apex:outputpanel>
+                   </apex:panelGrid>
+               </apex:pageBlock>
+           </apex:repeat>
+           <apex:commandButton value="Save" action="{!save}"/>
+           <apex:commandButton value="Cancel" action="{!Cancel}"/>     -->
+    </apex:form>  
+</apex:page>

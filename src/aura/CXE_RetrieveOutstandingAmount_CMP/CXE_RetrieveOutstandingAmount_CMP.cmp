@@ -1,0 +1,12 @@
+<!-- Description: Retrieve Outstanding Amount from v10-->
+<!-- Author: Von Pernicia -->
+<!-- Date Created: JUN-06-17 -->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="CXE_RetrieveOutstandingAmount_CC">
+    
+    <!-- CASE RECORD ID -->
+    <aura:attribute name="recordId" type="String"/>
+    
+    <!-- RETRIEVE OUTSTADING BUTTON -->
+    <button class="slds-button slds-button--neutral" onclick="{!c.retrieveAmount}">Retrieve Outstanding Amount</button>
+    
+</aura:component>

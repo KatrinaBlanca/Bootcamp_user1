@@ -1,0 +1,17 @@
+<aura:component controller="CXE_CP_MiniAddsCtrl">
+    <aura:registerEvent name="setAttribute" type="c:CXE_CP_CXE_CP_MyBillsBillSummary_event"/>
+    <div class="mov-dashboard_misc">
+        <!-- START CSM-14220 Edgar Eisma – retrofit from R2B -->
+        <img class="mov-dashboard_misc__image slds-show_medium" src="{! $Resource.CXE_CP_Assets2 + '/images/miniad-2.png' }" />
+        <img class="slds-hide_medium" src="{! $Resource.CXE_CP_Assets2 + '/images/miniad-2m.png' }" />
+        <!-- END CSM-14220 Edgar Eisma – retrofit from R2B -->
+        <div class="mov-dashboard_misc__content mov-element_valign-center">
+            <div class="mov-text-group">
+                <p class="mov-text_size-14 mov-text_weight-semi-bold mov-text_color-ffffff">Know more about Paperless Billing.</p>
+                <div class="mov-button-wrapper">
+                    <a onclick="{!c.OpenOnlineFaqs}" class="slds-button slds-float_right mov-button-misc" href="javascript:void(0);"><span>VIEW FAQs</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,39 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CXE_PicklistFieldController">
+    <!--Use salesforce lightning design style-->
+    <ltng:require styles="{! $Resource.SLDS221 + '/assets/styles/salesforce-lightning-design-system.css'}" />
+    
+    <aura:registerEvent name="serviceProvince" type="c:CXE_selectControllingPicklistEvent"/>
+    <aura:registerEvent name="serviceCity" type="c:CXE_selectDependentPicklistEvent"/>
+    <aura:registerEvent name="businessProvince" type="c:CXE_selectBusinessProvinceEvent"/>
+    <aura:registerEvent name="businessCity" type="c:CXE_selectBusinessCityEvent"/>
+
+    <!--init function which is call on component load -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!--Using Attributes-->
+    <aura:attribute name="objInfo" type="string" default="Case" description="store object Info." />
+    <aura:attribute name="dependentFieldMap" type="map" description="store controller(key)--> dependent(values) picklist value as a map." />
+    <aura:attribute name="isDependentDisable" type="boolean" default="true" description="use for, make disbale depandent field." />
+    
+    <aura:attribute name="controllingFieldEvt" type="String" default="" description="Name for controlling field event." />
+    <aura:attribute name="controllingFieldApi" type="String" default="" description="Name for controlling field." />
+    <aura:attribute name="controllingFieldLabel" type="String" default="" description="Label for controlling field." />
+    
+    <aura:attribute name="dependentFieldEvt" type="String" default="" description="Name for dependent field event." />
+    <aura:attribute name="dependentFieldApi" type="String" default="" description="Name for dependent field." />
+    <aura:attribute name="dependentFieldLabel" type="String" default="" description="Label for dependent field." />
+    
+    <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+        <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">{!v.controllingFieldLabel}</label> -->
+        <div class="slds-form-element__control CXE_roundFields">
+            <ui:inputSelect aura:id="controllingFieldId" class="slds-select mov-select-aftersales mov-text_color-afafaf" change="{!c.onControllerFieldChange}" label="{!v.controllingFieldLabel}" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232"/>
+        </div>
+    </div>
+    <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+        <!-- <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">{!v.dependentFieldLabel}</label> -->
+        <div class="slds-form-element__control CXE_roundFields">
+            <ui:inputSelect aura:id="dependentFieldId" disabled="{!v.isDependentDisable}" class="slds-select mov-select-aftersales mov-text_color-afafaf slds-select inline" change="{!c.onDependentFieldChange}" label="{!v.dependentFieldLabel}" labelClass="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232"/>
+        </div>
+    </div>
+    
+</aura:component>

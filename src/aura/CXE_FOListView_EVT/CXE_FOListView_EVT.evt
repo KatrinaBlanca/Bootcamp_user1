@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute type="Object" name="fieldOrder" />
+    <aura:attribute type="Object[]" name="fieldOrderList" />
+</aura:event>

@@ -1,0 +1,7 @@
+.THIS .strong{
+	font-weight: bold;
+}
+
+.THIS .toastContainer.slds-notify_container.slds-is-relative {
+    position: absolute;
+}

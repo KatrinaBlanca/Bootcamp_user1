@@ -1,0 +1,26 @@
+<messaging:emailTemplate subject="Termination of Service Enrolled in Meralco Online Account" recipientType="User" relatedToType="CXE_Service_Enrollment__c">
+    <messaging:htmlEmailBody >
+        
+        <c:CXE_Header />
+        <br></br>
+        <br></br>
+        Dear {!relatedTo.CXE_ServiceId__r.Payor__r.Account.Name},<br/>
+        <br></br>
+        <br></br>
+        Your terminated service with Service ID Number {!relatedTo.CXE_ServiceId__r.SIN__c} enrolled under your Meralco Online account has been removed from your list of services. Don't worry, your other enrolled services are still active, and this will not affect your Meralco Online account. <br/>
+        <br></br>
+        For further assistance, please call us at our 24/7 business hotline at 16210.<br/>
+        <br></br>
+        ** This is a system-generated message and does not require a signature.  Please do not reply to this email. ** <br/>
+        <br></br>     
+        DISCLAIMER: <br/>
+        The information contained in this email message is intended only for the individual or entity to which it is addressed, and such information may be privileged or confidential and protected under applicable laws.  If you are not the intended recipient, you must not disseminate, distribute, store, print, copy or deliver this message.  Email transmission cannot be guaranteed to be error-free owing to the nature of the internet.  Therefore, you fully understand that MERALCO shall not be liable for any omission or error in this message which may arise as a result of email transmission.  Further MERALCO does not warrant against, and will not be liable and/or responsible for, any loss or damage that the receipt, use or other disposition of this e-mail and/or its attachments may cause to the recipient's computer or network. <br/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <c:CXE_Footer_R2 />
+        
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

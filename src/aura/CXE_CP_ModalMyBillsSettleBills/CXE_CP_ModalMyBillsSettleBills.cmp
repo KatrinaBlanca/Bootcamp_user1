@@ -1,0 +1,44 @@
+<aura:component >
+    <aura:attribute name="modalPopUpChild" type="String" required="false" description="" access="public"/>
+    <aura:registerEvent name="closeModal" type="c:CXE_CP_PaymentPayAsGuest_event"/>
+    <!-- START CSM-12629 RReyes OCT-01-17-->
+    <aura:registerEvent name="setTotalAmount" type="c:CXE_CP_MyBillsEvent"/>
+    <aura:attribute name="sourcePage" type="String" default=""/>
+    <aura:attribute name="totalAmount" type="Decimal" default="0.0"/>
+    <aura:attribute name="filteredBillingSummary" type="Object[]"/>
+    <aura:attribute name="subTotalMap" type="Object[]" default="[]"/>
+    <aura:attribute name="isPayAsGuest" type="Boolean" default="false"/>
+    <!-- END CSM-12629 RReyes OCT-01-17-->
+    <!-- PROCEED MODAL1 -->
+    <div class="mov-modal mov-modal_proceed mov-modal_width-650" id="mov-proceed-modal1">
+        <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open modal-bg-close">
+            <div class="slds-modal__container">
+                
+                <div class="slds-modal__content slds-p-around_xx-large mov-background-color_ffffff" id="modal-content-id-1">
+                   	
+                    <!-- START CSM-12629 RReyes OCT-01-17 Changed message-->
+                    <aura:if isTrue="{!v.isPayAsGuest == false}">
+                        <h2 class="text-center">Please pay all your overdue bills in full to avoid inconvenience.</h2>
+                    </aura:if>
+                    <aura:if isTrue="{!v.isPayAsGuest}">
+                        <!-- START CSM-14798 RReyes DEC-05-17 - changed message -->
+                        <h2 class="text-center">Please pay all your unpaid bills to avoid inconvenience.</h2>
+                        <!-- END CSM-14798 RReyes DEC-05-17 - changed message -->
+                    </aura:if>
+                                     
+                                     
+                    <!-- END CSM-12629 RReyes OCT-01-17 Changed message-->
+                    <div class="mov-button-group slds-p-top_large ok-cancel">
+                        <a onclick="{! c.hideModal }" class="slds-button mov-button-transparent mov-button-transparent_gray mov-element_max-width-170 close-modal">Back</a>
+                        <!-- START CSM-14407 RReyes NOV-10-17 - changed from OK to Proceed -->
+                        <a onclick="{! c.proceedModal }" class="slds-button mov-button mov-element_max-width-170 close-modal">Proceed</a>
+                        <!-- END CSM-14407 RReyes NOV-10-17 - changed from OK to Proceed -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop_open mov-backdrop"></div>
+    </div>
+    <!-- END PROCEED MODAL1 -->	
+</aura:component>

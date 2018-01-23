@@ -1,0 +1,172 @@
+<aura:component >
+    
+    <style>
+        .servHomeError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+        .billHomeError{
+        color: red!important;
+        font-size: 12px!important;        
+        }
+    </style>
+    
+    <div class="tab-pane slds" id="new_address" role="tabpanel">
+        <div class="slds-p-around_x-large">
+            <div class="mov-text-group slds-text-align_center">
+                <div class="mov-form-group slds-m-top_medium">
+                    <div class="mov-form">
+                        <div class="slds-form">
+                            <h3 class="slds-form-element__label slds-m-bottom_large mov-text_size-21 mov-text_color-323232" for="guest-ref-no">Where will you be using the electric service?</h3>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center mov-element_max-width-740">
+                                <div class="slds-form-element slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Home Address</label>
+                                    <div class="slds-form-element__control mov-element-position-relative">
+                                            <ui:inputText aura:id="serv_home" class="slds-input mov-input" 
+                                                      placeholder="" required="true" blur="{!c.onBlurServHome}"/>
+                                    </div>
+                                    <p aura:id="servHome-error" class="slds-hide">Please specify your home service address.</p>
+                                </div>
+                            </div>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">		
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Province</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container mov-select_container mov-select_container_skinny-arrow mov-element_max-width-345">
+                                            <select class="slds-select mov-select-aftersales mov-text_color-afafaf" id="select-01">
+                                                <option>
+                                                    Option One
+                                                </option>
+                                                <option>
+                                                    Option Two
+                                                </option>
+                                                <option>
+                                                    Option Three
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">City/Municipality</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container mov-select_container mov-select_container_skinny-arrow mov-element_max-width-345">
+                                            <select class="slds-select mov-select-aftersales mov-text_color-afafaf" id="select-01">
+                                                <option>
+                                                    Option One
+                                                </option>
+                                                <option>
+                                                    Option Two
+                                                </option>
+                                                <option>
+                                                    Option Three
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Home Ownership</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container mov-select_container mov-select_container_skinny-arrow mov-element_max-width-345">
+                                            <select class="slds-select mov-select-aftersales mov-text_color-afafaf" id="select-01">
+                                                <option>
+                                                    Option One
+                                                </option>
+                                                <option>
+                                                    Option Two
+                                                </option>
+                                                <option>
+                                                    Option Three
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center">
+                                <div class="mov-text-group slds-m-vertical_large slds-p-bottom_large">
+                                    <span class="mov-text_size-18 mov-text_weight-semi-bold mov-element-position-relative mov-element_display-inline-block_valign-center slds-m-right_large">
+                                        Will you have the same billing address?
+                                    </span>
+                                    <div class="mov-radio-group mov-radio-group_inline">
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold slds-m-right_large">
+                                            <!--<input type="radio" id="new-radio" value="option1" name="iCheck" /> -->
+                                            <input type="radio" id="yes_radio" value="option1" name="iCheck" onclick="{!c.radioClick}"/>
+                                            <span>Yes</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>	
+                                        <label class="radio-inline radio-container mov-radio-container mov-text_color-323232 mov-text_weight-semi-bold">
+                                            <!--<input type="radio" id="new-radio" value="option1" name="iCheck" /> -->
+                                            <input type="radio" id="no_radio" value="option1" name="iCheck" onclick="{!c.radioClick}"/>
+                                            <span>No&nbsp;</span>
+                                            <div class="radio-custom mov-radio-custom"></div>
+                                        </label>	
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-grid_align-center mov-element_max-width-740">
+                                <div class="slds-form-element slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Home Address</label>
+                                    <div class="slds-form-element__control mov-element-position-relative">
+                                            <!--<input class="slds-input mov-input-trackmyapp" id="guest-ref-no" type="text" />-->
+                                            <ui:inputText aura:id="bill_home" class="slds-input mov-input" 
+                                                      placeholder="" required="true" blur="{!c.onBlurBillHome}"/>
+                                        </div>
+                                        <p aura:id="billHome-error" class="slds-hide">Please specify your home billing address.</p>
+                                </div>
+                            </div>
+                            <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small mov-element_max-width-740 slds-m-top_large">		
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">Province</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container mov-select_container mov-select_container_skinny-arrow mov-element_max-width-345">
+                                            <select class="slds-select mov-select-aftersales mov-text_color-afafaf" id="select-01">
+                                                <option>
+                                                    Option One
+                                                </option>
+                                                <option>
+                                                    Option Two
+                                                </option>
+                                                <option>
+                                                    Option Three
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small slds-m-bottom_large">
+                                    <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232" for="guest-ref-no">City/Municipality</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container mov-select_container mov-select_container_skinny-arrow mov-element_max-width-345">
+                                            <select class="slds-select mov-select-aftersales mov-text_color-afafaf" id="select-01">
+                                                <option>
+                                                    Option One
+                                                </option>
+                                                <option>
+                                                    Option Two
+                                                </option>
+                                                <option>
+                                                    Option Three
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mov-form-row">
+                                <div class="slds-form-element slds-p-top_xx-large">
+                                    <!--<button class="slds-button mov-button-transparent mov-element_max-width-170">Almost there!</button> -->
+                                    <ui:button class="slds-button mov-button-transparent mov-element_max-width-170" press="{!c.submitAddressInfo}">Almost there!</ui:button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,73 @@
+<!--
+    @Author      :  Accenture IDC
+    @Name        :  ProductClonePage
+    @Date        :  03/08/2015
+    @Description :  Visualforce page for cloning and updating Product record. 
+-->
+<apex:page standardController="Product2" tabStyle="Product2" id="page" extensions="ProductClonecontroller">
+    <!-- Section header to have look & feel of standard layout header  -->
+    <!-- <apex:sectionHeader id="PrdHeader" subtitle="New Product" title="{!IF(Product2.Name != '',Product2.Name,'New Product')}"/>
+    <apex:form id="form">
+        <apex:pageBlock id="prdBlock" mode="Edit">
+            <apex:pageMessages id="pageMsgs" escape="false"/> -->
+            <!--
+                PageBlock Buttons containing Save, Save and Add Price and Cancel button on Page TOP.
+                1. Save button uses standard save action to save the record.
+                2. Cancel button uses standard cancel action.
+            -->
+            <!-- <apex:pageblockButtons id="blockBtns">
+                <apex:commandButton value="{!$Label.BTN_SAVE}" id="saveBtn" action="{!customSave}"/>
+                <apex:commandButton value="{!$Label.BTN_CANCEL}" id="cancelBtn" action="{!cancel}" immediate="true"/>
+            </apex:pageblockbuttons> -->
+            <!-- 
+                Section to Display Product Information 
+                Fields are displayed dynamically from fieldset. Since few fields are unique to specific recordtype, 
+                fieldset are dynamically fetch based on recordtype
+            -->
+            <!-- <apex:pageblockSection id="BunPrdInfo" title="{!$Label.PRODUCT_EDIT}" rendered="{!IF($CurrentPage.parameters.RecordType == $Label.BUNDLE_RECORDTYPE 
+                                                                                          || LEFT(Product2.RecordTypeId,15) == $Label.BUNDLE_RECORDTYPE,True,False)}">
+                <apex:repeat id="BundlePrdInfoFields" value="{!$ObjectType.Product2.FieldSets.BUNDLE_FIELDS}" var="f"> 
+                    <apex:inputField value="{!Product2[f]}" id="bundleinpFld" rendered="{!IF(f.fieldPath == 'RecordTypeId',false,true)}" required="{!f.required || f.dbrequired}"/>
+                    <apex:outputfield value="{!Product2[f]}" id="bundleoutFld" rendered="{!IF(f.fieldPath == 'RecordTypeId',True,False)}"/>
+                </apex:repeat>
+            </apex:pageblocksection>
+            
+            <apex:pageblockSection id="ComPrdInfo" title="{!$Label.PRODUCT_EDIT}" rendered="{!IF($CurrentPage.parameters.RecordType == $Label.COMMERCIAL_PRODUCT_RECORDTYPE 
+                                                                                          || LEFT(Product2.RecordTypeId,15) == $Label.COMMERCIAL_PRODUCT_RECORDTYPE,True,False)}">
+                <apex:repeat id="ComPrdInfoFields" value="{!$ObjectType.Product2.FieldSets.COMMERCIAL_PRODUCT_FIELDS}" var="f"> 
+                    <apex:inputField value="{!Product2[f]}" id="cominpFld" rendered="{!IF(f.fieldPath == 'RecordTypeId',false,true)}" required="{!f.required || f.dbrequired}"/>
+                    <apex:outputfield value="{!Product2[f]}" id="comoutFld" rendered="{!IF(f.fieldPath == 'RecordTypeId',True,False)}"/>
+                </apex:repeat>
+            </apex:pageblocksection>
+            
+            <apex:pageblockSection id="DiscPrdInfo" title="{!$Label.PRODUCT_EDIT}" rendered="{!IF($CurrentPage.parameters.RecordType == $Label.DISCOUNT_RECORDTYPE 
+                                                                                          || LEFT(Product2.RecordTypeId,15) == $Label.DISCOUNT_RECORDTYPE,True,False)}">
+                <apex:repeat id="DiscPrdInfoFields" value="{!$ObjectType.Product2.FieldSets.DISCOUNT_PRODUCT_EDIT}" var="f"> 
+                    <apex:inputField value="{!Product2[f]}" id="discinpFld" rendered="{!IF(f.fieldPath == 'RecordTypeId',false,true)}" required="{!f.required || f.dbrequired}"/>
+                    <apex:outputfield value="{!Product2[f]}" id="discoutFld" rendered="{!IF(f.fieldPath == 'RecordTypeId',True,False)}"/>
+                </apex:repeat>
+            </apex:pageblocksection>    
+            
+            <apex:pageblockSection id="DiscPrdProp" title="{!$Label.PRODUCT_PROPERTIES}" rendered="{!IF($CurrentPage.parameters.RecordType == $Label.DISCOUNT_RECORDTYPE 
+                                                                                          || LEFT(Product2.RecordTypeId,15) == $Label.DISCOUNT_RECORDTYPE,True,False)}">
+                <apex:repeat id="DiscPrdproFields" value="{!$ObjectType.Product2.FieldSets.DISCOUNT_PRODUCT_PROPERTIES}" var="f"> 
+                    <apex:inputField value="{!Product2[f]}" id="discinpFld" required="{!f.required || f.dbrequired}"/>
+                </apex:repeat>
+            </apex:pageblocksection>
+            
+            <apex:pageblockSection id="DiscPrdFinDisc" title="{!$Label.PRODUCT_FINANCIAL_DISCOUNT}" rendered="{!IF($CurrentPage.parameters.RecordType == $Label.DISCOUNT_RECORDTYPE 
+                                                                                          || LEFT(Product2.RecordTypeId,15) == $Label.DISCOUNT_RECORDTYPE,True,False)}">
+                <apex:repeat id="DiscPrdFinDisFields" value="{!$ObjectType.Product2.FieldSets.DISCOUNT_PRODUCT_FINANCIAL_DISCOUNT}" var="f"> 
+                    <apex:inputField value="{!Product2[f]}" id="discinpFld" required="{!f.required || f.dbrequired}"/>
+                </apex:repeat>
+            </apex:pageblocksection>
+            
+            <apex:pageblockSection id="DiscPrdres" title="{!$Label.PRODUCT_RESTRICTIONS}" columns="1" rendered="{!IF($CurrentPage.parameters.RecordType == $Label.DISCOUNT_RECORDTYPE 
+                                                                                          || LEFT(Product2.RecordTypeId,15) == $Label.DISCOUNT_RECORDTYPE,True,False)}">
+                <apex:repeat id="DiscPrdRestFields" value="{!$ObjectType.Product2.FieldSets.DISCOUNT_PRODUCT_RESTRICTIONS}" var="f"> 
+                    <apex:inputField value="{!Product2[f]}" id="discinpFld" required="{!f.required || f.dbrequired}"/>
+                </apex:repeat>
+            </apex:pageblocksection>   
+     </apex:pageblock>
+   </apex:form> -->
+</apex:page>

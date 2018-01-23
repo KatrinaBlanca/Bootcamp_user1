@@ -1,0 +1,16 @@
+<apex:component controller="CXE_EmailHelper_CC" access="global">
+<!-- PARAMETERS -->
+<apex:attribute name="caseRecord" type="Id" description="Case Id" assignTo="{!caseId}"/>
+<apex:variable var="c" value="{!case}" />
+
+<apex:variable var="withAuthRepDetails" value="withAuthRepDetails" rendered="{!AND(c.Authorized_Representative_First_Name__c != '', c.Authorized_Representative_First_Name__c != null, c.Authorized_Representative_Last_Name__c != '', c.Authorized_Representative_Last_Name__c!= null)}">
+Authorized Representative’s Name: {!c.Authorized_Representative_First_Name__c} {!c.Authorized_Representative_Middle_Name__c} {!c.Authorized_Representative_Last_Name__c} <br/>
+Designation: {!c.CXE_Authorized_Rep_Designation__c}<br/>
+Mobile No. of Authorized Representative: {!c.Authorized_Rep_Primary_Contact_Number__c}<br/>
+</apex:variable>
+<apex:variable var="withoutAuthRepDetails" value="withoutAuthRepDetails" rendered="{! NOT(AND(c.Authorized_Representative_First_Name__c != '', c.Authorized_Representative_First_Name__c != null, c.Authorized_Representative_Last_Name__c != '', c.Authorized_Representative_Last_Name__c!= null))}">
+Authorized Representative’s Name: {!c.First_Name__c} {!c.Middle_Name__c} {!c.Last_Name__c} <br/>
+Designation: {!c.Designation__c}<br/>
+Mobile No. of Authorized Representative: {!c.Mobile_No__c}<br/>
+</apex:variable>
+</apex:component>

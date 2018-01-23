@@ -1,0 +1,48 @@
+<apex:component controller="CommercialProductOverviewController">
+  <link rel="stylesheet" type="text/css" href="/resource/LighteningStyleSheet/assets/styles/salesforce-lightning-design-system-ltng.css" />    
+    <style type="text/css">
+        .wrapcol { 
+            
+        }
+        
+        .nowrapcol { 
+            white-space: nowrap; 
+            text-align: right;    
+        } 
+          
+        .colHeadr {text-align:right;}     
+         .cs{ border-bottom: 1px solid #e5c130;
+       border-top :2px solid #e5c130;
+    }
+    .vertical_line{height:10px; width:1px;background:#FF0000;}
+    </style>
+    
+    <apex:attribute name="prodId" description="Product Id" type="String" required="true" assignTo="{!productId}"/>
+    <apex:attribute name="eav" description="EAV" type="Integer" required="false" assignTo="{!eavParam}"/>   
+    
+    <h1>
+        {!ProductDetail.Name}
+    </h1><br/><br/>
+ <!--   <apex:pageBlockSection title="Product Detail" showHeader="false" columns="1" > -->
+        <apex:outputfield label="Description" value="{!productDetail.description}"/>
+        <apex:outputfield label="Duration" value="{!productDetail.Contract_Duration_Years__c}"/>       
+        <apex:outputfield label="Product Rating" value="{!productDetail.Product_Rating__c}"/>      
+        <apex:outputfield label="Brand's Logo" value="{!productDetail.Brand_s_Logo__c}"/>
+        <br/>
+       <!-- <apex:pageBlockTable value="{!lines}" var="line" width="100%" border="4" columnClasses="wrapcol, nowrapcol, nowrapcol, nowrapcol" >
+        -->
+     <!--   <apex:dataTable value="{!lines}" var="line" width="100%" border="4" columnClasses="wrapcol, nowrapcol, nowrapcol, nowrapcol" >
+    --> 
+    <div class="slds"> 
+    <div class="slds-card"> 
+    <apex:dataTable value="{!lines}" var="line" width="100%"  styleClass="slds-table slds-table--bordered">
+        
+             <apex:column value="{!line.Name}" headerValue="Name"/>
+            <apex:column value="{!line.Rate}" headerValue="Rate" style="text-align:right" headerClass="colHeadr"/>
+            <apex:column value="{!line.EAV}" headerValue="EAV" rendered="{!if(eavParam!=0&&eavParam!=null,true,false)}" headerClass="colHeadr"/>
+            <apex:column value="{!line.delta}" headerValue="Price" style="{!IF(line.Name == 'Total','font-size: 150%', '')}"  headerClass="colHeadr"/>
+        </apex:dataTable>    
+<!--    </apex:pageBlockSection> -->
+  </div>    
+  </div>
+</apex:component>

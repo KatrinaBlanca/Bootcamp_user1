@@ -1,0 +1,200 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_MyAccountsManageService_CC">
+    <c:CXE_CP_Header /> 
+    <aura:attribute name="isNew" type="Boolean" default="false"/>
+    <aura:attribute name="transactionDate" type="Date" default=""/>
+    <aura:attribute name="isSuccess" type="Boolean" default="false"/>
+    <aura:attribute name="caseNumber" type="String" default=""/>
+    
+    <!--START R2C CSM-13274 Shayne 10/12/2017 -->
+    <aura:attribute name="isConglomerate" type="Boolean" default="false"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" /> 
+     <!--END R2C CSM-13274 Shayne 10/12/2017 -->
+    
+    <!-- START R2C CSM-14773 Shayne 12/05/2017 -->
+    <aura:attribute name="isLoaded" type="Boolean" default="false"/>
+    <!-- END R2C CSM-14773 Shayne 12/05/2017 -->
+    
+    <aura:handler name="change" value="{!v.transactionDate}" action="{!c.removePlaceholder}"/>
+    
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+    
+    <aura:renderIf isTrue="{!v.isLoaded}"> <!--R2C CSM-14773 Shayne 12/05/2017 -->
+    <aura:if isTrue="{!and(not(v.isSuccess), or(v.caseNumber == '', v.caseNumber == null))}">
+        <!--aura:if isTrue="{!not(v.isSuccess)}"-->    
+        <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+            <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+                <div class="main-wrapper">
+                    <nav data-reactroot="">
+                        <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                                <!--<a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>-->
+                                <a onclick="{!c.redirectToHome}"><i class="fa fa-home breadcrumb-home"></i></a>
+                            </li>
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item">
+                                <!--<a href="javascript:void(0);">Accounts</a>-->
+                                <a onclick="{!c.redirectToMyAccounts}">Accounts</a>
+                            </li>
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                                <a href="javascript:void(0);">Manage Service</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="mov-track-my-application_guest">
+                <div class="main-wrapper">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col">
+                            <div class="mov-text-group slds-p-top_small">
+                                <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Enroll a Service</h3>
+                            </div>
+                            <div class="slds-box mov-box mov-element-box-shadow mov-background-color_ffffff slds-grid slds-wrap slds-grid_align-center manage-service">
+                                <div class="slds-large-size_3-of-5 slds-medium-size_1-of-1 slds-small-size_1-of-1 slds-max-small-size_1-of-1">
+                                    <div class="mov-form">
+                                        <div class="slds-form slds-form_stacked mov-tabs_default__content ">
+                                            <!--h3>This is a:</h3-->
+                                            
+                                            <label class="radio-inline radio-container ns-radio slds-m-bottom_medium">
+                                                <input type="radio" id="new-radio" value="option1" name="iCheck" aura:id="cmp_newService" onclick="{!c.onClickNewOrExisting}"/> New Service
+                                                <div class="radio-custom"></div>
+                                            </label>
+                                            
+                                            <label class="radio-inline radio-container ns-radio slds-m-bottom_medium">
+                                                <input type="radio" id="existing-radio" value="option2" name="iCheck" aura:id="cmp_existingService"  checked="checked" onclick="{!c.onClickNewOrExisting}"/> Existing Service
+                                                <div class="radio-custom"></div>
+                                                
+                                                <div class="mov-tooltip mov-tooltip_noti CXE_CP_AddSinToolTip">
+                                                    <i class="ion-ios-information"></i>
+                                                    <!-- START CSM-14857 JRances - [R3A REGRESSION] Notification Update 
+                                                    <span class="tooltiptext">
+                                                        If you're an existing Meralco customer, enter the details found on your bill from the past two months.
+                                                        <br/><br/>
+                                                        If you're a new Meralco customer, enter the details found on your bill deposit receipt.
+                                                    </span> -->
+                                                    <span class="tooltiptext">
+                                                        Select an existing service if you already have at least one bill. Enter the details found on any bill from the past 2 months.
+                                                        <br/><br/>
+                                                        Select a new service if you haven't received your first bill. Enter the details found on your bill deposit receipt.
+                                                    </span>
+                                                    <!-- END CSM-14857 -->
+                                                </div>
+                                            </label>
+                                            
+                                            <div class="slds-form-element slds-m-bottom_large">
+                                                <div class="slds-form-element__control">
+                                                    <!--input class="slds-input mov-input-trackmyapp" type="text" placeholder="Service ID No" /-->
+                                                        <!-- CSM-14052 GGrandea 10.24.2017 Re-applying blur="{!c.onBlurFieldValidation}" -->
+                                                    <ui:inputText maxlength="12" aura:id="cmp_servIdNum" label="" labelClass="hidden" class="slds-input mov-input" placeholder="Service ID Number *" blur="{!c.onBlurFieldValidation}"/>
+                                                    <!--div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                                    <span class="tooltiptext">Your SIN is the 12-digit number found on your electric bill or receipt.</span>
+                                                </div-->
+                                                    <span class="CXE_tooltip CXE_serviceTooltip ">
+                                                        <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                                            <span class="tooltiptext">
+                                                                {! if(v.isNew == true, 'Your Service ID Number is the 12-digit number found on your payment receipt.', 'Your Service ID Number is the 12-digit number found on your bill.') } <br />
+                                                                <img src="{! $Resource.CXE_CP_Assets2 + '/images/'+ if(v.isNew == false, 'addSin-SIN.jpg', 'addSin-serviceID.jpg') }"/>
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- START CSM-13787 JRances - Add Placeholder: show/hide -->
+                                            <div class="slds-form-element slds-m-top_medium slds-m-bottom_large">
+                                                <div class="slds-form-element__control">
+                                                    
+                                                    <aura:if isTrue="{!not(v.isNew)}">
+                                                        <ui:inputText aura:id="cmp_amountKwH" label="" class="slds-input mov-input" placeholder="Total kWh*" />
+                                                        <span class="CXE_tooltip CXE_serviceTooltip ">
+                                                            <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                                                <span class="tooltiptext">
+                                                                    Your total kWh can be found on your bill. <br />
+                                                                    <img src="{! $Resource.CXE_CP_Assets2 + '/images/addSin-totalKWH.jpg' }" />
+                                                                </span>
+                                                            </div>
+                                                        </span>
+                                                        
+                                                        <aura:set attribute="else">
+                                                            <ui:inputText aura:id="cmp_amountBill" label="" class="slds-input mov-input" placeholder="Bill Deposit*" />
+                                                            <span class="CXE_tooltip CXE_serviceTooltip ">
+                                                                <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                                                    <span class="tooltiptext">
+                                                                        Your bill deposit amount can be found on your payment receipt. <br />
+                                                                        <img src="{! $Resource.CXE_CP_Assets2 + '/images/addSin-billDeposit.jpg' }" />
+                                                                    </span>
+                                                                </div>
+                                                            </span>
+                                                        </aura:set>
+                                                        
+                                                    </aura:if>                                                
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div  aura:id="signupToggleBox" id="signupToggleBox" class="CXE_placeHolderFix slds-form-element slds-m-top_medium slds-m-bottom_large ">
+                                                <div class="slds-form-element__control">  
+                                                    
+                                                    <aura:if isTrue="{!not(v.isNew)}">
+                                                        <ui:inputDate aura:id="cmp_transactionDateBill" class="CXE_billDate slds-input mov-input mov-input_date" label="Bill Date*" value="{!v.transactionDate}" keypress="{!c.removePlaceholder}" keyup="{!c.removePlaceholder}" keydown="{!c.removePlaceholder}"  updateOn="keypress, keyup, keydown"  displayDatePicker="true" format="MM/DD/YYYY" />
+                                                        <span class="CXE_tooltip CXE_serviceTooltip ">
+                                                            <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                                                <span class="tooltiptext">
+                                                                    Your bill date can be found on your bill. <br />
+                                                                	<img src="{! $Resource.CXE_CP_Assets2 + '/images/addSin-billDate.jpg' }" />
+                                                                </span>
+                                                            </div>
+                                                        </span>
+                                                        
+                                                        <aura:set attribute="else">
+                                                            <ui:inputDate aura:id="cmp_transactionDatePayment" class="CXE_payDate slds-input mov-input mov-input_date" label="Payment Date*" value="{!v.transactionDate}" keypress="{!c.removePlaceholder}" keyup="{!c.removePlaceholder}" keydown="{!c.removePlaceholder}"  updateOn="keypress, keyup, keydown" displayDatePicker="true" format="MM/DD/YYYY"/>                  
+                                                            <span class="CXE_tooltip CXE_serviceTooltip ">
+                                                                <div class="mov-tooltip mov-tooltip_exist mov-tooltip_align"><img src="{! $Resource.CXE_CP_Assets + '/images/tooltip.png' }" />
+                                                                    <span class="tooltiptext">
+                                                                        Your bill deposit payment date can be found on your payment receipt. <br />
+                                                                        <img src="{! $Resource.CXE_CP_Assets2 + '/images/addSin-paymentDate.jpg' }" />
+                                                                    </span>
+                                                                </div>
+                                                            </span>
+                                                        </aura:set>
+                                                        
+                                                    </aura:if>
+                                                </div>
+                                            </div>
+                                            <!-- END CSM-13787 JRances - Add Placeholder: show/hide -->
+                                            
+                                            <div class="slds-form-element slds-p-top_large">
+                                                <!--button class="slds-button mov-button-default mov-element_max-width-170 mov-button-trackmyapp" press="{!c.onClickRegister}">SUBMIT</button-->
+                                                <ui:button class="slds-button mov-button-default mov-element_max-width-170" press="{!c.onClickSubmit}">Submit</ui:button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--div class="slds-large-size_6-of-12 slds-text-align-.-center">
+                                <div class="slds-form slds-form_stacked slds-m-top-.-xx-large slds-m-left-.-xx-large">
+                                    <div class="slds-box mov-box mov-element-box-shadow mov-background-color_f7f7f7">
+                                        <p class="mov-text_size-24 slds-m-bottom_large">Your SIN is the 12-Digit number indicated in this part of your Meralco Bill</p>
+                                        <img class="mov-dashboard_misc__image slds-m-bottom_medium" src="{! $Resource.CXE_CP_Assets + '/images/SINNum.jpg' }" />
+                                    </div>
+                                </div>
+                            </div-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end MAIN CONTENT -->
+    </aura:if> 
+    </aura:renderIf> <!--R2C CSM-14773 Shayne 12/05/2017 -->
+    
+    <aura:if isTrue="{!and(v.isSuccess, and(v.caseNumber != '', v.caseNumber != null))}">
+        <!-- @gibs: To be loaded when request successfully sent -->
+        <c:CXE_CP_MyAccountsManageServiceConfirmation caseNum="{!v.caseNumber}"/>
+    </aura:if>
+</aura:component>

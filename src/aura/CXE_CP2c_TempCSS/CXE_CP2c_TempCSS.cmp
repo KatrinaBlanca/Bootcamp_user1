@@ -1,0 +1,88 @@
+<aura:component >
+	<style>
+        <!-- start CSM-14689 @gibs -->
+        .CXE_noBG {
+          background-image: none;
+        }
+        <!-- end CSM-14689 @gibs -->
+        
+        .apa-formset {
+            padding-left: 0;
+        }
+        
+        .mov-select_container:after {
+            display: none;
+        }
+        
+        .apa-formset-2 h3 {
+            margin-bottom: 0px;
+        }
+        
+        .apa-formset-3 .alternative {
+            margin-bottom: 10px;
+            color: #969696;
+        }
+        
+        .upload-enrollment input[type=file] {
+            padding: 13px 11px;
+            cursor: pointer;
+            width: 396px;
+            position: relative;
+            text-indent: -20px;
+            left: -71px;
+            height: 46px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+    	.cCenterPanel {
+            max-width: 100% !important;
+        	min-height: calc(100vh - 324px);
+            background-color: #f7f7f7;
+        }
+        
+        .cCenterPanel .contentRegion div > .ui-widget {
+            margin-top: 0;
+        }
+        
+        .cCenterPanel .slds-col--padded.contentRegion {
+            padding: 0;
+        }
+        
+        .slds-progress-bar__value {
+        	height: 100% !important;
+        }
+        
+        .mov-text-group_fade:after {
+            background: none;
+        }
+        
+        .mov-form_apa .mov-select-aftersales {
+            border-radius: 30px !important;
+            background: url({! $Resource.CXE_CP_Assets + '/images/select-arrow.png' }) no-repeat right #f7f7f7 !important;
+            border: none !important;
+            height: 42px !important;
+        	background-position: calc(100% - 10px) 50% !important;
+        }
+        
+        .apa-formset:before {
+            display: none;
+        }
+        
+        #welcome-signup, #mov-modal_lbox, .mov-modal {
+            display: block;
+        }
+        
+        .mov-input-contractor {
+        	border-radius: 40px !important;
+            height: 47px !important;
+        	box-shadow: 0px 4px 19px -3px rgba(128,128,128,0.20) !important; 
+
+        }
+        
+        .CXE_CP_conFieldShadowFix {
+        	box-shadow: 0px 4px 19px -3px rgba(128,128,128,0.20) !important; 
+        }
+        
+    </style>
+</aura:component>

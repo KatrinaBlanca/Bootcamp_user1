@@ -1,0 +1,103 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_CP_MyAccounts">
+    <c:CXE_CP_Header />
+    
+    <!-- MAIN CONTENT -->
+    <div class="main mov-js-window-height">
+        <!-- background color -->
+        <div class="mov-background-color_f7f7f7 mov-background_mobile">
+            
+            <div class="mov-breadcrumbs mov-breadcrumbs_modified">
+                <div class="main-wrapper">
+                    <nav data-reactroot="">
+                        <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap">
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps">
+                                <a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a>
+                            </li>
+                            <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active">
+                                <a href="javascript:void(0);">Inbox</a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="main-wrapper">
+                <div class="slds-grid slds-wrap">
+                    <!-- Left Side Nav (Account Nav) -->
+                    <div class="slds-large-size_12-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                        <div class="mov-text-group slds-p-top_small">
+                            <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Inbox (5)</h3>
+                        </div>
+                        
+                        <div class="slds-box mov-box mov-element-box-shadow mov-box_inbox">
+                            <div class="mov-table-group mov-background-color_ffffff slds-m-vertical_large mov-table-group_custom table-responsive">
+                                <table class="slds-table slds-table_cell-buffer mov-table mov-table-advanced mov-background-color_ffffff mov-table-inbox">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th scope="col" style="width: 75%;">
+                                                SUBJECT
+                                            </th>
+                                            <th scope="col" style="width: 25%;">
+                                                DATE
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row" class="unread">
+                                                <div class="checkbox cbox-orange">
+                                                    <label class="checkbox-container">
+                                                        <input type="checkbox" />  <i class="fa fa-file-text-o" aria-hidden="true"></i> Your bill for the period January 1-February 1, 2017 for SIN #163786021 is now ready for viewing
+                                                        <div class="checkbox-custom"></div>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <label>March 28, 2017</label>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="checkbox cbox-orange">
+                                                    <label class="checkbox-container">
+                                                        <input type="checkbox" />  <i class="fa fa-envelope-o" aria-hidden="true"></i> Your bill for the period January 1-February 1, 2017 for SIN #163786021 is now ready for viewing
+                                                        <div class="checkbox-custom"></div>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <label>March 28, 2017</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="checkbox cbox-orange">
+                                                    <label class="checkbox-container">
+                                                        <input type="checkbox" />  <i class="fa fa-newspaper-o" aria-hidden="true"></i> Our monthly newsletter
+                                                        <div class="checkbox-custom"></div>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <label>March 28, 2017</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end MAIN CONTENT -->
+</aura:component>

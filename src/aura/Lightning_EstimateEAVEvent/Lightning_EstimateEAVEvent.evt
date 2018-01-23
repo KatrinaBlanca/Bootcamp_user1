@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Event to update EAV value">
+    <aura:attribute name="updatedConnections" type="Lightning_CommodityProductsConfigCntrl.connectionWrapper1[]"/>
+</aura:event>

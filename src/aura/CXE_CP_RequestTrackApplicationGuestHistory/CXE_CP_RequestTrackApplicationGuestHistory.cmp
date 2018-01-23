@@ -1,0 +1,133 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CXE_ServiceApplication">
+    
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> -->
+    <!-- <aura:attribute name="isHidden" type="Booelan" default="true"/> -->
+
+    <aura:attribute name="caseHistoryList" type="CXE_CaseHistoryWrapper[]"/>
+    <aura:attribute name="caseRecord" type="Case" default="{sobjectType: 'Case'}"/>
+    <aura:attribute name="isTerminate" type="Boolean" default="false"/>
+
+    <aura:method name="submit" action="{!c.onSubmit}" access="PUBLIC">
+        <aura:attribute name="lastname" type="String" default="TEST WAR INC 19"/>
+        <aura:attribute name="referenceNumber" type="String" default="A1707-00214966"/>
+    </aura:method>
+    <aura:registerEvent name="hasCaseHistoryEvt" type="c:CXE_CP_HasCaseHistoryEvent"/>
+
+    <c:CXE_CP_Header />
+    
+    <!-- start CM 15021 @gibs -->
+    <style>
+        @media screen and (max-width: 1024px) and (min-width: 1px) {
+            .CXE_trackAppCenter li a {
+                text-align: center !important;
+                margin-top: 7px !important;
+            }
+        }
+    </style>
+    <!-- end CM 15021 @gibs -->
+    
+    <div aura:id="appSpinner" class="slds-spinner_container slds-is-fixed slds-hide">
+        <div role="status" class="slds-spinner slds-spinner--medium">
+            <span class="slds-assistive-text">Loading</span>
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+    
+    <div class="mov-track-my-application_guest">
+        <div class="main-wrapper">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+                    <div class="mov-text-group slds-p-top_small">
+                        <p class="slds-m-bottom_x-small mov-text_size-18 mov-text_color-323232">Track a service application</p>
+                        <h3 class="mov-text_size-32 mov-text_color-ff5114 mov-text_weight-bold">{!v.caseRecord.CaseNumber}</h3>
+                    </div>
+
+                    <!-- start CM 15021 @gibs -->
+                    <ul class="slds-m-top--large slds-tabs_default__nav mov-nav-tabs mov-nav-tabs_aftersales mov-nav-tabs_requests mov-nav-tabs_aftersales__change-details CXE_trackAppCenter" role="tablist">
+                            <li aura:id="Apply" class="slds-tabs_default__item tablinks slds-is-active" role="presentation">
+                                <a role="tab" data-aura-id="1">
+                                    <span>1</span>APPLY
+                                </a>
+                            </li>
+                            <li aura:id="Evaluate" class="slds-tabs_default__item tablinks" role="presentation">
+                                <a role="tab" data-aura-id="2">
+                                    <span>2</span>EVALUATE
+                                </a>
+                            </li>
+                            <li aura:id="Inspect" class="slds-tabs_default__item tablinks" role="presentation">
+                                <a role="tab" data-aura-id="3">
+                                    <span>3</span>INSPECT
+                                </a>
+                            </li>
+                            <li aura:id="Complete" class="slds-tabs_default__item tablinks" role="presentation">
+                                <a role="tab" data-aura-id="4">
+                                    <span>4</span>COMPLETE
+                                </a>
+                            </li>
+                            <aura:if isTrue="{!!v.isTerminate}" >
+                                <li aura:id="Energize" class="slds-tabs_default__item tablinks" role="presentation">
+                                    <a role="tab" data-aura-id="5">
+                                        <span>5</span>ENERGIZE
+                                    </a>
+                                </li>
+                            </aura:if>
+                            <aura:if isTrue="{!v.isTerminate}" >
+                                <li aura:id="Retire" class="slds-tabs_default__item tablinks" role="presentation">
+                                    <a role="tab" data-aura-id="5">
+                                        <span>5</span>RETIRE
+                                    </a>
+                                </li>
+                            </aura:if>
+                        </ul>
+					<!-- end CM 15021 @gibs -->
+                    <div class="mov-table-group mov-background-color_ffffff slds-m-top_large">
+                        <table class="slds-table slds-table_col-bordered slds-table_cell-buffer mov-table mov-background-color_ffffff mov-table-striped">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            DATE
+                                        </div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            STATUS
+                                        </div>
+                                    </th>
+                                    <th scope="col">
+                                        <div class="slds-truncate">
+                                            REMARKS
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.caseHistoryList}" var="caseHistory">
+                                    <tr>
+                                        <td data-label="Date" scope="row">
+                                            <div class="slds-truncate">
+                                                <ui:outputDate format="MM/dd/YYYY" value="{!caseHistory.CreatedDate}"/>
+                                            </div>
+                                        </td>
+                                        <td data-label="Status">
+                                            <div class="slds-truncate">
+                                                {!caseHistory.NewValue}
+                                            </div>
+                                        </td>
+                                        <td data-label="Remarks">
+                                            <div class="slds-truncate">
+                                                {!caseHistory.Remarks}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,42 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <style>
+        .pay-page__panel{
+        	min-height: 300px;
+        }
+    </style>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="PayAsGuest" type="boolean" default="true" />
+    
+    <aura:attribute name="recursionFlag" type="boolean"/>
+    <aura:attribute name="isPayAsGuest" type="boolean"/>
+    
+    <c:CXE_CP2c_Header />
+    <div class="pay-page">      
+        <div class="main-wrapper">
+            <div class="pay-page__logo" aura:id="logoShow">
+                <img src="{! $Resource.CXE_CP_Assets + '/images/meralco-logo-white.png' }" />
+            </div>
+            <!--<div class="pay-page__panel">
+                <c:CXE_CP_PaymentPayAsGuestTab2 />
+            </div> -->
+            <div class="pay-page__panel">
+                <p>Sorry, but this transaction has failed due to a system <br></br> error, problem with your card or your internet <br></br> connection. Please try again after a few minutes.</p>
+				<br></br>
+                <p>You can also pay your bill through our <a href="#" class="text-orange underline">other payment channels</a>.</p>
+                <br></br>
+                <p>
+                    For further assistance, please call us at our 24/7 hotline<br></br>  at 16211 orbusiness hotline at 16210, or check with <br></br> 	your bank or credit card company for possible card issues.
+                </p>
+                
+                
+                <div class="slds-form-element slds-p-top_medium">
+                    <!--<button class="slds-button mov-button center-block mov-element_max-width-345">OK</button>-->
+                    <ui:button label="OK" class="slds-button mov-button center-block mov-element_max-width-345" press="{!c.goToMainPage}"/>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+</aura:component>

@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CreatePdf</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailQuote</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewQuote</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SyncQuote</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <fields>
+        <fullName>AccountId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AdditionalName</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Bank_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Name</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BillingName</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Bundle__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Bundle</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Quotes</relationshipLabel>
+        <relationshipName>Quotes</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContactId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ContractId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contract_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Cooling_of_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Quote_Signed_Date__c +  Cooling_off_Days__c</formula>
+        <label>End of Cooling-Off Period</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Cooling_off_Days__c</fullName>
+        <defaultValue>14</defaultValue>
+        <externalId>false</externalId>
+        <label>Cooling off Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Discount</fullName>
+    </fields>
+    <fields>
+        <fullName>Docusign_Envelope_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Docusign Envelope ID</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Docusign_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Docusign Status</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Duration_status__c</fullName>
+        <externalId>false</externalId>
+        <label>Duration status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Defined with renewal</fullName>
+                    <default>false</default>
+                    <label>Defined with renewal</label>
+                </value>
+                <value>
+                    <fullName>Defined</fullName>
+                    <default>false</default>
+                    <label>Defined</label>
+                </value>
+                <value>
+                    <fullName>Undefined</fullName>
+                    <default>false</default>
+                    <label>Undefined</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>ExpirationDate</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Fax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>GrandTotal</fullName>
+    </fields>
+    <fields>
+        <fullName>IBAN__c</fullName>
+        <externalId>false</externalId>
+        <label>IBAN</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsSyncing</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>LineItemCount</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Method_of_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Method of Payment</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Cash</fullName>
+                    <default>false</default>
+                    <label>Cash</label>
+                </value>
+                <value>
+                    <fullName>Cheque</fullName>
+                    <default>false</default>
+                    <label>Cheque</label>
+                </value>
+                <value>
+                    <fullName>Credit card</fullName>
+                    <default>false</default>
+                    <label>Credit card</label>
+                </value>
+                <value>
+                    <fullName>Direct Debit</fullName>
+                    <default>false</default>
+                    <label>Direct Debit</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Number_of_Days_to_Expire__c</fullName>
+        <description>The field to calculate number of days for quote expiration. To be used in reports</description>
+        <externalId>false</externalId>
+        <formula>ExpirationDate  - TODAY()</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Days to Expire</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OpportunityId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MasterDetail</type>
+    </fields>
+    <fields>
+        <fullName>Oppurtunity_Record_type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Oppurtunity Record type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Day__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Day</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1st of month</fullName>
+                    <default>false</default>
+                    <label>1st of month</label>
+                </value>
+                <value>
+                    <fullName>Last day of month</fullName>
+                    <default>false</default>
+                    <label>Last day of month</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Schedule__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Schedule</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>14 days</fullName>
+                    <default>false</default>
+                    <label>14 days</label>
+                </value>
+                <value>
+                    <fullName>Cash on delivery</fullName>
+                    <default>false</default>
+                    <label>Cash on delivery</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Payment_Specification__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Specification</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                    <label>None</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>QuoteToName</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Quote_Days__c</fullName>
+        <description>This Field is used in Quote report to show the Quotes still in Draft even after some &quot;X&quot; days.</description>
+        <externalId>false</externalId>
+        <formula>TODAY()- DATEVALUE(CreatedDate)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Quote Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quote_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Business</fullName>
+                    <default>false</default>
+                    <label>New Business</label>
+                </value>
+                <value>
+                    <fullName>Retention</fullName>
+                    <default>false</default>
+                    <label>Retention</label>
+                </value>
+                <value>
+                    <fullName>Extension</fullName>
+                    <default>false</default>
+                    <label>Extension</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Quote_Signed_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Quote Signed Date</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Security_Deposit_Condition__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Security Deposit Condition</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Security_Deposit_Pending__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Security Deposit Pending</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Security_Deposit_Value__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF((RecordTypeId  = &apos;01228000000DE4E&apos; ) &amp;&amp; 
+ISPICKVAL(Opportunity.Account.Customer_Accepted__c,&quot;Accepted under Conditions&quot;) &amp;&amp; 
+NOT(ISNULL(Opportunity.Number_Of_Opp_Product__c )), 2*Opportunity.Total_Price_of_Product__c ,null)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Security Deposit Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Security_Deposite_Update_On_Quote__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity.Security_Deposit_Condition__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Security Deposite Update On Quote</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ShippingHandling</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>ShippingName</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Subtotal</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Tax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Terms_of_Payment__c</fullName>
+        <externalId>false</externalId>
+        <label>Terms of Payment</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>14d end of month</fullName>
+                    <default>false</default>
+                    <label>14d end of month</label>
+                </value>
+                <value>
+                    <fullName>14d net</fullName>
+                    <default>false</default>
+                    <label>14d net</label>
+                </value>
+                <value>
+                    <fullName>30d end of month</fullName>
+                    <default>false</default>
+                    <label>30d end of month</label>
+                </value>
+                <value>
+                    <fullName>30d net</fullName>
+                    <default>false</default>
+                    <label>30d net</label>
+                </value>
+                <value>
+                    <fullName>60d end of month</fullName>
+                    <default>false</default>
+                    <label>60d end of month</label>
+                </value>
+                <value>
+                    <fullName>60d net</fullName>
+                    <default>false</default>
+                    <label>60d net</label>
+                </value>
+                <value>
+                    <fullName>Cash on delivery</fullName>
+                    <default>false</default>
+                    <label>Cash on delivery</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>TotalPrice</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Updated_Security_Deposit__c</fullName>
+        <externalId>false</externalId>
+        <formula>2*Opportunity.Total_Price_of_Product__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Updated Security Deposit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Waiting_for_Security_Deposit__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity.Waiting_for_Security_Deposit__c</formula>
+        <label>Waiting for Security Deposit</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Won_Lost_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Denied Reason</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Quote Expired</fullName>
+                    <default>false</default>
+                    <label>Quote Expired</label>
+                </value>
+                <value>
+                    <fullName>Feature</fullName>
+                    <default>false</default>
+                    <label>Feature</label>
+                </value>
+                <value>
+                    <fullName>Competition</fullName>
+                    <default>false</default>
+                    <label>Competition</label>
+                </value>
+                <value>
+                    <fullName>Need</fullName>
+                    <default>false</default>
+                    <label>Need</label>
+                </value>
+                <value>
+                    <fullName>Timing</fullName>
+                    <default>false</default>
+                    <label>Timing</label>
+                </value>
+                <value>
+                    <fullName>Authority</fullName>
+                    <default>false</default>
+                    <label>Authority</label>
+                </value>
+                <value>
+                    <fullName>Contract term</fullName>
+                    <default>false</default>
+                    <label>Contract term</label>
+                </value>
+                <value>
+                    <fullName>Lost momentum</fullName>
+                    <default>false</default>
+                    <label>Lost momentum</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <listViews>
+        <fullName>mine</fullName>
+        <columns>QUOTE.NAME</columns>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>QUOTE.ISSYNCING</columns>
+        <columns>QUOTE.EXPIRATIONDATE</columns>
+        <columns>QUOTE.SUBTOTAL</columns>
+        <columns>QUOTE.TOTALPRICE</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Quotes</label>
+    </listViews>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypes>
+        <fullName>Business</fullName>
+        <active>true</active>
+        <label>Business</label>
+        <picklistValues>
+            <picklist>Duration_status__c</picklist>
+            <values>
+                <fullName>Defined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Defined with renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Undefined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method_of_Payment__c</picklist>
+            <values>
+                <fullName>Cash</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cheque</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Credit card</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Direct Debit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transfer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Payment_Day__c</picklist>
+            <values>
+                <fullName>1st of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Last day of month</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Payment_Schedule__c</picklist>
+            <values>
+                <fullName>14 days</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cash on delivery</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Payment_Specification__c</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Quote_Reason__c</picklist>
+            <values>
+                <fullName>Extension</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retention</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>In Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presented</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Terms_of_Payment__c</picklist>
+            <values>
+                <fullName>14d end of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14d net</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30d end of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30d net</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60d end of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60d net</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cash on delivery</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Won_Lost_Reason__c</picklist>
+            <values>
+                <fullName>Authority</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract term</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Feature</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost momentum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Need</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quote Expired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Timing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Consumer</fullName>
+        <active>true</active>
+        <label>Consumer</label>
+        <picklistValues>
+            <picklist>Duration_status__c</picklist>
+            <values>
+                <fullName>Defined</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Defined with renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Undefined</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method_of_Payment__c</picklist>
+            <values>
+                <fullName>Cash</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cheque</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Credit card</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Direct Debit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transfer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Payment_Day__c</picklist>
+            <values>
+                <fullName>1st of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Last day of month</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Payment_Schedule__c</picklist>
+            <values>
+                <fullName>14 days</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cash on delivery</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Payment_Specification__c</picklist>
+            <values>
+                <fullName>None</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Quote_Reason__c</picklist>
+            <values>
+                <fullName>Extension</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retention</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Denied</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>In Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Presented</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Terms_of_Payment__c</picklist>
+            <values>
+                <fullName>14d end of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>14d net</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30d end of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30d net</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60d end of month</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>60d net</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cash on delivery</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Won_Lost_Reason__c</picklist>
+            <values>
+                <fullName>Authority</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contract term</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Feature</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lost momentum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Need</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Quote Expired</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Timing</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>QUOTE.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OPPORTUNITY.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>QUOTE.ISSYNCING</customTabListAdditionalFields>
+        <customTabListAdditionalFields>QUOTE.EXPIRATIONDATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>QUOTE.SUBTOTAL</customTabListAdditionalFields>
+        <customTabListAdditionalFields>QUOTE.TOTALPRICE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>QUOTE.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>OPPORTUNITY.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>QUOTE.ISSYNCING</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>QUOTE.EXPIRATIONDATE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>QUOTE.SUBTOTAL</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>QUOTE.TOTALPRICE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OPPORTUNITY.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.ISSYNCING</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.EXPIRATIONDATE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.SUBTOTAL</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.TOTALPRICE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>QUOTE.PHONE</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>QUOTE.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>QUOTE.ISSYNCING</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>QUOTE.EXPIRATIONDATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>QUOTE.SUBTOTAL</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>QUOTE.TOTALPRICE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Lock_the_stage_once_updated_as_closed</fullName>
+        <active>true</active>
+        <description>Once the status is updated as Accepted , it cannot be changed.</description>
+        <errorConditionFormula>ISCHANGED(Status)&amp;&amp;(ISPICKVAL(PRIORVALUE( Status ),&apos;Accepted&apos;))</errorConditionFormula>
+        <errorMessage>Once the status is updated as Accepted , it cannot be changed.</errorMessage>
+    </validationRules>
+</CustomObject>

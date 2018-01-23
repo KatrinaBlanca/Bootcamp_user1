@@ -1,0 +1,14 @@
+Dear {!Case.Addressing_Customer__c},
+
+We regret to inform you that your service application with reference number {!Case.CaseNumber} with the following details has been cancelled:
+
+Customer Name: {!Case.Full_Name__c} 
+Service Type: {!Case.Res_Non_Res_Description__c} 
+Service Address: {!Case.Service_Address_Unit_No__c}, {!Case.Service_Address_Street_No__c} {!Case.Service_Address_Street_Name__c}, {!Case.Service_Address_Subdivision__c}, {!Case.Service_Address_Barangay__c}, {!Case.Service_Address_City_Municiple__c} 
+
+You may re-apply for electric service connection by logging in to your MERALCO Community account at https://meralco.force.com/customers. You may also get in touch with any of our customer representatives through the MERALCO Community, or through calling {!Case.Responsible_Office__c} at tel. no. {!Case.Responsible_Office_Tel_No__c}.
+
+Thank you and we hope to hear from you again. 
+
+Sincerely,
+MERALCO

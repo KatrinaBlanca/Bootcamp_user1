@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Title</field>
+        <field>RecordType</field>
+        <field>Sub_Category__c</field>
+        <field>Content__c</field>
+        <field>CreatedBy</field>
+        <field>CreatedDate</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>L1_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>L1_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>L1_Approver_3__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <description>First approval by CP Process Team Leader</description>
+        <label>Submit to CP Process Team Leader</label>
+        <name>Submit_to_CP_Process_Team_Leader</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>L2_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>L2_Approver_3__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>L2_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Second approval by CP Process Manager</description>
+        <label>Submit to CP Process Manager</label>
+        <name>Submit_to_CP_Process_Manager</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>L3_Approver_3__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>L3_Approver_2__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>L3_Approver_1__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Final approval by CP Head</description>
+        <label>Submit to CP Head</label>
+        <name>Submit_to_CP_Head</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>Approval process for all articles with Guidelines &amp; Procedures record type</description>
+    <emailTemplate>unfiled$public/Knowledge_Article_Approval</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Knowledge__kav.RecordType</field>
+            <operation>equals</operation>
+            <value>Guidelines &amp; Procedures</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Knowledge__kav.PublishStatus</field>
+            <operation>equals</operation>
+            <value>Draft</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Knowledge_Article_Approved</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Publish</name>
+            <type>KnowledgePublish</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>FAQs_Rejection_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Uncheck_Submit_Checkbox</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Guidelines &amp; Procedures Approval Process</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

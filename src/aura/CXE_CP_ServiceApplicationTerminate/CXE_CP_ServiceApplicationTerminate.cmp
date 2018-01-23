@@ -1,0 +1,74 @@
+<aura:component >
+    <aura:attribute name="tabToShow" type="String" required="false" description="" access="private"/>
+    <aura:attribute name="tabNumAvailable" type="Integer" default="1"/>
+    <aura:attribute name="tabNumLock" type="Integer" default="2"/>
+    <aura:handler name="callTabEvent" event="c:SetTabValueEvent" action="{!c.changeTab}"/>
+
+    <aura:attribute name="caseVar" type="Case" default="{sobjectType: 'Case'}"/>
+    <aura:attribute name="sinNumber" type="String" default=""/>
+    <aura:attribute name="sinAlias" type="String" default=""/>
+
+    <!-- START CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+    <aura:attribute name="isRegistered" type="Boolean" default="false"/>    
+    <!-- END CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+
+    <div class="main mov-background-color_f7f7f7 mov-js-window-height">
+        <!-- START CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+  		<!-- <div class="mov-breadcrumbs mov-breadcrumbs_modified"> -->
+  			<!-- <div class="main-wrapper"> -->
+  				<!-- <nav data-reactroot=""> -->
+  					<!-- <ol class="slds-breadcrumb mov-breadcrumb slds-list_horizontal slds-wrap"> -->
+  						<!-- <li class="slds-breadcrumb__item mov-breadcrumb__item slds-text-title_caps"> -->
+  							<!-- <a href="javascript:void(0);"><i class="fa fa-home breadcrumb-home"></i></a> -->
+  						<!-- </li> -->
+  						<!-- <li class="slds-breadcrumb__item mov-breadcrumb__item"> -->
+  							<!-- <a href="javascript:void(0);">Accounts</a> -->
+  						<!-- </li> -->
+  						<!-- <li class="slds-breadcrumb__item mov-breadcrumb__item mov-breadcrumb__item_active"> -->
+  							<!-- <a href="javascript:void(0);">Requests</a> -->
+  						<!-- </li> -->
+  					<!-- </ol> -->
+  				<!-- </nav> -->
+  			<!-- </div> -->
+  		<!-- </div> -->
+        <aura:if isTrue="{!v.isRegistered}">
+            <c:CXE_CP_BreadCrumbs sourcePages="['dashboard', 'Accounts', 'Requests']"/>
+        </aura:if>
+        <!-- END CSM-14333 Jerome To 11/22/2017 As a customer, I should be able to go back to the previous pages I navigated through the clickable breadcrumbs displayed on the left portion of the screen below the tabs. -->
+  		<div class="mov-aftersales">
+  			<div class="main-wrapper">
+  				<div class="slds-grid slds-wrap">
+  					<div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs">
+  						<div class="mov-text-group slds-p-top_small">
+  							<div class="mov-text-group slds-p-top_small">
+  								<h3 class="mov-text_size-32 mov-text_weight-semi-bold slds-m-bottom_small">Requests</h3>
+  							</div>
+  						</div>
+  						<div class="mov-tabs-group">
+  							<div class="slds-tabs_default mov-tabs_round mov-slds-tabs_default mov-tabs_round slds-p-bottom_x-small">
+  								<ul class="slds-tabs_default__nav mov-nav-tabs mov-nav-tabs_aftersales mov-nav-tabs_aftersales__change-details" role="tablist">
+                    <li class="active" role="presentation" id="tab1">
+                        <a data-aura-id="serviceAppTermTab1" onclick="{! c.setTab }" aria-controls="request_details" aria-expanded="true" data-toggle="tab" href="javascript:void(0);" role="tab"><span>1</span>REQUEST DETAILS</a>
+                    </li>
+                    <li class="" role="presentation" id="tab2">
+                        <a data-aura-id="serviceAppTermTab2" aria-controls="confirmation" aria-expanded="false" data-toggle="tab" href="javascript:void(0);" role="tab"><span>2</span>CONFIRMATIONS</a> <!-- onclick="{!c.setTab}"  -->
+                    </li>
+  								</ul>
+  								<div class="mov-tab-content">
+                    <aura:renderIf isTrue="{! v.tabToShow=='serviceAppTermTab1' || empty(v.tabToShow)}">
+                        <c:CXE_CP_ServiceApplicationTerminateTab1 sinNumber="{!v.sinNumber}"
+                            sinAlias="{!v.sinAlias}" caseRecord="{!v.caseVar}" />
+                    </aura:renderIf>
+
+                    <aura:renderIf isTrue="{! v.tabToShow=='serviceAppTermTab2'}">
+                        <c:CXE_CP_ServiceApplicationTerminateTab2 sinNumber="{!v.sinNumber}" sinAlias="{!v.sinAlias}" caseRecord="{!v.caseVar}" />
+                    </aura:renderIf>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+</aura:component>

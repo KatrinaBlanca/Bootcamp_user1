@@ -1,0 +1,74 @@
+<aura:component controller="CXE_CP_PaperlessBillingSubscribeEmail">
+    <aura:attribute name="firstEmail" type="String"/>
+    <aura:attribute name="secondEmail" default="" type="String"/>
+    <aura:attribute name="acctId" type="String" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:registerEvent name="setAttribute" type="c:CXE_CP_PaperlessBillingSubscribe_event"/>
+    
+    <div class="mov-track-my-application_guest">
+        <div class="main-wrapper">
+            <div class="slds-grid slds-wrap slds-grid_pull-padded-x-small">
+                <div class="slds-large-size_2-of-2 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_x-small">
+                    <div class="mov-text-group slds-p-top_small">
+                        <h3 class="slds-m-bottom_large mov-text_size-32 mov-text_weight-semi-bold">Paperless Billing</h3>
+                    </div>
+                </div>
+                <div class="slds-large-size_9-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 mov-xs slds-p-horizontal_small">
+                    <div class="slds-box mov-box mov-box_margin-bottom_850 mov-element-box-shadow mov-background-color_ffffff">
+                        <p class="mov-text_size-21 mov-text_color-323232 slds-p-top_small mov-text_weight-semi-bold">Subscribe to Paperless Billing</p>
+                        
+                        <div class="mov-form-group slds-p-bottom_large slds-p-top_large">
+                            <div class="mov-form">
+                                <div class="slds-form">
+                                    
+                                    <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">
+                                        <p class="slds-m-bottom_small mov-text_size-14 mov-text_color-6a6a6a mov-text_weight-semi-bold">We'll send your bill notifications to your primary email.</p>
+                                        <div class="slds-form-element slds slds-m-bottom_large mov-mobile_full-width ">
+                                            <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232 mov-min-width_200" for="primary-email-address">Primary Email Address</label>
+                                            <div class="slds-form-element__control mov-inline-block slds-p-left_large ">
+                                                <ui:inputText class="slds-input mov-input-trackmyapp mov-input-width-344" aura:id="primary-email-address" disabled="true" value="{!v.firstEmail}"/>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="mov-form-row slds-grid slds-wrap slds-grid_pull-padded-small slds-m-top_large">
+                                        <p class="slds-m-bottom_small mov-text_size-14 mov-text_color-6a6a6a mov-text_weight-semi-bold">In case of delivery failure, we'll send it to your secondary email.</p>
+                                        <div class="slds-form-element slds slds-m-bottom_large mov-mobile_full-width ">
+                                            <label class="slds-form-element__label slds-m-bottom_medium mov-text_size-16 mov-text_weight-bold mov-text_color-323232 mov-min-width_200" for="guest-ref-no">Secondary Email Address</label>
+                                            <div class="slds-form-element__control mov-inline-block slds-p-left_large ">
+                                                <ui:inputText class="slds-input mov-input-trackmyapp mov-input-width-344" aura:id="secondary-email-address" value="{!v.secondEmail}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mov-warning-group">
+                            <p class="mov-text_size-14 mov-text_color-a5a5a5 slds-m-around_xxx-small"><i class="fa fa-info-circle">&nbsp;&nbsp;</i>To update your contact information, please call us at our 24/7 hotline at 16211 or business hotline at 16210.</p>
+                            
+                        </div>
+                        
+                        <div class="slds-m-top_medium">
+                            <div class="mov-button-group slds-float_right">
+                                <ui:button aura:id="cancelButton" press="{!c.cancelButton}" class="slds-button mov-button-transparent mov-button-transparent_gray mov-element_max-width-170 mov-text_weight-semi-bold">Back</ui:button>
+                                
+                                <ui:button aura:id="nextButton" press="{!c.nextButton}" class="slds-button mov-button mov-element_max-width-170 mov-text_weight-semi-bold" >Submit</ui:button>	
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="slds-large-size_3-of-12 slds-medium-size_2-of-2 slds-small-size_2-of-2 slds-p-horizontal_x-small mov-xs">
+                    <div class="mov-dashboard_misc-list">
+                        <c:CXE_CP_WidgetFAQPaperless />
+                        <c:CXE_CP_WidgetPaperlessTnC />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>
