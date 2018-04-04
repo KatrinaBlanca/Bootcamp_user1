@@ -8,7 +8,7 @@
   <!-- define tasks -->
   <taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy"/>
 
-  <!-- Load credentials from configuration folder -->
+  <!--Step to load credentials from configuration folder -->
   <target name="load_credentials">
     <property name="SANDBOX" value="${env.SANDBOX}"/>
     <property name="PACKAGE_TO_VALIDATE" value="${env.PACKAGE_TO_VALIDATE}"/>
@@ -27,9 +27,11 @@
     <!-- Create the build directory structure used by compile -->
     <delete failonerror="false" dir="${DIST_DIR}"/>
     <mkdir dir="${DIST_DIR}"/>
-    <!--delete failonerror="false" dir="${DIST_DESTRUCTIVE}"/>
-    <mkdir dir="${DIST_DESTRUCTIVE}"/-->
-    <copy file="package.xml" todir="src" />
+    <delete failonerror="false" dir="${DIST_DESTRUCTIVE}"/>
+    <mkdir dir="${DIST_DESTRUCTIVE}"/>
+    <copy file="package.xml" todir="${DIST_DIR}"/>
+    <copy file="package.xml" todir="${DIST_DESTRUCTIVE}"/>
+    <!--copy file="destructiveChanges.xml" todir="${DIST_DESTRUCTIVE}" -->
   </target>
 
   <target name="init_prebuilt" depends="load_credentials">
@@ -71,7 +73,7 @@
               properties['DIST_DIR'] = "dist"
               break
           case 'Destructive':
-              properties['DIST_DIR'] = "dist_destructive"
+              properties['DIST_DESTRUCTIVE'] = "dist_destructive"
               break
           default:
               properties['DIST_DIR'] = "dist"
@@ -97,17 +99,19 @@
               properties['DIST_DIR'] = "dist"
               break
           case 'Destructive':
-              properties['DIST_DIR'] = "dist_destructive"
+              properties['DIST_DESTRUCTIVE'] = "dist_destructive"
               break
           default:
               properties['DIST_DIR'] = "dist"
       }
       println "Validating on ${properties['DIST_DIR']}"
     </groovy>
+	<setproxy proxyhost="c2proxy.ampaws.com.au" proxyport="8080" proxyuser="" proxypassword=""/>
     <sf:deploy
       autoUpdatePackage="true"
       rollbackOnError="true"
-      runAllTests="true"
+      runAllTests="false"
+	  ignoreWarnings="true"
       checkOnly="true"
       pollWaitMillis="40000"
       deployRoot="${DIST_DIR}"
@@ -132,10 +136,29 @@
     <groovy>
       String srcDir = "${properties['env.WORKSPACE']}"
       properties['DIST_DIR'] = "dist"
+      properties['DIST_DESTRUCTIVE'] = "dist_destructive"
       project.executeTarget("validate")
     </groovy>
   </target>
-
+  
+   <target name="startFullValidationProcesswithTestclassexecution" >
+    <groovy>
+      String srcDir = "${properties['env.WORKSPACE']}"
+      properties['DIST_DIR'] = "dist"
+      properties['DIST_DESTRUCTIVE'] = "dist_destructive"
+      project.executeTarget("On_Demand_Validation_RunAllTests")
+    </groovy>
+  </target>
+  
+   <target name="startFullDeployProcesswithTestclassexecution" >
+    <groovy>
+      String srcDir = "${properties['env.WORKSPACE']}"
+      properties['DIST_DIR'] = "dist"
+      properties['DIST_DESTRUCTIVE'] = "dist_destructive"
+      project.executeTarget("On_Demand_Deploy_RunLocalTests")
+    </groovy>
+  </target>
+  
   <target name="deployPrebuiltPkg" depends="init_prebuilt">
     <groovy>
       String packageToValidate = properties["PACKAGE_TO_VALIDATE"]
@@ -151,8 +174,10 @@
       }
       println "Deploy from ${properties['DIST_DIR']}"
     </groovy>
+	<setproxy proxyhost="c2proxy.ampaws.com.au" proxyport="8080" proxyuser="" proxypassword=""/>
         <sf:deploy
           autoUpdatePackage="true"
+		  ignoreWarnings="true"
           rollbackOnError="true"
           username="${SALESFORCE_USERNAME}"
           password="${SALESFORCE_PASSWORD}${SALESFORCE_TOKEN}"
@@ -175,6 +200,7 @@
             }
             println "Validating on ${properties['DIST_DIR']}"
         </groovy>
+		<setproxy proxyhost="c2proxy.ampaws.com.au" proxyport="8080" proxyuser="" proxypassword=""/>
         <sf:deploy
                 autoUpdatePackage="true"
                 rollbackOnError="true"
@@ -207,9 +233,10 @@
         <!-- Create the build directory structure used by compile -->
         <delete failonerror="false" dir="${DIST_DIR}"/>
         <mkdir dir="${DIST_DIR}"/>
-        <!--delete failonerror="false" dir="${DIST_DESTRUCTIVE}"/>
-        <mkdir dir="${DIST_DESTRUCTIVE}"/-->
-        <copy file="package.xml" todir="src" />
+        <delete failonerror="false" dir="${DIST_DESTRUCTIVE}"/>
+        <mkdir dir="${DIST_DESTRUCTIVE}"/>
+        <copy file="package.xml" todir="${DIST_DIR}" />
+	<!--copy file="destructiveChanges.xml" todir="${DIST_DIR}" -->
     </target>
 
     <target name="bind_prebuilt" depends="bind_credentials">
@@ -259,12 +286,13 @@
                 autoUpdatePackage="true"
                 rollbackOnError="true"
                 runAllTests="false"
-                checkOnly="false"
+                checkOnly="true"
                 pollWaitMillis="40000"
                 deployRoot="${DIST_DIR}"
                 serverurl="${SALESFORCE_URL}"
                 password="${SALESFORCE_PASSWORD}"
-                username="${SALESFORCE_USERNAME}"/>
+                username="${SALESFORCE_USERNAME}"
+        		ignoreWarnings="true"/>
     </target>
 
     <target name="On_Demand_StartValidationProcess">
@@ -283,7 +311,7 @@
                     properties['DIST_DIR'] = "dist"
                 break
                 case 'Destructive':
-                    properties['DIST_DIR'] = "dist_destructive"
+                    properties['DIST_DIR'] = "dist"
                 break
                 default:
                     properties['DIST_DIR'] = "dist"
@@ -296,13 +324,15 @@
                 username="${SALESFORCE_USERNAME}"
                 password="${SALESFORCE_PASSWORD}"
                 serverurl="${SALESFORCE_URL}"
-                deployRoot="${DIST_DIR}" />
+                deployRoot="dist"
+        		ignoreWarnings="true"/>
     </target>
 
     <target name="On_Demand_Deploy">
         <groovy>
             String srcDir = "${properties['env.WORKSPACE']}"
             properties['DIST_DIR'] = "dist"
+			properties['DIST_DESTRUCTIVE'] = "dist"
             project.executeTarget("On_Demand_DeployPrebuiltPkg")
         </groovy>
     </target>
@@ -315,25 +345,59 @@
                     properties['DIST_DIR'] = "dist"
                 break
                 case 'Destructive':
-                    properties['DIST_DIR'] = "dist_destructive"
+                    properties['DIST_DESTRUCTIVE'] = "dist"
                 break
                 default:
                     properties['DIST_DIR'] = "dist"
             }
             println "On Demand Validating run all tests on ${properties['DIST_DIR']}"
         </groovy>
+		<setproxy proxyhost="c2proxy.ampaws.com.au" proxyport="8080" proxyuser="" proxypassword=""/>
         <sf:deploy
                 autoUpdatePackage="true"
                 rollbackOnError="true"
-                runAllTests="true"
+                runAllTests="false"
+				testLevel="RunLocalTests"
                 checkOnly="true"
                 pollWaitMillis="40000"
                 deployRoot="${DIST_DIR}"
                 serverurl="${SALESFORCE_URL}"
                 password="${SALESFORCE_PASSWORD}"
-                username="${SALESFORCE_USERNAME}"/>
+                username="${SALESFORCE_USERNAME}"
+        		ignoreWarnings="true">
+   		</sf:deploy>
     </target>
-
+	
+	<target name="On_Demand_Deploy_RunLocalTests" depends="bind_delete_social_post_files">
+        <groovy>
+            String packageToValidate = properties["PACKAGE_TO_VALIDATE"]
+            switch ( packageToValidate ) {
+                case 'Main_Package':
+                    properties['DIST_DIR'] = "dist"
+                break
+                case 'Destructive':
+                    properties['DIST_DESTRUCTIVE'] = "dist"
+                break
+                default:
+                    properties['DIST_DIR'] = "dist"
+            }
+            println "On Demand Validating run all tests on ${properties['DIST_DIR']}"
+        </groovy>
+		<setproxy proxyhost="c2proxy.ampaws.com.au" proxyport="8080" proxyuser="" proxypassword=""/>
+        <sf:deploy
+                autoUpdatePackage="true"
+                rollbackOnError="true"
+                runAllTests="false"
+				testLevel="RunLocalTests"
+                pollWaitMillis="40000"
+                deployRoot="${DIST_DIR}"
+                serverurl="${SALESFORCE_URL}"
+                password="${SALESFORCE_PASSWORD}"
+                username="${SALESFORCE_USERNAME}"
+        		ignoreWarnings="true">
+   		</sf:deploy>
+    </target>
+	
     <target name="On_Demand_StartRunAllTestsValidationProcess">
         <groovy>
             String srcDir = "${properties['env.WORKSPACE']}"
@@ -341,4 +405,11 @@
             project.executeTarget("On_Demand_Validation_RunAllTests")
         </groovy>
     </target>
+
+    <target name="proxy">
+        <property name="proxy.host" value="http://c2proxy.ampaws.com.au"/>
+        <property name="proxy.port" value="8080"/>
+        <setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"/>
+    </target>
+	
 </project>
